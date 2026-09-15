@@ -9,7 +9,6 @@ A paid subscription is not required to participate.
 
 [Download the workshop ZIP](https://github.com/peterwadsackett/AgenticWorkshop/archive/refs/heads/main.zip) ·
 [Quick start](#quick-start--download-extract-and-open) ·
-[Project folders](#how-the-project-folder-works) ·
 [Exercises](#exercises)
 
 Use **OpenCode on your laptop** to work on the exercises. The DTU models run
