@@ -1,4 +1,4 @@
-# Exercise 2 — From a basic agent to a good agent
+# Exercise 2a — From a basic agent to a good agent
 
 An agent can complete a task without completing it particularly well.
 These initial examples compare a vague instruction with an explicit,
@@ -50,3 +50,5 @@ from students or their agents.
 Edit or create an agent of your own and repeat the comparison on another
 structure. Judge the generated files and behaviour, not the agent's claim
 that it succeeded. One run does not establish a fixed performance difference.
+
+# Exercise 2b — From a good agent to your agent
