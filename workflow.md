@@ -50,4 +50,13 @@ Should PyMol be used, should it be limited to only python and matplotlib, should
 rotate the image in the browser?<br>
 As you will likely discover, rendering an image is different from rendering a good image. Trial and error, baby.
 
+  
+The first [skill-builder](.opencode/skills/skill-builder/SKILL.md) is included.
+Try this in OpenCode:
+
+> Use the skill-builder skill to inspect my PDB-download skill and propose
+> improvements before implementing them.
+
+Skills supply reusable instructions; agents define a role and workflow.
+The two agents are examples for comparison, not a completed visualization app.
 
