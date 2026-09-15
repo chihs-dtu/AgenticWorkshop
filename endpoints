@@ -1,20 +1,4 @@
-## Endpoint for the models we are using:
+# Model endpoints
 
-`https://teaching.healthtech.dtu.dk/workshop/qwen36`
-`https://teaching.healthtech.dtu.dk/workshop/qwen38`
-`https://teaching.healthtech.dtu.dk/workshop/mistral`
-`https://teaching.healthtech.dtu.dk/workshop/qptoss`
-
-## Models proposed url names:
-
-|`/workshop/qwen36` | qwen36
-|`/workshop/mistral`| mistral
-|`/workshop/gptoss` | gptoss
-|`/workshop/qwen38` | qwen38
-
-## Administrator ports:
-
-Qwen 3.8: 10.57.11.105:28101 | c05
-Qwen 3.6: 10.57.11.104:28102 | c04
-Mistral: 10.57.11.104:28103  | c04
-GPT-OSS: 10.57.11.104:28104  | c04
+The maintained model URLs, proxy upstreams, and connection notes are now in
+[admin.md — Model endpoints](admin.md#model-endpoints).

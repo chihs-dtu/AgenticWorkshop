@@ -2,6 +2,11 @@
 
 Building and employing agents for data analysis and visualization.
 
+OpenCode offers a changing selection of models free of charge. We have also
+prepared **four locally hosted DTU models** for this workshop. You can use
+either option, or connect your own supported subscriptions or API accounts.
+A paid subscription is not required to participate.
+
 [Download the workshop ZIP](https://github.com/peterwadsackett/AgenticWorkshop/archive/refs/heads/main.zip) ·
 [Quick start](#quick-start--download-extract-and-open) ·
 [Project folders](#how-the-project-folder-works) ·
@@ -26,10 +31,15 @@ server-start commands.
 5. Start a new chat. Open the model selector and choose a model under **DTU**.
    In the terminal version, type `/models`.
 
-**No JSON editing, manual merging, API key or Custom provider setup is needed.**
+**For the supplied DTU models, no JSON editing, manual merging, API key or
+Custom provider setup is needed.**
 Leave your existing global `opencode.jsonc`, `package.json` and
 `node_modules` alone. OpenCode combines the project configuration with your
 global settings automatically.
+
+## Models you can use
+
+### Our four DTU models
 
 The workshop project shows one **DTU** group containing:
 
@@ -56,6 +66,71 @@ organiser. You do not need server access.
 
 See [OpenCode project configuration](https://opencode.ai/docs/config/#per-project).
 
+### Free models from OpenCode
+
+**Checked 15 September 2026.** The table includes all non-deprecated, zero-priced
+models present in both OpenCode's live model list and its model catalogue at the
+time of checking. Free offers can change or disappear; listing is not a
+guarantee that a request will succeed.
+
+| Model | OpenCode model ID | Listing |
+|---|---|---|
+| Big Pickle | `opencode/big-pickle` | Free in Zen pricing |
+| MiMo-V2.5 Free | `opencode/mimo-v2.5-free` | Free in Zen pricing |
+| Ling 3.0 Flash Fin Free | `opencode/ling-3.0-flash-fin-free` | Free in Zen pricing |
+| Nemotron 3 Ultra Free | `opencode/nemotron-3-ultra-free` | Free in Zen pricing |
+| Nemotron 3.5 Lightning Free | `opencode/nemotron-3.5-lightning-free` | Free in Zen pricing |
+| Muse Spark 1.3 Contributor Free | `opencode/muse-spark-1.3-contributor-free` | Free in Zen pricing |
+| Muse Spark 1.2 Contributor Free | `opencode/muse-spark-1.2-contributor-free` | Live list + zero-priced catalogue entry |
+
+Sources: [OpenCode Zen pricing](https://opencode.ai/docs/zen/#pricing),
+[live model list](https://opencode.ai/zen/v1/models), and
+[model catalogue](https://models.dev/api.json). Muse Spark 1.2 is not in the
+current Zen pricing table; check its displayed price and terms before use.
+Deprecated offers are excluded even if an old endpoint still lists them.
+
+Use public exercise data with external models. Free offers can allow data
+collection or model improvement; Contributor models can include training
+on submitted content. Do not send confidential or personal data.
+See [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#privacy).
+
+### Show free models if they are hidden
+
+- **Desktop:** open the model selector → **Manage models**, search for a
+  model above, and turn its switch on under OpenCode. Return to the selector
+  and choose it. Enable individual free models rather than every paid model.
+- **Terminal:** type `/models`, search for the model name, and select it.
+  It does not have to be a favourite to appear in search. If your version
+  shows a Favourite action, you can use it for easier access next time.
+- If the entire OpenCode provider is missing, check your other project/global
+  configuration: remove only `"opencode"` from `disabled_providers`. If you
+  intentionally use `enabled_providers`, include `"opencode"` alongside
+  `"dtu"` and your other providers. The supplied workshop JSON sets neither
+  restriction. Preserve unrelated settings; ask an organiser if unsure.
+- Restart OpenCode after configuration changes. If a listed model is still
+  absent, check your OpenCode version and the current live list; a setting
+  cannot restore a retired offer. Do not add a paid model as a substitute
+  unless you intend to pay.
+
+The Desktop visibility switches and configuration restrictions are different
+things. We do not change your saved visibility choices or global settings.
+See [provider filtering](https://opencode.ai/docs/config/#disabled-providers).
+
+### Your own subscriptions or API accounts
+
+Use `/connect` in the terminal, or **Connect provider** in Desktop, choose
+your provider, and complete its supported sign-in. Then select its model.
+For example, OpenCode documents using a GitHub Copilot subscription.
+Not every chat subscription includes third-party or API access; separate
+API usage may be billed. Keep personal keys out of this repository.
+See [supported providers and sign-in methods](https://opencode.ai/docs/providers/).
+
+Changing the selected model changes the chat model. The supplied
+`small_model: "dtu/gptoss"` still uses DTU GPT-OSS for background tasks;
+there is no automatic fallback when DTU is offline. For an entirely external
+setup, also change `small_model` in your own copy of `opencode.json` to your
+chosen available provider/model ID.
+
 ## How the project folder works
 
 Keep the extracted repository together. **OpenCode reads `.opencode/` for
@@ -66,19 +141,26 @@ contains the model connections, limits and permissions.
 AgenticWorkshop-main/
   opencode.json
   .opencode/
-    agents/                  Agent definitions: <agent-name>.md
+    agents/
+      bad-agent.md           Basic PDB agent example
+      good-agent.md          More explicit PDB agent example
     skills/
-      <skill-name>/
-        SKILL.md             Reusable skill instructions
+      skill-builder/         A subfolder INSIDE skills
+        SKILL.md             The skill-builder instructions
   exercises/
     01-skills/
     02-agents/
   mcp/                       Reserved for MCP-related materials
 ```
 
-The agent and skill filenames above show where your definitions belong;
-the starter folders currently contain only placeholders. A `.gitkeep`
-file preserves a folder in Git and ZIP downloads; it is not an agent or skill.
+`skills` is the parent folder and `skill-builder` is a separate subfolder
+inside it. The complete path is `.opencode/skills/skill-builder/SKILL.md`.
+GitHub may display `skills/skill-builder` together when it is the only
+subfolder; that is a compact display, not a single folder name.
+
+Each additional skill gets its own subfolder and `SKILL.md`. Agent definitions
+are Markdown files directly inside `.opencode/agents/`. A `.gitkeep` file in
+an otherwise empty folder is only a Git/ZIP placeholder, not an agent or skill.
 
 The leading dot may hide `.opencode` in your file browser, but OpenCode can
 still read it. Do not rename it, move it out of the project, or put
@@ -92,9 +174,19 @@ and [skills](https://opencode.ai/docs/skills/).
 
 ## Exercises
 
-Peter's [introduction and PDB-download skill exercise](workflow.md) is the
-current starting point. The numbered exercise folders are prepared for
-additional material; no exercise files have been added there yet.
+- **Exercise 1 — skills:** Peter's [introduction and PDB-download exercise](workflow.md).
+  His existing exercise is unchanged; `exercises/01-skills/` is reserved for its
+  later organization into stages.
+- **Exercise 2 — agents:** [compare the bad-agent and good-agent examples](exercises/02-agents/README.md).
+
+The first [skill-builder](.opencode/skills/skill-builder/SKILL.md) is included.
+Try this in OpenCode:
+
+> Use the skill-builder skill to inspect my PDB-download skill and propose
+> improvements before implementing them.
+
+Skills supply reusable instructions; agents define a role and workflow.
+The two agents are examples for comparison, not a completed visualization app.
 
 ## Manual connection reference — optional
 

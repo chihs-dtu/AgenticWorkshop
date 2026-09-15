@@ -151,14 +151,25 @@ This briefly interrupts all connections but leaves the models loaded.
 | `logs/`, `run/`, `cache/`, `tmp/` | Logs and working files; do not clear while running |
 
 We use **vLLM 0.19.0** to run the models. Peter's HTTPS server forwards
-each model URL to the corresponding HTTP address:
+each model URL to the corresponding HTTP address.
 
-| Model | Internal address |
-|---|---|
-| qwen36 | `10.57.11.104:28102` |
-| qwen38 | `10.57.11.105:28101` |
-| mistral | `10.57.11.104:28103` |
-| gptoss | `10.57.11.104:28104` |
+## Model endpoints
+
+This is the maintained endpoint reference. These are the configured addresses,
+not a live service-status report. Use the readiness checks above before sharing.
+
+| Model ID | Public Base URL for OpenCode | HTTP upstream for Peter's proxy | Node |
+|---|---|---|---|
+| `qwen36` | `https://teaching.healthtech.dtu.dk/workshop/qwen36` | `http://10.57.11.104:28102` | compute04 |
+| `qwen38` | `https://teaching.healthtech.dtu.dk/workshop/qwen38` | `http://10.57.11.105:28101` | compute05 |
+| `mistral` | `https://teaching.healthtech.dtu.dk/workshop/mistral` | `http://10.57.11.104:28103` | compute04 |
+| `gptoss` | `https://teaching.healthtech.dtu.dk/workshop/gptoss` | `http://10.57.11.104:28104` | compute04 |
+
+Use the public Base URLs exactly as shown: **do not append `/v1`**.
+OpenCode appends request paths such as `/chat/completions`; health and model
+listing use `/health` and `/models`. Preserve that suffix when forwarding each
+public route to its model endpoint. TLS is handled by Peter's HTTPS proxy;
+these internal upstreams use HTTP. Students should not use the internal IPs.
 
 The shared gateway is on compute04 port 28100. It must reach Qwen 3.8's
 private model service on compute05 port 28201. These are not student URLs.
