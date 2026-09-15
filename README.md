@@ -41,21 +41,19 @@ Leave your existing global `opencode.jsonc`, `package.json` and
 global settings automatically.
 
 ## LLM Models you can use
-
+### Our four DTU models
 <details>
-<summery>### Our four DTU models</summery>
-
+<summery>See list</summery>
 The workshop project shows one **DTU** group containing:
 
-| Model | Context | Maximum output |
-|---|---:|---:|
-| Qwen 3.6 35B-A3B | 16384 | 4096 |
-| Qwen 3.8 27B FP8 | 32768 | 4096 |
-| Mistral Nemo 12B | 16384 | 4096 |
-| GPT-OSS 20B | 16384 | 4096 |
+| Model | Context | Maximum output | Description |
+|---|---:|---:|---:|
+| GPT-OSS 20B | 16384 | 4096 | Default model, handles small background tasks
+| Mistral Nemo 12B | 16384 | 4096 | French model
+| Qwen 3.6 35B-A3B | 16384 | 4096 | Quantized older Qwen
+| Qwen 3.8 27B FP8 | 32768 | 4096 | Biggest, best model.
 
-GPT-OSS is the default model and handles small background tasks such as chat
-titles. The DTU group is added alongside OpenCode's available free models
+The DTU group is added alongside OpenCode's available free models
 and your other configured providers. This file does not restrict the provider
 list or change your global configuration. Other providers may require their
 own sign-in or API key.
