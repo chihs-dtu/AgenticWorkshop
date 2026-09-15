@@ -42,7 +42,8 @@ global settings automatically.
 
 ## LLM Models you can use
 
-### Our four DTU models
+<details>
+<summery>### Our four DTU models</summery>
 
 The workshop project shows one **DTU** group containing:
 
@@ -59,17 +60,12 @@ and your other configured providers. This file does not restrict the provider
 list or change your global configuration. Other providers may require their
 own sign-in or API key.
 
-
-***Is this needed ?<br>
-Keep exercise files in the workshop folder. If you downloaded an earlier version,
-download and open a fresh copy for the new configuration; keep your existing
-exercise work. Fully quit and reopen OpenCode if it still shows the old list.***
-
 **Does opening the folder start the models?** No. It connects to models that
 Peter and Dimitrios have already started. If a model is unavailable, ask an
 organiser.
 
 See [OpenCode project configuration](https://opencode.ai/docs/config/#per-project).
+</details>
 
 ### Free models from OpenCode
 
