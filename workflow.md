@@ -18,3 +18,14 @@ Stop OpenCode by typing **exit** and start it again. Now the skill is always pre
 
 The take-home message here is that skills are created by a conversation between you and the AI about what the skill should do and how it should verify the correctness of the skills actions.
 The conversation (planning) should not be "too" big/complicated as that means could be split up in several simpler skills, which may be used by an agent.
+
+## Skill example: PDB 3D image download
+Again this is a simple conversation in OpenCode **Plan** mode. Start with something like:<br>
+"Create a skill to download the 3D image of a pdb entry which is already rendered at the repository"<br>
+You might run into a conversation about how it should work and where the skill should be, which is perfectly normal and expected.
+When you are happy with the plan, change to **Build** mode and execute - say "approved" or "build it" or something in that style.
+
+The take-home message is that the planning phase starts the discussion of how the skill should work and when happy switch to building. It is important to exit OpenCode and start it again to load the new skill to make it become active. If there is something you do not understand about the process, then **ask** the AI to explain. The AI is doing the heavy lifting while you direct the process.
+
+## Skill location
+A skill either lives in the project you are currently working in, or globally in all OpenCode environments.
