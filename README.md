@@ -178,8 +178,6 @@ and [skills](https://opencode.ai/docs/skills/).
 - **Exercise 2 — agents:** [2a compare agents and 2b create your own](exercises/02-agents/README.md).
   Exercise 2b includes the agent settings and permissions reference.
 
-Use the [testing checklist](exercises/testing.md) to record what actually works.
-
 The first [skill-builder](.opencode/skills/skill-builder/SKILL.md) is included.
 Try this in OpenCode:
 
