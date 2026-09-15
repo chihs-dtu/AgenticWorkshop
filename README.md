@@ -144,18 +144,18 @@ contains the model connections, limits and permissions.
 
 ```text
 workshop/
-  opencode.json
-  .opencode/
-    agents/
-      bad-agent.md           Basic PDB agent example
-      good-agent.md          More explicit PDB agent example
-    skills/
-      skill-builder/         A subfolder INSIDE skills
-        SKILL.md             The skill-builder instructions
-  exercises/
-    01-skills/
-    02-agents/
-  mcp/                       Reserved for MCP-related materials
+   opencode.json
+   .opencode/
+      agents/
+         bad-agent.md           Basic PDB agent example
+         good-agent.md          More explicit PDB agent example
+      skills/
+         skill-builder/         A subfolder INSIDE skills
+         SKILL.md               The skill-builder instructions
+   exercises/
+      01-skills/
+      02-agents/
+   mcp/                         Reserved for MCP-related materials
 ```
 
 `skills` is the parent folder and `skill-builder` is a separate subfolder
@@ -177,7 +177,13 @@ an `mcp/` folder does not activate an MCP server.
 See the OpenCode documentation for [agents](https://opencode.ai/docs/agents/)
 and [skills](https://opencode.ai/docs/skills/).
 
-## Exercises
+## Exercises overview
+We will introduce skills and agents as cornerstones of agentic processing through exercises.
+* **Skills**: Reusable capabilities you or an AI agent can use to perform a task. For example, a “search web” skill, “read PDF” skill, or “send email” skill. Skills are like the **tools/actions** available to you/the agent.
+* **Agents**: AI components that use skills to achieve a goal. An agent can **reason, plan, choose skills, execute actions, and adapt** based on the results.
+
+**Simple example:**
+A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
 
 - **Exercise 1 — skills:** [1a create and improve skills, 1b skill-builder, and 1c your own skill](exercises/01-skills/README.md).
 - **Exercise 2 — agents:** [2a compare agents and 2b create your own](exercises/02-agents/README.md).
