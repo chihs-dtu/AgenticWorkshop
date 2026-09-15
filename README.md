@@ -2,8 +2,8 @@
 
 Building and employing agents for data analysis and visualization.
 
-OpenCode offers a changing selection of models free of charge. We have also
-prepared **four locally hosted DTU models** for this workshop. You can use
+OpenCode offers a changing selection of AI Large Language Models free of charge. We have also
+prepared **four locally hosted DTU LLM models** for this workshop. You can use
 either option, or connect your own supported subscriptions or API accounts.
 A paid subscription is not required to participate.
 
@@ -13,7 +13,7 @@ A paid subscription is not required to participate.
 [Exercises](#exercises)
 
 Use **OpenCode on your laptop** to work on the exercises. The DTU models run
-on our servers; you do not need a cluster account, SSH, model downloads or
+on our server cluster; you do not need a cluster account, SSH, model downloads or
 server-start commands.
 
 ## Quick start — download, extract and open
@@ -26,11 +26,12 @@ server-start commands.
 3. Open [the workshop repository](https://github.com/peterwadsackett/AgenticWorkshop)
    and choose **Code → Download ZIP**.
 4. Extract the ZIP and move/rename the extracted folder to the place you want to work.
-   Its default name is `AgenticWorkshop-main` and we suggest renaming it to `workshop` in your home.
-5. In **OpenCode Desktop**, open that extracted folder as your project—the
+   Its default name is `AgenticWorkshop-main` and we suggest renaming it to `workshop`
+   in your home, and we will refer to that name in the text.
+6. In **OpenCode Desktop**, open that extracted folder as your project—the
    folder containing both `README.md` and `opencode.json`, not its parent.
    For the terminal version, run `opencode` from inside that folder.
-6. Start a new chat. Open the model selector and choose a model under **DTU**.
+7. Start a new chat. Open the model selector and choose a model under **DTU**.
    In the terminal version, type `/models`.
 
 **For the supplied DTU models, no JSON editing, manual merging, API key or
@@ -39,7 +40,7 @@ Leave your existing global `opencode.jsonc`, `package.json` and
 `node_modules` alone. OpenCode combines the project configuration with your
 global settings automatically.
 
-## Models you can use
+## LLM Models you can use
 
 ### Our four DTU models
 
@@ -58,9 +59,11 @@ and your other configured providers. This file does not restrict the provider
 list or change your global configuration. Other providers may require their
 own sign-in or API key.
 
-Keep exercise files in this folder. If you downloaded an earlier version,
+
+*** Is this needed ?<br>
+Keep exercise files in the workshop folder. If you downloaded an earlier version,
 download and open a fresh copy for the new configuration; keep your existing
-exercise work. Fully quit and reopen OpenCode if it still shows the old list.
+exercise work. Fully quit and reopen OpenCode if it still shows the old list.***
 
 **Does opening the folder start the models?** No. It connects to models that
 Peter and Dimitrios have already started. If a model is unavailable, ask an
