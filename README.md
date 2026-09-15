@@ -43,7 +43,7 @@ global settings automatically.
 ## LLM Models you can use
 ### Our four DTU models
 <details>
-<summery>See list</summery>
+<summary>Model list</summary>
 The workshop project shows one **DTU** group containing:
 
 | Model | Context | Maximum output | Description |
@@ -66,11 +66,13 @@ See [OpenCode project configuration](https://opencode.ai/docs/config/#per-projec
 </details>
 
 ### Free models from OpenCode
-
+<details>
+<summary>Model list</summary>
 **Checked 15 September 2026.** The table includes all non-deprecated, zero-priced
 models present in both OpenCode's live model list and its model catalogue at the
 time of checking. Free offers can change or disappear; listing is not a
-guarantee that a request will succeed.
+guarantee that a request will succeed.<br>
+Be aware that the business model for free LLM models is to train on your data and your interaction with the model.
 
 | Model | OpenCode model ID | Listing |
 |---|---|---|
@@ -92,9 +94,11 @@ Use public exercise data with external models. Free offers can allow data
 collection or model improvement; Contributor models can include training
 on submitted content. Do not send confidential or personal data.
 See [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#privacy).
+</details>
 
 ### Show free models if they are hidden
-
+<details>
+<summary>Model management</summary>
 - **Desktop:** open the model selector → **Manage models**, search for a
   model above, and turn its switch on under OpenCode. Return to the selector
   and choose it. Enable individual free models rather than every paid model.
@@ -114,8 +118,11 @@ See [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#priv
 The Desktop visibility switches and configuration restrictions are different
 things. We do not change your saved visibility choices or global settings.
 See [provider filtering](https://opencode.ai/docs/config/#disabled-providers).
+</details>
 
 ### Your own subscriptions or API accounts
+<details>
+<summary>Other model selection</summary>
 
 Use `/connect` in the terminal, or **Connect provider** in Desktop, choose
 your provider, and complete its supported sign-in. Then select its model.
@@ -129,6 +136,7 @@ Changing the selected model changes the chat model. The supplied
 there is no automatic fallback when DTU is offline. For an entirely external
 setup, also change `small_model` in your own copy of `opencode.json` to your
 chosen available provider/model ID.
+</details>
 
 ## Exercises overview
 We will introduce skills and agents as cornerstones of agentic processing through exercises.
@@ -259,11 +267,10 @@ See [OpenCode custom providers](https://opencode.ai/docs/providers/#custom-provi
 | Context limit, in JSON | `16384` |
 | Output limit, in JSON | `4096` |
 
-
 </details>
 
 ## Changing your context setting
-
+<details>
 Context is the space available for instructions, conversation, tool results
 and the answer. Output is the maximum answer length, including reasoning.
 Both are measured in tokens.
@@ -284,8 +291,11 @@ For Mistral, the limits look like this:
 
 This is one model entry, not a complete OpenCode configuration. Save the file and
 restart OpenCode. Increasing this number does not increase the server's capacity.
+</details>
 
 ## If something does not work
+<details>
+<summary>So many errors - so little time</summary>
 
 | What you see | What to do |
 |---|---|
@@ -304,7 +314,7 @@ OpenCode may ask to edit files or run commands **on your computer**. Review
 those requests before allowing them. Work in the exercise folder.
 When comparing models, start a fresh chat: switching models within a chat
 can keep the earlier conversation and tool results.
-
+</details>
 ---
 
-For Peter and Dimitrios: [server administration and model settings](admin.md).
+For WorkShop organisers: [server administration and model settings](admin.md).
