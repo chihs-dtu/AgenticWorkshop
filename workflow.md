@@ -30,10 +30,10 @@ The take-home message is that the planning phase starts the discussion of how th
 
 ## Skill location and use
 A skill either lives in the project you are currently working in, or globally in all OpenCode environments.
-Concretely, a skill lives either globally in ~/.config/opencode or locally in a project folder <projectfolder/.opencode<br>
-In both cases the rest of the path is skills/<skillname>/SKILL.md<br>
+Concretely, a skill lives either globally in `~/.config/opencode` or locally in a project folder `<projectfolder>/.opencode`<br>
+In both cases the rest of the path is `skills/<skillname>/SKILL.md`<br>
 You can edit the SKILL.md markdown file directly if you wish. You can also move/copy the skill around to other projects or your friends.<br>
-To see the skills, type **/skills**. To use it directly so no doubt exists about AI's interpretation for your words, type /skills <skillname> [parameters].
+To see the skills, type **/skills**. To use it directly so no doubt exists about AI's interpretation for your words, type `/skills <skillname> [parameters]`.
 
 ## Skill example: Copying skills to other projects
 You could, perhaps even should, create a global skill to move skills around.
