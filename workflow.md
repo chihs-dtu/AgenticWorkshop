@@ -32,12 +32,22 @@ The take-home message is that the planning phase starts the discussion of how th
 A skill either lives in the project you are currently working in, or globally in all OpenCode environments.
 Concretely, a skill lives either globally in `~/.config/opencode` or locally in a project folder `<projectfolder>/.opencode`<br>
 In both cases the rest of the path is `skills/<skillname>/SKILL.md`<br>
-You can edit the SKILL.md markdown file directly if you wish. You can also move/copy the skill around to other projects or your friends.<br>
+You can edit the `SKILL.md` markdown file directly if you wish. You can also move/copy the skill around to other projects or your friends.<br>
 To see the skills, type **/skills**. To use it directly so no doubt exists about AI's interpretation for your words, type `/skills <skillname> [parameters]`.
 
 ## Skill example: Copying skills to other projects
-You could, perhaps even should, create a global skill to move skills around.
-"Create a global skill that can copy a skill from the current project to another project or even to the global skill space"
-You will be asked to allow the AI to move around in the global space if you are doing this in a project. As usual, there will be a Q&A session with the AI to clarify details of the skill.
+You could, perhaps even should, create a global skill to move skills around.<br>
+"Create a global skill that can copy a skill from the current project to another project or even to the global skill space"<br>
+You will be asked to allow the AI to move around in the global space if you are doing this in a project.
+As usual, there will be a Q&A session with the AI to clarify details of the skill.
+
+## Skill example: Simple image rendering
+To see how well images can be rendered form data, let's try to do some simple rendering of protein structures from PDB, since we Can easily procure images
+from PDF to compare the resulting rendering.<br>
+"Create a skill to render a 3D structure of the protein backbone from the atomic coordinates in a pdb file"<br>
+As usual there will be a conversation. Pay attention to how the rendering is suggested to take place and come up with your own ideas:
+Should PyMol be used, should it be limited to only python and matplotlib, should the rendered image be a png/jpg or maybe HTML5 which can
+rotate the image in the browser?<br>
+As you will likely discover, rendering an image is different from rendering a good image. Trial and error, baby.
 
 
