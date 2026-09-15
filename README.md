@@ -184,18 +184,9 @@ See the OpenCode documentation for [agents](https://opencode.ai/docs/agents/)
 and [skills](https://opencode.ai/docs/skills/).
 
 ### Exercises
-- **Exercise 1 — skills:** (exercises/01-skills/README.md).
-- **Exercise 2 — agents:** [2a compare agents and 2b create your own](exercises/02-agents/README.md).
-  Exercise 2b includes the agent settings and permissions reference.
-
-The first [skill-builder](.opencode/skills/skill-builder/SKILL.md) is included.
-Try this in OpenCode:
-
-> Use the skill-builder skill to inspect my PDB-download skill and propose
-> improvements before implementing them.
-
-Skills supply reusable instructions; agents define a role and workflow.
-The two agents are examples for comparison, not a completed visualization app.
+- **Exercise 1** — [Skills](exercises/01-skills/README.md).
+- **Exercise 2** — [Agents](exercises/02-agents/README.md).
+- **Exercise 3** — [Data processing](exercises/02-agents/README.md).
 
 ## Manual connection reference — optional
 
