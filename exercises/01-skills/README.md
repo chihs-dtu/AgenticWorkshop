@@ -1,10 +1,145 @@
 # Exercise 1 — Building and improving skills
 
-## 1a — Peter's skill examples
+Create a skill through conversation, improve it after testing, and reuse it
+on another input. The examples below use protein structures, but the same
+process applies to other data-analysis tasks.
 
-Follow Peter's [existing skill exercises](../../workflow.md). They cover
-PDB downloads, downloading an existing rendered structure image, and moving
-skills between projects. His instructions remain in that document.
+## Before you start
+
+Open the extracted workshop folder in OpenCode. In the terminal, start
+`opencode` from that folder. Keep your exercise files inside the project.
+
+Use **Tab** to cycle through agents and select **Plan** to discuss the task
+before implementation. Select **Build** when you are ready to create files.
+In Desktop, use the agent selector. Review requested file changes and shell
+commands in either mode; planning is not a substitute for checking permissions.
+Type `/` in the terminal interface to see the available commands.
+
+The basic pattern is: **describe → discuss → build → test → improve**.
+Ask for an explanation whenever a proposed step is unclear.
+
+## 1a — Creating and improving skills
+
+### Download a PDB file
+
+Start in **Plan** with a simple request:
+
+> Create a project skill called pdb-download that downloads a PDB file
+> given its entry ID. Ask me about any choices we need to make before
+> implementing it.
+
+Discuss the download source, file format, destination, and what should happen
+when an ID is invalid or a file already exists. The skill should work both
+when you request it directly and when an agent needs it during another task.
+
+When the proposal is clear, switch to **Build**:
+
+> Implement the agreed pdb-download skill in
+> .opencode/skills/pdb-download/SKILL.md. Keep supporting files in that
+> skill's folder and ask before overwriting existing work.
+
+Reopen OpenCode if the new skill is not discovered. Then try it:
+
+> Use the pdb-download skill to download 4HHB into outputs/skills/pdb.
+
+Inspect the saved file. A successful HTTP request alone does not tell you
+whether the response is the expected structure file rather than an error page.
+
+Return to **Plan** and improve the skill:
+
+> Review pdb-download. Propose checks that the downloaded file can be
+> parsed, contains atomic coordinates, and corresponds to the requested
+> entry. If the source publishes a checksum for that exact file, compare
+> against it. Otherwise say that source-checksum verification is unavailable;
+> do not invent a checksum. Explain the changes before implementing them.
+
+Approve the changes in **Build**, then test again. Try a different valid ID
+and an invalid input. You can also create a text file containing several IDs
+and ask the skill to download those entries, if you agreed to support batches.
+
+**What to notice:** useful checks emerge from discussing and testing the task.
+A locally computed hash is a file fingerprint, not proof that it matches the
+source. Keep unrelated tasks in separate skills rather than growing one skill
+to cover everything.
+
+### Download an existing structure image
+
+Start another conversation in **Plan**:
+
+> Create a project skill that downloads an existing rendered image of a
+> PDB entry from its repository. This should retrieve an image, not render
+> new atomic coordinates. Discuss the source, output format, and how to
+> handle a missing image before building it.
+
+Once you agree on the behaviour, switch to **Build** and implement it. Try
+4HHB, open the downloaded image, and check that it shows the requested entry.
+Ask the skill to record the source URL and explain what view it retrieved.
+Test how it handles an entry with no available image instead of silently
+substituting another image.
+
+**What to notice:** downloading someone else's rendering and generating a
+new rendering are different tasks. The skill description should make that clear.
+
+### Locate and copy a skill
+
+Open the skill files you created. Project and global locations are:
+
+```text
+<project>/.opencode/skills/<skill-name>/SKILL.md
+~/.config/opencode/skills/<skill-name>/SKILL.md
+```
+
+Each skill has its own subfolder. The `SKILL.md` starts with a YAML header
+containing `name` and `description`, followed by Markdown instructions.
+The name should match its folder. Supporting scripts or references travel
+with the folder; copying only `SKILL.md` can leave a skill incomplete.
+
+Project skills belong to that project. Global skills are available across
+your projects. Start locally for these exercises, and promote a skill to
+the global location only when you want that wider availability.
+
+In **Plan**, ask:
+
+> Design a skill that copies an existing skill from this project into
+> another project, or into my global skills folder when I explicitly ask.
+> Copy the whole skill folder, preserve the original, and ask before
+> overwriting a destination. Show me the source and destination first.
+
+Review the proposal, build it, and test a copy in a second project. Check
+that the original remains intact and that OpenCode discovers the copied skill.
+Access outside the current project may require approval. Do not share embedded
+credentials or private example data with a copied skill.
+
+To request a skill unambiguously, say **"Use the pdb-download skill to…"**.
+For a loading check, run `opencode debug skill --pure` from your terminal,
+outside the chat. It lists discovered skills, but does not prove they work.
+
+### Render a structure from coordinates
+
+This time, create an image rather than downloading an existing one. In **Plan**:
+
+> Create a project skill to render a protein backbone from the atomic
+> coordinates in a PDB file. Discuss the rendering approach and dependencies
+> with me before implementing it.
+
+Discuss whether the output should be a static PNG or an interactive HTML
+viewer. What would a molecular viewer provide? Would Python and Matplotlib
+be sufficient? For a browser-based result, can it work with the software
+already on your laptop? Do not approve an installation without understanding
+why it is needed.
+
+Build the agreed version and try it on the downloaded structure. Compare
+with the repository image, accounting for different orientations, selected
+chains, or assemblies. Check chain breaks, colours, labels, and whether the
+backbone comes from the actual coordinates. For an interactive result, open
+it and test the controls.
+
+**What to notice:** producing an image is not the same as producing a useful
+or scientifically faithful image. Improve the skill based on the problems
+you can observe, then try another structure.
+
+OpenCode reference: [skill locations and file format](https://opencode.ai/docs/skills/),
+and [Plan and Build agents](https://opencode.ai/docs/agents/).
 
 ## 1b — A skill that helps make skills
 
