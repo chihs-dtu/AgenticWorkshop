@@ -44,6 +44,7 @@ global settings automatically.
 ### Our four DTU models
 <details>
 <summary>Model list</summary>
+
 The workshop project shows one **DTU** group containing:
 
 | Model | Context | Maximum output | Description |
@@ -68,6 +69,7 @@ See [OpenCode project configuration](https://opencode.ai/docs/config/#per-projec
 ### Free models from OpenCode
 <details>
 <summary>Model list</summary>
+   
 **Checked 15 September 2026.** The table includes all non-deprecated, zero-priced
 models present in both OpenCode's live model list and its model catalogue at the
 time of checking. Free offers can change or disappear; listing is not a
@@ -99,6 +101,7 @@ See [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#priv
 ### Show free models if they are hidden
 <details>
 <summary>Model management</summary>
+
 - **Desktop:** open the model selector → **Manage models**, search for a
   model above, and turn its switch on under OpenCode. Return to the selector
   and choose it. Enable individual free models rather than every paid model.
@@ -271,6 +274,7 @@ See [OpenCode custom providers](https://opencode.ai/docs/providers/#custom-provi
 
 ## Changing your context setting
 <details>
+
 Context is the space available for instructions, conversation, tool results
 and the answer. Output is the maximum answer length, including reasoning.
 Both are measured in tokens.
