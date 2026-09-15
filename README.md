@@ -174,10 +174,13 @@ and [skills](https://opencode.ai/docs/skills/).
 
 ## Exercises
 
-- **Exercise 1 — skills:** Peter's [introduction and PDB-download exercise](workflow.md).
-  His existing exercise is unchanged; `exercises/01-skills/` is reserved for its
-  later organization into stages.
-- **Exercise 2 — agents:** [compare the bad-agent and good-agent examples](exercises/02-agents/README.md).
+- **Exercise 1 — skills:** [1a Peter's examples, 1b skill-builder, and 1c your own skill](exercises/01-skills/README.md).
+- **Exercise 2 — agents:** [2a compare agents and 2b create your own](exercises/02-agents/README.md).
+  Exercise 2b includes the agent settings and permissions reference.
+
+Use the [testing checklist](exercises/testing.md) to record what actually works.
+The [introductory PowerPoints](presentations/README.md) cover the vocabulary
+and introduce each exercise.
 
 The first [skill-builder](.opencode/skills/skill-builder/SKILL.md) is included.
 Try this in OpenCode:
