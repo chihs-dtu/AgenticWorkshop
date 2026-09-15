@@ -136,15 +136,19 @@ there is no automatic fallback when DTU is offline. For an entirely external
 setup, also change `small_model` in your own copy of `opencode.json` to your
 chosen available provider/model ID.
 
-## How the project folder (workshop) works
+## Exercises overview
+We will introduce skills and agents as cornerstones of agentic processing through exercises.
+* **Skills**: Reusable capabilities you or an AI agent can use to perform a task. For example, a “search web” skill, “read PDF” skill, or “send email” skill. Skills are like the **tools/actions** available to you/the agent.
+* **Agents**: AI components that use skills to achieve a goal. An agent can **reason, plan, choose skills, execute actions, and adapt** based on the results.
 
-Keep the extracted repository together. **OpenCode reads `.opencode/` for
-project agents and skills**, while `opencode.json` in the repository root
-contains the model connections, limits and permissions.
+**Simple example:**
+A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
 
+### Project folder (workshop) design
+The downloaded and extracted workshop has this structure.
 ```text
 workshop/
-   opencode.json
+   opencode.json                Model connections, limits and permissions
    .opencode/
       agents/
          bad-agent.md           Basic PDB agent example
@@ -157,8 +161,10 @@ workshop/
       02-agents/
    mcp/                         Reserved for MCP-related materials
 ```
+OpenCode reads `.opencode/` folder for project agents and skills, while `opencode.json` in the workshop root
+contains the model connections, limits and permissions.
 
-`skills` is the parent folder and `skill-builder` is a separate subfolder
+`skills` is the parent skill folder and `skill-builder` - the workshop supplied skill - is a separate subfolder
 inside it. The complete path is `.opencode/skills/skill-builder/SKILL.md`.
 GitHub may display `skills/skill-builder` together when it is the only
 subfolder; that is a compact display, not a single folder name.
@@ -177,15 +183,8 @@ an `mcp/` folder does not activate an MCP server.
 See the OpenCode documentation for [agents](https://opencode.ai/docs/agents/)
 and [skills](https://opencode.ai/docs/skills/).
 
-## Exercises overview
-We will introduce skills and agents as cornerstones of agentic processing through exercises.
-* **Skills**: Reusable capabilities you or an AI agent can use to perform a task. For example, a “search web” skill, “read PDF” skill, or “send email” skill. Skills are like the **tools/actions** available to you/the agent.
-* **Agents**: AI components that use skills to achieve a goal. An agent can **reason, plan, choose skills, execute actions, and adapt** based on the results.
-
-**Simple example:**
-A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
-
-- **Exercise 1 — skills:** [1a create and improve skills, 1b skill-builder, and 1c your own skill](exercises/01-skills/README.md).
+### Exercises
+- **Exercise 1 — skills:** (exercises/01-skills/README.md).
 - **Exercise 2 — agents:** [2a compare agents and 2b create your own](exercises/02-agents/README.md).
   Exercise 2b includes the agent settings and permissions reference.
 
