@@ -4,7 +4,8 @@
 ## Using OpenCode - CLI
 First create a project folder, perhaps start a project hierachy. Anything you create - data, files, programs, agents, skills - lives in the folder.<br>
 Go to the folder and start OpenCode.<br>
-Use TAB to switch between **Plan** mode, which does nothing but talk and plan and read files, and **Build** mode, which actually creates and (re)writes files on you computer.
+Use TAB to switch between **Plan** mode, which does nothing but talk and plan and read files, and **Build** mode, which actually creates and (re)writes files on you computer.<br>
+The forward slash **/** is used for giving commands to OpenCode. Start with **/** to see what is available.
 
 ## Skill example: PDB download
 Create skill that you interactively can use and is also usable by agents.
@@ -27,5 +28,16 @@ When you are happy with the plan, change to **Build** mode and execute - say "ap
 
 The take-home message is that the planning phase starts the discussion of how the skill should work and when happy switch to building. It is important to exit OpenCode and start it again to load the new skill to make it become active. If there is something you do not understand about the process, then **ask** the AI to explain. The AI is doing the heavy lifting while you direct the process.
 
-## Skill location
+## Skill location and use
 A skill either lives in the project you are currently working in, or globally in all OpenCode environments.
+Concretely, a skill lives either globally in ~/.config/opencode or locally in a project folder <projectfolder/.opencode<br>
+In both cases the rest of the path is skills/<skillname>/SKILL.md<br>
+You can edit the SKILL.md markdown file directly if you wish. You can also move/copy the skill around to other projects or your friends.<br>
+To see the skills, type **/skills**. To use it directly so no doubt exists about AI's interpretation for your words, type /skills <skillname> [parameters].
+
+## Skill example: Copying skills to other projects
+You could, perhaps even should, create a global skill to move skills around.
+"Create a global skill that can copy a skill from the current project to another project or even to the global skill space"
+You will be asked to allow the AI to move around in the global space if you are doing this in a project. As usual, there will be a Q&A session with the AI to clarify details of the skill.
+
+
