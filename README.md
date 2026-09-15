@@ -25,8 +25,8 @@ server-start commands.
    `curl -fsSL https://opencode.ai/install | bash` 
 3. Open [the workshop repository](https://github.com/peterwadsackett/AgenticWorkshop)
    and choose **Code → Download ZIP**.
-4. Extract the ZIP and move the extracted folder wherever you want to work.
-   Its default name is `AgenticWorkshop-main`.
+4. Extract the ZIP and move/rename the extracted folder to the place you want to work.
+   Its default name is `AgenticWorkshop-main` and wee suggest renaming it to `workshop` in your home.
 5. In **OpenCode Desktop**, open that extracted folder as your project—the
    folder containing both `README.md` and `opencode.json`, not its parent.
    For the terminal version, run `opencode` from inside that folder.
