@@ -1,28 +1,30 @@
-# Exercise 1 — Building and improving skills
-
+# Preface to Skills Exercises
 Create a skill through conversation, improve it after testing, and reuse it
 on another input. The examples below use protein structures, but the same
 process applies to other data-analysis tasks.
 
-## Before you start
-
 Open the extracted workshop folder in OpenCode. In the terminal, start
 `opencode` from that folder. Keep your exercise files inside the project.
 
-Use **Tab** to cycle through agents and select **Plan** to discuss the task
-before implementation. Select **Build** when you are ready to create files.
+Select **Plan** mode to discuss the task
+before implementation. Select **Build** mode when you are ready to create/manipulate files.
 In Desktop, use the agent selector. Review requested file changes and shell
 commands in either mode; planning is not a substitute for checking permissions.
 Type `/` in the terminal interface to see the available commands.
 
 The basic pattern is: **describe → discuss → build → test → improve**.
 Ask for an explanation whenever a proposed step is unclear.
+The exercise set is about creating and improving skills.
 
-## 1a — Creating and improving skills
+# Exercise 1a — Download a PDB file
 
-### Download a PDB file
+Start in **Plan** mode with a simple request:
 
-Start in **Plan** with a simple request:
+> Create a skill that downloads a pdb file
+
+The more precise and detailed you frame your request, the better. While a conversation will likely
+reveal ambiguities and lack of detail, then having a good starting point is valuable.
+Think of the AI as a real assistant you need to explain a task to.
 
 > Create a project skill called pdb-download that downloads a PDB file
 > given its entry ID. Ask me about any choices we need to make before
@@ -31,19 +33,29 @@ Start in **Plan** with a simple request:
 Discuss the download source, file format, destination, and what should happen
 when an ID is invalid or a file already exists. The skill should work both
 when you request it directly and when an agent needs it during another task.
+You will see a lot of AI feedback and you can not simply ignore it, so read it carefully.
 
-When the proposal is clear, switch to **Build**:
+When the proposal is clear, switch to **Build** mode:
+
+You can write "Build it", "Proceed", "Implement" or any words to that effect - or be more precise
 
 > Implement the agreed pdb-download skill in
 > .opencode/skills/pdb-download/SKILL.md. Keep supporting files in that
 > skill's folder and ask before overwriting existing work.
 
-Reopen OpenCode if the new skill is not discovered. Then try it:
+The standard action after skill creation is to exit and reopen OpenCode, which makes it discover the new skill. Try it:
+
+The simple
+
+>Download pdb 4HHB
+
+will successfully download the entry in the main workshop folder. If dissatisfied with that, be precise
 
 > Use the pdb-download skill to download 4HHB into outputs/skills/pdb.
 
 Inspect the saved file. A successful HTTP request alone does not tell you
 whether the response is the expected structure file rather than an error page.
+It is important to note that only **Build** allows for pdb downloading, as that is file manipulation.
 
 Return to **Plan** and improve the skill:
 
@@ -54,15 +66,18 @@ Return to **Plan** and improve the skill:
 > do not invent a checksum. Explain the changes before implementing them.
 
 Approve the changes in **Build**, then test again. Try a different valid ID
-and an invalid input. You can also create a text file containing several IDs
-and ask the skill to download those entries, if you agreed to support batches.
+and an invalid input.<br>
+You can also create a text file containing several IDs
+and ask the skill to download those entries.
 
-**What to notice:** useful checks emerge from discussing and testing the task.
+> Download the pdb entries mentioned in the file pdb_to_download.txt
+
+**What to notice:** Useful checks emerge from discussing and testing the task.
 A locally computed hash is a file fingerprint, not proof that it matches the
 source. Keep unrelated tasks in separate skills rather than growing one skill
 to cover everything.
 
-### Download an existing structure image
+# Exercise 1b - Download an existing structure image
 
 Start another conversation in **Plan**:
 
@@ -71,16 +86,16 @@ Start another conversation in **Plan**:
 > new atomic coordinates. Discuss the source, output format, and how to
 > handle a missing image before building it.
 
-Once you agree on the behaviour, switch to **Build** and implement it. Try
+Once you agree on the behavior, switch to **Build** and implement it. Try
 4HHB, open the downloaded image, and check that it shows the requested entry.
 Ask the skill to record the source URL and explain what view it retrieved.
 Test how it handles an entry with no available image instead of silently
 substituting another image.
 
-**What to notice:** downloading someone else's rendering and generating a
+**What to notice:** Downloading someone else's rendering and generating a
 new rendering are different tasks. The skill description should make that clear.
 
-### Locate and copy a skill
+# Exercise 1c - Locate and copy a skill
 
 Open the skill files you created. Project and global locations are:
 
@@ -114,7 +129,7 @@ To request a skill unambiguously, say **"Use the pdb-download skill to…"**.
 For a loading check, run `opencode debug skill --pure` from your terminal,
 outside the chat. It lists discovered skills, but does not prove they work.
 
-### Render a structure from coordinates
+# Exercise 1d - Render a structure from coordinates
 
 This time, create an image rather than downloading an existing one. In **Plan**:
 
@@ -130,7 +145,7 @@ why it is needed.
 
 Build the agreed version and try it on the downloaded structure. Compare
 with the repository image, accounting for different orientations, selected
-chains, or assemblies. Check chain breaks, colours, labels, and whether the
+chains, or assemblies. Check chain breaks, colors, labels, and whether the
 backbone comes from the actual coordinates. For an interactive result, open
 it and test the controls.
 
@@ -141,20 +156,22 @@ you can observe, then try another structure.
 OpenCode reference: [skill locations and file format](https://opencode.ai/docs/skills/),
 and [Plan and Build agents](https://opencode.ai/docs/agents/).
 
-## 1b — A skill that helps make skills
+# Exercise 1e — A skill that helps make skills
 
 Inspect [skill-builder](../../.opencode/skills/skill-builder/SKILL.md).
 It helps an agent clarify a skill's purpose, write useful instructions,
 choose supporting files, and check the result. It is itself a skill, not
 a separate agent or a newly trained model.
 
-Example request in OpenCode Plan mode:
+Example request in OpenCode **Plan** mode:
 
 > Use skill-builder to review the skill I just created. Explain which
 > instructions are useful, what is missing, and how we could test it.
 > Propose changes before implementing them.
 
-## 1c — Make and test your own skill
+Finalize the improved skill in the usual way, if there is anything to improve.
+
+# Exercise 1f — Make and test your own skill
 
 Choose a small task you want to repeat. Use skill-builder to define its
 inputs, outputs, and checks. Review the proposal before switching to Build
@@ -167,4 +184,4 @@ Test one successful request, one invalid or incomplete input, and a different
 valid input. Inspect the outputs yourself. Record what passed and what you
 have not tested, then revise the skill in response to actual failures.
 
-Next: [Exercise 2a and 2b — agents](../02-agents/README.md).
+Next: [Agent Exercises](../02-agents/README.md).
