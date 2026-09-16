@@ -89,9 +89,9 @@ the instructions. An agent is not a newly trained model: the same model can
 run several agents with different instructions and permissions.
 
 ## Agent settings reference
-
-This covers the named fields in OpenCode's published agent schema, checked
-15 September 2026. Start with the first few fields; the remaining options
+<details>
+<summary>This covers the named fields in OpenCode's published agent schema, checked 15 September 2026.</summary>
+Start with the first few fields; the remaining options
 are available when you need them. Provider-specific options are open-ended,
 so there is no universal list that every model accepts.
 
@@ -116,14 +116,16 @@ so there is no universal list that every model accepts.
 
 Schema: [OpenCode configuration](https://opencode.ai/config.json).
 Usage: [agent configuration](https://opencode.ai/docs/agents/).
+</details>
 
 ### Permissions and modular tools
-
 Permission values are `allow` (run), `ask` (request approval), and `deny`
 (block). Most omitted permissions are permissive, so omission is not a
 safety restriction. Project/global permissions and agent overrides combine.
 Available tools also depend on your installation and connected services.
 
+<details>
+<summary>Permission types</summary>
 | Permission key | Capability |
 |---|---|
 | `read` | Read file contents |
@@ -144,6 +146,7 @@ Available tools also depend on your installation and connected services.
 Pattern rules can restrict individual commands, files, skills, or subagents.
 Use the catch-all first: the last matching rule wins. Not every permission
 supports the same input-pattern semantics in every OpenCode version.
+</details>
 
 Example permission block, to replace the block in your own agent:
 
