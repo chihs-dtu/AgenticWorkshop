@@ -89,17 +89,20 @@ the instructions. An agent is not a newly trained model: the same model can
 run several agents with different instructions and permissions.
 
 ## Agent settings reference
-<details>
-<summary>This covers the named fields in OpenCode's published agent schema, checked 15 September 2026.</summary>
+This covers the named fields in OpenCode's published agent schema, checked 15 September 2026.<br>
 Start with the first few fields; the remaining options
 are available when you need them. Provider-specific options are open-ended,
 so there is no universal list that every model accepts.
-
 | Setting | What it changes | Example or caution |
 |---|---|---|
 | `description` | Explains the agent's job and when to choose it | A concrete task description, not just "helpful expert" |
 | `mode` | Where the agent runs | `primary` for the main conversation, `subagent` for a helper, `all` for both |
 | Markdown body / `prompt` | Instructions, decisions, expected outputs, and checks | Use the Markdown body in an agent file. In JSON, use `prompt` or `"prompt": "{file:./prompts/reviewer.txt}"` |
+<details>
+<summary>Full reference list</summary>
+
+| Setting | What it changes | Example or caution |
+|---|---|---|
 | `model` | Pins the agent to a provider/model | `dtu/gptoss`; leave unset to use the selected/default model or the calling agent's model |
 | `variant` | Selects a configured model variant | Applies to the agent's configured model. Use a variant that actually exists |
 | `steps` | Limits agentic iterations before a text-only response | Positive integer, such as `20`. It is not a token limit or an exact count of shell commands |
@@ -126,6 +129,7 @@ Available tools also depend on your installation and connected services.
 
 <details>
 <summary>Permission types</summary>
+
 | Permission key | Capability |
 |---|---|
 | `read` | Read file contents |
