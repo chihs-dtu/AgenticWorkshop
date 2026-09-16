@@ -184,4 +184,10 @@ Test one successful request, one invalid or incomplete input, and a different
 valid input. Inspect the outputs yourself. Record what passed and what you
 have not tested, then revise the skill in response to actual failures.
 
+# Epilogue
+Read the `SKILL.md` file with a text editor to see what the skill contains.
+You can add/modify instructions directly yourself if you prefer to do it without the AI.
+This can be done both at very simple and very complex levels.<br>
+Source: [https://www.skillsdirectory.com/docs/skill-md-format](https://www.skillsdirectory.com/docs/skill-md-format)
+
 Next: [Agent Exercises](../02-agents/README.md).
