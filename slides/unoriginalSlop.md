@@ -429,13 +429,13 @@ and the 21-star one carry the same risk if you run the installer unread.</span>
 Miao, Davis, Zhang, Pritchard & Zou turn a published paper — manuscript, code
 and data — into **an MCP-based agent**: a "virtual corresponding author" that
 reproduces the paper's results, applies its methods to your data, and answers
-questions about it.
+questions about it. Thank you Chiao-Yu for letting us know this thing exists!
 
 They then had several paper-agents **collaborate**, and prioritised a causal
 gene for psoriasis.
 
 **This is the same three-part architecture you are learning today**, pointed at
-the reproducibility problem. It is two days old. You are not late.
+the reproducibility problem. It is a few days old. You are not late.
 
 ---
 
