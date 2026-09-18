@@ -1,0 +1,192 @@
+/* @theme dtu */
+
+/*
+ * Workshop theme. Light by default; Marp exports what it is given, so the
+ * colours below are the ones that reach the projector and the PDF.
+ */
+
+@import 'default';
+
+:root {
+  --ink:      #1b1b1b;
+  --muted:    #5d5a55;
+  --faint:    #8a8580;
+  --rule:     #e3ded6;
+  --paper:    #fbfaf7;
+  --red:      #990000;
+  --teal:     #246b60;
+  --code-bg:  #f2efe9;
+}
+
+section {
+  --bgColor-default: transparent;
+  --bgColor-muted: #f4f1ea;
+  --borderColor-muted: var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  align-content: safe start;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  line-height: 1.45;
+  padding: 58px 70px 64px;
+  letter-spacing: 0.005em;
+}
+
+section > *:first-child { margin-top: 0; }
+
+section::after {
+  color: var(--faint);
+  font-size: 15px;
+  right: 34px;
+  bottom: 22px;
+}
+
+h1 {
+  font-size: 1.52em;
+  color: var(--red);
+  margin: 0 0 0.45em;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 1.14em;
+  color: var(--ink);
+  border-bottom: 2px solid var(--rule);
+  padding-bottom: 0.25em;
+  margin: 0.9em 0 0.5em;
+}
+
+h3 {
+  font-size: 0.95em;
+  color: var(--teal);
+  margin: 0.8em 0 0.3em;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+strong { color: var(--red); font-weight: 700; }
+em     { color: var(--muted); font-style: italic; }
+
+ul, ol { margin: 0.2em 0 0.4em; padding-left: 1.05em; }
+li     { margin-bottom: 0.34em; }
+li::marker { color: var(--faint); }
+
+code {
+  background: var(--code-bg);
+  border-radius: 3px;
+  padding: 0.08em 0.3em;
+  font-size: 0.86em;
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+}
+
+pre {
+  background: var(--code-bg);
+  border-left: 3px solid var(--rule);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.72em;
+  line-height: 1.4;
+  padding: 0.7em 0.9em;
+}
+pre code { background: none; padding: 0; font-size: 1em; }
+
+table {
+  border-collapse: collapse;
+  font-size: 0.82em;
+  margin: 0.4em 0;
+  width: 100%;
+}
+th {
+  background: none;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.35em 0.6em 0.35em 0;
+}
+td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.35em 0.6em 0.35em 0;
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+
+blockquote {
+  border-left: 3px solid var(--teal);
+  color: var(--muted);
+  font-size: 0.92em;
+  margin: 0.5em 0;
+  padding: 0.1em 0 0.1em 0.9em;
+}
+
+a { color: var(--teal); text-decoration: none; border-bottom: 1px solid #b9cdc9; }
+
+hr { border: none; border-top: 1px solid var(--rule); margin: 0.7em 0; }
+
+/* ---- Title slide ------------------------------------------------------ */
+section.lead {
+  background: var(--paper);
+  align-content: safe center;
+}
+section.lead h1 {
+  font-size: 2.35em;
+  line-height: 1.05;
+  margin-bottom: 0.25em;
+}
+section.lead h2 {
+  border: none;
+  color: var(--muted);
+  font-size: 1.0em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+section.lead p { color: var(--faint); font-size: 0.82em; }
+
+/* ---- Section divider -------------------------------------------------- */
+section.part {
+  background: var(--ink);
+  color: var(--paper);
+  align-content: safe center;
+}
+section.part h1 { color: #fff; font-size: 2.1em; margin-bottom: 0.1em; }
+section.part h2 {
+  border: none;
+  color: #b9b4ac;
+  font-size: 0.92em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+section.part::after { color: #6a655e; }
+
+/* ---- Warning slide ---------------------------------------------------- */
+section.warn {
+  --bgColor-muted: #3d1210;
+  --borderColor-muted: #5c2320;
+  background: #2a0b0b;
+  color: #f7ece9;
+}
+section.warn h1 { color: #ff8a7a; }
+section.warn h2 { border-bottom-color: #5c2320; color: #f7ece9; }
+section.warn h3 { color: #ffb4a3; }
+section.warn strong { color: #ff8a7a; }
+section.warn code { background: #4a1a18; color: #ffd9d0; }
+section.warn pre { background: #4a1a18; border-left-color: #7a3430; color: #ffd9d0; }
+section.warn a { color: #ffb4a3; border-bottom-color: #7a3430; }
+section.warn th { border-bottom-color: #f7ece9; color: #f7ece9; }
+section.warn td { border-bottom-color: #5c2320; }
+section.warn blockquote { border-left-color: #b4534a; color: #e0cbc6; }
+section.warn::after { color: #8a5a54; }
+
+/* ---- Density helpers -------------------------------------------------- */
+section.tight            { font-size: 22px; }
+section.tight table      { font-size: 0.86em; }
+section.tight li         { margin-bottom: 0.2em; }
+section.refs             { font-size: 18px; }
+section.refs li          { margin-bottom: 0.52em; }
+section.refs h1          { font-size: 1.7em; }
+
+.small  { font-size: 0.8em; color: var(--muted); }
+.note   { color: var(--muted); font-size: 0.85em; font-style: italic; }
+.cols   { column-count: 2; column-gap: 2.2em; }

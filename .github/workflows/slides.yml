@@ -1,0 +1,100 @@
+name: Build and publish slides
+
+# Every deck in slides/ is plain Markdown. This turns each one into an HTML
+# deck and a PDF, and publishes them to GitHub Pages.
+#
+# One-time setup in the repository: Settings → Pages → Build and deployment
+# → Source: "GitHub Actions". Without that, this workflow's deploy step fails.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'slides/**'
+      - '.github/workflows/slides.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  # Pinned: an unpinned toolchain is how a deck that built last month stops
+  # building the morning of the workshop.
+  MARP_VERSION: 4.5.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Built file by file rather than with --input-dir, because --input-dir
+      # would also convert slides/README.md — which documents the decks, and
+      # is not one.
+      - name: Build each deck to HTML and PDF
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          shopt -s nullglob
+          for f in slides/*.md; do
+            name=$(basename "$f" .md)
+            [ "$name" = "README" ] && continue
+            echo "::group::$name"
+            npx --yes "@marp-team/marp-cli@${MARP_VERSION}" "$f" \
+              --theme-set slides/themes --html \
+              --output "_site/$name.html"
+            npx --yes "@marp-team/marp-cli@${MARP_VERSION}" "$f" \
+              --theme-set slides/themes --html --pdf --pdf-outlines \
+              --output "_site/$name.pdf"
+            echo "::endgroup::"
+          done
+          test -n "$(ls -A _site)" || { echo "No decks were built"; exit 1; }
+
+      - name: Write an index page
+        run: |
+          {
+            echo '<!doctype html><meta charset="utf-8">'
+            echo '<title>Agentic Workshop — slides</title>'
+            echo '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            echo '<style>'
+            echo 'body{font:16px/1.6 system-ui,sans-serif;max-width:40rem;margin:5rem auto;padding:0 1rem;color:#1b1b1b;background:#fbfaf7}'
+            echo 'h1{color:#900;font-size:1.6rem} li{margin:.6rem 0} a{color:#246b60}'
+            echo '@media(prefers-color-scheme:dark){body{background:#151312;color:#eee}h1{color:#ff8a7a}a{color:#7fbfb4}}'
+            echo '</style>'
+            echo '<h1>Agentic Workshop — slides</h1><ul>'
+            for f in _site/*.html; do
+              name=$(basename "$f" .html)
+              [ "$name" = "index" ] && continue
+              # Link text is the deck's first heading, falling back to the filename.
+              title=$(sed -n 's/^# //p' "slides/$name.md" | head -1)
+              [ -n "$title" ] || title="$name"
+              printf '<li><a href="%s.html">%s</a> · <a href="%s.pdf">PDF</a></li>\n' \
+                "$name" "$title" "$name"
+            done
+            echo '</ul>'
+            echo '<p><a href="https://github.com/${{ github.repository }}">Source repository</a></p>'
+          } > _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
