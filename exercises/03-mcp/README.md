@@ -138,7 +138,7 @@ Let the agent discover the data rather than telling it the schema:
 You should find two tables:
 
 | Table | Rows | Contents |
-|---|---:|---:|
+|---|:---|:---|
 | `entries` | 259,693 | ID, classification, deposition date, title, organism, resolution, experiment type |
 | `entry_types` | 259,693 | ID, molecule type, method class |
 
