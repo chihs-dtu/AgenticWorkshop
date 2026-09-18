@@ -36,7 +36,8 @@ You need python installation tool `uv` (or pip) installed. Check with `uv --vers
 [the server notes](../../mcp/README.md) if it is missing.
 
 You can install it with:
-```curl -LsSf https://astral.sh/uv/install.sh | sh```
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh```
 
 ---
 
