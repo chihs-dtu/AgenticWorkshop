@@ -50,6 +50,23 @@
       }
     }
   },
+  "mcp": {
+    "duckdb": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "uvx",
+        "mcp-server-motherduck@1.0.8",
+        "--db-path",
+        "exercises/03-mcp/data/pdb.duckdb",
+        "--max-rows",
+        "100",
+        "--max-chars",
+        "8000"
+      ],
+      "timeout": 60000
+    }
+  },
   "permission": {
     "edit": "ask",
     "bash": "ask"

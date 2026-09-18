@@ -1,0 +1,513 @@
+pdb_id,classification,deposition_date,title,source_organism,resolution,experiment_type,molecule_type,method_class
+121D,DNA,1993-04-14,MOLECULAR STRUCTURE OF THE A-TRACT DNA DODECAMER D(CGCAAATTTGCG) COMPLEXED WITH THE MINOR GROOVE BINDING DRUG NETROPSIN,,2.2,X-RAY DIFFRACTION,nuc,diffraction
+199L,HYDROLASE (O-GLYCOSYL),1995-11-06,"THERMODYNAMIC AND STRUCTURAL COMPENSATION IN """"SIZE-SWITCH"""" CORE-REPACKING VARIANTS OF T4 LYSOZYME",Enterobacteria phage T4,1.85,X-RAY DIFFRACTION,prot,diffraction
+1A4W,HYDROLASE/HYDROLASE INHIBITOR,1998-02-06,CRYSTAL STRUCTURES OF THROMBIN WITH THIAZOLE-CONTAINING INHIBITORS: PROBES OF THE S1' BINDING SITE,Homo sapiens,1.8,X-RAY DIFFRACTION,prot,diffraction
+1AH2,SERINE PROTEASE,1997-04-11,"SERINE PROTEASE PB92 FROM BACILLUS ALCALOPHILUS, NMR, 18 STRUCTURES",Bacillus alcalophilus,,SOLUTION NMR,prot,NMR
+1AKK,ELECTRON TRANSPORT,1997-05-22,"SOLUTION STRUCTURE OF OXIDIZED HORSE HEART CYTOCHROME C, NMR, MINIMIZED AVERAGE STRUCTURE",Equus caballus,,SOLUTION NMR,prot,NMR
+1BHH,SH2 DOMAIN,1998-06-08,FREE P56LCK SH2 DOMAIN,Homo sapiens,1.9,X-RAY DIFFRACTION,prot,diffraction
+1C1X,OXIDOREDUCTASE,1999-07-22,L-PHENYLALANINE DEHYDROGENASE STRUCTURE IN TERNARY COMPLEX WITH NAD+ AND L-3-PHENYLLACTATE,Rhodococcus sp.,1.4,X-RAY DIFFRACTION,prot,diffraction
+1C3C,LYASE,1999-07-27,T. MARITIMA ADENYLOSUCCINATE LYASE,Thermotoga maritima,1.8,X-RAY DIFFRACTION,prot,diffraction
+1C9N,HYDROLASE,1999-08-02,BACILLUS LENTUS SUBSTILISIN VARIANT (SER 87) K27R/V104Y/N123S/T274A,Lederbergia lenta,1.5,X-RAY DIFFRACTION,prot,diffraction
+1CIC,IMMUNOGLOBULIN,1999-03-31,IDIOTOPE-ANTI-IDIOTOPE FAB-FAB COMPLEX; D1.3-E225,Mus musculus,2.5,X-RAY DIFFRACTION,prot,diffraction
+1CKM,CAPPING ENZYME,1997-04-20,STRUCTURE OF TWO DIFFERENT CONFORMATIONS OF MRNA CAPPING ENZYME IN COMPLEX WITH GTP,Paramecium bursaria Chlorella virus 1,2.5,X-RAY DIFFRACTION,prot,diffraction
+1CWS,CELL CYCLE,1999-08-26,HUMAN CDC25B CATALYTIC DOMAIN WITH TUNGSTATE,Homo sapiens,2.0,X-RAY DIFFRACTION,prot,diffraction
+1DXI,ISOMERASE(INTRAMOLECULAR OXIDOREDUCTASE),1993-09-30,STRUCTURE DETERMINATION OF GLUCOSE ISOMERASE FROM STREPTOMYCES MURINUS AT 2.6 ANGSTROMS RESOLUTION,Streptomyces murinus,2.6,X-RAY DIFFRACTION,prot,diffraction
+1EG4,STRUCTURAL PROTEIN,2000-02-11,STRUCTURE OF A DYSTROPHIN WW DOMAIN FRAGMENT IN COMPLEX WITH A BETA-DYSTROGLYCAN PEPTIDE,Homo sapiens; SYNTHETIC CONSTRUCT,2.0,X-RAY DIFFRACTION,prot,diffraction
+1EQV,HYDROLASE,2000-04-06,SIMPLIFICATION OF A PROTEIN LOOP IN STAPHYLOCOCCAL NUCLEASE,Staphylococcus aureus,1.94,X-RAY DIFFRACTION,prot,diffraction
+1ETL,ENTEROTOXIN,1994-03-15,STRUCTURAL CHARACTERISTICS FOR BIOLOGICAL ACTIVITY OF HEAT-STABLE ENTEROTOXIN PRODUCED BY ENTEROTOXIGENIC ESCHERICHIA COLI: X-RAY CRYSTALLOGRAPHY OF WEAKLY TOXIC AND NONTOXIC ANALOGS,Escherichia coli,0.89,X-RAY DIFFRACTION,prot,diffraction
+1FMK,PHOSPHOTRANSFERASE,1997-01-24,CRYSTAL STRUCTURE OF HUMAN TYROSINE-PROTEIN KINASE C-SRC,Homo sapiens,1.5,X-RAY DIFFRACTION,prot,diffraction
+1G2J,RNA,2000-10-20,RNA OCTAMER R(CCCP*GGGG) CONTAINING PHENYL RIBONUCLEOTIDE,,1.97,X-RAY DIFFRACTION,nuc,diffraction
+1G79,OXIDOREDUCTASE,2000-11-09,X-RAY STRUCTURE OF ESCHERICHIA COLI PYRIDOXINE 5'-PHOSPHATE OXIDASE COMPLEXED WITH PYRIDOXAL 5'-PHOSPHATE AT 2.0 A RESOLUTION,Escherichia coli,2.0,X-RAY DIFFRACTION,prot,diffraction
+1GBG,HYDROLASE (GLUCANASE),1995-08-25,BACILLUS LICHENIFORMIS BETA-GLUCANASE,Bacillus licheniformis,1.8,X-RAY DIFFRACTION,prot,diffraction
+1H3C,ISOMERASE,2002-08-25,Structures of Human Oxidosqualene Cyclase Inhibitors Bound to an Homologous Enzyme,ALICYCLOBACILLUS ACIDOCALDARIUS,2.9,X-RAY DIFFRACTION,prot,diffraction
+1HFQ,OXIDOREDUCTASE,1997-11-04,COMPARISON OF TERNARY CRYSTAL COMPLEXES OF HUMAN DIHYDROFOLATE REDUCTASE WITH NADPH AND A CLASSICAL ANTITUMOR FUROPYRIMDINE,Homo sapiens,2.1,X-RAY DIFFRACTION,prot,diffraction
+1I24,BIOSYNTHETIC PROTEIN,2001-02-05,"HIGH RESOLUTION CRYSTAL STRUCTURE OF THE WILD-TYPE PROTEIN SQD1, WITH NAD AND UDP-GLUCOSE",Arabidopsis thaliana,1.2,X-RAY DIFFRACTION,prot,diffraction
+1I3D,OXYGEN STORAGE/TRANSPORT,2001-02-15,HUMAN CARBONMONOXY HEMOGLOBIN BART'S (GAMMA4),Homo sapiens,1.7,X-RAY DIFFRACTION,prot,diffraction
+1ISR,SIGNALING PROTEIN,2001-12-21,Crystal Structure of Metabotropic Glutamate Receptor Subtype 1 Complexed with Glutamate and Gadolinium Ion,Rattus norvegicus,4.0,X-RAY DIFFRACTION,prot,diffraction
+1IX6,TRANSFERASE,2002-06-14,Aspartate Aminotransferase Active Site Mutant V39F,Escherichia coli,2.2,X-RAY DIFFRACTION,prot,diffraction
+1IXP,BIOSYNTHETIC PROTEIN,2002-06-28,Enzyme-phosphate Complex of Pyridoxine 5'-Phosphate synthase,Escherichia coli,2.3,X-RAY DIFFRACTION,prot,diffraction
+1J3F,OXYGEN STORAGE/TRANSPORT,2003-01-24,"Crystal Structure of an Artificial Metalloprotein:Cr(III)(3,3'-Me2-salophen)/apo-A71G Myoglobin",Physeter catodon,1.45,X-RAY DIFFRACTION,prot,diffraction
+1JJI,HYDROLASE,2001-07-06,The Crystal Structure of a Hyper-thermophilic Carboxylesterase from the Archaeon Archaeoglobus fulgidus,Archaeoglobus fulgidus,2.2,X-RAY DIFFRACTION,prot,diffraction
+1JNE,HORMONE/GROWTH FACTOR,2001-07-23,Crystal structure of imaginal disc growth factor-2,Drosophila melanogaster,1.7,X-RAY DIFFRACTION,prot,diffraction
+1JYX,HYDROLASE,2001-09-13,E. COLI (lacZ) BETA-GALACTOSIDASE IN COMPLEX WITH IPTG,Escherichia coli,1.75,X-RAY DIFFRACTION,prot,diffraction
+1KG4,HYDROLASE,2001-11-26,Crystal structure of the K142A mutant of E. coli MutY (core fragment),Escherichia coli,1.6,X-RAY DIFFRACTION,prot,diffraction
+1KIB,ELECTRON TRANSPORT,2001-12-03,cytochrome c6 from Arthrospira maxima: an assembly of 24 subunits in the form of an oblate shell,Arthrospira maxima,3.5,X-RAY DIFFRACTION,prot,diffraction
+1LBE,HYDROLASE,1996-09-18,APLYSIA ADP RIBOSYL CYCLASE,Aplysia californica,2.4,X-RAY DIFFRACTION,prot,diffraction
+1LQ8,BLOOD CLOTTING,2002-05-09,Crystal structure of cleaved protein C inhibitor,Homo sapiens,2.4,X-RAY DIFFRACTION,prot,diffraction
+1M4G,TRANSFERASE,2002-07-02,Aminoglycoside 2'-N-acetyltransferase from Mycobacterium tuberculosis-Complex with Coenzyme A and Ribostamycin,Mycobacterium tuberculosis,1.8,X-RAY DIFFRACTION,prot,diffraction
+1M5X,HYDROLASE/DNA,2002-07-10,Crystal structure of the homing endonuclease I-MsoI bound to its DNA substrate,Monomastix sp.; SYNTHETIC CONSTRUCT,2.25,X-RAY DIFFRACTION,prot-nuc,diffraction
+1MUU,OXIDOREDUCTASE,2002-09-24,2.0 A crystal structure of GDP-mannose dehydrogenase,Pseudomonas aeruginosa,2.02,X-RAY DIFFRACTION,prot,diffraction
+1NR0,STRUCTURAL PROTEIN,2003-01-23,Two Seven-Bladed Beta-Propeller Domains Revealed By The Structure Of A C. elegans Homologue Of Yeast Actin Interacting Protein 1 (AIP1).,Caenorhabditis elegans,1.7,X-RAY DIFFRACTION,prot,diffraction
+1NRA,NEUROTOXIN,1995-01-03,SOLUTION STRUCTURE OF AN OLD WORLD-LIKE NEUROTOXIN FROM THE VENOM OF THE NEW WORLD SCORPION CENTRUROIDES SCULPTURATUS EWING,Centruroides sculpturatus,,SOLUTION NMR,prot,NMR
+1OJH,PROTEIN BINDING,2003-07-10,Crystal structure of NblA from PCC 7120,ANABAENA SP. PCC 7120,1.8,X-RAY DIFFRACTION,prot,diffraction
+1OLP,HYDROLASE,2003-08-11,Alpha Toxin from Clostridium Absonum,CLOSTRIDIUM SARDINIENSE,2.5,X-RAY DIFFRACTION,prot,diffraction
+1OVX,METAL BINDING PROTEIN,2003-03-27,NMR structure of the E. coli ClpX chaperone zinc binding domain dimer,Escherichia coli,,SOLUTION NMR,prot,NMR
+1P36,HYDROLASE,2003-04-16,T4 LYOSZYME CORE REPACKING MUTANT I100V/TA,Enterobacteria phage T4,1.45,X-RAY DIFFRACTION,prot,diffraction
+1P5G,ISOMERASE,2003-04-26,Enzyme-ligand complex of P. aeruginosa PMM/PGM,Pseudomonas aeruginosa,1.61,X-RAY DIFFRACTION,prot,diffraction
+1P8T,SIGNALING PROTEIN,2003-05-07,Crystal structure of Nogo-66 Receptor,Homo sapiens,3.2,X-RAY DIFFRACTION,prot,diffraction
+1PN6,BIOSYNTHETIC PROTEIN,2003-06-12,Domain-wise fitting of the crystal structure of T.thermophilus EF-G into the low resolution map of the release complex.Puromycin.EFG.GDPNP of E.coli 70S ribosome.,Thermus thermophilus,10.8,ELECTRON MICROSCOPY,prot,EM
+1R2J,OXIDOREDUCTASE,2003-09-28,FkbI for Biosynthesis of Methoxymalonyl Extender Unit of Fk520 Polyketide Immunosuppresant,Streptomyces hygroscopicus,2.1,X-RAY DIFFRACTION,prot,diffraction
+1RBQ,TRANSFERASE,2003-11-03,"Human GAR Tfase complex structure with 10-(trifluoroacetyl)-5,10-dideazaacyclic-5,6,7,8-tetrahydrofolic acid",Homo sapiens,2.104,X-RAY DIFFRACTION,prot,diffraction
+1S0X,hormone/growth factor receptor,2004-01-05,Crystal structure of the human RORalpha ligand binding domain in complex with cholesterol sulfate at 2.2A,Homo sapiens,2.2,X-RAY DIFFRACTION,prot,diffraction
+1SWB,BIOTIN-BINDING PROTEIN,1997-03-04,APO-CORE-STREPTAVIDIN AT PH 7.5,Streptomyces avidinii,1.85,X-RAY DIFFRACTION,prot,diffraction
+1SY2,TRANSPORT PROTEIN,2004-03-31,1.0 A Crystal Structure of D129A/L130A Mutant of Nitrophorin 4,Rhodnius prolixus,1.0,X-RAY DIFFRACTION,prot,diffraction
+1SZJ,OXIDOREDUCTASE,1997-02-04,STRUCTURE OF HOLO-GLYCERALDEHYDE-3-PHOSPHATE-DEHYDROGENASE FROM PALINURUS VERSICOLOR REFINED 2.0 ANGSTROM RESOLUTION,Palinurus versicolor,2.0,X-RAY DIFFRACTION,prot,diffraction
+1T1U,TRANSFERASE,2004-04-18,Structural Insights and Functional Implications of Choline Acetyltransferase,Rattus norvegicus,1.55,X-RAY DIFFRACTION,prot,diffraction
+1T8J,DE NOVO PROTEIN,2004-05-13,"NMR Structure of BBA5, A Compact, Independently Folded BBA Motif",,,SOLUTION NMR,prot,NMR
+1TU0,HYDROLASE/HYDROLASE REGULATOR,2004-06-23,Aspartate Transcarbamoylase Catalytic Chain Mutant E50A Complex with Phosphonoacetamide,Escherichia coli,2.55,X-RAY DIFFRACTION,prot,diffraction
+1TXY,DNA BINDING PROTEIN,2004-07-06,E. coli PriB,Escherichia coli,2.0,X-RAY DIFFRACTION,prot,diffraction
+1UDL,ENDOCYTOSIS/EXOCYTOSIS,2003-05-01,The solution structure of the fifth SH3 domain of intersectin 2 (KIAA1256),Homo sapiens,,SOLUTION NMR,prot,NMR
+1UG9,HYDROLASE,2003-06-16,Crystal Structure of Glucodextranase from Arthrobacter globiformis I42,Arthrobacter globiformis,2.5,X-RAY DIFFRACTION,prot,diffraction
+1UTG,STEROID BINDING,1989-04-03,REFINEMENT OF THE C2221 CRYSTAL FORM OF OXIDIZED UTEROGLOBIN AT 1.34 ANGSTROMS RESOLUTION,Oryctolagus cuniculus,1.34,X-RAY DIFFRACTION,prot,diffraction
+1VER,IMMUNE SYSTEM,2004-04-05,Structure of New Antigen Receptor variable domain from sharks,Orectolobus maculatus,2.82,X-RAY DIFFRACTION,prot,diffraction
+1VYW,TRANSFERASE,2004-05-07,Structure of CDK2/Cyclin A with PNU-292137,HOMO SAPIENS,2.3,X-RAY DIFFRACTION,prot,diffraction
+1W05,OXIDOREDUCTASE,2004-06-01,Isopenicillin N Synthase Aminoadipoyl-Cysteinyl-Alanine-Fe Complex,Emericella nidulans (strain FGSC A4 / ATCC 38163 / CBS 112.46 / NRRL 194 / M139),2.46,X-RAY DIFFRACTION,prot,diffraction
+1W69,REDUCTASE,2004-08-16,Crystal Structure of Mouse Ribonucleotide Reductase Subunit R2 under Reducing Conditions. A Fully Occupied Dinuclear Iron Cluster and Bound Acetate.,MUS MUSCULUS,2.2,X-RAY DIFFRACTION,prot,diffraction
+1W8C,TRANSFERASE,2004-09-20,CO-CRYSTAL STRUCTURE OF 6-CYCLOHEXYLMETHOXY-8-ISOPROPYL-9H-PURIN-2- YLAMINE AND MONOMERIC CDK2,HOMO SAPIENS,2.05,X-RAY DIFFRACTION,prot,diffraction
+1WJJ,"structural genomics, unknown function",2004-05-29,Solution structure of hypothetical protein F20O9.120 from Arabidopsis thaliana,Arabidopsis thaliana,,SOLUTION NMR,prot,NMR
+1WOI,HYDROLASE,2004-08-18,Crystal Structure of Agmatinase Reveals Structural Conservation and Inhibition Mechanism of the Ureohydrolase Superfamily,Deinococcus radiodurans,1.85,X-RAY DIFFRACTION,prot,diffraction
+1Y6E,TRANSFERASE,2004-12-06,Orthorhombic glutathione S-transferase of Schistosoma japonicum,Schistosoma japonicum,3.0,X-RAY DIFFRACTION,prot,diffraction
+1YKE,GENE REGULATION,2005-01-18,Structure of the mediator MED7/MED21 subcomplex,Saccharomyces cerevisiae,3.3,X-RAY DIFFRACTION,prot,diffraction
+1YQB,SIGNALING PROTEIN,2005-02-01,Human Ubiquilin 3,Homo sapiens,2.0,X-RAY DIFFRACTION,prot,diffraction
+1Z0W,HYDROLASE,2005-03-02,Crystal Structure of A. fulgidus Lon proteolytic domain at 1.2A resolution,Archaeoglobus fulgidus,1.2,X-RAY DIFFRACTION,prot,diffraction
+1ZAF,TRANSCRIPTION/TRANSFERASE,2005-04-06,Crystal structure of estrogen receptor beta complexed with 3-Bromo-6-hydroxy-2-(4-hydroxy-phenyl)-inden-1-one,Homo sapiens; SYNTHETIC CONSTRUCT,2.2,X-RAY DIFFRACTION,prot,diffraction
+1ZAN,IMMUNE SYSTEM,2005-04-06,Crystal structure of anti-NGF AD11 Fab,Rattus norvegicus,1.7,X-RAY DIFFRACTION,prot,diffraction
+24IB,TRANSFERASE,2026-03-04,Crystal structure of human RIPK1 kinase domain in complex with compound HR10,Homo sapiens,2.05,X-RAY DIFFRACTION,prot,diffraction
+24XB,MEMBRANE PROTEIN,2026-03-23,Cryo-EM Structure of the Apo FFAR4-Gq Complex,Homo sapiens,2.65,ELECTRON MICROSCOPY,prot,EM
+29TE,HYDROLASE,2026-04-07,The complex of A1AT-NHK with the ERAD misfolded glycoprotein checkpoint complex from Chaetomium thermophilum (EDEM:PDI heterodimer).,Aequorea victoria; Thermochaetoides thermophila,3.46,ELECTRON MICROSCOPY,prot,EM
+2APX,IMMUNE SYSTEM,2005-08-16,Crystal Structure of the G17E/A52V/S54N/K66E/Q72H/E80V/L81S/T87S/G96V variant of the murine T cell receptor V beta 8.2 domain,Rattus norvegicus,1.8,X-RAY DIFFRACTION,prot,diffraction
+2AWN,TRANSPORT PROTEIN,2005-09-01,Crystal structure of the ADP-Mg-bound E. Coli MALK (Crystallized with ATP-Mg),Escherichia coli,2.3,X-RAY DIFFRACTION,prot,diffraction
+2AXM,GROWTH FACTOR,1997-10-20,HEPARIN-LINKED BIOLOGICALLY-ACTIVE DIMER OF FIBROBLAST GROWTH FACTOR,Homo sapiens,3.0,X-RAY DIFFRACTION,prot,diffraction
+2BGI,OXIDOREDUCTASE,2004-12-23,X-Ray Structure of the Ferredoxin-NADP(H) Reductase from Rhodobacter capsulatus complexed with three molecules of the detergent n-heptyl- beta-D-thioglucoside at 1.7 Angstroms,RHODOBACTER CAPSULATUS,1.68,X-RAY DIFFRACTION,prot,diffraction
+2BN3,RADIATION DAMAGE,2005-03-18,Insulin before a high dose x-ray burn,BOS TAURUS,1.4,X-RAY DIFFRACTION,prot,diffraction
+2BT6,ELECTRON TRANSPORT,2005-05-26,Ru(bpy)2(mbpy)-Modified Bovine Adrenodoxin,BOS TAURUS,1.5,X-RAY DIFFRACTION,prot,diffraction
+2C50,VIRUS/RNA,2005-10-25,MS2-RNA HAIRPIN (A -5) COMPLEX,ENTEROBACTERIO PHAGE MS2; SYNTHETIC CONSTRUCT,2.65,X-RAY DIFFRACTION,prot-nuc,diffraction
+2CY1,TRANSCRIPTION,2005-07-04,Crystal structure of APE1850,Aeropyrum pernix,2.3,X-RAY DIFFRACTION,prot,diffraction
+2D81,HYDROLASE,2005-11-30,PHB depolymerase (S39A) complexed with R3HB trimer,Penicillium funiculosum,1.66,X-RAY DIFFRACTION,prot,diffraction
+2D87,"STRUCTURAL PROTEIN, PROTEIN BINDING",2005-12-02,Solution structure of the CH domain from human Smoothelin splice isoform L2,Homo sapiens,,SOLUTION NMR,prot,NMR
+2DNW,TRANSPORT PROTEIN,2006-04-26,"Solution structure of RSGI RUH-059, an ACP domain of acyl carrier protein, mitochondrial [Precursor] from human cDNA",Homo sapiens,,SOLUTION NMR,prot,NMR
+2E7F,TRANSFERASE,2007-01-09,5-methyltetrahydrofolate corrinoid/iron sulfur protein methyltransferase complexed with methyltetrahydrofolate to 2.2 Angsrom resolution,Moorella thermoacetica,2.2,X-RAY DIFFRACTION,prot,diffraction
+2FEJ,TRANSCRIPTION,2005-12-16,Solution structure of human p53 DNA binding domain.,Homo sapiens,,SOLUTION NMR,prot,NMR
+2GI3,LIGASE,2006-03-28,Crystal structure of Glutamyl-tRNA(Gln) amidotransferase subunit A (tm1272) from THERMOTOGA MARITIMA at 1.80 A resolution,Thermotoga maritima,1.8,X-RAY DIFFRACTION,prot,diffraction
+2GI7,"BLOOD CLOTTING, CELL ADHESION",2006-03-28,Crystal structure of human platelet Glycoprotein VI (GPVI),Homo sapiens,2.4,X-RAY DIFFRACTION,prot,diffraction
+2GM1,CELL CYCLE,2006-04-05,"Crystal structure of the mitotic kinesin eg5 in complex with mg-adp and n-(3-aminopropyl)-n-((3-benzyl-5-chloro-4-oxo-3,4-dihydropyrrolo[2,1-f][1,2,4]triazin-2-yl)(cyclopropyl)methyl)-4-methylbenzamide",Homo sapiens,2.3,X-RAY DIFFRACTION,prot,diffraction
+2GTG,LIPID BINDING PROTEIN,2006-04-28,Crystal Structure of Human Saposin C,Homo sapiens,2.4,X-RAY DIFFRACTION,prot,diffraction
+2GWR,SIGNALING PROTEIN,2006-05-05,Crystal structure of the response regulator protein mtrA from Mycobacterium Tuberculosis,Mycobacterium tuberculosis,2.1,X-RAY DIFFRACTION,prot,diffraction
+2GYZ,HORMONE/GROWTH FACTOR,2006-05-10,Crystal structure of human artemin,Homo sapiens,1.76,X-RAY DIFFRACTION,prot,diffraction
+2H1F,TRANSFERASE,2006-05-16,E. coli heptosyltransferase WaaC with ADP,Escherichia coli O6,2.4,X-RAY DIFFRACTION,prot,diffraction
+2HUQ,TRANSFERASE,2006-07-27,Crystal structure of PH0725 from Pyrococcus horikoshii OT3,Pyrococcus horikoshii,2.2,X-RAY DIFFRACTION,prot,diffraction
+2J61,LECTIN,2006-09-21,L-ficolin complexed to N-acetylglucosamine (forme C),HOMO SAPIENS,2.7,X-RAY DIFFRACTION,prot,diffraction
+2KAP,SIGNALING PROTEIN,2008-11-12,Solution structure of DLC1-SAM,Homo sapiens,,SOLUTION NMR,prot,NMR
+2KHQ,DNA BINDING PROTEIN,2009-04-10,"Solution NMR structure of a phage integrase SSP1947 fragment 59-159 from Staphylococcus saprophyticus, Northeast Structural Genomics Consortium Target SyR103B",Staphylococcus saprophyticus subsp. saprophyticus ATCC 15305,,SOLUTION NMR,prot,NMR
+2KO6,"Structural Genomics, Unknown function",2009-09-10,Solution structure of protein sf3929 from Shigella flexneri 2a. Northeast Structural Genomics Consortium target SfR81/Ontario Center for Structural Proteomics Target sf3929,Shigella flexneri,,SOLUTION NMR,prot,NMR
+2LZF,PROTEIN BINDING,2012-10-02,Structure of the biofilm matrix promoter AbbA from B. subtilis,Bacillus subtilis,,SOLUTION NMR,prot,NMR
+2M1X,IMMUNE SYSTEM,2012-12-07,TICAM-1 TIR domain structure,Homo sapiens,,SOLUTION NMR,prot,NMR
+2MAA,IMMUNE SYSTEM,2013-07-02,NMR structure of Temporin-1 Ta in lipopolysaccharide micelles: Mechanistic insight into inactivation by outer memebrane,Rana temporaria,,SOLUTION NMR,prot,NMR
+2MM6,HYDROLASE INHIBITOR,2014-03-10,solution structure of alpha amylase inhibitor peptide aS1 from Allatide scholaris,Alstonia scholaris,,SOLUTION NMR,prot,NMR
+2NA5,HORMONE,2015-12-21,NMR solution structure of vitamin B12 conjugates of PYY3-36,,,SOLUTION NMR,prot,NMR
+2NQD,HYDROLASE INHIBITOR/HYDROLASE,2006-10-31,"Crystal structure of cysteine protease inhibitor, chagasin, in complex with human cathepsin L",Homo sapiens; Trypanosoma cruzi,1.75,X-RAY DIFFRACTION,prot,diffraction
+2PGQ,HYDROLASE/HYDROLASE INHIBITOR,2007-04-10,Human thrombin mutant C191A-C220A in complex with the inhibitor PPACK,Homo sapiens,1.8,X-RAY DIFFRACTION,prot,diffraction
+2PWT,RNA/ANTIBIOTIC,2007-05-13,Crystal structure of the bacterial ribosomal decoding site complexed with aminoglycoside containing the L-HABA group,,1.8,X-RAY DIFFRACTION,nuc,diffraction
+2QLC,DNA BINDING PROTEIN,2007-07-12,The crystal structure of DNA repair protein RadC from Chlorobium tepidum TLS,Chlorobium tepidum TLS,2.3,X-RAY DIFFRACTION,prot,diffraction
+2R0J,LIGASE,2007-08-20,"Crystal structure of the putative ubiquitin conjugating enzyme, PFE1350c, from Plasmodium falciparum",Plasmodium falciparum,1.85,X-RAY DIFFRACTION,prot,diffraction
+2RV6,TRANSCRIPTION,2015-01-26,Solution structures of the DNA-binding domains (ZF2-ZF3-ZF4) of immune-related zinc-finger protein ZFAT,Homo sapiens,,SOLUTION NMR,prot,NMR
+2V2D,ISOMERASE,2007-06-05,The A178L mutation in the C-terminal hinge of the flexible loop-6 of triosephosphate isomerase (TIM) induces a more closed conformation of this hinge region in dimeric and monomeric TIM,TRYPANOSOMA BRUCEI BRUCEI,2.3,X-RAY DIFFRACTION,prot,diffraction
+2W05,TRANSFERASE,2008-08-08,"Structure of CDK2 in complex with an imidazolyl pyrimidine, compound 5b",HOMO SAPIENS,1.9,X-RAY DIFFRACTION,prot,diffraction
+2WQP,TRANSFERASE,2009-08-25,Crystal structure of sialic acid synthase NeuB-inhibitor complex,NEISSERIA MENINGITIDIS,1.75,X-RAY DIFFRACTION,prot,diffraction
+2WWR,OXIDOREDUCTASE,2009-10-26,Crystal Structure of Human Glyoxylate Reductase Hydroxypyruvate Reductase,HOMO SAPIENS,2.82,X-RAY DIFFRACTION,prot,diffraction
+2WZ9,PROTEIN BINDING,2009-11-25,Crystal structure of the thioredoxin domain of human TXNL2,HOMO SAPIENS,1.55,X-RAY DIFFRACTION,prot,diffraction
+2Y2F,HYDROLASE,2010-12-14,Crystal structure of Yersinia pestis YopH in complex with an aminooxy- containing platform compound for inhibitor design,YERSINIA PESTIS,1.78,X-RAY DIFFRACTION,prot,diffraction
+2YDY,OXIDOREDUCTASE,2011-03-25,"Crystal structure of human S-adenosylmethionine synthetase 2, beta subunit in Orthorhombic crystal form",HOMO SAPIENS,2.25,X-RAY DIFFRACTION,prot,diffraction
+2YHV,TRANSFERASE,2011-05-06,Structure of L1196M Mutant Anaplastic Lymphoma Kinase,HOMO SAPIENS,1.9,X-RAY DIFFRACTION,prot,diffraction
+3A0G,OXYGEN TRANSPORT,2009-03-17,Crystal structure analysis of guinea pig oxyhemoglobin at 2.5 angstroms resolution,Cavia porcellus,2.5,X-RAY DIFFRACTION,prot,diffraction
+3CEU,TRANSFERASE,2008-02-29,Crystal structure of thiamine phosphate pyrophosphorylase (BT_0647) from Bacteroides thetaiotaomicron. Northeast Structural Genomics Consortium target BtR268,Bacteroides thetaiotaomicron VPI-5482,2.3,X-RAY DIFFRACTION,prot,diffraction
+3CPT,PROTEIN BINDING,2008-04-01,MP1-p14 Scaffolding complex,Homo sapiens; Mus musculus,1.9,X-RAY DIFFRACTION,prot,diffraction
+3E61,"structural genomics, unknown function",2008-08-14,Crystal structure of a putative transcriptional repressor of ribose operon from Staphylococcus saprophyticus subsp. saprophyticus,Staphylococcus saprophyticus subsp. saprophyticus,2.0,X-RAY DIFFRACTION,prot,diffraction
+3EB5,APOPTOSIS,2008-08-27,Structure of the cIAP2 RING domain,Homo sapiens,2.0,X-RAY DIFFRACTION,prot,diffraction
+3EO9,IMMUNE SYSTEM,2008-09-26,Crystal structure the Fab fragment of Efalizumab,Homo sapiens,1.8,X-RAY DIFFRACTION,prot,diffraction
+3FL1,HYDROLASE,2008-12-18,"X-ray structure of the non covalent swapped form of the A19P/Q28L/K31C/S32C mutant of bovine pancreatic ribonuclease in complex with 2'-DEOXYCYTIDINE-2'-DEOXYGUANOSINE-3',5'-MONOPHOSPHATE",Bos taurus,1.9,X-RAY DIFFRACTION,prot,diffraction
+3FSU,OXIDOREDUCTASE,2009-01-12,Crystal Structure of Escherichia coli Methylenetetrahydrofolate Reductase Double Mutant Phe223LeuGlu28Gln complexed with methyltetrahydrofolate,Escherichia coli K-12,1.7,X-RAY DIFFRACTION,prot,diffraction
+3G1L,TRANSCRIPTION,2009-01-30,EthR from Mycobacterium tuberculosis in complex with compound BDM14744,Mycobacterium tuberculosis,1.7,X-RAY DIFFRACTION,prot,diffraction
+3GJ0,TRANSPORT PROTEIN,2009-03-07,Crystal structure of human RanGDP,Homo sapiens,1.48,X-RAY DIFFRACTION,prot,diffraction
+3GV2,VIRAL PROTEIN,2009-03-30,X-ray Structure of Hexameric HIV-1 CA,Human immunodeficiency virus type 1 group M subtype B (isolate NY5); Synechocystis sp. (strain PCC 6803 / Kazusa),7.0,X-RAY DIFFRACTION,prot,diffraction
+3H15,REPLICATION/DNA,2009-04-10,Crystal structure of replication initiation factor MCM10-ID bound to ssDNA,Xenopus laevis; SYNTHETIC CONSTRUCT,2.72,X-RAY DIFFRACTION,prot-nuc,diffraction
+3HC1,"structural genomics, unknown function",2009-05-05,Crystal structure of HDOD domain protein with unknown function (NP_953345.1) from GEOBACTER SULFURREDUCENS at 1.90 A resolution,Geobacter sulfurreducens,1.9,X-RAY DIFFRACTION,prot,diffraction
+3HIF,TRANSCRIPTION REGULATOR,2009-05-19,The crystal structure of apo wild type CAP at 3.6 A resolution.,Escherichia coli,3.59,X-RAY DIFFRACTION,prot,diffraction
+3HQE,DNA,2009-06-06,Crystal Structure of the decamer CGGGCGCCCG forming a Holliday junction,,2.94,X-RAY DIFFRACTION,nuc,diffraction
+3IBS,"structural genomics, unknown function",2009-07-16,Crystal structure of conserved hypothetical protein BatB from Bacteroides thetaiotaomicron,Bacteroides thetaiotaomicron,2.1,X-RAY DIFFRACTION,prot,diffraction
+3IJL,ISOMERASE,2009-08-04,Structure of dipeptide epimerase from Bacteroides thetaiotaomicron complexed with L-Pro-D-Glu; nonproductive substrate binding.,Bacteroides thetaiotaomicron,1.5,X-RAY DIFFRACTION,prot,diffraction
+3IMF,OXIDOREDUCTASE,2009-08-10,1.99 Angstrom resolution crystal structure of a short chain dehydrogenase from Bacillus anthracis str. 'Ames Ancestor',Bacillus anthracis str. 'Ames Ancestor',1.99,X-RAY DIFFRACTION,prot,diffraction
+3JCO,HYDROLASE,2016-01-06,Structure of yeast 26S proteasome in M1 state derived from Titan dataset,Saccharomyces cerevisiae S288c,4.8,ELECTRON MICROSCOPY,prot,EM
+3KF2,HYDROLASE,2009-10-27,The HCV NS3/NS4A protease apo structure,Hepatitis C virus; SYNTHETIC CONSTRUCT,2.5,X-RAY DIFFRACTION,prot,diffraction
+3KFE,CHAPERONE,2009-10-27,Crystal structures of a group II chaperonin from Methanococcus maripaludis,Methanococcus maripaludis,3.5,X-RAY DIFFRACTION,prot,diffraction
+3L5H,IMMUNE SYSTEM,2009-12-21,Crystal structure of the full ectodomain of human gp130: New insights into the molecular assembly of receptor complexes,Homo sapiens,3.6,X-RAY DIFFRACTION,prot,diffraction
+3L8G,HYDROLASE,2009-12-31,"Crystal Structure of D,D-heptose 1.7-bisphosphate phosphatase from E. Coli complexed with D-glycero-D-manno-heptose 1 ,7-bisphosphate",Escherichia coli,2.18,X-RAY DIFFRACTION,prot,diffraction
+3LXF,METAL BINDING PROTEIN,2010-02-25,Crystal Structure of [2Fe-2S] Ferredoxin Arx from Novosphingobium aromaticivorans,Novosphingobium aromaticivorans,2.3,X-RAY DIFFRACTION,prot,diffraction
+3MIP,DE NOVO PROTEIN/DNA,2010-04-11,I-MsoI re-designed for altered DNA cleavage specificity (-8GCG),synthetic construct; SYNTHETIC CONSTRUCT,2.4,X-RAY DIFFRACTION,prot-nuc,diffraction
+3MNJ,PROTON TRANSPORT,2010-04-21,Human Carbonic Anhydrase II Mutant K170E,Homo sapiens,1.75,X-RAY DIFFRACTION,prot,diffraction
+3NBZ,GTP-binding protein/transport protein,2010-06-04,Crystal structure of the HIV-1 Rev NES-CRM1-RanGTP nuclear export complex (crystal I),Homo sapiens; Mus musculus,2.8,X-RAY DIFFRACTION,prot,diffraction
+3ORQ,"LIGASE,BIOSYNTHETIC PROTEIN",2010-09-07,Crystal Structure of N5-Carboxyaminoimidazole synthetase from Staphylococcus aureus complexed with ADP,Staphylococcus aureus subsp. aureus,2.23,X-RAY DIFFRACTION,prot,diffraction
+3P67,OXIDOREDUCTASE,2010-10-11,T26S mutant of pentaerythritol tetranitrate reductase containing a bound acetate molecule,Enterobacter cloacae,1.5,X-RAY DIFFRACTION,prot,diffraction
+3PCI,DIOXYGENASE,1997-07-02,"STRUCTURE OF PROTOCATECHUATE 3,4-DIOXYGENASE COMPLEXED WITH 3-IODO-4-HYDROXYBENZOATE",Pseudomonas putida,2.21,X-RAY DIFFRACTION,prot,diffraction
+3Q5D,HYDROLASE,2010-12-28,"crystal structure of human Atlastin-1 (residues 1-447) bound to GDP, crystal form 1",Homo sapiens,2.699,X-RAY DIFFRACTION,prot,diffraction
+3QHB,METAL TRANSPORT,2011-01-25,Crystal structure of oxidized Symerythrin from Cyanophora paradoxa,Cyanophora paradoxa,1.2,X-RAY DIFFRACTION,prot,diffraction
+3QLL,LYASE,2011-02-02,Crystal Structure of RipC from Yersinia pestis,Yersinia pestis,2.45,X-RAY DIFFRACTION,prot,diffraction
+3QQF,TRANSFERASE/TRANSFERASE INHIBITOR,2011-02-15,CDK2 in complex with inhibitor L1,Homo sapiens,1.75,X-RAY DIFFRACTION,prot,diffraction
+3QZR,HYDROLASE/HYDROLASE INHIBITOR,2011-03-07,Human enterovirus 71 3C protease mutant E71A in complex with rupintrivir,Human enterovirus 71,1.039,X-RAY DIFFRACTION,prot,diffraction
+3RHI,DNA BINDING PROTEIN,2011-04-11,DNA-binding protein HU from Bacillus anthracis,Bacillus anthracis,2.48,X-RAY DIFFRACTION,prot,diffraction
+3SW1,SIGNALING PROTEIN,2011-07-13,Structure of a full-length bacterial LOV protein,Pseudomonas putida,2.63,X-RAY DIFFRACTION,prot,diffraction
+3T9X,TRANSPORT PROTEIN,2011-08-03,Glutamate bound to a double cysteine mutant (V484C/E657C) of the ligand binding domain of GluA2,Rattus norvegicus,1.823,X-RAY DIFFRACTION,prot,diffraction
+3TAB,Transferase/DNA,2011-08-03,5-hydroxycytosine paired with dGMP in RB69 gp43,Enterobacteria phage RB69; SYNTHETIC CONSTRUCT,2.8,X-RAY DIFFRACTION,prot-nuc,diffraction
+3UXW,DNA/PEPTIDE,2011-12-05,Crystal Structures of an A-T-hook/DNA complex,,2.27,X-RAY DIFFRACTION,prot-nuc,diffraction
+3VF4,TRANSFERASE,2012-01-09,Crystal structure of the O-carbamoyltransferase TobZ S530A variant in complex with carbamoyl phosphate and ADP,Streptoalloteichus tenebrarius,2.4,X-RAY DIFFRACTION,prot,diffraction
+3VIH,HYDROLASE,2011-10-03,Crystal structure of beta-glucosidase from termite Neotermes koshunensis in complex with glycerol,Neotermes koshunensis,1.03,X-RAY DIFFRACTION,prot,diffraction
+3VNL,ISOMERASE,2012-01-16,Crystal structures of D-Psicose 3-epimerase with D-tagatose from Clostridium cellulolyticum H10,Clostridium cellulolyticum,2.15,X-RAY DIFFRACTION,prot,diffraction
+3VNS,LIGASE,2012-01-17,Co-crystal structure of NRPS adenylation protein CytC1 with D-valine and AMP from streptomyces,Streptomyces sp.,2.001,X-RAY DIFFRACTION,prot,diffraction
+3VRK,HYDROLASE,2012-04-11,Crystal Structutre of Thiobacillus thioparus THI115 Carbonyl Sulfide Hydrolase / Thiocyanate complex,Thiobacillus thioparus,1.33,X-RAY DIFFRACTION,prot,diffraction
+3VU2,TRANSFERASE,2012-06-14,Structure of the Starch Branching Enzyme I (BEI) complexed with maltopentaose from Oryza sativa L,Oryza sativa Japonica Group,2.23,X-RAY DIFFRACTION,prot,diffraction
+3W3O,OXIDOREDUCTASE/OXIDOREDUCTASE INHIBITOR,2012-12-27,Structure of Trypanosoma cruzi dihydroorotate dehydrogenase in complex with MII-4-053,Trypanosoma cruzi,1.96,X-RAY DIFFRACTION,prot,diffraction
+3W3S,LIGASE/RNA,2012-12-27,Crystal structure of A. aeolicus tRNASec in complex with M. kandleri SerRS,Methanopyrus kandleri; SYNTHETIC CONSTRUCT,3.095,X-RAY DIFFRACTION,prot-nuc,diffraction
+3WOH,OXIDOREDUCTASE,2013-12-29,Structure of Ketoreductase SiaM from Streptomyces sp. A7248,Streptomyces,2.5,X-RAY DIFFRACTION,prot,diffraction
+3ZMP,HYDROLASE/PEPTIDE,2013-02-12,Src-derived peptide inhibitor complex of PTP1B,HOMO SAPIENS; SYNTHETIC CONSTRUCT,2.619,X-RAY DIFFRACTION,prot,diffraction
+437D,RNA,1998-11-24,CRYSTAL STRUCTURE OF AN RNA PSEUDOKNOT FROM BEET WESTERN YELLOW VIRUS INVOLVED IN RIBOSOMAL FRAMESHIFTING,,1.6,X-RAY DIFFRACTION,nuc,diffraction
+4AA0,TRANSFERASE,2011-11-30,P38ALPHA MAP KINASE BOUND TO CMPD 2,HOMO SAPIENS,1.8,X-RAY DIFFRACTION,prot,diffraction
+4ADY,PROTEIN BINDING,2012-01-04,Crystal structure of 26S proteasome subunit Rpn2,SACCHAROMYCES CEREVISIAE,2.7,X-RAY DIFFRACTION,prot,diffraction
+4ASS,STRUCTURAL PROTEIN/DNA,2012-05-02,TubR bound to tubC - 26 bp - from Bacillus thuringiensis serovar israelensis pBtoxis,BACILLUS THURINGIENSIS; SYNTHETIC CONSTRUCT,7.0,X-RAY DIFFRACTION,prot-nuc,diffraction
+4BF8,ISOMERASE,2013-03-15,Fpr4 PPI domain,SACCHAROMYCES CEREVISIAE,,SOLUTION NMR,prot,NMR
+4BKR,OXIDOREDUCTASE,2013-04-29,"Enoyl-ACP reductase from Yersinia pestis (wildtype, removed Histag) with cofactor NADH",YERSINIA PESTIS,1.798,X-RAY DIFFRACTION,prot,diffraction
+4BX3,HYDROLASE,2013-07-08,Crystal Structure of murine Chronophin (Pyridoxal Phosphate Phosphatase),MUS MUSCULUS,2.193,X-RAY DIFFRACTION,prot,diffraction
+4C3G,HYDROLASE,2013-08-23,cryo-EM structure of activated and oligomeric restriction endonuclease SgrAI,STREPTOMYCES GRISEUS; SYNTHETIC CONSTRUCT,8.6,ELECTRON MICROSCOPY,prot-nuc,EM
+4D5V,HYDROLASE,2014-11-07,Hypocrea jecorina cellobiohydrolase Cel7A E217Q soaked with xylotetraose.,HYPOCREA JECORINA,1.62,X-RAY DIFFRACTION,prot,diffraction
+4DPH,"OXIDOREDUCTASE, TRANSFERASE",2012-02-13,Quadruple mutant (N51I+C59R+S108N+I164L) Plasmodium falciparum dihydrofolate reductase-thymidylate synthase (PfDHFR-TS) complexed with P65 and NADPH,Plasmodium falciparum,2.38,X-RAY DIFFRACTION,prot,diffraction
+4EHV,Transferase/Transferase inhibitor,2012-04-04,Human p38 MAP kinase in complex with NP-F10 and RL87,Homo sapiens,1.6,X-RAY DIFFRACTION,prot,diffraction
+4FJO,TRANSFERASE/DNA BINDING PROTEIN,2012-06-11,Structure of the Rev1 CTD-Rev3/7-Pol kappa RIR complex,Mus musculus,2.718,X-RAY DIFFRACTION,prot,diffraction
+4FS4,HYDROLASE/HYDROLASE INHIBITOR,2012-06-26,"Structure of BACE Bound to (S)-4-(3'-methoxy-[1,1'-biphenyl]-3-yl)-1,4-dimethyl-6-oxotetrahydropyrimidin-2(1H)-iminium",Homo sapiens,1.74,X-RAY DIFFRACTION,prot,diffraction
+4GTO,TRANSFERASE/TRANSFERASE INHIBITOR,2012-08-29,FTase in complex with BMS analogue 14,Rattus norvegicus,2.15,X-RAY DIFFRACTION,prot,diffraction
+4HAK,METAL BINDING PROTEIN,2012-09-26,Multicopper Oxidase CueO mutant E506A,Escherichia coli,1.4,X-RAY DIFFRACTION,prot,diffraction
+4HDI,IMMUNE SYSTEM,2012-10-02,Crystal Structure of 3E5 IgG3 FAB from mus musculus,Mus musculus,2.449,X-RAY DIFFRACTION,prot,diffraction
+4HVJ,UNKNOWN FUNCTION,2012-11-06,Crystal structure of a putative uncharacterized protein from Mycobacterium tuberculosis in complex with AMP,Mycobacterium tuberculosis,2.1,X-RAY DIFFRACTION,prot,diffraction
+4HX0,TRANSFERASE,2012-11-09,Crystal structure of a putative nucleotidyltransferase (TM1012) from Thermotoga maritima at 1.87 A resolution,Thermotoga maritima,1.87,X-RAY DIFFRACTION,prot,diffraction
+4ILF,ISOMERASE,2012-12-31,Crystal structure of DsbC R125A from Salmonella enterica serovar Typhimurium,Salmonella typhimurium,1.999,X-RAY DIFFRACTION,prot,diffraction
+4IP5,ISOMERASE,2013-01-09,Crystal structure of l-fuconate dehydratase from Silicibacter sp. tm1040 liganded with Mg and d-erythronohydroxamate,Ruegeria sp. TM1040,2.13,X-RAY DIFFRACTION,prot,diffraction
+4J19,Transcription/DNA,2013-02-01,Structure of a novel telomere repeat binding protein bound to DNA,Homo sapiens; SYNTHETIC CONSTRUCT,2.9,X-RAY DIFFRACTION,prot-nuc,diffraction
+4JAC,OXIDOREDUCTASE,2013-02-18,Dehaloperoxidase-Hemoglobin T56S,Amphitrite ornata,1.934,X-RAY DIFFRACTION,prot,diffraction
+4K4E,Transferase/Transferase Inhibitor,2013-04-12,"Co-crystal structure of tnks1 with compound 52 [N~2-(5-chloro-2-methoxyphenyl)-N-[trans-4-(2-oxo-2,3-dihydro-1H-benzimidazol-1-yl)cyclohexyl]glycinamide]",Homo sapiens,2.3,X-RAY DIFFRACTION,prot,diffraction
+4L5U,LYASE,2013-06-11,The structural implications of the secondary CO2 binding pocket in human carbonic anhydrase II,Homo sapiens,2.05,X-RAY DIFFRACTION,prot,diffraction
+4LW7,Lyase/Lyase Inhibitor,2013-07-26,Crystal structure of the mutant H128S of orotidine 5'-monophosphate decarboxylase from Methanobacterium thermoautotrophicum complexed with the inhibitor BMP,Methanothermobacter thermautotrophicus,1.423,X-RAY DIFFRACTION,prot,diffraction
+4NEA,OXIDOREDUCTASE,2013-10-28,1.90 Angstrom resolution crystal structure of betaine aldehyde dehydrogenase (betB) from Staphylococcus aureus in complex with NAD+ and BME-free Cys289,Staphylococcus aureus subsp. aureus,1.9,X-RAY DIFFRACTION,prot,diffraction
+4NHK,Oxidoreductase/Oxidoreductase inhibitor,2013-11-05,"Crystal structure of Tpa1p from Saccharomyces cerevisiae, termination and polyadenylation protein 1, in complex with pyridine-2,4-dicarboxylic acid (2,4-PDCA)",Saccharomyces cerevisiae,1.9,X-RAY DIFFRACTION,prot,diffraction
+4NMR,protein transport/inhibitor,2013-11-15,CFTR Associated Ligand (CAL) PDZ domain bound to peptide iCAL36(Ac-K-5) (ANSR[Ac-K]PTSII),Homo sapiens; SYNTHETIC CONSTRUCT,1.55,X-RAY DIFFRACTION,prot,diffraction
+4NRU,VIRAL PROTEIN/TRANSCRIPTION INHIBITOR,2013-11-27,"Murine Norovirus RNA-dependent-RNA-polymerase in complex with Compound 6, a suramin derivative",Murine norovirus 1,2.3,X-RAY DIFFRACTION,prot,diffraction
+4O93,MEMBRANE PROTEIN,2013-12-31,Crystal structure of Thermus thermophilis transhydrogeanse domain II dimer,Thermus thermophilus,2.77,X-RAY DIFFRACTION,prot,diffraction
+4OB0,LYASE,2014-01-06,Crystal Structure of Nitrile Hydratase from Pseudonocardia thermophila bound to Phenyl Boronic Acid,Pseudonocardia thermophila,1.2,X-RAY DIFFRACTION,prot,diffraction
+4OFD,CELL ADHESION,2014-01-14,Crystal Structure of mouse Neph1 D1-D2,Mus musculus,3.94,X-RAY DIFFRACTION,prot,diffraction
+4PIG,PROTEIN BINDING,2014-05-08,Crystal structure of the ubiquitin K11S mutant,Homo sapiens,1.952,X-RAY DIFFRACTION,prot,diffraction
+4QPT,RNA BINDING PROTEIN,2014-06-25,Structural Investigation of hnRNP L,Rattus norvegicus,1.351,X-RAY DIFFRACTION,prot,diffraction
+4R7B,TRANSFERASE,2014-08-27,Crystal structure of pneumococcal LicA in complex with choline,Streptococcus pneumoniae,2.01,X-RAY DIFFRACTION,prot,diffraction
+4RB3,METAL BINDING PROTEIN/DNA,2014-09-12,Crystal structure of Magnetospirillum gryphiswaldense MSR-1 Fur-Mn2+-feoAB1 operator,Magnetospirillum gryphiswaldense; SYNTHETIC CONSTRUCT,2.6,X-RAY DIFFRACTION,prot-nuc,diffraction
+4RFS,"HYDROLASE, TRANSPORT PROTEIN",2014-09-27,Structure of a pantothenate energy coupling factor transporter,Lactobacillus brevis,3.232,X-RAY DIFFRACTION,prot,diffraction
+4S2X,hydrolase/RNA,2015-01-23,Structure of E. coli RppH bound to RNA and two magnesium ions,Escherichia coli; SYNTHETIC CONSTRUCT,1.5,X-RAY DIFFRACTION,prot-nuc,diffraction
+4TRN,OXIDOREDUCTASE,2014-06-17,STRUCTURE OF INHA FROM MYCOBACTERIUM TUBERCULOSIS COMPLEXED TO NADH,Mycobacterium tuberculosis,1.95,X-RAY DIFFRACTION,prot,diffraction
+4UH4,OXIDOREDUCTASE,2015-03-23,Structure of rat neuronal nitric oxide synthase heme domain in complex with 3-(2-(6-Amino-4-methylpyridin-2-yl)ethyl)-5-(methyl(2-(methylamino)ethyl)amino)benzonitrile,RATTUS NORVEGICUS,1.95,X-RAY DIFFRACTION,prot,diffraction
+4UNQ,TRANSFERASE,2014-05-30,Mtb TMK in complex with compound 36,MYCOBACTERIUM TUBERCULOSIS,2.3,X-RAY DIFFRACTION,prot,diffraction
+4V04,TRANSFERASE,2014-09-10,FGFR1 in complex with ponatinib.,HOMO SAPIENS,2.12,X-RAY DIFFRACTION,prot,diffraction
+4V89,RIBOSOME,2011-11-17,Crystal Structure of Release Factor RF3 Trapped in the GTP State on a Rotated Conformation of the Ribosome (without viomycin),Escherichia coli; SYNTHETIC CONSTRUCT,3.7,X-RAY DIFFRACTION,prot-nuc,diffraction
+4W6T,FLUORESCENT PROTEIN,2014-08-20,"Crystal Structure of Full-Length Split GFP Mutant E115H/T118H With Copper Mediated Crystal Contacts, P 43 21 2 Space Group",synthetic construct,1.604,X-RAY DIFFRACTION,prot,diffraction
+4W6X,CELL ADHESION,2014-08-21,Co-complex structure of the lectin domain of F18 fimbrial adhesin FedF with inhibitory nanobody NbFedF7,Escherichia coli; Lama glama,1.88,X-RAY DIFFRACTION,prot,diffraction
+4W9A,STRUCTURAL PROTEIN,2014-08-27,Crystal structure of Gamma-B Crystallin expressed in E. coli based on mRNA variant 2,Bos taurus,1.38,X-RAY DIFFRACTION,prot,diffraction
+4WLA,SIGNALING PROTEIN,2014-10-06,Time Resolved Serial Femtosecond Crystallography Captures High Resolution Intermediates of PYP,Halorhodospira halophila,1.6,X-RAY DIFFRACTION,prot,diffraction
+4X1W,VIRAL PROTEIN,2014-11-25,Crystal structure of unbound RHDVb P domain,Rabbit hemorrhagic disease virus,1.95,X-RAY DIFFRACTION,prot,diffraction
+4XLH,VIRAL PROTEIN,2015-01-13,Tailspike protein double mutant D339A/E372A of E. coli bacteriophage HK620,Enterobacteria phage HK620,1.91,X-RAY DIFFRACTION,prot,diffraction
+4Y9L,OXIDOREDUCTASE,2015-02-17,Crystal Structure of Caenorhabditis elegans ACDH-11,Caenorhabditis elegans,2.27,X-RAY DIFFRACTION,prot,diffraction
+4YHT,Transferase/Transferase Inhibitor,2015-02-27,bRaf complexed with an inhibitor,Homo sapiens,3.05,X-RAY DIFFRACTION,prot,diffraction
+4YKZ,CHAPERONE/Inhibitor,2015-03-04,Heat Shock Protein 90 Bound to CS320,Homo sapiens,1.85,X-RAY DIFFRACTION,prot,diffraction
+4Z8J,PROTEIN TRANSPORT,2015-04-09,Crystal structure of the SNX27 PDZ domain bound to the C-terminal PTHR PDZ binding motif,Rattus norvegicus; SYNTHETIC CONSTRUCT,0.95,X-RAY DIFFRACTION,prot,diffraction
+4ZAF,LYASE,2015-04-13,Structure of UbiX in complex with oxidised FMN and dimethylallyl monophosphate,Pseudomonas aeruginosa,1.71,X-RAY DIFFRACTION,prot,diffraction
+4ZLC,RNA BINDING PROTEIN,2015-05-01,Crystal structure of the ROQ domain of human Roquin-2,Homo sapiens,2.7,X-RAY DIFFRACTION,prot,diffraction
+4ZXK,SUGAR BINDING PROTEIN,2015-05-20,Carbohydrate binding domain from Streptococcus pneumoniae NanA sialidase,Streptococcus pneumoniae,1.84,X-RAY DIFFRACTION,prot,diffraction
+5AHR,HYDROLASE,2015-02-06,"Crystal structure of human DNA cross-link repair 1A, crystal form B",HOMO SAPIENS,2.19,X-RAY DIFFRACTION,prot,diffraction
+5BZN,PROTEIN BINDING,2015-06-11,Crystal structure of the murine cd44 hyaluronan binding domain complex with a small molecule,Mus musculus,1.23,X-RAY DIFFRACTION,prot,diffraction
+5C01,TRANSFERASE,2015-06-12,Crystal Structure of kinase,Homo sapiens,2.15,X-RAY DIFFRACTION,prot,diffraction
+5C8H,REPLICATION,2015-06-25,Crystal structure of ORC2 C-terminal domain,Homo sapiens,2.01,X-RAY DIFFRACTION,prot,diffraction
+5CJO,HYDROLASE/HYDROLASE INHIBITOR,2015-07-14,Crystal Structure Analysis of Elbow-Engineered-Fab-Bound Human Insulin Degrading Enzyme (IDE) in Complex with Insulin,Homo sapiens; Mus musculus; SYNTHETIC CONSTRUCT,3.287,X-RAY DIFFRACTION,prot,diffraction
+5CRM,SIGNALING PROTEIN/INHIBITOR,2015-07-23,Crystal Structure of the first bromodomain of human BRD4 in complex with benzo[cd]indol-2(1H)-one ligand,Homo sapiens,1.99,X-RAY DIFFRACTION,prot,diffraction
+5DNF,CYTOKINE,2015-09-10,Crystal structure of CC chemokine 5 (CCL5) oligomer in complex with heparin,Homo sapiens,2.549,X-RAY DIFFRACTION,prot,diffraction
+5E1H,TOXIN/IMMUNE SYSTEM,2015-09-29,Ricin toxin in complex with neutralizing single chain monoclonal antibodies (VHHs),Ricinus communis; Vicugna pacos,2.032,X-RAY DIFFRACTION,prot,diffraction
+5EB4,LYASE,2015-10-17,"The crystal structure of almond HNL, PaHNL5 V317A, expressed in Aspergillus niger",Prunus dulcis,2.3,X-RAY DIFFRACTION,prot,diffraction
+5EE8,HYDROLASE/HYDROLASE INHIBITOR,2015-10-22,Crystal structure of S02030 boronic acid inhibitor complexed to SHV-1 beta-lactamase,Klebsiella pneumoniae,1.54,X-RAY DIFFRACTION,prot,diffraction
+5EJB,VIRAL PROTEIN,2015-11-01,Crystal structure of prefusion Hendra virus F protein,Hendra virus,3.2,X-RAY DIFFRACTION,prot,diffraction
+5EUO,IMMUNE SYSTEM,2015-11-18,PF6-M1-HLA-A2,Homo sapiens; SYNTHETIC CONSTRUCT,2.1,X-RAY DIFFRACTION,prot,diffraction
+5FOH,OXIDOREDUCTASE,2015-11-18,Crystal structure of the catalytic domain of NcLPMO9A,NEUROSPORA CRASSA,1.6,X-RAY DIFFRACTION,prot,diffraction
+5FZB,OXIDOREDUCTASE,2016-03-12,"Crystal structure of the catalytic domain of human JARID1B in complex with Maybridge fragment 4-Pyridylthiourea (N06275b) (ligand modelled based on PANDDA event map, SGC - Diamond I04-1 fragment screening)",HOMO SAPIENS,2.18,X-RAY DIFFRACTION,prot,diffraction
+5G10,HYDROLASE,2016-03-23,"Pseudomonas aeruginosa HDAH bound to 9,9,9 trifluoro-8,8-dihydroy-N-phenylnonanamide",PSEUDOMONAS AERUGINOSA,1.71,X-RAY DIFFRACTION,prot,diffraction
+5GIS,IMMUNE SYSTEM,2016-06-24,Crystal structure of a Fab fragment with its ligand peptide,Mus musculus; SYNTHETIC CONSTRUCT,1.93,X-RAY DIFFRACTION,prot,diffraction
+5HME,HYDROLASE,2016-01-16,Crystal structure of Triazine Hydrolase variant (P214T/Y215H),Arthrobacter aurescens,2.151,X-RAY DIFFRACTION,prot,diffraction
+5HSR,oxidoreductase/oxidoreductase inhibitor,2016-01-26,"Fluorine substituted 5-methyl-6-(3',4'-difluoromethoxyphenythio)thieno[2,3-d]pyrimidine-2,4-diamine",Homo sapiens,1.21,X-RAY DIFFRACTION,prot,diffraction
+5I3K,ISOMERASE,2016-02-10,Structure-Function Studies on Role of Hydrophobic Clamping of a Basic Glutamate in Catalysis by Triosephosphate Isomerase,Trypanosoma brucei brucei,2.209,X-RAY DIFFRACTION,prot,diffraction
+5I6X,MEMBRANE PROTEIN,2016-02-16,X-ray structure of the ts3 human serotonin transporter complexed with paroxetine at the central site,Homo sapiens; Mus musculus,3.14,X-RAY DIFFRACTION,prot,diffraction
+5IOY,TRANSCRIPTION,2016-03-09,Structure of Transcriptional Regulatory Repressor Protein - EthR from Mycobacterium Tuberculosis in complex with N-(cyclopentylmethyl)pyrrolidine-1-carboxamide at 1.77A resolution,Mycobacterium tuberculosis (strain ATCC 25177 / H37Ra),1.77,X-RAY DIFFRACTION,prot,diffraction
+5J6V,ANTIMICROBIAL PROTEIN,2016-04-05,NMR structures of hylin-a1 analogs: Hylin-D,,,SOLUTION NMR,prot,NMR
+5JQE,HYDROLASE,2016-05-04,Crystal structure of caspase8 tDED,"Escherichia coli, Homo sapiens",3.157,X-RAY DIFFRACTION,prot,diffraction
+5KQH,OXIDOREDUCTASE,2016-07-06,Crystal structure of the V293D variant of catalase-peroxidase from B. pseudomallei,Burkholderia pseudomallei (strain 1710b),1.82,X-RAY DIFFRACTION,prot,diffraction
+5KRJ,TRANSCRIPTION,2016-07-07,Crystal Structure of the ER-alpha Ligand-binding Domain (Y537S) in Complex with an a-naphthyl Substituted OBHS derivative,Homo sapiens; SYNTHETIC CONSTRUCT,2.7,X-RAY DIFFRACTION,prot,diffraction
+5KV4,ISOMERASE,2016-07-13,"Human cyclophilin A at 278K, Data set 6",Homo sapiens,1.7,X-RAY DIFFRACTION,prot,diffraction
+5KWK,CELL ADHESION,2016-07-18,The structure of Arabidopsis thaliana FUT1 in complex with GDP,Arabidopsis thaliana,1.9,X-RAY DIFFRACTION,prot,diffraction
+5LYX,HYDROLASE,2016-09-29,"CRYSTAL STRUCTURE OF HUMAN METHIONINE AMINOPEPTIDASE-2 IN COMPLEX; WITH AN INHIBITOR 5-((R)-1-[1,2,4]Triazolo[1,5-a]pyrimidin-7-yl-pyrrolidin-2-ylmethoxy)-isoquinoline",Homo sapiens,1.9,X-RAY DIFFRACTION,prot,diffraction
+5MR7,TRANSCRIPTION,2016-12-21,Crystal structure of the DBD domain of human Grhl2,Homo sapiens,2.5,X-RAY DIFFRACTION,prot,diffraction
+5MS9,STRUCTURAL PROTEIN,2017-01-01,Solution structure of Human Fibrillin-1 EGF2-EGF3-Hybrid1-cbEGF1 four domain fragment,Homo sapiens,,SOLUTION NMR,prot,NMR
+5MVR,TRANSFERASE,2017-01-17,Crystal structure of Bacillus subtilus YdiB,Bacillus subtilis,1.762,X-RAY DIFFRACTION,prot,diffraction
+5N41,Polymerase-binding protein,2017-02-09,Archaeal DNA polymerase holoenzyme - SSO6202 at 1.35 Ang resolution,Sulfolobus solfataricus,1.351,X-RAY DIFFRACTION,prot,diffraction
+5NCG,CELL ADHESION,2017-03-04,ENAH EVH1 in complex with Ac-[2-Cl-F]-[ProM-2]-[ProM-9]-OH,Homo sapiens,1.02,X-RAY DIFFRACTION,prot,diffraction
+5NV8,TRANSFERASE,2017-05-03,Structural basis for EarP-mediated arginine glycosylation of translation elongation factor EF-P,Pseudomonas putida KT2440,2.294,X-RAY DIFFRACTION,prot,diffraction
+5NYW,UNKNOWN FUNCTION,2017-05-12,Anbu (ancestral beta-subunit) from Yersinia bercovieri,Yersinia bercovieri,2.501,X-RAY DIFFRACTION,prot,diffraction
+5OG5,OXIDOREDUCTASE,2017-07-11,Cu nitrite reductase serial data at varying temperatures RT 0.21MGy,Achromobacter cycloclastes,1.82,X-RAY DIFFRACTION,prot,diffraction
+5OP6,OXIDOREDUCTASE,2017-08-09,Factor Inhibiting HIF (FIH) in complex with zinc and GSK128863,Homo sapiens,2.45,X-RAY DIFFRACTION,prot,diffraction
+5OYS,HYDROLASE,2016-06-28,Automated refinement of diffraction data obtained from an endothiapepsin crystal treated with fragment 3,Cryphonectria parasitica,1.649,X-RAY DIFFRACTION,prot,diffraction
+5P6D,HYDROLASE,2016-06-28,Automated refinement of diffraction data obtained from an endothiapepsin crystal treated with fragment 274,Cryphonectria parasitica,1.439,X-RAY DIFFRACTION,prot,diffraction
+5PA9,HYDROLASE/HYDROLASE INHIBITOR,2016-11-10,Crystal Structure of Factor VIIa in complex with phenylmethanamine;hydrochloride,Homo sapiens,1.55,X-RAY DIFFRACTION,prot,diffraction
+5PI5,OXIDOREDUCTASE,2017-02-07,PanDDA analysis group deposition -- Crystal Structure of JMJD2D after initial refinement with no ligand modelled (structure 18),Homo sapiens,1.42,X-RAY DIFFRACTION,prot,diffraction
+5PW5,GENE REGULATION,2017-02-07,PanDDA analysis group deposition -- Crystal Structure of BRD1 after initial refinement with no ligand modelled (structure 256),Homo sapiens,2.09,X-RAY DIFFRACTION,prot,diffraction
+5QHN,PROTEIN BINDING,2018-05-18,PanDDA analysis group deposition of models with modelled events (e.g. bound ligands) -- Crystal Structure of human FAM83B in complex with FMOPL000622a,Homo sapiens,1.73,X-RAY DIFFRACTION,prot,diffraction
+5QMI,OXIDOREDUCTASE,2019-01-27,Group deposition of library data - Crystal Structure of EcDsbA after initial refinement with no ligand modelled (structure F12_2),Escherichia coli K-12,1.671,X-RAY DIFFRACTION,prot,diffraction
+5QTQ,HYDROLASE,2019-08-14,PanDDA analysis group deposition -- Crystal Structure of NUDT5 in complex with FS-1169,Homo sapiens,1.82,X-RAY DIFFRACTION,prot,diffraction
+5RJL,PROTEIN BINDING,2020-06-02,PanDDA analysis group deposition -- Crystal Structure of PHIP in complex with NCL-00024662,Homo sapiens,1.31,X-RAY DIFFRACTION,prot,diffraction
+5RX4,HYDROLASE,2020-10-30,INPP5D PanDDA analysis group deposition -- Crystal Structure of the phosphatase and C2 domains of SHIP1 in complex with Z1593306637,Homo sapiens,1.35,X-RAY DIFFRACTION,prot,diffraction
+5RZ5,CELL ADHESION,2020-10-30,EPB41L3 PanDDA analysis group deposition -- Crystal Structure of the FERM domain of human EPB41L3 in complex with Z2856434851,Homo sapiens,1.63,X-RAY DIFFRACTION,prot,diffraction
+5SKP,HYDROLASE/HYDROLASE inhibitor,2022-02-01,"CRYSTAL STRUCTURE OF HUMAN PHOSPHODIESTERASE 10 IN COMPLEX WITH c14c(cc(s1)C(N2CCN(CC2)c3c(OC)cccc3)=O)c(nn4c5ccccc5)C, micromolar IC50=0.229",Homo sapiens,2.0,X-RAY DIFFRACTION,prot,diffraction
+5SM6,HYDROLASE/HYDROLASE INHIBITOR,2022-03-03,PanDDA analysis group deposition -- Crystal Structure of SARS-CoV-2 NSP14 in complex with Z1899842917,Severe acute respiratory syndrome coronavirus 2,2.29,X-RAY DIFFRACTION,prot,diffraction
+5T3D,BIOSYNTHETIC PROTEIN,2016-08-25,Crystal structure of holo-EntF a nonribosomal peptide synthetase in the thioester-forming conformation,Escherichia coli (strain K12),2.8,X-RAY DIFFRACTION,prot,diffraction
+5TN7,TRANSCRIPTION,2016-10-13,"Crystal Structure of the ER-alpha Ligand-binding Domain (Y537S) in Complex with (E)-3'-fluoro-4'-hydroxy-3-((hydroxyiminio)methyl)-[1,1'-biphenyl]-4-olate",Homo sapiens; SYNTHETIC CONSTRUCT,2.238,X-RAY DIFFRACTION,prot,diffraction
+5U1S,HYDROLASE,2016-11-29,Crystal structure of the Saccharomyces cerevisiae separase-securin complex at 3.0 angstrom resolution,Saccharomyces cerevisiae; Saccharomyces cerevisiae (strain ATCC 204508 / S288c),3.002,X-RAY DIFFRACTION,prot,diffraction
+5U57,OXIDOREDUCTASE,2016-12-06,Psf4 in complex with Fe2+ and (S)-2-HPP,Pseudomonas syringae,2.73,X-RAY DIFFRACTION,prot,diffraction
+5U5B,DE NOVO PROTEIN,2016-12-06,Coiled Coil Peptide Metal Coordination Framework: Trimer Fold,,2.4,X-RAY DIFFRACTION,prot,diffraction
+5URX,PROTEIN TRANSPORT,2017-02-13,Structure of the contracted type VI secretion system sheath in Myxococcus xanthus,Myxococcus xanthus,28.0,ELECTRON MICROSCOPY,prot,EM
+5UX1,LYASE,2017-02-21,Protein 43 with aldehyde deformylating oxygenase activity from Synechococcus,Synechococcus sp. (strain CC9605),1.5,X-RAY DIFFRACTION,prot,diffraction
+5VAK,SIGNALING PROTEIN,2017-03-27,"Crystal Structure of Beta-Klotho, Domain 1",Homo sapiens; Lama glama,1.7,X-RAY DIFFRACTION,prot,diffraction
+5W6B,HYDROLASE,2017-06-16,Phosphotriesterase variant S1,Brevundimonas diminuta,1.739,X-RAY DIFFRACTION,prot,diffraction
+5W8C,BIOSYNTHETIC PROTEIN,2017-06-21,"The structure of a COA-dependent acyl-homoserine lactone synthase, BjaI, with MTA and isovaleryl-CoA",Bradyrhizobium japonicum,1.85,X-RAY DIFFRACTION,prot,diffraction
+5WDK,HYDROLASE,2017-07-05,A processive dipeptidyl aminopeptidase secreted from an established commensal bacterium P. distasonis,Parabacteroides distasonis (strain ATCC 8503 / DSM 20701 / CIP 104284 / JCM 5825 / NCTC 11152),2.36,X-RAY DIFFRACTION,prot,diffraction
+5WUQ,METAL BINDING PROTEIN,2016-12-20,"Crystal structure of SigW in complex with its anti-sigma RsiW, a zinc binding form",Bacillus subtilis subsp. subtilis str. 168,2.8,X-RAY DIFFRACTION,prot,diffraction
+5X45,VIRAL PROTEIN,2017-02-10,Crystal structure of 2A protease from Human rhinovirus C15,Rhinovirus C,2.602,X-RAY DIFFRACTION,prot,diffraction
+5X9Z,METAL TRANSPORT,2017-03-10,"Crystal structure of inositol 1,4,5-trisphosphate receptor large cytosolic domain",Mus musculus,7.311,X-RAY DIFFRACTION,prot,diffraction
+5XSS,SUGAR BINDING PROTEIN,2017-06-15,XylFII molecule,Clostridium beijerinckii (strain ATCC 51743 / NCIMB 8052),2.093,X-RAY DIFFRACTION,prot,diffraction
+5XV9,RNA BINDING PROTEIN,2017-06-27,Solution Structure of Cold Shock Protein from Colwellia psychrerythraea,Colwellia psychrerythraea (strain 34H / ATCC BAA-681),,SOLUTION NMR,prot,NMR
+5ZGH,PHOTOSYNTHESIS,2018-03-09,Cryo-EM structure of the red algal PSI-LHCR,Cyanidioschyzon merolae (strain 10D),3.82,ELECTRON MICROSCOPY,prot,EM
+5ZIZ,STRUCTURAL PROTEIN,2018-03-18,Crystal structure of Xanthomonas campestris FlgL (space group H3),Xanthomonas campestris,2.2,X-RAY DIFFRACTION,prot,diffraction
+6A13,FLAVOPROTEIN,2018-06-06,Mandelate oxidase mutant-Y128F,Amycolatopsis orientalis,1.7,X-RAY DIFFRACTION,prot,diffraction
+6A88,TRANSLATION,2018-07-06,Crystal Structure of T. gondii prolyl tRNA synthetase with Febrifugine and ATP Analog,Toxoplasma gondii ME49,2.596,X-RAY DIFFRACTION,prot,diffraction
+6B4S,ALLERGEN,2017-09-27,Crystal Structure of Brazil nut (Bertholletia excelsa) allergen Ber e 2,Bertholletia excelsa,2.035,X-RAY DIFFRACTION,prot,diffraction
+6BA6,CELL ADHESION,2017-10-12,Solution structure of Rap1b/talin complex,Homo sapiens; Mus musculus,,SOLUTION NMR,prot,NMR
+6BIO,HYDROLASE,2017-11-02,Structure of NlpC1 from Trichomonas vaginalis,Trichomonas vaginalis,1.2,X-RAY DIFFRACTION,prot,diffraction
+6CQQ,IMMUNE SYSTEM,2018-03-16,Crystal structure of F24 TCR -DR15-RQ13 peptide complex,Homo sapiens; SYNTHETIC CONSTRUCT,2.8,X-RAY DIFFRACTION,prot,diffraction
+6D35,MEMBRANE PROTEIN,2018-04-14,Crystal structure of Xenopus Smoothened in complex with cholesterol,Escherichia coli; Xenopus laevis,3.9,X-RAY DIFFRACTION,prot,diffraction
+6D6V,REPLICATION,2018-04-22,CryoEM structure of Tetrahymena telomerase with telomeric DNA at 4.8 Angstrom resolution,Tetrahymena thermophila; SYNTHETIC CONSTRUCT,4.8,ELECTRON MICROSCOPY,prot-nuc,EM
+6D8I,BIOSYNTHETIC PROTEIN,2018-04-26,Mycobacterium tuberculosis polyketide synthase 13 N-terminal acyl carrier protein domain,Mycobacterium tuberculosis,1.65,X-RAY DIFFRACTION,prot,diffraction
+6DFO,CHAPERONE,2018-05-15,Crystal structure of human GRP78 in complex with 8-bromoadenosine,Homo sapiens,2.54,X-RAY DIFFRACTION,prot,diffraction
+6DI6,REPLICATION,2018-05-22,Crystal structure of eukaryotic DNA primase large subunit iron-sulfur cluster domain,Saccharomyces cerevisiae JAY291,1.39,X-RAY DIFFRACTION,prot,diffraction
+6DKZ,PLANT PROTEIN,2018-05-31,"Racemic structure of ribifolin, an orbitide from Jatropha ribifolia",,0.99,X-RAY DIFFRACTION,prot,diffraction
+6ECZ,LYASE/LYAS INHIBITOR,2018-08-08,Bioreductive 4-hydroxy-3-nitro-5-ureido-benzenesulfonamides selectively target the tumor-associated carbonic anhydrase isoforms IX and XII and show hypoxia-enhanced cytotoxicity against human cancer cell lines.,Homo sapiens,2.21,X-RAY DIFFRACTION,prot,diffraction
+6EMW,CHAPERONE,2017-10-03,Structure of S.aureus ClpC in complex with MecA,Staphylococcus aureus; Staphylococcus aureus (strain bovine RF122 / ET3-1),11.0,ELECTRON MICROSCOPY,prot,EM
+6F03,IMMUNE SYSTEM,2017-11-17,The crystal structure of secreted antigen BPSL2520,Burkholderia pseudomallei K96243,2.2,X-RAY DIFFRACTION,prot,diffraction
+6G88,ANTIBIOTIC,2018-04-08,Crystal structure of Enterococcus Faecium D63r Penicillin-Binding protein 5 (PBP5fm),Enterococcus faecium,3.3,X-RAY DIFFRACTION,prot,diffraction
+6GSQ,OXIDOREDUCTASE,2018-06-15,Oxidised copper nitrite reductase from Achromobacter cycloclastes determined by serial femtosecond rotation crystallography,Achromobacter cycloclastes,1.5,X-RAY DIFFRACTION,prot,diffraction
+6H4V,OXIDOREDUCTASE,2018-07-23,Crystal structure of human KDM4A in complex with compound 34g,Homo sapiens,2.15,X-RAY DIFFRACTION,prot,diffraction
+6ICT,PROTEIN BINDING,2018-09-07,Structure of SETD3 bound to SAH and methylated actin,Homo sapiens,1.952,X-RAY DIFFRACTION,prot,diffraction
+6IXZ,TRANSFERASE,2018-12-12,X-ray structure of sortase C from Clostridium perfringens SM101,Clostridium perfringens (strain SM101 / Type A),1.98,X-RAY DIFFRACTION,prot,diffraction
+6J2L,HYDROLASE,2019-01-01,Crystal structure of Bi-functional enzyme,Shigella flexneri,2.17,X-RAY DIFFRACTION,prot,diffraction
+6J4T,HYDROLASE,2019-01-10,Crystal structure of arabidopsis ADAL complexed with IMP,Arabidopsis thaliana,1.82,X-RAY DIFFRACTION,prot,diffraction
+6JQV,CHAPERONE,2019-04-01,Crystal structure of Arabidopsis thaliana NRP2,Arabidopsis thaliana,3.42,X-RAY DIFFRACTION,prot,diffraction
+6JWB,HYDROLASE,2019-04-19,"Crystal Structures of Endo-beta-1,4-xylanase II Complexed with Xylotriose",Trichoderma reesei RUT C-30,1.15,X-RAY DIFFRACTION,prot,diffraction
+6KCS,DNA BINDING PROTEIN/DNA,2019-06-28,Crystal structure of HIRAN domain of HLTF in complex with duplex DNA,Homo sapiens; SYNTHETIC CONSTRUCT,2.1,X-RAY DIFFRACTION,prot-nuc,diffraction
+6KZM,MEMBRANE PROTEIN,2019-09-24,GluK3 receptor complex with kainate,Rattus norvegicus,9.6,ELECTRON MICROSCOPY,prot,EM
+6L0K,HYDROLASE,2019-09-26,Crystal structure of dihydroorotase in complex with malate at pH9 from Saccharomyces cerevisiae,Saccharomyces cerevisiae S288C,3.3,X-RAY DIFFRACTION,prot,diffraction
+6LA3,VIRUS,2019-11-11,Cryo-EM structure of full echovirus 11 particle at pH 7.4,Echovirus E11,2.32,ELECTRON MICROSCOPY,prot,EM
+6M2D,TRANSFERASE,2020-02-27,MUL1-RING domain,Homo sapiens,1.795,X-RAY DIFFRACTION,prot,diffraction
+6MK9,HYDROLASE/HYDROLASE INHIBITOR,2018-09-25,X-ray crystal structure of darunavir-resistant-P51 HIV-1 protease in complex with GRL-121,Human immunodeficiency virus 1,1.7,X-RAY DIFFRACTION,prot,diffraction
+6MX4,VIRUS,2018-10-30,CryoEM structure of chimeric Eastern Equine Encephalitis Virus,Eastern equine encephalitis virus,4.4,ELECTRON MICROSCOPY,prot,EM
+6NEB,DNA,2018-12-17,MYC Promoter G-Quadruplex with 1:6:1 loop length,,,SOLUTION NMR,nuc,NMR
+6OUL,TRANSCRIPTION,2019-05-04,Cryo-EM structure of Escherichia coli RNAP polymerase bound to rpsTP2 promoter DNA,Escherichia coli; SYNTHETIC CONSTRUCT,3.4,ELECTRON MICROSCOPY,prot-nuc,EM
+6OW4,OXIDOREDUCTASE,2019-05-09,Structure of the NADH-bound form of 20beta-Hydroxysteroid Dehydrogenase from Bifidobacterium adolescentis strain L2-32,Bifidobacterium adolescentis L2-32,1.99,X-RAY DIFFRACTION,prot,diffraction
+6P8W,SIGNALING PROTEIN/Inhibitor,2019-06-08,Crystal structure of human KRAS G12C covalently bound to an acryloylazetidine acetamide inhibitor.,Homo sapiens,2.1,X-RAY DIFFRACTION,prot,diffraction
+6QYQ,TRANSFERASE,2019-03-09,Crystal structure of human thymidylate synthase (hTS) variant R175C,Homo sapiens,2.25,X-RAY DIFFRACTION,prot,diffraction
+6RJ4,METAL BINDING PROTEIN,2019-04-26,"Molybdenum storage protein - P6422, ADP",Azotobacter vinelandii (strain DJ / ATCC BAA-1303),1.9,X-RAY DIFFRACTION,prot,diffraction
+6SLX,PEPTIDE BINDING PROTEIN,2019-08-20,Fragment AZ-010 binding at the TAZpS89/14-3-3 sigma interface,Homo sapiens; SYNTHETIC CONSTRUCT,1.80005,X-RAY DIFFRACTION,prot,diffraction
+6TXQ,PROTEIN BINDING,2020-01-14,The high resolution structure of the FERM domain and helical linker of human moesin,Homo sapiens,1.73,X-RAY DIFFRACTION,prot,diffraction
+6TYE,TRANSCRIPTION,2019-08-08,Crystal structure of MTB sigma L transcription initiation complex with 5 nt long RNA primer,Mycobacterium tuberculosis; SYNTHETIC CONSTRUCT,3.79,X-RAY DIFFRACTION,prot-nuc,diffraction
+6U2N,HYDROLASE,2019-08-20,PCSK9 in complex with compound 4,Homo sapiens,2.15,X-RAY DIFFRACTION,prot,diffraction
+6UN9,UNKNOWN FUNCTION,2019-10-11,Crystal Structure of the Q7VLF5_HAEDU protein from Haemophilus ducreyi. Northeast Structural Genomics Consortium Target Hdr25,Haemophilus ducreyi,2.8,X-RAY DIFFRACTION,prot,diffraction
+6UNI,OXIDOREDUCTASE/OXIDOREDUCTASE INHIBITOR,2019-10-11,Human CYP3A4 bound to an inhibitor,Homo sapiens,2.602,X-RAY DIFFRACTION,prot,diffraction
+6UUH,IMMUNE SYSTEM,2019-10-30,Crystal structure of broad and potent HIV-1 neutralizing antibody 438-B11,Homo sapiens; Streptococcus sp. 'group G',2.7,X-RAY DIFFRACTION,prot,diffraction
+6UYQ,NUCLEAR PROTEIN/PROTEIN BINDING,2019-11-14,Crystal structure of K45-acetylated SUMO1 in complex with PML-SIM,Homo sapiens,1.501,X-RAY DIFFRACTION,prot,diffraction
+6VJI,DNA BINDING PROTEIN,2020-01-16,Structure of mammalian NEIL2 from Monodelphis domestica,Monodelphis domestica,2.54,X-RAY DIFFRACTION,prot,diffraction
+6VKJ,HYDROLASE,2020-01-21,Crystal structure of the G domain of human guanylate-binding protein 2 (hGBP2) in complex with GDP,Homo sapiens,2.105,X-RAY DIFFRACTION,prot,diffraction
+6VS0,TRANSPORT PROTEIN/ANTIBIOTIC,2020-02-10,protein B,Escherichia coli,2.1,X-RAY DIFFRACTION,prot,diffraction
+6W2L,TRANSFERASE,2020-03-06,Crystal structure of human dehydrodolichyl diphosphate synthase (NgBR/DHDDS) in complex with Mg and IPP,Homo sapiens,2.306,X-RAY DIFFRACTION,prot,diffraction
+6WJE,METAL BINDING PROTEIN,2020-04-13,Copper resistance protein copG- Form 2,Pseudomonas aeruginosa,2.5,X-RAY DIFFRACTION,prot,diffraction
+6WXO,DE NOVO PROTEIN,2020-05-11,De novo TIM barrel-ferredoxin fold fusion homodimer with 2-histidine 2-glutamate centre TFD-HE,synthetic construct,1.41,X-RAY DIFFRACTION,prot,diffraction
+6X8A,SUGAR BINDING PROTEIN,2020-06-01,Sucrose-bound structure of Marinomonas primoryensis PA14 carbohydrate-binding domain,Marinomonas primoryensis,1.06,X-RAY DIFFRACTION,prot,diffraction
+6YUN,VIRAL PROTEIN,2020-04-27,1.45 Angstrom Resolution Crystal Structure of C-terminal Dimerization Domain of Nucleocapsid Phosphoprotein from SARS-CoV-2,Severe acute respiratory syndrome coronavirus 2,1.44,X-RAY DIFFRACTION,prot,diffraction
+6Z8S,MEMBRANE PROTEIN,2020-06-02,Copper transporter OprC,Pseudomonas aeruginosa (strain ATCC 15692 / DSM 22644 / CIP 104116 / JCM 14847 / LMG 12228 / 1C / PRS 101 / PAO1),2.37,X-RAY DIFFRACTION,prot,diffraction
+6ZCC,HYDROLASE,2020-06-10,X-ray structure of the Haloalkane dehalogenase HOB (HaloTag7-based Oligonucleotide Binder) labeled with a chloroalkane-tetramethylrhodamine fluorophore substrate,Rhodococcus sp.,1.52,X-RAY DIFFRACTION,prot,diffraction
+6ZPT,HYDROLASE,2020-07-09,Crystal structure of the open conformation of S2_S'-mutant human Angiotensin-1 converting enzyme N-domain.,Homo sapiens,2.8,X-RAY DIFFRACTION,prot,diffraction
+7AC2,HYDROLASE,2020-09-09,Structure of Hen Egg White Lysozyme collected by rotation serial crystallography on a COC membrane at a synchrotron source,Gallus gallus,1.507,X-RAY DIFFRACTION,prot,diffraction
+7AES,LYASE,2020-09-18,"Human carbonic anhydrase II in complex with 2,3,5,6-tetrafluoro-N-methyl-4-propylsulfanyl-benzenesulfonamide",Homo sapiens,1.4,X-RAY DIFFRACTION,prot,diffraction
+7ALK,SIGNALING PROTEIN,2020-10-06,Structure of Drosophila C2-DSL-EGF1,Drosophila melanogaster,3.0,X-RAY DIFFRACTION,prot,diffraction
+7AW6,IMMUNE SYSTEM,2020-11-06,The extracellular region of CD33 with bound sialoside analogue P22,Homo sapiens,1.95,X-RAY DIFFRACTION,prot,diffraction
+7B5N,LIGASE,2020-12-05,Ubiquitin ligation to F-box protein substrates by SCF-RBR E3-E3 super-assembly: NEDD8-CUL1-RBX1-UBE2L3~Ub~ARIH1.,Homo sapiens,3.6,ELECTRON MICROSCOPY,prot,EM
+7BJJ,TRANSFERASE,2021-01-14,Crystal structure of CHK1-10pt-mutant complex with compound 9,Homo sapiens,1.8,X-RAY DIFFRACTION,prot,diffraction
+7CM8,TRANSFERASE,2020-07-25,High resolution crystal structure of M92A mutant of O-acetyl-L-serine sulfhydrylase from Haemophilus influenzae,Haemophilus influenzae (strain ATCC 51907 / DSM 11121 / KW20 / Rd),1.9,X-RAY DIFFRACTION,prot,diffraction
+7CW2,VIRUS/IMMUNE SYSTEM,2020-08-27,Cryo-EM structure of Chikungunya virus in complex with Fab fragments of mAb CHK-263 (subregion around icosahedral 5-fold vertex),Chikungunya virus; Mus musculus,4.5,ELECTRON MICROSCOPY,prot,EM
+7E6T,STRUCTURAL PROTEIN,2021-02-24,Structural insights into the activation of human calcium-sensing receptor,Homo sapiens,3.0,ELECTRON MICROSCOPY,prot,EM
+7E8N,TRANSFERASE,2021-03-02,Crystal structure of Type II citrate synthase (HyCS) from Hymenobacter sp. PAMC 26554,Hymenobacter sp. PAMC 26554,2.2,X-RAY DIFFRACTION,prot,diffraction
+7EOI,RNA,2021-04-22,"Crystal structure of the Pepper aptamer in complex with HBC, manganese soak",synthetic construct,1.92,X-RAY DIFFRACTION,nuc,diffraction
+7GBT,VIRAL PROTEIN,2023-08-11,Group deposition SARS-CoV-2 main protease in complex with inhibitors from the COVID Moonshot -- Crystal Structure of SARS-CoV-2 main protease in complex with BEN-DND-7e92b6ca-2 (Mpro-x10419),Severe acute respiratory syndrome coronavirus 2,1.25,X-RAY DIFFRACTION,prot,diffraction
+7GD5,VIRAL PROTEIN,2023-08-11,Group deposition SARS-CoV-2 main protease in complex with inhibitors from the COVID Moonshot -- Crystal Structure of SARS-CoV-2 main protease in complex with ALP-POS-d2866bdf-1 (Mpro-x10876),Severe acute respiratory syndrome coronavirus 2,1.809,X-RAY DIFFRACTION,prot,diffraction
+7GI7,VIRAL PROTEIN,2023-08-11,Group deposition SARS-CoV-2 main protease in complex with inhibitors from the COVID Moonshot -- Crystal Structure of SARS-CoV-2 main protease in complex with MAT-POS-6c284e65-1 (Mpro-P0057),Severe acute respiratory syndrome coronavirus 2,1.74,X-RAY DIFFRACTION,prot,diffraction
+7GO7,VIRAL PROTEIN,2023-08-24,PanDDA analysis group deposition -- Crystal Structure of Enterovirus D68 3C Protease in complex with Z1220452176,Human Enterovirus D68,1.42,X-RAY DIFFRACTION,prot,diffraction
+7GPR,VIRAL PROTEIN,2023-08-24,PanDDA analysis group deposition -- Crystal Structure of Enterovirus D68 3C Protease in complex with POB0095,Human Enterovirus D68,1.65,X-RAY DIFFRACTION,prot,diffraction
+7GR6,TRANSFERASE,2023-11-07,Crystal Structure of PAS-GAF domain of the phytochrome from Deinococcus radiodurans at femto and picosecond timescales (280 fs),Deinococcus radiodurans,2.12,X-RAY DIFFRACTION,prot,diffraction
+7GV2,TRANSCRIPTION,2024-01-09,Crystal Structure of B-cell lymphoma 6 protein BTB domain in complex with ligand 2 at 13.75 MGy X-ray dose.,Homo sapiens; SYNTHETIC CONSTRUCT,1.75,X-RAY DIFFRACTION,prot,diffraction
+7I0D,TRANSFERASE,2025-01-25,PanDDA analysis group deposition -- Crystal structure of Enterococcus faecium VatD in complex with ZINC000019074717,Enterococcus faecium,2.11,X-RAY DIFFRACTION,prot,diffraction
+7ID8,VIRAL PROTEIN,2025-05-27,"PanDDA analysis group deposition -- SARS-CoV-2 Nsp1 crystal C11 (dataset 1) from the KIT library screening campaign, data used for ground state calculation",Severe acute respiratory syndrome coronavirus 2,1.84,X-RAY DIFFRACTION,prot,diffraction
+7JJH,GENE REGULATION,2020-07-25,"Crystal structure of the unliganded tandem bromodomain (BD1, BD2) of human TAF1",Homo sapiens,2.1,X-RAY DIFFRACTION,prot,diffraction
+7JSU,"VIRAL PROTEIN, HYDROLASE/INHIBITOR",2020-08-16,Crystal structure of SARS-CoV-2 3CL protease in complex with GC376,Severe acute respiratory syndrome coronavirus 2,1.83,X-RAY DIFFRACTION,prot,diffraction
+7K0N,MEMBRANE PROTEIN,2020-09-04,"Human serine palmitoyltransferase complex SPTLC1/SPLTC2/ssSPTa/ORMDL3, class 2",Homo sapiens,3.1,ELECTRON MICROSCOPY,prot,EM
+7KLK,HYDROLASE/INHIBITOR,2020-10-30,Human Arginase1 Complexed with Inhibitor Compound 3a,Homo sapiens,1.801,X-RAY DIFFRACTION,prot,diffraction
+7KVK,OXIDOREDUCTASE/OXIDOREDUCTASE INHIBITOR,2020-11-28,Human CYP3A4 bound to an inhibitor,Homo sapiens,2.55,X-RAY DIFFRACTION,prot,diffraction
+7KYC,TRANSLOCASE,2020-12-07,Structure of the S. cerevisiae phosphatidylcholine flippase Dnf1-Lem3 complex in the E2P state,Saccharomyces cerevisiae (strain ATCC 204508 / S288c),2.8,ELECTRON MICROSCOPY,prot,EM
+7L14,"VIRAL PROTEIN, Hydrolase",2020-12-14,CRYSTAL STRUCTURE OF THE SARS-COV-2(2019-NCOV) MAIN PROTEASE IN COMPLEX WITH COMPOUND 26,Severe acute respiratory syndrome coronavirus 2,1.8,X-RAY DIFFRACTION,prot,diffraction
+7L57,VIRAL PROTEIN/Immune System,2020-12-21,Cryo-EM structure of the SARS-CoV-2 spike glycoprotein bound to Fab 2-15,Homo sapiens; Severe acute respiratory syndrome coronavirus 2,5.87,ELECTRON MICROSCOPY,prot,EM
+7LMD,"VIRAL PROTEIN, hydrolase/Inhibitor",2021-02-05,SARS-CoV-2 3CLPro in complex with 2-(benzotriazol-1-yl)-N-[4-(1H-pyrazol-4-yl)phenyl]-N-(3-thienylmethyl)acetamide,Severe acute respiratory syndrome coronavirus 2,1.96,X-RAY DIFFRACTION,prot,diffraction
+7LMG,"VIRAL PROTEIN, Hydrolase/Inhibitor",2021-02-05,"SARS-CoV-1 3CLPro in complex with N-(4-(1H-imidazol-4-yl)phenyl)-2-(1H-benzo[d][1,2,3]triazol-1-yl)-N-(thiophen-3-ylmethyl)acetamide",Severe acute respiratory syndrome coronavirus,1.6,X-RAY DIFFRACTION,prot,diffraction
+7LQD,TRANSFERASE/TRANSFERASE INHIBITOR,2021-02-13,Structure of Human MPS1 (TTK) covalently bound to RMS-07 inhibitor,Homo sapiens,1.95,X-RAY DIFFRACTION,prot,diffraction
+7LU9,VIRAL PROTEIN/IMMUNE SYSTEM,2021-02-21,Cryo-EM structure of DH851.3 bound to HIV-1 CH505 Env,Human immunodeficiency virus 1; Macaca mulatta,5.6,ELECTRON MICROSCOPY,prot,EM
+7MSH,RIBOSOME,2021-05-11,Mtb 70SIC in complex with MtbEttA at Pre_R1 state,Mycobacterium tuberculosis (strain ATCC 25618 / H37Rv); Mycobacterium tuberculosis H37Rv,3.23,ELECTRON MICROSCOPY,prot-nuc,EM
+7MSY,UNKNOWN FUNCTION,2021-05-12,Structure of CalU17 from the Calicheamicin Biosynthesis Pathway of Micromonospora echinospora,Micromonospora echinospora,2.21,X-RAY DIFFRACTION,prot,diffraction
+7MYD,OXIDOREDUCTASE,2021-05-20,Leishmania major dihydroorotate dehydrogenase in complex with 5-amino-2-(1H-pyrrol-1-yl)benzonitrile,Leishmania major,2.15,X-RAY DIFFRACTION,prot,diffraction
+7NVP,OXIDOREDUCTASE,2021-03-15,Trypanothione reductase from Trypanosoma brucei in complex with N-{4-methoxy-3-[(4-methoxyphenyl)sulfamoyl]phenyl}-5-nitrothiophene-2-carboxamide,Trypanosoma brucei brucei (strain 927/4 GUTat10.1),2.153,X-RAY DIFFRACTION,prot,diffraction
+7O1S,METAL BINDING PROTEIN,2021-03-30,Complex-B bound [FeFe]-hydrogenase maturase HydE fromT. Maritima (Wild-type protein),Thermotoga maritima (strain ATCC 43589 / MSB8 / DSM 3109 / JCM 10099),1.39,X-RAY DIFFRACTION,prot,diffraction
+7O37,MEMBRANE PROTEIN,2021-04-01,Murine supercomplex CIII2CIV in the assembled locked conformation,Mus musculus,3.2,ELECTRON MICROSCOPY,prot,EM
+7OGW,RNA BINDING PROTEIN,2021-05-07,Q9A mutant of Hfq protein from Neisseria meningitidis,Neisseria meningitidis,1.09,X-RAY DIFFRACTION,prot,diffraction
+7OVB,MEMBRANE PROTEIN,2021-06-14,L. pneumophila Type IV Coupling Complex (T4CC) with density for DotY N-terminal and middle domains,Legionella pneumophila subsp. pneumophila str. Philadelphia 1,3.61,ELECTRON MICROSCOPY,prot,EM
+7PS4,VIRAL PROTEIN,2021-09-22,Crystal structure of the receptor binding domain of SARS-CoV-2 beta variant spike glycoprotein in complex with Beta-38,Homo sapiens; Severe acute respiratory syndrome coronavirus 2,1.94,X-RAY DIFFRACTION,prot,diffraction
+7Q8K,HYDROLASE,2021-11-11,Peptide LLKVAL in complex with human cathepsin V C25S mutant,Homo sapiens; SYNTHETIC CONSTRUCT,1.74,X-RAY DIFFRACTION,prot,diffraction
+7RHI,TRANSPORT PROTEIN,2021-07-17,Cryo-EM structure of human rod CNGA1/B1 channel in cGMP-bound openII state,Homo sapiens,3.31,ELECTRON MICROSCOPY,prot,EM
+7RJP,SIGNALING PROTEIN,2021-07-21,Crystal structure of human Bromodomain containing protein 4 (BRD4) in complex with SHMT,Homo sapiens; SYNTHETIC CONSTRUCT,1.25,X-RAY DIFFRACTION,prot,diffraction
+7RKG,SUGAR BINDING PROTEIN,2021-07-22,Griffithsin mutant Y28W,Griffithsia sp. (strain Q66D336),2.2,X-RAY DIFFRACTION,prot,diffraction
+7RV5,TRANSCRIPTION,2021-08-18,Crystal structure of the BCL6 BTB domain in complex with OICR-9287,Homo sapiens,2.21,X-RAY DIFFRACTION,prot,diffraction
+7SGM,CYTOKINE/IMMUNE SYSTEM,2021-10-06,"Crystal structure of a Fab variant containing a fluorescent noncanonical amino acid with blocked excited state proton transfer and in complex with its antigen, CD40L",Homo sapiens,2.0,X-RAY DIFFRACTION,prot,diffraction
+7SY5,Viral Protein/Hydrolase,2021-11-24,"Cryo-EM structure of the SARS-CoV-2 D614G,N501Y,E484K,K417N mutant spike protein ectodomain bound to human ACE2 ectodomain (global refinement)",Homo sapiens; Severe acute respiratory syndrome coronavirus 2,2.59,ELECTRON MICROSCOPY,prot,EM
+7T1G,TRANSFERASE/TRANSFERASE INHIBITOR,2021-12-01,Crystal structure of CAB1 Pantothenate Kinase from Saccharomyces cerevisiae in complex with compound YU385595,Saccharomyces cerevisiae S288C,2.0,X-RAY DIFFRACTION,prot,diffraction
+7T2R,OXIDOREDUCTASE,2021-12-06,Structure of electron bifurcating Ni-Fe hydrogenase complex HydABCSL in FMN-free apo state,Acetomicrobium mobile,3.2,ELECTRON MICROSCOPY,prot,EM
+7TLR,TRANSFERASE,2022-01-18,Structure of Atopobium parvulum SufS A34Y mutant,Lancefieldella parvula,2.1,X-RAY DIFFRACTION,prot,diffraction
+7TU0,HYDROLASE,2022-02-02,Structure of the L. blandensis dGTPase bound to Mn,Leeuwenhoekiella blandensis,2.04,X-RAY DIFFRACTION,prot,diffraction
+7UEX,TRANSFERASE/TRANSFERASE INHIBITOR,2022-03-22,PANK3 complex structure with compound PZ-4127,Homo sapiens,1.9,X-RAY DIFFRACTION,prot,diffraction
+7V2A,VIRAL PROTEIN,2021-08-07,SARS-CoV-2 Spike trimer in complex with XG014 Fab,Homo sapiens; Severe acute respiratory syndrome coronavirus 2,3.4,ELECTRON MICROSCOPY,prot,EM
+7V7W,TRANSCRIPTION,2021-08-21,Crystal Structure of the Heterodimeric HIF-3a:ARNT Complex with oleoylethanolamide (OEA),Mus musculus,2.507,X-RAY DIFFRACTION,prot,diffraction
+7Y4M,HYDROLASE,2022-06-15,"Crystal structure of Ricin A chain bound with N2-(2-amino-4-oxo-3,4-dihydropteridine-7-carbonyl)glycyl-L-phenylalanyl-N6-((benzyloxy)carbonyl)-L-lysine",Ricinus communis,1.45,X-RAY DIFFRACTION,prot,diffraction
+7YIM,METAL BINDING PROTEIN,2022-07-17,Cryo-EM structure of human Alpha-fetoprotein,Homo sapiens,2.6,ELECTRON MICROSCOPY,prot,EM
+7ZVP,TRANSFERASE,2022-05-16,Crystal structure of poplar glutathione transferase U19 in complex with glutathione,Populus trichocarpa,1.61,X-RAY DIFFRACTION,prot,diffraction
+7ZXX,OXIDOREDUCTASE,2022-05-23,K563H Mutant of Recombinant CODH-II,Carboxydothermus hydrogenoformans Z-2901,1.4,X-RAY DIFFRACTION,prot,diffraction
+8A7E,HYDROLASE,2022-06-20,PAPP-A dimer in complex with its inhibitor STC2,Homo sapiens,5.02,ELECTRON MICROSCOPY,prot,EM
+8AZ0,PROTEIN FIBRIL,2022-09-05,IAPP S20G growth-phase fibril polymorph 2PF-L,,3.4,ELECTRON MICROSCOPY,prot,EM
+8BJD,STRUCTURAL PROTEIN,2022-11-04,Full length structure of LpMIP with bound inhibitor JK095,Legionella pneumophila,2.4,X-RAY DIFFRACTION,prot,diffraction
+8BUW,PROTEIN BINDING,2022-12-01,Crystal structure of Trichoplax Scribble PDZ1 domain in complex with Trichoplax Vangl peptide,Trichoplax sp. H2; SYNTHETIC CONSTRUCT,2.85,X-RAY DIFFRACTION,prot,diffraction
+8C50,PROTEIN FIBRIL,2023-01-05,Pontibacter korlensis curli subunit CsgA,Pontibacter korlensis,7.6,ELECTRON MICROSCOPY,prot,EM
+8CKQ,FLAVOPROTEIN,2023-02-16,"Crystal structure of maize cytokinin oxidase/dehydrogenase 4 (CKO/CKX4) in complex with inhibitor 2-[(3,5-dichlorophenyl)carbamoylamino]benzamide",Zea mays,2.0,X-RAY DIFFRACTION,prot,diffraction
+8CL8,MEMBRANE PROTEIN,2023-02-16,Krokinobacter eikastus rhodopsin 2 (KR2) extrapolated map 1us after light activation,Dokdonia eikasta,2.4,X-RAY DIFFRACTION,prot,diffraction
+8D4T,MEMBRANE PROTEIN,2022-06-02,Mammalian CIV with GDN bound,Bos taurus,3.1,ELECTRON MICROSCOPY,prot,EM
+8D9J,HYDROLASE/DNA,2022-06-10,SAMHD1-DNA complex,Homo sapiens; SYNTHETIC CONSTRUCT,2.82,X-RAY DIFFRACTION,prot-nuc,diffraction
+8DMT,HYDROLASE,2022-07-08,Crystal structure of macrodomain CG2909 from Drosophila melanogaster in complex with ADP-ribose,Drosophila melanogaster,2.28,X-RAY DIFFRACTION,prot,diffraction
+8E1E,DE NOVO PROTEIN,2022-08-10,Scaffolding protein functional sites using deep learning,synthetic construct,4.27,X-RAY DIFFRACTION,prot,diffraction
+8EW6,IMMUNE SYSTEM,2022-10-21,Anti-human CD8 VHH complex with CD8 alpha,Homo sapiens; Lama glama,1.904,X-RAY DIFFRACTION,prot,diffraction
+8FSE,CELL ADHESION,2023-01-09,Crystal structure of integrin beta-2 tail bound to the FERM-folded talin head domain,Mus musculus,1.9,X-RAY DIFFRACTION,prot,diffraction
+8GTD,VIRUS,2022-09-08,Cryo-EM model of the marine siphophage vB_DshS-R4C portal-adaptor complex,Dinoroseobacter phage vB_DshS-R4C,4.7,ELECTRON MICROSCOPY,prot,EM
+8HNI,DNA BINDING PROTEIN,2022-12-07,hnRNP A2/B1 RRMs in complex with telomeric DNA,Homo sapiens; SYNTHETIC CONSTRUCT,2.644,X-RAY DIFFRACTION,prot-nuc,diffraction
+8HX1,DNA BINDING PROTEIN,2023-01-03,Focused cryo-EM map of MsDps2 from MsDps2-DNA complex of Mycobacterium smegmatis,Mycolicibacterium smegmatis MC2 155,3.29,ELECTRON MICROSCOPY,prot,EM
+8HZZ,PLANT PROTEIN,2023-01-10,GuApiGT (UGT79B74),Glycyrrhiza uralensis,2.2,X-RAY DIFFRACTION,prot,diffraction
+8IBI,HYDROLASE,2023-02-10,Inactive mutant of CtPL-H210S/F214I,Caldimonas taiwanensis,2.14,X-RAY DIFFRACTION,prot,diffraction
+8ILD,REPLICATION/DNA,2023-03-03,The crystal structure of native dGTP:DNApre-I:Pol X substrate ternary complex,African swine fever virus (strain Badajoz 1971 Vero-adapted); SYNTHETIC CONSTRUCT,2.25,X-RAY DIFFRACTION,prot-nuc,diffraction
+8JEZ,TRANSPORT PROTEIN,2023-05-16,Human sodium-dependent vitamin C transporter 1 in an apo inward-open state,Homo sapiens,2.6,ELECTRON MICROSCOPY,prot,EM
+8OEJ,DNA BINDING PROTEIN,2023-03-10,Extended RPA-DNA nucleoprotein filament,Pyrococcus abyssi; SYNTHETIC CONSTRUCT,8.0,ELECTRON MICROSCOPY,prot-nuc,EM
+8OI5,RIBOSOME,2023-03-22,Crystal structure of the Candida albicans 80S ribosome in complex with Paromomycin (2mM),Candida albicans,2.9,X-RAY DIFFRACTION,prot-nuc,diffraction
+8OT6,PROTEIN FIBRIL,2023-04-20,CTE typeI tau filament from Guam ALS/PDC,Homo sapiens,2.0,ELECTRON MICROSCOPY,prot,EM
+8OX7,MEMBRANE PROTEIN,2023-05-01,"Cryo-EM structure of ATP8B1-CDC50A in E2P autoinhibited """"closed"""" conformation",Homo sapiens,2.56,ELECTRON MICROSCOPY,prot,EM
+8P7L,TRANSFERASE,2023-05-30,Cryo-EM structure of CDK7 subunit of CAK in complex with inhibitor LDC4297,Homo sapiens,2.1,ELECTRON MICROSCOPY,prot,EM
+8PI5,HORMONE,2023-06-21,Crystal structure of human insulin desB30 precursor with an Alanine-Methionine-Lysine C-peptide in hexamer (T3R3) conformation,Homo sapiens,1.66,X-RAY DIFFRACTION,prot,diffraction
+8Q7Z,RIBOSOME,2023-08-17,Structure of the G. gallus 80S non-rotated ribosome,Gallus gallus,2.5,ELECTRON MICROSCOPY,prot-nuc,EM
+8QOF,TRANSFERASE,2023-09-28,Cryo-EM structure of the yeast SPT-Orm2-Dimer complex,Saccharomyces cerevisiae,3.3,ELECTRON MICROSCOPY,prot,EM
+8R2Z,ANTIMICROBIAL PROTEIN,2023-11-08,Structure of CTX-M-15 complexed with benzoxaborole AK-425,Klebsiella pneumoniae,1.1,X-RAY DIFFRACTION,prot,diffraction
+8R3D,SUGAR BINDING PROTEIN,2023-11-08,Crystal structure of Pent only at pH 8.8,Enterobacteria phage L1,1.71,X-RAY DIFFRACTION,prot,diffraction
+8S4P,OXIDOREDUCTASE,2024-02-22,Crystal structure of an Ene-reductase from Penicillium steckii,Penicillium steckii,2.29,X-RAY DIFFRACTION,prot,diffraction
+8S6N,RNA,2024-02-28,Structure of MLLE3 domain of Rrm4 in complex with PAM2L1 of Upa1,Ustilago maydis; SYNTHETIC CONSTRUCT,1.743,X-RAY DIFFRACTION,prot,diffraction
+8TD8,OXIDOREDUCTASE/INHIBITOR,2023-07-02,"Structure of PYCR1 complexed with NADH and 2S-Hydroxy-3,3-dimethylbutyric acid",Homo sapiens,1.71,X-RAY DIFFRACTION,prot,diffraction
+8TK6,HYDROLASE,2023-07-25,HUMAN VH1-RELATED DUAL-SPECIFICITY PHOSPHATASE (VHR) in apo form,Homo sapiens,1.65,X-RAY DIFFRACTION,prot,diffraction
+8TLJ,DNA BINDING PROTEIN/DNA,2023-07-26,CDCA7 (Mouse) Binds Non-B-form 32-mer DNA oligo Containing a 5mC,Mus musculus; SYNTHETIC CONSTRUCT,2.3,X-RAY DIFFRACTION,prot-nuc,diffraction
+8TN6,DE NOVO PROTEIN,2023-08-01,De novo designed protein binds poly ADP ribose polymerase inhibitors (PARPi) - holo rucaparib,synthetic construct,1.36,X-RAY DIFFRACTION,prot,diffraction
+8TTT,TRANSPORT PROTEIN,2023-08-15,Structure of SNX27 FERM complexed with Fam21A repeat 15 (1124-1140),Homo sapiens; SYNTHETIC CONSTRUCT,2.35,X-RAY DIFFRACTION,prot,diffraction
+8UEH,HYDROLASE/INHIBITOR,2023-10-01,Crystal structure of SARS-CoV-2 3CL protease with inhibitor 31,Severe acute respiratory syndrome coronavirus 2,1.88,X-RAY DIFFRACTION,prot,diffraction
+8V0P,VIRAL PROTEIN,2023-11-17,SARS-CoV-2 Omicron-XBB.1.16 3-RBD down Spike Protein Trimer 2 (S-GSAS-Omicron-XBB.1.16),Severe acute respiratory syndrome coronavirus 2,3.3,ELECTRON MICROSCOPY,prot,EM
+8VAF,TRANSPORT PROTEIN,2023-12-11,Cryogenic electron microscopy structure of apo human serum albumin,Homo sapiens,3.5,ELECTRON MICROSCOPY,prot,EM
+8VHO,OXIDOREDUCTASE,2024-01-02,Crystal Structure of E. coli class Ia ribonucleotide reductase alpha subunit bound to dATP,Escherichia coli K-12,2.548,X-RAY DIFFRACTION,prot,diffraction
+8VMQ,HYDROLASE,2024-01-13,Homing endonuclease I-PpoI-DNA complex:reaction at pH7.0 (K+ MES) with 500 uM Mg2+ for 20s,Physarum polycephalum; SYNTHETIC CONSTRUCT,1.48,X-RAY DIFFRACTION,prot-nuc,diffraction
+8VQS,OXIDOREDUCTASE,2024-01-19,Crystal structure of Dehaloperoxidase B in complex with substrate cyclohexene,Amphitrite ornata,2.0,X-RAY DIFFRACTION,prot,diffraction
+8VYG,VIRAL PROTEIN/IMMUNE SYSTEM,2024-02-08,"SARS-CoV-2 S RBD (C.37 Lambda variant) plus S309 Fab, local refinement",Homo sapiens; Severe acute respiratory syndrome coronavirus 2,3.1,ELECTRON MICROSCOPY,prot,EM
+8W04,SUGAR BINDING PROTEIN,2024-02-13,Crystal structure of DUF1735-domain containing protein (GH18-like) from Bacteroides faecium at 2.9 A resolution (Space group P21),Bacteroides faecium,2.91,X-RAY DIFFRACTION,prot,diffraction
+8WBZ,PROTEIN TRANSPORT/HYDROLASE,2023-09-10,Cryo-EM structure of ACE2-B0AT1 complex with JX225,Homo sapiens,3.2,ELECTRON MICROSCOPY,prot,EM
+8YBZ,PROTEIN BINDING,2024-02-16,State - II: Spike 3-up RBD with THSC20.HVTR26 (Fab26),Homo sapiens; Severe acute respiratory syndrome coronavirus,4.8,ELECTRON MICROSCOPY,prot,EM
+8YDH,RIBOSOME,2024-02-20,"E.coli transcription translation coupling complex in TTC-P state 1 (subclass1) containing mRNA with 39-mer spacer, NusG, NusA, fMet-tRNA(iMet), Phe-tRNA(Phe), and viomycin",Escherichia coli K-12; SYNTHETIC CONSTRUCT,4.55,ELECTRON MICROSCOPY,prot-nuc,EM
+8Z26,FLAVOPROTEIN,2024-04-12,SFX structure of CraCRY 30 ns after photoexcitation of the oxidized protein,Chlamydomonas reinhardtii,2.0,X-RAY DIFFRACTION,prot,diffraction
+8Z5F,BIOSYNTHETIC PROTEIN,2024-04-18,Crystal structure of beta-ketoacyl-ACP synthase FabF K336A in complex with decanoyl-ACP from Helicobacter pylori,Helicobacter pylori,1.95,X-RAY DIFFRACTION,prot,diffraction
+9ARF,MEMBRANE PROTEIN,2024-02-23,"Rat GluN1-GluN2B NMDA receptor channel in complex with glycine, glutamate, and EU-1622-A, in nonactive1 conformation",Rattus norvegicus,3.13,ELECTRON MICROSCOPY,prot,EM
+9BEE,CHAPERONE,2024-04-15,alphaB-crystallin N-terminal IXI variant in a fibril state,Homo sapiens,3.4,ELECTRON MICROSCOPY,prot,EM
+9BW2,OXIDOREDUCTASE,2024-05-20,Neutron Structure of Reduced Tyr34Phe MnSOD,Homo sapiens,2.5,NEUTRON DIFFRACTION,prot,other
+9C0P,TRANSFERASE/TRANSFERASE INHIBITOR,2024-05-27,M. tuberculosis PKS13 acyltransferase (AT) domain in complex with SuFEx inhibitor CEC215,Mycobacterium tuberculosis,1.87,X-RAY DIFFRACTION,prot,diffraction
+9DMU,OXIDOREDUCTASE,2024-09-14,Cryo-EM structure of IMPDH2 bound to IMP and GAD,Homo sapiens,1.82,ELECTRON MICROSCOPY,prot,EM
+9DPU,SIGNALING PROTEIN,2024-09-23,BMP-9 G389S Dimer in Acidic pH,Homo sapiens,2.1,X-RAY DIFFRACTION,prot,diffraction
+9DXV,OXIDOREDUCTASE,2024-10-11,Crystal structure of cobalt-incorporated human 2-aminoethanethiol (aka cysteamine) dioxygenase (ADO) variant C18S/C239S in complex with CP6-L8K-Ser,Homo sapiens; SYNTHETIC CONSTRUCT,1.6,X-RAY DIFFRACTION,prot,diffraction
+9EEG,HYDROLASE/INHIBITOR,2024-11-19,Room-temperature X-ray structure of HIV-1 protease in complex with GRL-11124A inhibitor,Human immunodeficiency virus 1,1.7,X-RAY DIFFRACTION,prot,diffraction
+9EHE,DNA,2024-11-22,Structure of short Lettuce aptamer (A5T variant) bound with TO1-biotin.,,1.63,X-RAY DIFFRACTION,nuc,diffraction
+9ETN,SIGNALING PROTEIN,2024-03-26,Crystal structure of murine CRTAC1,Mus musculus,1.584,X-RAY DIFFRACTION,prot,diffraction
+9EVC,MEMBRANE PROTEIN,2024-03-28,CryoEM structure of LMCA1 in E1-Ca state,Listeria monocytogenes,3.73,ELECTRON MICROSCOPY,prot,EM
+9F0T,ANTIMICROBIAL PROTEIN,2024-04-17,Structure of KPC-2 complexed with benzoxaborole AK-110,Klebsiella pneumoniae,0.98,X-RAY DIFFRACTION,prot,diffraction
+9FAN,MEMBRANE PROTEIN,2024-05-10,"CryoEM structure of gamma2 subunit of GABA(A)R in complex with GARLH4, the TMD of Neuroligin2 from desensitised state obtained by focused refinement",Homo sapiens,2.9,ELECTRON MICROSCOPY,prot,EM
+9G7M,TOXIN,2024-07-22,"Crystal structure of Collimonas fungivorans PE-like toxin, Cfx",Collimonas fungivorans,2.8,X-RAY DIFFRACTION,prot,diffraction
+9GGZ,CELL CYCLE,2024-08-14,Human KRas4A (GMPPNP) in complex with compound 31,Homo sapiens,1.37,X-RAY DIFFRACTION,prot,diffraction
+9H3P,RIBOSOME,2024-10-17,50S subunit precursor C-CP_(L22)-,Escherichia coli,7.06,ELECTRON MICROSCOPY,prot-nuc,EM
+9H9L,RIBOSOME,2024-10-31,Complex 3 (BODY) 30S-tRNA-GE81112,Escherichia coli,3.2,ELECTRON MICROSCOPY,prot-nuc,EM
+9HNE,ONCOPROTEIN,2024-12-10,"Cereblon in complex with DDB1, GSPT1 and Compound-1",Homo sapiens,3.9,X-RAY DIFFRACTION,prot,diffraction
+9HPV,ANTIMICROBIAL PROTEIN,2024-12-16,Crystal structure of OXA-163 in complex with nacubactam (16 hour soak),Enterobacter cloacae,1.41,X-RAY DIFFRACTION,prot,diffraction
+9IRF,RNA BINDING PROTEIN/RNA,2024-07-15,Cryo-EM Structure of csy1-4 with crRNA,Pectobacterium atrosepticum SCRI1043,2.8,ELECTRON MICROSCOPY,prot-nuc,EM
+9J6P,RNA,2024-08-16,pre-mir-125a internal loop in complex with G-clamp,,2.49,X-RAY DIFFRACTION,nuc,diffraction
+9JHL,DNA BINDING PROTEIN/DNA,2024-09-10,Cryo-EM structure of CpAgo_gDNA-tg_dsDNA dimeric ternary complex,Clostridium perfringenosum; SYNTHETIC CONSTRUCT,2.86,ELECTRON MICROSCOPY,prot-nuc,EM
+9KK0,TOXIN,2024-11-12,Solution structure of kappa-conotoxin RIIIJ,,,SOLUTION NMR,prot,NMR
+9KWT,OXIDOREDUCTASE,2024-12-06,Structure of a copper-containing nitrite reductase (D98N/G136A mutant) from Geobacillus thermodenitrificans,Geobacillus thermodenitrificans (strain NG80-2),0.96,X-RAY DIFFRACTION,prot,diffraction
+9MW4,VIRAL PROTEIN,2025-01-16,Co-crystal structure of feline coronavirus UU23 main protease with Pfizer intravenous compound PF-00835231,Feline alphacoronavirus 1,1.5,X-RAY DIFFRACTION,prot,diffraction
+9MYR,LIPID TRANSPORT,2025-01-22,Sal-Shy(DUF35) aldolase from Comamonas testosteroni,Comamonas testosteroni KF-1,1.95,X-RAY DIFFRACTION,prot,diffraction
+9N1E,OXIDOREDUCTASE,2025-01-25,Crystal structure of N-oxygenase HrmI with the diferric cofactor partially loaded,Streptomyces griseoflavus,2.0,X-RAY DIFFRACTION,prot,diffraction
+9N1Z,IMMUNE SYSTEM,2025-01-27,Structure of C3d Bound to a Fragment of FHR-2,Homo sapiens,2.31,X-RAY DIFFRACTION,prot,diffraction
+9NNF,IMMUNE SYSTEM,2025-03-05,Cryo-EM structure of a de-novo designed binder NY1-B04 in complex with HLA-A*02:01 and NY-ESO-1-derived peptide SLLMWITQC,Escherichia coli; Homo sapiens; synthetic construct,3.8,ELECTRON MICROSCOPY,prot,EM
+9NRA,MEMBRANE PROTEIN,2025-03-14,The structure of GluA1/A4 LBD-TMD with 4 auxiliary subunits,Rattus norvegicus,4.18,ELECTRON MICROSCOPY,prot,EM
+9OE3,TRANSPORT PROTEIN,2025-04-28,Zebrafish Abcb4 in IF-Wide conformation in the presence of Tariquidar (TQR-IF-Wide),Danio rerio,3.54,ELECTRON MICROSCOPY,prot,EM
+9OI0,IMMUNE SYSTEM,2025-05-05,Crystal structure of CD1b presenting ganglioside GD3,Homo sapiens,1.84,X-RAY DIFFRACTION,prot,diffraction
+9OZJ,TRANSPORT PROTEIN,2025-06-05,Structure of human Sec23a/Sec24a/Sec22b bound to ligand CPD1,Homo sapiens,2.72,X-RAY DIFFRACTION,prot,diffraction
+9Q9C,TRANSFERASE,2025-02-26,Protein kinase CK2 catalytic subunit alpha' (CSNK2A2 gene product) in complex with F2X-Entry screen fragment D04,Homo sapiens,1.66,X-RAY DIFFRACTION,prot,diffraction
+9Q9M,HYDROLASE,2025-02-26,Cryo-EM structure of human Mre11-Rad50-Nbs1 (MRN) complex bound to DNA and telomeric factor TRF2,Homo sapiens; SYNTHETIC CONSTRUCT,2.81,ELECTRON MICROSCOPY,prot-nuc,EM
+9QEA,LIGASE,2025-03-07,CRYSTAL STRUCTURE OF LYSYL-TRNA SYNTHETASE FROM Mycobacterium tuberculosis COMPLEXED WITH L-LYSINE AND INHIBITOR DDD01839469,Mycobacterium tuberculosis,2.3,X-RAY DIFFRACTION,prot,diffraction
+9QWX,LIGASE,2025-04-15,Cryo-EM structure of the human UBR4/KCMF1/CALM1 complex (N-term focused refinement),Homo sapiens,3.6,ELECTRON MICROSCOPY,prot,EM
+9RD1,TRANSPORT PROTEIN,2025-05-30,OppA from E. coli in complex with GSisoK,Escherichia coli,2.5,X-RAY DIFFRACTION,prot,diffraction
+9REI,TRANSFERASE,2025-06-03,Crystal Structure of the Protein-Kinase A catalytic subunit from Cricetulus griseus in complex with F248,Cricetulus griseus,1.42,X-RAY DIFFRACTION,prot,diffraction
+9RLH,PROTEIN TRANSPORT,2025-06-16,LolCDE complex with del 9-15 LolB lipoprotein,Escherichia coli K-12,3.19,ELECTRON MICROSCOPY,prot,EM
+9UJJ,TRANSCRIPTION,2025-04-17,Crystal structure of the BTB domain mouse Keap1 in complex with CDDO-Me,Mus musculus,3.43,X-RAY DIFFRACTION,prot,diffraction
+9VHU,TRANSFERASE,2025-06-17,Crystal structure of inactive calcium-dependent protein kinase 3 (CPK3) from Arabidopsis thaliana,Arabidopsis thaliana,3.05,X-RAY DIFFRACTION,prot,diffraction
+9VLW,REPLICATION,2025-06-26,"Structure of human MCM2-7 single hexamer without MCM3 CTE, state 2",Homo sapiens,4.06,ELECTRON MICROSCOPY,prot,EM
+9VS2,DNA BINDING PROTEIN/DNA,2025-07-08,Crystal structure of FOXC2/NFAT1 complex bound to ARRE3-P DNA,Homo sapiens,2.65,X-RAY DIFFRACTION,prot-nuc,diffraction
+9W3L,MEMBRANE PROTEIN,2025-07-29,Cryo-EM structure of GPR151-Nb6 complex,Homo sapiens; Spodoptera frugiperda,2.76,ELECTRON MICROSCOPY,prot,EM
+9XE6,VIRAL PROTEIN/RNA,2025-10-27,Crimean-Congo hemorrhagic fever virus RNA polymerase containing a 10-bp RNA product and incorporated 2FC,Crimean-Congo hemorrhagic fever virus strain IbAr10200; SYNTHETIC CONSTRUCT,3.09,ELECTRON MICROSCOPY,prot-nuc,EM
+9XHZ,VIRAL PROTEIN/IMMUNE SYSTEM/HYDROLASE,2025-11-02,SARS-CoV-2 Omicron BA.4/5 spike trimer in complex with C092 Fab and ACE2 (2 RBD up),Homo sapiens; Severe acute respiratory syndrome coronavirus 2,5.28,ELECTRON MICROSCOPY,prot,EM
+9Y7S,OXIDOREDUCTASE,2025-09-11,Crystal structure of Candida auris dihydrofolate reductase in complex with inhibitor 1051 (R-form) and NADPH,Candidozyma auris,1.9,X-RAY DIFFRACTION,prot,diffraction
+9YA9,LIGASE,2025-09-15,"Cryo-EM structure of ternary complex BCL6-CRBN-DDB1 with BMS-986458 (local refined), a potent and selective BCL6 ligand directed degrader (LDD)",Homo sapiens,3.09,ELECTRON MICROSCOPY,prot,EM
+9YPR,VIRAL PROTEIN,2025-10-14,"Fab-14/SARS-CoV-2 D614G spike complex, Mode IV, subgroup I conformation",Homo sapiens; Severe acute respiratory syndrome coronavirus 2,3.46,ELECTRON MICROSCOPY,prot,EM
+9Z8M,MEMBRANE PROTEIN,2025-11-18,Gated state sheep connexin-46 in DMPC nanodiscs at neutral pH,Ovis aries,2.7,ELECTRON MICROSCOPY,prot,EM
+9ZE4,VIRAL PROTEIN,2025-11-27,Asymmetric Tail Gating Complex of Pseudomonas Phage DEV,Pseudomonas phage vB_PaeP_DEV,8.5,ELECTRON MICROSCOPY,prot,EM
+9ZEO,DE NOVO PROTEIN,2025-11-30,Competition for different elements of the nucleosome acidic patch yields distinct functional outcomes. VHH 1G1,artificial sequences; Homo sapiens,3.1,ELECTRON MICROSCOPY,prot-nuc,EM
