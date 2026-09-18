@@ -77,7 +77,7 @@ A locally computed hash is a file fingerprint, not proof that it matches the
 source. Keep unrelated tasks in separate skills rather than growing one skill
 to cover everything.
 
-# Exercise 1b - Download an existing structure image
+# Exercise 1b — Download an existing structure image
 
 Start another conversation in **Plan**:
 
@@ -95,7 +95,7 @@ substituting another image.
 **What to notice:** Downloading someone else's rendering and generating a
 new rendering are different tasks. The skill description should make that clear.
 
-# Exercise 1c - Locate and copy a skill
+# Exercise 1c — Locate and copy a skill
 
 Open the skill files you created. Project and global locations are:
 
