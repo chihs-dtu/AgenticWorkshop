@@ -35,8 +35,10 @@ without changing anything in `mcp/`.
 You need python installation tool `uv` (or pip) installed. Check with `uv --version`; see
 [the server notes](../../mcp/README.md) if it is missing.
 
+You can install it with:
 > curl -LsSf https://astral.sh/uv/install.sh | sh
 
+---
 
 # Exercise 3a — Connect the server, and prove that you did
 
