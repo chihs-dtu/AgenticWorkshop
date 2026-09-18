@@ -200,6 +200,7 @@ to check the count of the blanks.
 
 <details>
 <summary>For reference, this python script will do the job.</summary>
+  
 ```bash
 python3 -c "
 import csv
@@ -214,7 +215,9 @@ print(set(r['experiment_type'] for r in blank))
 rows: 512  blank resolution: 26
 {'SOLUTION NMR'}
 ```
+
 </details>
+
 All 26 blanks, and only NMR. You have now confirmed the pattern with your own
 tool, on a file you can read.
 
