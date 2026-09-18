@@ -36,11 +36,10 @@ You need python installation tool `uv` (or pip) installed. Check with `uv --vers
 [the server notes](../../mcp/README.md) if it is missing.
 
 You can install it with:
-> curl -LsSf https://astral.sh/uv/install.sh | sh
-
+```curl -LsSf https://astral.sh/uv/install.sh | sh```
 ---
 
-# Exercise 3a — Connect the server, and prove that you did
+# Exercise 3a — Connect the server, and verify that you did
 
 The `mcp/` folder has been in the workshop since Exercise 1, and it has not
 been connecting anything. A folder is not a server. Neither is a permission
