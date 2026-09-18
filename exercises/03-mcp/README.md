@@ -218,19 +218,19 @@ rows: 512  blank resolution: 26
 
 </details>
 
-All 26 blanks, and only NMR. You have now confirmed the pattern with your own
+All 26 blanks are NMR only. You have now confirmed the pattern with your own
 tool, on a file you can read.
 
 The sample is deliberately chosen (every entry where `hash(pdb_id) % 520 = 0`),
-so it is reproducible — but it is a sample for checking *method*, not a
+so it is reproducible — but it is a sample for checking *method_class* (see below), not a
 representative subset. Do not quote percentages from it.
 
 ## Now ask the question properly
 
-The honest version has to say which methods it covers, which needs the
+The honest version has to say which methods it utilizes, which needs the
 second table:
 
-> For each method class, how many entries are there and what is the median
+> For each method_class, how many entries are there and what is the median
 > resolution? Join entries to entry_types.
 
 | method_class | entries | median resolution |
@@ -239,15 +239,15 @@ second table:
 | EM | 36,687 | 3.29 Å |
 | NMR | 14,921 | — |
 
-**What to notice:** the SQL in 3b was valid, the agent did nothing wrong, and
-the number was real. The *question* was unanswerable as asked, and nothing in
-the output said so. Deciding that "average resolution of the PDB" needs
-qualifying is domain knowledge, not something the model recovers from the
-schema. The check that exposed it — comparing `count(*)` with
-`count(column)` — took one query.
+**What to notice:** the SQL in exercise 3b was valid, the agent did nothing wrong, and
+the number was real. The asked *question* was unanswerable, and nothing in
+the output said so. Deciding that "average resolution of the PDB database" must be
+qualified, is *domain knowledge*. The model can not discover this from the
+schema. The way to confirm the correct result: comparing `count(*)` with
+`count(column)` — takes only one query.
 
-Ask the agent to redo 3b's answer as a sentence you would be willing to put
-in a paper. It should name the methods, the row count, and the exclusion.
+Ask the agent to redo exercise 3b's answer as a sentence you would be willing to put
+in a paper. It should name the method_class, the row count, and the exclusion.
 
 ---
 
@@ -269,10 +269,10 @@ That is the **resolution revolution** — detector and software improvements
 turning cryo-EM from a low-resolution technique into a competitor to
 crystallography — visible in a table you just produced from primary data.
 
-Apply the 3c checks before believing it. How many 2012 entries are there?
-Is a median over 73 entries the same kind of claim as one over 7,067? Did
-the query filter on `method_class` or on `experiment_type`, and do those two
-give the same answer? Ask for the SQL and read it.
+Apply the exercise 3c checks before believing it.<br>How many 2012 entries are there?<br>
+Is a median over 73 entries the same kind of claim as one over 7,067?<br>
+Did the query filter on `method_class` or on `experiment_type`, and do those two
+give the same answer?<br>
 
 Try one more of your own, and check it the same way:
 
@@ -302,7 +302,7 @@ In **Plan** mode, with `skill-builder` from Exercise 1e:
 > entries have no resolution. It must report a zero-row result as zero rows.
 > Propose it before implementing.
 
-Build it, then re-ask a 3b-style question and see whether the answer arrives
+Build it, then re-ask an exercise 3b style question and see whether the answer arrives
 with its evidence attached.
 
 **What to notice:** the skill does not execute anything. The MCP server runs
@@ -332,11 +332,10 @@ which is attached in read-only mode
 ls exercises/03-mcp/data/PROOF.parquet
 ```
 
-**It succeeded, and a new file exists on your disk.** A read-only *database*
-does not mean a read-only *filesystem*. `read_csv('...')` will likewise open
-any file the server process can reach.
+**It succeeded, and a new file exists on your disk.**<br>
+A read-only *database* does not mean a read-only *filesystem*.
 
-Delete it:
+Delete the file:
 
 ```bash
 rm exercises/03-mcp/data/PROOF.parquet
@@ -359,14 +358,18 @@ prompts you. Check the tool names your OpenCode version actually registers —
 a permission rule that matches nothing restricts nothing, and says so
 nowhere.
 
+**Take-home message:** If you have important data you must take great
+care to restrict your agent from modifying it - include all tools the agent uses.
+You are not necessarily informed about modification.<br>
+Think about it like making a deal with the devil.
+
 ---
 
 # Exercise 3g — When is an MCP server worth it?
 
 Do one of your earlier questions a different way. With the server off
 (`/mcps`, space to toggle it off), ask an agent with `bash` permission to
-answer
-the same question using the `duckdb` command-line tool or Python.
+answer the same question using the `duckdb` command-line tool or Python.
 
 Compare:
 
@@ -389,8 +392,8 @@ model's context window, before anyone asks anything. On a small model the
 limiting factor of an MCP server is how many tools it has, not how much it
 can do.
 
-**What to notice:** MCP is not automatically the better option. It is worth
-it when a capability is reusable, hard to reproduce with a shell command, and
+**What to notice:** MCP is not automatically the better option. It is worthwhile
+when a capability is reusable, hard to reproduce with a shell command, and
 narrow enough to stay affordable. "There is an MCP server for it" is not a
 reason to connect one.
 
@@ -398,7 +401,7 @@ reason to connect one.
 
 # Exercise 3h — Point it at your own data
 
-Nothing you have done so far was specific to the PDB. The server takes a
+Nothing you have done so far was specific to the PDB database. The MCP server takes a
 database path, so give it a different one.
 
 Build a database from a CSV you care about — one of your own files, or an
@@ -412,7 +415,7 @@ con.execute(\"CREATE TABLE measurements AS SELECT * FROM read_csv('my_file.csv')
 con.close()"
 ```
 
-Point the server at it and restart OpenCode:
+Point the MCP server at it and restart OpenCode:
 
 Point the server at it by editing one line in `opencode.json`:
 
@@ -422,7 +425,7 @@ Point the server at it by editing one line in `opencode.json`:
 
 Restart OpenCode — configuration is read at startup, unlike the `/mcps`
 toggle — and turn the server on again. Ask the agent what tables exist, and
-run the same checks from 3c: how many rows, how many non-null, what does the
+run the same checks from exercise 3c: how many rows, how many non-null, what does the
 count tell you that the answer did not.
 
 **What to notice:** you changed one argument. The server, the four tools and
@@ -440,7 +443,7 @@ To go back, set `--db-path` to `exercises/03-mcp/data/pdb.duckdb` again.
 The dataset is a frozen snapshot, built from public wwPDB index files on
 18 September 2026. It will not match a live PDB query made later, which is
 expected. Sources, schema and quirks are in
-[`PROVENANCE.md`](data/PROVENANCE.md); the server
+[`PROVENANCE.md`](data/PROVENANCE.md); the MCP server
 configuration and what has and has not been tested are in
 [the server notes](../../mcp/README.md).
 
