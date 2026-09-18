@@ -37,6 +37,7 @@ You need python installation tool `uv` (or pip) installed. Check with `uv --vers
 
 You can install it with:
 ```curl -LsSf https://astral.sh/uv/install.sh | sh```
+
 ---
 
 # Exercise 3a — Connect the server, and verify that you did
