@@ -509,7 +509,7 @@ it reported the two dropped rows or just let `avg()` skip them.
 
 ### P2 — Make a plot that changes the answer
 
-Plot bill length against bill depth, with each species in its own colour.
+Plot bill length against bill depth, with each species in its own color.
 It must work with what is already on your laptop; agree the approach before
 approving an install.
 
@@ -594,7 +594,7 @@ Get it onto a log scale, split by `group`. Median genome size in Mb:
 **What to notice:** "average genome size" across this table is a number
 belonging to no organism. The plot is what makes that obvious.
 
-### N2 — Analyse: does a bigger genome mean more genes?
+### N2 — Analyze: does a bigger genome mean more genes?
 
 Ask the agent to compare `genome_size` with `total_gene_count`. Then ask for
 gene density — genes per Mb — by group:
@@ -662,7 +662,7 @@ times the median, followed by the mucins `MUC16` at 14,507 and `MUC3B` at
 Put it on a log axis and mark the median and the mean. Ask the agent which of
 the two it would quote, and why.
 
-### U2 — Analyse: how many human proteins are there?
+### U2 — Analyze: how many human proteins are there?
 
 The obvious answer is 20,431. Ask instead how `protein_existence` is
 distributed:
@@ -714,7 +714,7 @@ available far more often than people use it.
 
 # Exercise 3i — The other three servers
 
-Everything so far used one server against one local database. Three more are
+Everything so far have used one server against one local database. Three more are
 configured and switched off. There are no set tasks for these: turn one on,
 find out what it can do, and go as far as you like.
 
@@ -739,7 +739,7 @@ disagree, and why. Also, try anything you couldn't do with the frozen snapshot.
 
 **`opentargets` is the odd one out.** It does not wrap each question in its
 own tool — it hands the agent a **GraphQL schema** and expects it to compose
-the query. That is the same skill as writing SQL in 3b, one layer up, and it
+the query. That is the same skill as writing SQL in exercise 3b, one layer up, and it
 fails the same way: read the query before you approve it.
 
 `biomcp` is the widest and the least precise. With 83 tools to choose from, a
@@ -759,7 +759,7 @@ required:
 - Is there a drug in ChEMBL against a target you care about?
 - Does the live PDB agree with the frozen snapshot on cryo-EM growth?
 
-**Keep the habits from 3c.** These servers answer over the network, from
+**Keep the habits from exercise 3c.** These servers answer over the network, from
 databases you did not build, and a confident paragraph is not evidence. Ask
 which tool was called and what it returned. Ask how many records matched, not
 just what the top one says. When an answer matters, check it at the source.
