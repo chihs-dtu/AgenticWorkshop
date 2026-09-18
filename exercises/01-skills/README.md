@@ -129,7 +129,7 @@ To request a skill unambiguously, say **"Use the pdb-download skill to…"**.
 For a loading check, run `opencode debug skill --pure` from your terminal,
 outside the chat. It lists discovered skills, but does not prove they work.
 
-# Exercise 1d - Render a structure from coordinates
+# Exercise 1d — Render a structure from coordinates
 
 This time, create an image rather than downloading an existing one. In **Plan**:
 
