@@ -41,14 +41,19 @@ jobs:
       # Built file by file rather than with --input-dir, because --input-dir
       # would also convert slides/README.md — which documents the decks, and
       # is not one.
+      #
+      # SKIP lists decks that stay in the repository but are not published.
+      # Add a name here (without .md) to keep a draft out of the site.
       - name: Build each deck to HTML and PDF
+        env:
+          SKIP: 'README originalSlop'
         run: |
           set -euo pipefail
           mkdir -p _site
           shopt -s nullglob
           for f in slides/*.md; do
             name=$(basename "$f" .md)
-            [ "$name" = "README" ] && continue
+            case " $SKIP " in *" $name "*) echo "skipping $name"; continue ;; esac
             echo "::group::$name"
             npx --yes "@marp-team/marp-cli@${MARP_VERSION}" "$f" \
               --theme-set slides/themes --html \

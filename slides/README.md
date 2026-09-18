@@ -6,10 +6,15 @@ files as readable documents**, and [Marp](https://marp.app/) renders the same
 file as a presentation. There is one source, not a document and a deck that
 drift apart.
 
-| File | Deck |
-|---|---|
-| [`01-concepts.md`](01-concepts.md) | Skills, agents and MCP — the concepts behind the four exercises |
-| [`themes/dtu.css`](themes/dtu.css) | The workshop theme. Not a deck |
+| File | Deck | Published |
+|---|---|---|
+| [`unoriginalSlop.md`](unoriginalSlop.md) | Building and employing agents for data analysis | Yes |
+| [`originalSlop.md`](originalSlop.md) | Skills, agents and MCP. An earlier draft, kept for reference | No |
+| [`themes/dtu.css`](themes/dtu.css) | The workshop theme. Not a deck | — |
+
+Only `unoriginalSlop.md` is published. Drafts are listed in `SKIP` in
+[the workflow](../.github/workflows/slides.yml); add a name there to keep a
+deck in the repository but off the site.
 
 ## Reading it
 
@@ -29,9 +34,9 @@ command palette. Nothing else to install.
 npx @marp-team/marp-cli@4.5.1 -s slides --theme-set slides/themes
 
 # one-off exports
-npx @marp-team/marp-cli@4.5.1 slides/01-concepts.md --theme-set slides/themes -o 01-concepts.html
-npx @marp-team/marp-cli@4.5.1 slides/01-concepts.md --theme-set slides/themes --pdf --allow-local-files
-npx @marp-team/marp-cli@4.5.1 slides/01-concepts.md --theme-set slides/themes --pptx
+npx @marp-team/marp-cli@4.5.1 slides/unoriginalSlop.md --theme-set slides/themes -o unoriginalSlop.html
+npx @marp-team/marp-cli@4.5.1 slides/unoriginalSlop.md --theme-set slides/themes --pdf --allow-local-files
+npx @marp-team/marp-cli@4.5.1 slides/unoriginalSlop.md --theme-set slides/themes --pptx
 ```
 
 In the HTML deck: arrow keys to move, <kbd>F</kbd> for fullscreen,
@@ -39,9 +44,9 @@ In the HTML deck: arrow keys to move, <kbd>F</kbd> for fullscreen,
 
 ## Publishing it
 
-[`.github/workflows/slides.yml`](../.github/workflows/slides.yml) builds every
-deck in this folder to HTML and PDF on each push to `main` and publishes them
-to GitHub Pages.
+[`.github/workflows/slides.yml`](../.github/workflows/slides.yml) builds each
+published deck in this folder to HTML and PDF on every push to `main` and
+publishes them to GitHub Pages.
 
 It needs one setting on the repository, once: **Settings → Pages → Build and
 deployment → Source: GitHub Actions.** Until that is set, the workflow's
@@ -65,7 +70,7 @@ paginate: true
 ## Second slide
 ```
 
-Conventions used in `01-concepts.md`:
+Conventions used in the decks:
 
 | You want | Write |
 |---|---|
@@ -82,5 +87,5 @@ never what you want.
 
 **Keep slides short.** Marp does not shrink text to fit; content taller than
 the slide is simply clipped. Check the rendered output before presenting —
-`npx @marp-team/marp-cli@4.5.1 slides/01-concepts.md --theme-set slides/themes --pdf`
+`npx @marp-team/marp-cli@4.5.1 slides/unoriginalSlop.md --theme-set slides/themes --pdf`
 and page through it.
