@@ -1,199 +1,240 @@
 # MCP servers
 
 Notes on the MCP servers this project configures. **This folder holds
-documentation only** — there is no server code here, and nothing to install
+documentation only** — there is no server code here and nothing to install
 from it.
 
-| Server | Connects to | Used by |
-|---|---|---|
-| `duckdb` | any DuckDB database file | [Exercise 3](../exercises/03-mcp/README.md) |
+| Server | Kind | Setup cost | Tools | Used by |
+|---|---|---|---:|---|
+| [`duckdb`](#duckdb--query-a-local-database) | local (`uv`) | 30 MB download | 4 | [Exercise 3](../exercises/03-mcp/README.md) |
+| [`rcsb`](#rcsb--the-live-pdb) | local (`uv`) | ~1 MB more | 38 | not used in an exercise |
+| [`biomcp`](#biomcp--43-biomedical-databases) | local (`uv`) | ~1 MB more | 83 | exercises planned |
+| [`opentargets`](#opentargets--remote-no-install) | **remote** (no auth) | **nothing** | 5 | exercise planned |
 
-## Where a server actually lives
+All four ship `"enabled": false`. Turn one on in the chat with **`/mcps`**,
+space to toggle, esc to close. It connects at once, needs no restart, and
+**writes nothing** — `opencode.json` is untouched and the toggle lasts for
+that OpenCode run only. Set `"enabled": true` by hand if you want one on by
+default; that is the setting `/mcps` does not change.
 
-Three separate things, in three places, none of them this folder:
-
-| Part | Where it is |
-|---|---|
-| The program | A PyPI package. `uvx` downloads it into `~/.cache/uv/` on first use. |
-| The configuration | The `mcp.duckdb` block in `opencode.json`, at the project root. |
-| The data it opens | Whoever owns it. For `duckdb`, `exercises/03-mcp/data/`. |
-
-OpenCode starts the program as a **child process on your laptop** and talks to
-it over stdin and stdout: it writes a JSON line to the child's stdin and reads
-one back from its stdout. The server binds no network port, needs no hosting,
-and exits when that pipe closes. Only the language model runs on the DTU
-cluster.
-
-Someone does host the *file*: PyPI serves the package from
-`files.pythonhosted.org`, published by MotherDuck. `uvx` downloads it once,
-into `~/.cache/uv`. Nobody hosts a running instance of it.
-
-**One outbound request to be aware of.** The FastMCP framework the server is
-built on checks PyPI for a newer version of itself
-(`GET https://pypi.org/pypi/fastmcp/json`, 2-second timeout, cached). It sends
-no query, no data and no identifiers, and the server works offline without it.
-Your database contents never leave your machine, but the process is not
-completely silent, and saying so is more useful than claiming it is.
-
-Creating a folder does not connect a server, and neither does a permission rule.
-
-## Servers here, data elsewhere
-
-A server is a **capability**; a dataset is **someone's material**. They have
-different owners and lifetimes, so they stay apart. The DuckDB server has no
-knowledge of the PDB: Exercise 3 supplies a PDB database for it to open, and
-changing one `--db-path` line points the same server at anything else. If a
-server ever *is* specific to one dataset, name it for that pairing rather than
-hiding the coupling.
+Turn on only what you are using. Every tool a server exposes is described in
+**every** request you send, so an idle server is a permanent tax on the
+conversation.
 
 ---
 
-# The `duckdb` server
+## The two kinds, and what the difference means
 
-Lets an agent query a DuckDB database by writing SQL.
+### Local servers — `"type": "local"`
 
-## Setup
+A program on **your laptop**. OpenCode starts it as a child process and talks
+to it over stdin and stdout: it writes a JSON line to the child's stdin and
+reads one back from its stdout. No network port, no hosting, no URL. The
+process exits when OpenCode closes the pipe.
 
-**1. Build a database.** This server does not create one. For Exercise 3:
-
-```bash
-uv run --with duckdb python exercises/03-mcp/scripts/make_db.py
+```json
+{ "type": "local", "command": ["uvx", "rcsb-mcp@0.15.0"] }
 ```
 
-**2. Warm the package** once, so its first use is not a silent 20 MB download:
+- **Needs `uv`.** `uvx` fetches the package from PyPI on first use and caches
+  it in `~/.cache/uv`. Nothing is stored in this repository.
+- **Needs a one-time download.** Measured on macOS arm64: DuckDB 30 MB,
+  `rcsb` 8.5 MB, `biomcp` 8.7 MB — but **31 MB for all three together**,
+  because they share almost every dependency. Once DuckDB is cached, the
+  other two cost about 1 MB each. Half of DuckDB's 30 MB is the DuckDB
+  engine itself.
+- **Works offline afterwards**, though `rcsb` and `biomcp` then have no data
+  to query, because they are clients for online services.
+- **Your data stays local** if the server reads local files, as `duckdb` does.
+
+Warm the cache before the workshop rather than during it:
 
 ```bash
 uvx mcp-server-motherduck@1.0.8 --help
+uvx rcsb-mcp@0.15.0 --help
+uvx --from biomcp-server==0.7.0 bio-mcp --help
 ```
 
-**3. Turn it on** with OpenCode's built-in command, in the chat:
+### Remote servers — `"type": "remote"`
 
-```text
-/mcps          then press space on "duckdb"
-```
-
-No restart, nothing to edit. You need `uv`
-(`curl -LsSf https://astral.sh/uv/install.sh | sh`) and Python 3.10+.
-WSL2 users: install `uv` **inside** WSL2, where OpenCode runs.
-
-## `/mcps` is a session toggle, not a saved setting
-
-Measured against the running OpenCode server: toggling `duckdb` on took its
-status from `disabled` to `connected` immediately, and afterwards
-`opencode.json` was **byte-for-byte unchanged** and nothing was written to
-OpenCode's state directory. The toggle takes effect at once, lasts for that
-OpenCode run only, and never edits your configuration.
-
-That is why this project ships `"enabled": false`. A student doing Exercises 1
-and 2 never meets a server they have not set up, never pays ~780 tokens of
-tool definitions in every request, and turning it on for Exercise 3 changes
-nothing on disk. Set `"enabled": true` by hand if you want it on by default —
-that is the setting `/mcps` deliberately does not touch.
-
-On the command line, `opencode mcp` offers `add`, `list`, `auth`, `logout` and
-`debug`, but no enable or disable. `opencode mcp list` reports the saved
-configuration, not what is running.
-
-## The configuration
+Someone else runs the server. OpenCode connects to a URL over HTTPS.
 
 ```json
-"duckdb": {
-  "type": "local",
-  "enabled": false,
-  "command": [
-    "uvx", "mcp-server-motherduck@1.0.8",
-    "--db-path", "exercises/03-mcp/data/pdb.duckdb",
-    "--max-rows", "100",
-    "--max-chars", "8000"
-  ],
-  "timeout": 60000
-}
+{ "type": "remote", "url": "https://mcp.platform.opentargets.org/mcp" }
 ```
 
-| Choice | Reason |
+- **Nothing to install.** No `uv`, no download, no Python, no platform
+  problems. This is the one kind that works on any laptop immediately.
+- **"No auth"** means no account, token or API key — you connect and use it.
+  The four in the life-science list that need no auth are run by public
+  institutions; most remote MCP servers are commercial and need OAuth or a
+  subscription key.
+- **It needs the network, every time.** If the room's wifi fails, or the
+  service is down or rate-limited, the server is simply unavailable. A local
+  server would still have worked.
+- **Your queries leave your machine.** You are sending text to a third party.
+  Fine for public gene and protein identifiers; not for anything confidential.
+  The same warning the workshop gives about free external models applies.
+
+Neither kind is better. Local costs a download and gives you independence;
+remote costs a dependency on someone else's uptime and gives you zero setup.
+Exercise 3 uses a local one so nothing can fail on the day.
+
+---
+
+## `duckdb` — query a local database
+
+**Local, `uv`, 4 tools.** `mcp-server-motherduck` 1.0.8, by MotherDuck.
+
+Opens a DuckDB database file and runs SQL against it. Not tied to any
+dataset: `--db-path` points it at whatever database you give it. Exercise 3
+supplies a PDB snapshot; point it at your own data and nothing else changes.
+
+| Tool | Does |
 |---|---|
-| `@1.0.8` | Pinned. An upstream release cannot change behaviour on the morning of the workshop. |
-| a file, not `:memory:` | The server refuses `:memory:` unless you also pass `--read-write`, because in-memory databases are always writable. A file gives real read-only access. |
-| relative path | OpenCode starts the server in the project root, so no per-laptop absolute paths. |
-| `--max-rows 100` | The DTU models hold 16,384 tokens. The default cap is 1024 rows; one careless `SELECT *` would fill the conversation. |
-| `--max-chars 8000` | The same, for wide text columns. |
-
-To serve a different database, change `--db-path` and restart OpenCode.
-Configuration is read at startup, unlike the `/mcps` toggle.
-
-## What it exposes
-
-Four tools: `execute_query` (argument `sql`), `list_tables`, `list_columns`
-(argument `table`) and `list_databases`. Their definitions cost about **780
-tokens in every request** — roughly 5% of a DTU model's context before any
-data comes back.
+| `execute_query` (`sql`) | Runs SQL and returns rows |
+| `list_tables` | Lists tables and views |
+| `list_columns` (`table`) | Column names and types |
+| `list_databases` | Attached databases |
 
 `switch_database_connection` is **not** exposed, because
-`--allow-switch-databases` is not set. The agent cannot repoint the server.
+`--allow-switch-databases` is not set, so the agent cannot repoint it.
 
-## Two results that matter
-
-**Read-only does block database writes.** `CREATE TABLE`, `UPDATE`, `DELETE`
-and `ATTACH` are all refused:
-`Cannot execute statement of type "..." on database "..." which is attached in read-only mode`.
-
-**Read-only does not stop the server writing files.** This **succeeds**
-against the read-only server and creates a file on disk:
+**Read-only is narrower than it sounds.** `CREATE`, `UPDATE`, `DELETE` and
+`ATTACH` are refused by DuckDB. But this **succeeds** and writes a file to
+your disk:
 
 ```sql
 COPY (SELECT 1 AS x) TO 'PROOF.parquet' (FORMAT parquet)
 ```
 
-Reading is equally open: `read_csv('...')` will open any file the server
-process can reach. "Read-only" describes the *database*, not the *filesystem*
-— the same distinction the agent exercises make about `edit: deny` not making
-an agent read-only when it can still run shell commands. Restrict the tool,
-and keep approval prompts on:
+`read_csv('...')` will likewise open any file the process can reach.
+Read-only describes the *database*, not the *filesystem* — the same
+distinction the agent exercises make about `edit: deny` not making an agent
+read-only when it can still run shell commands.
 
-```yaml
-permission:
-  duckdb_execute_query: ask
-  duckdb_list_tables: allow
-  duckdb_list_columns: allow
-```
+`--max-rows 100` and `--max-chars 8000` are set deliberately: the default cap
+is 1024 rows, and one careless `SELECT *` would fill a small model's context.
 
-OpenCode names MCP tools `servername_toolname`. Verify the names your version
-registers before relying on a rule — one that matches nothing restricts
-nothing, silently.
+Setup and the exercise: [Exercise 3](../exercises/03-mcp/README.md).
 
-## Verified on 18 September 2026
+## `rcsb` — the live PDB
 
-macOS, OpenCode 1.18.30, `mcp-server-motherduck` 1.0.8, DuckDB 1.5.5.
+**Local, `uv`, 38 tools.** `rcsb-mcp` 0.15.0.
 
-- With `enabled: false`, `POST /mcp/duckdb/connect` (what `/mcps` calls) moved
-  the status from `disabled` to `connected` with no restart, leaving
-  `opencode.json` and OpenCode's state directory unchanged.
-- With `enabled: true`, `opencode mcp list` reports `duckdb connected`.
-- A missing database still reports `connected`, because DuckDB opens the file
-  lazily; the failure appears per query as
-  `Cannot open database ... in read-only mode: database does not exist`.
-- A missing `uv` reports `duckdb failed — Executable not found in $PATH`.
-- Pointing `--db-path` at an unrelated database served that schema instead,
-  confirming the server is not tied to the PDB data.
-- `list_tables` finds the tables; `list_columns` returns the documented types.
-- Database writes refused; a `COPY ... TO` file write is not.
-- `--max-rows` truncation triggers and is reported in the result.
+The Protein Data Bank, live, as structured tools. No exercise uses it — it is
+here to explore, and because it is the natural companion to the frozen PDB
+snapshot in Exercise 3. Ask both the same question and the difference between
+a local snapshot and a live service becomes concrete.
+
+| Group | Tools |
+|---|---|
+| Build a search | `rcsb_query_fulltext`, `rcsb_query_attribute`, `rcsb_query_sequence`, `rcsb_query_chemical`, `rcsb_query_structure`, `rcsb_query_seqmotif`, `rcsb_query_strucmotif`, `rcsb_query_composer` |
+| Run it | `rcsb_search_request`, `rcsb_list_pdb_search_attributes` |
+| Free text → ontology | `rcsb_find_go_terms`, `rcsb_find_interpro_domains`, `rcsb_find_enzyme_classes`, `rcsb_find_disease_terms`, `rcsb_find_organisms` |
+| Entry data | `rcsb_get_entries`, `rcsb_get_polymer_entities`, `rcsb_get_nonpolymer_entities` (ligands), `rcsb_get_branched_entities` (glycans), `rcsb_get_assemblies`, `rcsb_get_interfaces`, `rcsb_get_chem_comps` |
+| Chains and instances | `rcsb_get_polymer_entity_instances`, `rcsb_get_nonpolymer_entity_instances`, `rcsb_get_branched_entity_instances` |
+| Sequence cross-reference | `rcsb_seqcoord_alignments` (PDB ↔ UniProt ↔ NCBI), `rcsb_seqcoord_annotations`, `rcsb_seqcoord_group_alignments`, `rcsb_seqcoord_group_annotations` |
+| Grouping and external records | `rcsb_get_entry_groups`, `rcsb_get_polymer_entity_groups`, `rcsb_get_nonpolymer_entity_groups`, `rcsb_get_uniprot`, `rcsb_get_pubmed`, `rcsb_get_group_provenance` |
+| Output | `rcsb_render_report` — a self-contained HTML report of a search |
+
+It does real structural work, not only metadata: **sequence-similarity search**
+(MMseqs2), **3D shape similarity** against an existing structure, and
+**structural-motif search** for a geometric arrangement of residues. Its own
+examples use `4HHB`, `4HHB.A` and `4HHB_3` — the same haemoglobin structure as
+Exercises 1 to 3.
+
+It queries RCSB over the network, so it needs a connection despite being a
+local process.
+
+## `biomcp` — 43 biomedical databases
+
+**Local, `uv`, 83 tools.** `biomcp-server` 0.7.0.
+
+The broad one: roughly one tool per resource across about 57 endpoints.
+Exercises are planned for it.
+
+| Area | Tools include |
+|---|---|
+| Genes and expression | `gene_enrichment`, `gene_full_profile`, `gene_go_annotation`, `ensembl_gene_lookup`, `ensembl_homologs`, `gtex_tissue_expression`, `gtex_eqtl`, `expression_atlas_gene`, `geo_dataset_search`, `hgnc_search` |
+| Variants | `gwas_variant_associations`, `gwas_gene_variants`, `gnomad_variant_lookup`, `gnomad_gene_constraint`, `clinvar_query`, `dbsnp_search`, `variant_annotate`, `ewas_*`, `mqtl_*` |
+| Proteins and interactions | `uniprot_annotate`, `protein_domains`, `protein_glycosylation`, `protein_tissue_expression`, `string_interactions`, `biogrid_interactions`, `intact_interactions`, `uniparc_*` |
+| Structures | `pdb_structure_summary`, `alphafold_structure`, `emdb_structure_lookup` |
+| Chemistry and drugs | `chembl_drug_search`, `chebi_compound`, `chebi_search`, `unichem_mapping`, `compound_info`, `lipid_lookup`, `glycan_lookup` |
+| Pathways and targets | `kegg_pathway_search`, `kegg_pathway_genes`, `reactome_pathway_search`, `go_term_lookup`, `ot_target_info`, `ot_target_disease` |
+| Literature | `pubmed_search`, `europepmc_search`, `openalex_work_search` |
+| Sequences and archives | `blast_search`, `ncbi_fetch_sequence`, `ena_sequence_search`, `sra_search`, `bioproject_search`, `genome_assembly_search`, `ucsc_genome_info` |
+| Other omics | `pride_*` (proteomics), `metabolomics_*`, `microbiome_study_search`, `cellxgene_search`, `biosample_*`, `plasmid_search` |
+| Model organisms | `flybase_*`, `wormbase_*`, `rgd_*`, `plant_gene_lookup`, `taxonomy_lookup` |
+| Meta | `tool_inventory`, `db_health_check`, `get_analysis_template`, `intelligent_analyze` |
+
+Breadth has a cost beyond context. **83 tool descriptions is a lot to choose
+from**, and a small model picks the wrong tool more often than it does with
+four. Use it with one of the larger-context models, and check which tool it
+actually called rather than trusting the answer. `tool_inventory` is a good
+first request: it lets the model list what it has instead of guessing.
+
+Compare `pdb_structure_summary` — one tool — with `rcsb`'s 38. This server is
+wide and shallow; `rcsb` is narrow and deep. They complement each other.
+
+## `opentargets` — remote, no install
+
+**Remote, no authentication, 5 tools.** Run by the Open Targets Platform.
+
+Target–disease association evidence: which genes are implicated in which
+diseases, with the supporting evidence and scores. An exercise is planned.
+
+| Tool | Does |
+|---|---|
+| `get_open_targets_graphql_schema` | Returns the GraphQL schema, filtered by category |
+| `get_type_dependencies` | Schema subsets for specific types |
+| `search_entities` | Finds targets, diseases and drugs by name |
+| `query_open_targets_graphql` | Runs a GraphQL query |
+| `batch_query_open_targets_graphql` | Runs one query over many variable sets |
+
+This one is interesting for a reason beyond the data. It does not wrap each
+question in its own tool — it hands the agent **a schema and a query
+language** and expects it to compose the query. That is the same skill as
+writing SQL against DuckDB in Exercise 3, one layer up, and it is checkable
+the same way: read the query before approving it, and ask what it returned
+rather than trusting the summary.
+
+Nothing to install. Add the URL, toggle it on, use it — which makes it the
+obvious fallback for anyone whose `uv` install fails on the day.
 
 ---
 
 ## Adding another server
 
 Register it under `mcp` in `opencode.json` with `"enabled": false`, and add a
-section to this file. Give it a folder of its own only when it needs files of
-its own — documentation alone belongs here.
+section here. Give it a folder of its own only when it needs files of its own;
+documentation alone belongs in this file.
 
-Check its tool count first. Every tool is described in **every** request:
+Check its tool count before adopting it. For scale, on a 16,384-token model:
 
-| Server | Tools | Tool definitions | Share of a 16,384-token DTU context |
+| Server | Tools | Tool definitions | Share of context |
 |---|---:|---:|---:|
 | `duckdb` | 4 | ~780 tokens | 5% |
-| [BioMCP](https://pypi.org/project/biomcp-server/) 0.7.0 | 83 | ~17,377 tokens | **106%** |
+| `opentargets` | 5 | ~4,400 tokens | 27% |
+| `rcsb` | 38 | ~21,200 tokens | 129% |
+| `biomcp` | 83 | ~17,400 tokens | 106% |
 
-BioMCP covers 43 biomedical databases and is actively maintained, but its tool
-list alone does not fit in a DTU model's context window, before anyone asks a
-question. On small models the binding constraint is tool count, not features.
+`rcsb` and `biomcp` do not fit a 16k DTU model's context at all, and
+`opentargets` takes a quarter of it. Use the larger-context models for those,
+and keep servers you are not using switched off. Tool count, not features, is
+what limits how many servers you can have on at once.
+
+## Verified on 18 September 2026
+
+macOS 26.6, OpenCode 1.18.30. Every claim above was produced by running the
+servers, not read from their documentation.
+
+- All four connect: `opencode mcp list` reports `duckdb`, `rcsb`, `biomcp`
+  and `opentargets` as connected when enabled, including the remote one.
+- Tool counts and names were read from each server's `tools/list`.
+- Download sizes were measured by downloading the wheels: 30 MB, 8.5 MB,
+  8.7 MB separately; 31 MB and 76 wheels for all three together.
+- `/mcps` toggling a disabled server left `opencode.json` byte-for-byte
+  unchanged and wrote nothing to OpenCode's state directory.
+- DuckDB refuses `CREATE`/`UPDATE`/`DELETE`/`ATTACH` in read-only mode; a
+  `COPY ... TO` file write succeeds.

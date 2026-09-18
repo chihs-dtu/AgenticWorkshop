@@ -190,4 +190,4 @@ You can add/modify instructions directly yourself if you prefer to do it without
 This can be done both at very simple and very complex levels.<br>
 Source: [https://www.skillsdirectory.com/docs/skill-md-format](https://www.skillsdirectory.com/docs/skill-md-format)
 
-Next: [Agent Exercises](../02-agents/README.md).
+Next: [Exercise 2 — Agents](../02-agents/README.md).

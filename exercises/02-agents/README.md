@@ -230,3 +230,7 @@ history. A successfully parsed configuration is only a loading test.
 For PDB viewers, inspect the browser output yourself unless the agent has
 actually used a browser inspection tool. Keep "code generated", "viewer
 opened", "controls checked", and "scientific content verified" distinct.
+
+---
+
+Previous: [Exercise 1 — Skills](../01-skills/README.md) · Next: [Exercise 3 — MCP and data analysis](../03-mcp/README.md).

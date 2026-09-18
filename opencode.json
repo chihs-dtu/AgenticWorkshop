@@ -65,6 +65,32 @@
         "8000"
       ],
       "timeout": 60000
+    },
+    "rcsb": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "uvx",
+        "rcsb-mcp@0.15.0"
+      ],
+      "timeout": 60000
+    },
+    "biomcp": {
+      "type": "local",
+      "enabled": false,
+      "command": [
+        "uvx",
+        "--from",
+        "biomcp-server==0.7.0",
+        "bio-mcp"
+      ],
+      "timeout": 60000
+    },
+    "opentargets": {
+      "type": "remote",
+      "enabled": false,
+      "url": "https://mcp.platform.opentargets.org/mcp",
+      "timeout": 60000
     }
   },
   "permission": {
