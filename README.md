@@ -19,7 +19,8 @@ server-start commands.
 
 1. Install [OpenCode](https://opencode.ai/docs/#install) before the workshop.
    For this workshop, Windows users should install and run it inside WSL2.
-   The terminal version is preferred; OpenCode Desktop is also supported.
+   The terminal version (CLI) is preferred; OpenCode Desktop is also supported, however the CLI can function as
+   a desktop version in a browser at no extra cost.
 2. For Linux and WSL2 Ubunbu (Linux) it is this command for install OpenCode CLI (terminal)<br>
    `curl -fsSL https://opencode.ai/install | bash` 
 3. Open [the workshop repository](https://github.com/peterwadsackett/AgenticWorkshop)
@@ -27,10 +28,10 @@ server-start commands.
 4. Extract the ZIP and move/rename the extracted folder to the place you want to work.
    Its default name is `AgenticWorkshop-main` and we suggest renaming it to `workshop`
    in your home, and we will refer to that name in the text.
-6. In **OpenCode Desktop**, open that extracted folder as your project—the
+5. In **OpenCode Desktop**, open that extracted folder as your project—the
    folder containing both `README.md` and `opencode.json`, not its parent.
-   For the terminal version, run `opencode` from inside that folder.
-7. Start a new chat. Open the model selector and choose a model under **DTU**.
+   For the terminal version, run `opencode` from inside that folder or `opencode web` for the browser version.
+6. Start a new chat. Open the model selector and choose a model under **DTU**.
    In the terminal version, type `/models`.
 
 **For the supplied DTU models, no JSON editing, manual merging, API key or
