@@ -22,9 +22,7 @@ file as a document; Marp shows them in presenter view (press P).
 
 <!-- _class: part -->
 
-# Part 1
-
-## Start from what a model actually is
+# Start from what a model actually is
 
 A language model takes text and produces text. That is the whole of it.
 
