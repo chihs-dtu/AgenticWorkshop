@@ -14,10 +14,10 @@ The server runs **on your laptop**, as a child process of OpenCode. It binds
 no network port and needs no hosting, and the data never leaves your machine.
 Only the language model runs on the DTU cluster.
 
-The running theme of this exercise: **a query that succeeds is not an answer
-that is correct.** Exercise 1 made the same point about downloads — a
-successful HTTP request is not a structure file. A clean SQL result with a
-plausible number is just as easy to accept without checking.
+The running theme of this exercise: **a query that succeeds is not the same as a correct answer.**
+Exercise 1 made the same point about downloads — a
+successful HTTP request is not the same as a downloaded structure file. A clean SQL result with a
+plausible number is not necessarily correct.
 
 ## Where things live
 
