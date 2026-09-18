@@ -405,9 +405,8 @@ Nothing you have done so far was specific to the PDB database. The MCP server ta
 database path, so give it a different one.
 
 Build a database from a CSV you care about — one of your own files, or an
-output from exercise 1.<br>
-Here are some data sets (already downloaded) if you don't have one at hand:<br>
-[Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) for data exploration and visualization.<br>
+output from exercise 1. If you do not have one at hand, three are supplied
+with this exercise — see below.
 
 ```bash
 uv run --with duckdb python -c "
@@ -417,9 +416,7 @@ con.execute(\"CREATE TABLE measurements AS SELECT * FROM read_csv('my_file.csv')
 con.close()"
 ```
 
-Point the MCP server at it and restart OpenCode:
-
-Point the server at it by editing one line in `opencode.json`:
+Point the MCP server at it by editing one line in `opencode.json`:
 
 ```json
 "--db-path", "my_data.duckdb",
@@ -438,14 +435,331 @@ to, and keep its data somewhere it can be replaced.
 
 To go back, set `--db-path` to `exercises/03-mcp/data/pdb.duckdb` again.
 
+## If you don't have your own data, use one of these
+
+Three datasets are supplied in [`data/byo/`](data/byo/). None is the PDB and
+none is about structures — the point is to repeat the exercise 3c checks on something
+unfamiliar, where you have no intuition to fall back on.
+
+Each hides the same mistake you found in the PDB data: **an average taken
+across categories that should never have been pooled.** Three tasks come with
+each. Do them in order; the third is the interesting one.
+
+DuckDB reads the compressed files directly, so `.csv.gz` needs no unzipping.
+Full sources, licences and quirks are in
+[`data/byo/PROVENANCE.md`](data/byo/PROVENANCE.md).
+
+**Load all three first.** Task P1 below has the one command that builds a
+database containing all of them, including the one flag the penguin file
+needs. Start there even if you only care about the genomes or the proteins.
+
+<details>
+<summary><b>penguins.csv</b> — 344 rows, 15 KB, small enough to check by hand</summary>
+
+Body measurements of three penguin species at Palmer Station, Antarctica,
+2007–2009. **CC0.** Collected by Dr Kristen Gorman and Palmer Station LTER;
+Gorman, Williams & Fraser (2014), *PLoS ONE* 9(3):e90081.
+Source: `https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins.csv`,
+retrieved 18 September 2026, unmodified.
+
+**Columns:** `species`, `island`, `bill_length_mm`, `bill_depth_mm`,
+`flipper_length_mm`, `body_mass_g`, `sex`, `year`
+Adelie 152, Gentoo 124, Chinstrap 68, across three islands.
+
+This is the only one small enough to open in a text editor and count by hand,
+which makes it the one to check your agent against.
+
+### P1 — Load it, and find out why the average fails
+
+Ask for the mean bill length. It fails:
+
+```text
+Binder Error: No function matches the given name and argument types
+'avg(VARCHAR)'. You might need to add explicit type casts.
+```
+
+Missing values in this file are written as the string `NA`, not as empty
+fields. One `NA` in a column is enough for DuckDB to decide the whole column
+is text, so `bill_length_mm` arrives as `VARCHAR` and `avg()` refuses it.
+
+**Fix it when you load the file, not in every query.** Tell DuckDB which
+string means "missing":
+
+```bash
+uv run --with duckdb python -c "
+import duckdb
+con = duckdb.connect('exercises/03-mcp/data/byo.duckdb')
+d = 'exercises/03-mcp/data/byo'
+con.execute(f\"CREATE TABLE penguins AS SELECT * FROM read_csv('{d}/penguins.csv', nullstr='NA')\")
+con.execute(f\"CREATE TABLE genomes  AS SELECT * FROM read_csv('{d}/ncbi_reference_genomes.csv.gz')\")
+con.execute(f\"CREATE TABLE proteins AS SELECT * FROM read_csv('{d}/uniprot_human_proteins.csv.gz')\")
+con.close()"
+```
+
+`nullstr='NA'` is the whole fix. The measurement columns now load as `DOUBLE`
+and `BIGINT`, the `NA`s become real SQL `NULL`s, and every task below works
+without casting. The other two files need no special handling, and DuckDB
+reads the `.csv.gz` directly.
+
+Point `--db-path` at `exercises/03-mcp/data/byo.duckdb`, restart OpenCode,
+toggle `duckdb` on, and ask again. You should now get **43.9 mm** over **342** rows.
+
+Then ask why it is 342 and not 344. Two penguins have none of the four
+measurements; eleven more have no recorded `sex`.
+
+**What to notice:** the data had to be repaired before it could be wrong in an
+interesting way, and the repair was a decision — you told DuckDB what counts
+as missing. Had you instead cast column by column inside each query, you would
+have made that decision again every time, differently. Ask the agent whether
+it reported the two dropped rows or just let `avg()` skip them.
+
+### P2 — Make a plot that changes the answer
+
+Plot bill length against bill depth, with each species in its own colour.
+It must work with what is already on your laptop; agree the approach before
+approving an install.
+
+Then ask for the correlation between those two measurements — overall, and
+within each species:
+
+| | correlation |
+|---|---:|
+| All penguins | **−0.235** |
+| Adelie | **+0.391** |
+| Chinstrap | **+0.654** |
+| Gentoo | **+0.643** |
+
+**The sign flips.** Pooled, deeper bills look shorter; within every single
+species, deeper bills are longer. This is Simpson's paradox, and the scatter
+plot shows instantly what the single number hides: three separate clouds,
+each sloping up, arranged so the overall trend slopes down.
+
+### P3 — Take an apparent result apart
+
+Mean bill length by island: Torgersen **39.0**, Dream **44.2**, Biscoe
+**45.3** mm. Ask the agent whether penguins on Biscoe have longer bills than
+those on Torgersen.
+
+Then ask which species live on each island. Torgersen has **only Adelie** —
+the species with the shortest bills. The island difference is largely a
+species difference wearing an island's name.
+
+**What to notice:** nothing in the query was wrong, and the numbers are real.
+Confounding is not something SQL can warn you about. Write the one-sentence
+answer you would actually stand behind.
+
+</details>
+
+<details>
+<summary><b>ncbi_reference_genomes.csv.gz</b> — 25,965 genome assemblies</summary>
+
+NCBI RefSeq reference genomes: one row per assembly, across bacteria,
+archaea, fungi, plants and animals. **Public domain** (US Government work).
+Source: `https://ftp.ncbi.nlm.nih.gov/genomes/refseq/assembly_summary_refseq.txt`,
+retrieved 18 September 2026.
+
+**Columns:** `assembly_accession`, `organism_name`, `taxid`, `assembly_level`,
+`genome_size`, `gc_percent`, `seq_rel_date`, `group`, `total_gene_count`
+
+**It is a subset, not a sample.** The full file holds 552,279 assemblies; this
+keeps the 25,965 marked `reference genome`, which are better assembled and
+more studied than RefSeq as a whole. Do not quote proportions from it as if
+they described all sequenced organisms.
+
+### N1 — Plot something that needs a log axis
+
+Ask for the distribution of genome size across all assemblies, as a plot.
+The first attempt will almost certainly be unreadable: sizes run from
+**0.11 Mb to 40,054 Mb**, five orders of magnitude, so on a linear axis
+everything collapses into one bar at the left.
+
+Get it onto a log scale, split by `group`. Median genome size in Mb:
+
+| group | n | median Mb |
+|---|---:|---:|
+| archaea | 832 | 3.2 |
+| bacteria | 22,736 | 4.2 |
+| fungi | 668 | 32.8 |
+| invertebrate | 512 | 386.7 |
+| plant | 211 | 639.6 |
+| vertebrate_mammalian | 269 | 2576.5 |
+
+**What to notice:** "average genome size" across this table is a number
+belonging to no organism. The plot is what makes that obvious.
+
+### N2 — Analyse: does a bigger genome mean more genes?
+
+Ask the agent to compare `genome_size` with `total_gene_count`. Then ask for
+gene density — genes per Mb — by group:
+
+```
+archaea 1024.4   bacteria 934.2   fungi 350.5   protozoa 280.7
+plant 63.5   invertebrate 45.7   vertebrate_other 20.6   vertebrate_mammalian 12.5
+```
+
+An **eighty-fold** difference in density. A mammalian genome is roughly six
+hundred times the size of a bacterial one and carries only a few times more
+genes, because most of it is not coding sequence.
+
+Check the direction of the claim before accepting it: is the agent reporting
+a correlation it computed, or one it already knew?
+
+### N3 — Ask whether the data can support the question
+
+`assembly_level` records how finished each assembly is: **Contig 9,746**,
+**Complete Genome 7,268**, **Scaffold 7,228**, **Chromosome 1,723**.
+
+Even among reference genomes, most are not complete. Ask the agent to redo
+N2 using only `Complete Genome` assemblies and report whether the conclusion
+survives — and by how much the numbers move.
+
+**What to notice:** a gene count from a fragmented assembly is a weaker
+measurement than one from a finished genome, and the table does not say so.
+Deciding which rows are fit for the question is the analysis.
+
+</details>
+
+<details>
+<summary><b>uniprot_human_proteins.csv.gz</b> — 20,431 reviewed human proteins</summary>
+
+Every manually reviewed (Swiss-Prot) human protein entry. **CC BY 4.0**,
+UniProt Consortium. Source:
+`https://rest.uniprot.org/uniprotkb/stream?query=reviewed:true%20AND%20organism_id:9606&format=tsv&fields=accession,id,protein_name,gene_primary,length,mass,protein_existence,annotation_score`,
+retrieved 18 September 2026. Reviewed entries only; the unreviewed TrEMBL set
+is far larger and machine-annotated. Swap `organism_id:9606` for another
+species.
+
+**Columns:** `accession`, `entry_name`, `protein_name`, `gene`,
+`length` (amino acids), `mass` (Da), `protein_existence`, `annotation_score`
+
+### U1 — Plot a distribution with a long tail
+
+Plot protein length. Again the first attempt will be unreadable: median
+**415 aa**, mean **559 aa**, maximum **34,350 aa**. Titin (`TTN`) is eighty
+times the median, followed by the mucins `MUC16` at 14,507 and `MUC3B` at
+13,477.
+
+Put it on a log axis and mark the median and the mean. Ask the agent which of
+the two it would quote, and why.
+
+### U2 — Analyse: how many human proteins are there?
+
+The obvious answer is 20,431. Ask instead how `protein_existence` is
+distributed:
+
+| protein_existence | n |
+|---|---:|
+| Evidence at protein level | 18,666 |
+| Evidence at transcript level | 637 |
+| Inferred from homology | 539 |
+| Uncertain | 510 |
+| Predicted | 79 |
+
+**1,765 entries have never been observed as protein**, and 589 are Uncertain
+or Predicted. The count moves by about 9% depending on what you accept as
+"a protein". 148 entries also have no primary gene name.
+
+**What to notice:** this is 3c again. The number was real, the question was
+underspecified, and nothing in the result said so.
+
+### U3 — Check the data against a physical constant
+
+An amino acid residue averages about **110 Da**. So `mass / length` should
+sit near 110 for every protein, and if it does, the two columns corroborate
+each other.
+
+Ask for the mean ratio: **111.5 Da per residue**. The data is internally
+consistent.
+
+Now ask for the entries furthest from it:
+
+| gene | length | mass | Da/residue |
+|---|---:|---:|---:|
+| LORICRIN | 312 | 25,761 | 82.6 |
+| PRM1 | 51 | 6,823 | 133.8 |
+| ELN | 786 | 68,398 | 87.0 |
+
+These are **not errors**. Loricrin is glycine-rich, so its residues are
+unusually light; protamine PRM1 is arginine-rich and heavy; elastin is
+glycine- and proline-rich. Ask the agent to explain each one and say
+explicitly whether it is a data problem or biology.
+
+**What to notice:** you just validated a dataset against something outside
+it. That is a stronger check than any internal consistency test, and it is
+available far more often than people use it.
+
+</details>
+
+---
+
+# Exercise 3i — The other three servers
+
+Everything so far used one server against one local database. Three more are
+configured and switched off. There are no set tasks for these: turn one on,
+find out what it can do, and go as far as you like.
+
+Toggle them the same way — `/mcps`, space, esc. **Turn on one at a time.**
+Every tool a server exposes is described in *every* request you send, and
+these are much larger than `duckdb`'s four tools, so an idle server is a
+standing cost for nothing.
+
+| Server | What it is | Tools |
+|---|---|---:|
+| `rcsb` | The **live PDB**. Search by keyword, sequence similarity, 3D shape or structural motif; fetch entries, ligands, assemblies, chains and interfaces; cross-reference sequences to UniProt and NCBI; render an HTML report | 38 |
+| `biomcp` | **43 biomedical databases** behind one server — GWAS, gnomAD, ClinVar, dbSNP, UniProt, STRING, KEGG, Reactome, ChEMBL, AlphaFold, GTEx, PubMed, and model-organism resources | 83 |
+| `opentargets` | **Target–disease associations**, over GraphQL. Which genes are implicated in which diseases, with the supporting evidence | 5 |
+
+Full descriptions of what each exposes are in
+[the server notes](../../mcp/README.md).
+
+**`rcsb` is the interesting one to try first**, because you already know its
+data. Exercise 3 gave you a frozen PDB snapshot from 18 September 2026; this
+is the same archive, live. Ask both the same question and see where they
+disagree, and why.
+
+**`opentargets` is the odd one out.** It does not wrap each question in its
+own tool — it hands the agent a **GraphQL schema** and expects it to compose
+the query. That is the same skill as writing SQL in 3b, one layer up, and it
+fails the same way: read the query before you approve it.
+
+`biomcp` is the widest and the least precise. With 83 tools to choose from, a
+small model picks the wrong one more often than it does with four. Its
+`tool_inventory` tool is a good first request — let it tell you what it has
+rather than guess.
+
+## Go nuts
+
+Ask a question you actually want answered. Some starting points, none of them
+required:
+
+- Which structures exist for a protein you work on, and at what resolution?
+- Find structures similar in shape to one you already know.
+- What is known about a disease gene: variants, interactions, pathways,
+  structures, drugs?
+- Is there a drug in ChEMBL against a target you care about?
+- Does the live PDB agree with the frozen snapshot on cryo-EM growth?
+
+**Keep the habits from 3c.** These servers answer over the network, from
+databases you did not build, and a confident paragraph is not evidence. Ask
+which tool was called and what it returned. Ask how many records matched, not
+just what the top one says. When an answer matters, check it at the source —
+every one of these has a website showing the same record.
+
+Two things change when the data is remote rather than local. Your queries
+leave your machine, so they are visible to whoever runs the service. And the
+answer can differ tomorrow, because someone else is updating it — which is
+exactly the property Exercise 3's frozen snapshot does not have, and why both
+kinds exist.
+
 ---
 
 # Epilogue
 
-The dataset is a frozen snapshot, built from public wwPDB index files on
+The PDB dataset is a frozen snapshot, built from public wwPDB index files on
 18 September 2026. It will not match a live PDB query made later, which is
-expected. Sources, schema and quirks are in
-[`PROVENANCE.md`](data/PROVENANCE.md); the MCP server
+expected — and exercise 3i lets you see where it has drifted. Sources, schema
+and quirks are in [`PROVENANCE.md`](data/PROVENANCE.md), and for the three
+supplied datasets in [`data/byo/PROVENANCE.md`](data/byo/PROVENANCE.md); the MCP server
 configuration and what has and has not been tested are in
 [the server notes](../../mcp/README.md).
 
