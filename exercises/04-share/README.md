@@ -1,6 +1,6 @@
 # Exercise 4 — Share what you built
 
-The short one. You have made a skill, an agent, or an MCP configuration.
+You have made a skill, an agent, or an MCP configuration.
 Publish it to the workshop repository so the rest of the room can use it.
 
 The point is not git. The point is that **publishing is the first thing you
@@ -14,7 +14,7 @@ gh auth status
 ```
 
 If that fails, run `gh auth login` first, or pair with someone who is signed
-in. Ask an organiser if you would rather not create an account — you can hand
+in. Ask an organizer if you would rather not create an account — you can hand
 your folder over directly instead.
 
 ---
@@ -30,7 +30,7 @@ Start in **Plan** mode and ask:
 > request. Should that be an MCP server, a skill, or an agent? Compare them
 > for this specific job.
 
-Then check the answer against this, which was measured rather than guessed:
+Then compare the answer against this previously considered check list:
 
 | | What it would give you | Verdict for this job |
 |---|---|---|
@@ -38,7 +38,7 @@ Then check the answer against this, which was measured rather than guessed:
 | **Skill** | Guidance: what to check before publishing, what never to commit, which commands in which order | **Yes.** `git` and `gh` already work through `bash`. What is missing is not capability, it is knowing what to check. |
 | **Agent** | Permissions: which commands run freely, which need approval, which are refused outright | **Useful.** Inspecting is free; publishing asks; history rewriting is blocked. |
 
-This is Exercise 3g's question with a concrete answer. `bash` already covers
+This is exercise 3g's question with a concrete answer. `bash` already covers
 git, so the MCP server adds context cost and removes nothing from your plate.
 **"There is an MCP server for it" is not a reason to connect one.**
 
@@ -54,7 +54,7 @@ The workshop supplies both of the useful ones:
 Copy what you are sharing into `submissions/<your-name>/`, then, **in Plan
 mode**, with `submit-agent` selected:
 
-> Use the submit-work skill. I want to share the skill I built in Exercise 1.
+> Use the submit-work skill. I want to share the skill I built in exercise 1 (don't write exercise 1, write the name of your skill).
 > Show me exactly what would be published and what your checks found. Do not
 > commit or push anything yet.
 
@@ -75,7 +75,7 @@ build   dist   lib   var   target   venv   env   downloads   sdist   wheels   eg
 
 Name your folder `build` and your submission vanishes. No error, no warning,
 `git status` shows nothing to commit, and you find out when your pull request
-is empty. This is not hypothetical — Exercise 3's scripts were originally in
+is empty. This is not hypothetical — exercise 3's scripts were originally in
 a folder called `build/` and were silently dropped from the published ZIP.
 They are in `scripts/` now because of it.
 
@@ -87,9 +87,8 @@ No output is the passing result.
 
 **What to notice:** the agent reporting "committed successfully" and the
 files actually being in the repository are different claims. Same lesson as
-"a successful HTTP request is not a structure file" in Exercise 1, and "a
-query that succeeded is not a correct answer" in Exercise 3. Check the thing
-itself.
+"a successful HTTP request is not the same as a downloaded structure file" in exercise 1,
+and "a query that succeeds is not the same as a correct answer" in exercise 3. Check the thing itself.
 
 ---
 
@@ -104,15 +103,15 @@ resets and rebases outright — those are the ones that damage other people's
 copies, not just your own.
 
 When it finishes you get a pull request URL. Open it and check the **Files
-changed** tab yourself. That tab is the truth; the agent's summary is a
-claim about it.
+changed** tab yourself. That tab is the truth; the agent's summary is just a
+claim.
 
-A pull request is a proposal. Someone still has to merge it, and an organiser
+A pull request is a proposal. Someone still has to merge it, and an organizer
 will.
 
 ---
 
-# Exercise 4d — Try someone else's
+# Exercise 4d — Try someone else's skill
 
 Once a few submissions are merged, pull the repository and install one:
 
@@ -126,7 +125,9 @@ you to treat downloaded data — as material to inspect, not instructions to
 obey on sight.
 
 **What to notice:** this is why the submission checks matter in both
-directions. You checked yours before publishing; check theirs before running.
+directions. You checked yours before publishing; check theirs before running.<br>
+**The real danger:** Downloaded skills/agents/MCP's can be malicious. You are running
+unchecked software from the wild internet. It can be a modern trojan horse.
 
 ---
 
@@ -134,6 +135,6 @@ directions. You checked yours before publishing; check theirs before running.
 
 You built a skill in Exercise 1, an agent in Exercise 2, and connected an MCP
 server in Exercise 3. In this one you decided which of the three a job
-actually needed — and the answer was not the newest of them.
+actually needed.
 
 Previous: [Exercise 3 — MCP and data analysis](../03-mcp/README.md).
