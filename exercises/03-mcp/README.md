@@ -21,18 +21,18 @@ plausible number is not necessarily correct.
 
 ## Where things live
 
-The **server** and the **data** are separate, and stay separate:
+The **MCP server** and the **exercise data** are separate, and stay separate:
 
 ```text
 mcp/README.md            the server: config, setup and caveats.
 exercises/03-mcp/data/   this exercise's data, with its own provenance.
 ```
 
-The DuckDB server opens whatever database file it is pointed at. This
-exercise supplies one; in 3h you point the same server at your own data
+The DuckDB MCP server opens whatever database file it is pointed at. This
+exercise supplies one database; in exercise 3h you point the same server at your own data
 without changing anything in `mcp/`.
 
-You need `uv` installed. Check with `uv --version`; see
+You need python installation tool `uv` (or pip) installed. Check with `uv --version`; see
 [the server notes](../../mcp/README.md) if it is missing.
 
 ---
