@@ -64,13 +64,20 @@ Now start OpenCode and turn the server on, in the chat:
 /mcps
 ```
 
-You will see `duckdb  disabled`. Press **space** to toggle it, then **esc**.
+Four servers are listed, all disabled. Select **`duckdb`** — only that one —
+press **space** to toggle it, then **esc**.
 
 It connects at once. There is nothing to restart and nothing to edit: the
 toggle does not touch `opencode.json`, and it lasts for this OpenCode run
-only. That is why the server ships disabled — Exercises 1 and 2 never meet a
+only. That is why the servers ship disabled — Exercises 1 and 2 never meet a
 server they have not set up, and Exercise 3 costs one keystroke and leaves
 your configuration exactly as you found it.
+
+Leave the other three off. Each server's tool definitions are sent with
+**every** request, so switching on servers you are not using shrinks the room
+the model has to work in, for no benefit. The other three are described in
+[mcp/README.md](../../mcp/README.md); `rcsb` is the live PDB, which is worth
+comparing against this frozen snapshot once you have finished the exercise.
 
 Check the saved configuration separately, in your terminal:
 
@@ -439,4 +446,4 @@ To put the workshop back as you found it: nothing to undo in the
 configuration, because `/mcps` never changed it. Delete
 `exercises/03-mcp/data/pdb.duckdb` if you want the 17 MB back.
 
-Previous: [Agent Exercises](../02-agents/README.md).
+Previous: [Exercise 2 — Agents](../02-agents/README.md) · Next: [Exercise 4 — Share what you built](../04-share/README.md).

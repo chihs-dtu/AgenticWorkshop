@@ -38,7 +38,8 @@ Custom provider setup is needed.**
 
 Exercise 3 additionally needs [`uv`](https://docs.astral.sh/uv/) installed
 (`curl -LsSf https://astral.sh/uv/install.sh | sh`, inside WSL2 on Windows).
-Exercises 1 and 2 do not.
+Exercise 4 needs a GitHub account and [`gh`](https://cli.github.com/) signed in.
+Exercises 1 and 2 need neither.
 
 Leave your existing global `opencode.jsonc`, `package.json` and
 `node_modules` alone. OpenCode combines the project configuration with your
@@ -149,7 +150,7 @@ chosen available provider/model ID.
 We will introduce skills, agents and MCP as cornerstones of agentic processing through exercises.
 * **Skills**: Reusable capabilities you or an AI agent can use to perform a task. For example, a “search web” skill, “read PDF” skill, or “send email” skill. Skills are like the **tools/actions** available to you/the agent.
 * **Agents**: AI components that use skills to achieve a goal. An agent can **reason, plan, choose skills, execute actions, and adapt** based on the results.
-* **MCP**: A standard way to connect the agent to a capability that lives outside OpenCode, such as a database. The server is a separate program that OpenCode starts on your laptop.
+* **MCP**: A standard way to connect the agent to a capability that lives outside OpenCode, such as a database or a public biological data service. The server is either a program OpenCode starts on your laptop, or a remote service it connects to over the network.
 
 **Simple example:**
 A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
@@ -163,22 +164,27 @@ workshop/
       agents/
          bad-agent.md           Basic PDB agent example
          good-agent.md          More explicit PDB agent example
+         submit-agent.md        Git-scoped agent, used in Exercise 4
       skills/
          skill-builder/         A subfolder INSIDE skills
-         SKILL.md               The skill-builder instructions
+            SKILL.md            The skill-builder instructions
+         submit-work/           A second skill, used in Exercise 4
+            SKILL.md            The submit-work instructions
    exercises/
       01-skills/
       02-agents/
       03-mcp/                   Exercise 3, with its own data/ and scripts/
-   mcp/                         Notes on the MCP servers this project configures
+      04-share/                 Exercise 4, with submissions/ for your work
+   mcp/                         Notes on the four MCP servers this project configures
 ```
 OpenCode reads `.opencode/` folder for project agents and skills, while `opencode.json` in the workshop root
 contains the model connections, limits and permissions.
 
 `skills` is the parent skill folder and `skill-builder` - the workshop supplied skill - is a separate subfolder
 inside it. The complete path is `.opencode/skills/skill-builder/SKILL.md`.
-GitHub may display `skills/skill-builder` together when it is the only
-subfolder; that is a compact display, not a single folder name.
+GitHub collapses a chain of folders with a single child into one line, such
+as `skills/skill-builder`; that is a compact display, not a single folder
+name. With two skills present it no longer collapses `skills` itself.
 
 Each additional skill gets its own subfolder and `SKILL.md`. Agent definitions
 are Markdown files directly inside `.opencode/agents/`. A `.gitkeep` file in
@@ -190,8 +196,10 @@ still read it. Do not rename it, move it out of the project, or put
 
 The `exercises/` and `mcp/` folders organize workshop materials. Creating
 an `mcp/` folder does not activate an MCP server: `mcp/` holds documentation
-only. An MCP server is a program, configured under `mcp` in `opencode.json`
-and downloaded on demand; Exercise 3 sets one up.
+only. An MCP server is configured under `mcp` in `opencode.json`, and is
+either a program downloaded on demand or a remote service you connect to.
+Four are configured and all ship switched off; Exercise 3 turns one on.
+See [mcp/README.md](mcp/README.md) for what each provides.
 
 See the OpenCode documentation for [agents](https://opencode.ai/docs/agents/)
 and [skills](https://opencode.ai/docs/skills/).
@@ -199,7 +207,8 @@ and [skills](https://opencode.ai/docs/skills/).
 ### Exercises
 - **Exercise 1** — [Skills](exercises/01-skills/README.md).
 - **Exercise 2** — [Agents](exercises/02-agents/README.md).
-- **Exercise 3** — [MCP and data queries](exercises/03-mcp/README.md).
+- **Exercise 3** — [MCP and data analysis](exercises/03-mcp/README.md).
+- **Exercise 4** — [Share what you built](exercises/04-share/README.md).
 
 ## Manual connection reference — optional
 
