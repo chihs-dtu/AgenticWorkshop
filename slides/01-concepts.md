@@ -20,25 +20,9 @@ file as a document; Marp shows them in presenter view (press P).
 
 ---
 
-## Where we are going
-
-| | Exercise | The thing you build | The thing you learn |
-|---|---|---|---|
-| **1** | Skills | A `pdb-download` skill | A successful HTTP request is not a structure file |
-| **2** | Agents | Your own agent | An agent claiming success is not success |
-| **3** | MCP | A DuckDB server over 259,693 PDB entries | A query that runs is not an answer that is true |
-| **4** | Share | A pull request | "Committed" is not "in the repository" |
-
-Four different tools. **One habit**: check the thing itself, not the report about it.
-
----
-
 <!-- _class: part -->
 
 # Part 1
-## Three words that are not synonyms
-
----
 
 ## Start from what a model actually is
 
@@ -126,44 +110,6 @@ that is not part of it.
 
 ---
 
-## The decision, with a real answer
-
-*"I want an assistant that is good at git. Which of the three?"*
-
-| | What it gives | Verdict |
-|---|---|---|
-| **MCP server** | `mcp-server-git`, 12 tools: `git_status`, `git_diff`, `git_commit`… | **No.** 1,588 tokens — 10% of a DTU context — in *every* request, and it has **no push, no remote, no pull-request tool.** For an exercise about publishing, it cannot do the one required thing. |
-| **Skill** | What to check before publishing, what never to commit | **Yes.** `git` already works through `bash`. The missing piece was knowledge, not capability. |
-| **Agent** | Inspect freely, ask before publishing, refuse force-push | **Useful.** |
-
-<span class="note">Measured, not guessed — Exercise 4a.</span>
-
----
-
-<!-- _class: part -->
-
-# Part 2
-## Why modular
-
----
-
-## Because you can replace one piece without touching the others
-
-Exercise 3 hands a DuckDB MCP server a PDB snapshot. Exercise 3h points it
-at **your** data:
-
-```json
-"--db-path", "my_data.duckdb",
-```
-
-One argument. The server, its four tools, the agent, the skill and every
-permission rule are unchanged — **because a DuckDB server is not a PDB tool.**
-It is a SQL tool that Exercise 3 happened to hand a PDB database.
-
-> When you consider adopting anything, ask what it is actually coupled to.
-
----
-
 ## Guidance and capability are separate, and you need both
 
 Exercise 3e: the checks you were doing by hand become a skill.
@@ -183,12 +129,7 @@ whenever one changes.**
 
 <!-- _class: part -->
 
-# Part 3
 ## Why OpenCode
-
----
-
-<!-- _class: tight -->
 
 ## What we actually needed from a tool
 
@@ -205,7 +146,7 @@ whenever one changes.**
 
 ---
 
-## It is not the only one — meet `oh-my-pi`
+## Debugging tool — meet `oh-my-pi`
 
 `can1357/oh-my-pi` (OMP) — *"Coding agent with the IDE wired in"*. MIT,
 TypeScript + ~80k lines of Rust core on Bun. **31.8k stars.**
@@ -224,7 +165,7 @@ code; OMP has the deeper machinery. Worth knowing it exists before you conclude
 
 ---
 
-## The ecosystem, and its shape
+## The OpenCode ecosystem, and its shape
 
 `awesome-opencode` — 10.3k stars — lists plugins, themes, agents, projects
 and resources. Over 100 community plugins alone:
@@ -240,16 +181,13 @@ and resources. Over 100 community plugins alone:
 
 </div>
 
-**Nothing here is reviewed by anyone.** Hold that thought until Part 6.
+**Nothing here is reviewed by anyone.**
 
 ---
 
 <!-- _class: part -->
 
-# Part 4
-## The context window is the budget
-
----
+# The context window is the budget
 
 ## Every tool is described in every request
 
@@ -285,12 +223,7 @@ large-context models for those, or don't connect them.
 
 <!-- _class: part -->
 
-# Part 5
-## Local models, frontier models
-
----
-
-<!-- _class: tight -->
+# Local models, frontier models
 
 ## When to use which
 
@@ -340,12 +273,7 @@ a frontier model is real, but **neither is anywhere near "trust the output".**
 
 <!-- _class: part -->
 
-# Part 6
-## The habit the whole workshop is built on
-
----
-
-<!-- _class: tight -->
+# The habit the whole workshop is built on
 
 ## Four claims that sound the same and are not
 
@@ -357,40 +285,6 @@ a frontier model is real, but **neither is anywhere near "trust the output".**
 | "Committed successfully" | The agent ran `git commit` | Your files are in the repository — `.gitignore` is silent |
 
 **Each is one command away from being checked.** That command is the exercise.
-
----
-
-## The example worth remembering
-
-> *"What is the average resolution of structures in the PDB?"*
-
-```sql
-SELECT avg(resolution) FROM entries;     -- 2.362 Å
-```
-
-Valid SQL. Plausible number. A crystallographer would not blink. **And it
-silently excluded 15,104 entries**, because `avg()` skips NULLs:
-
-```sql
-SELECT count(*), count(resolution) FROM entries;   -- 259,693 | 244,589
-```
-
-Group the blanks by method: **every SOLUTION NMR entry, and only those.**
-NMR structures have no resolution — the concept does not apply.
-
----
-
-## Why no model was going to catch that
-
-The agent did nothing wrong. The SQL was correct. The number was real.
-
-**The question was unanswerable as asked, and nothing in the output said so.**
-
-Knowing that "average resolution of the PDB" needs qualifying is **domain
-knowledge** — yours, not something recoverable from a schema. The check that
-exposed it took one query: compare `count(*)` with `count(column)`.
-
-> This is the job that does not get automated. Everything else is typing.
 
 ---
 
@@ -417,12 +311,7 @@ Keep approval prompts on. Do not test an `ask` rule in auto-approve mode.
 
 <!-- _class: part -->
 
-# Part 7
-## Before you install anything from the internet
-
----
-
-<!-- _class: warn -->
+# Before you install anything from the internet
 
 # Read this before you download a single skill
 
@@ -442,7 +331,7 @@ workshop with a real adversary behind it.</span>
 
 <!-- _class: warn -->
 
-## This is not a hypothetical
+# This is not a hypothetical problem
 
 **`@bitwarden/cli` 2026.4.0** — a compromised release of a *password manager's*
 CLI, April 2026. A `preinstall` hook, running before any test or check, pulled
@@ -518,34 +407,9 @@ exfiltrate Actions secrets.</span>
 
 ---
 
-## The last one has a name: slopsquatting
-
-Models invent package names. Attackers register the invented names.
-
-| Study | Models | Hallucinated package references |
-|---|---|---:|
-| Spracklen et al., USENIX Sec '25 | commercial | **5.2%** |
-| " | open-source | **21.7%** |
-| Churilov, arXiv 2026 | 2026 frontier cohort | **4.62–6.10%** |
-
-205,474 unique fabricated package names across 576,000 generated samples.
-
-**The spread narrowed; the floor did not go away.** A local model is more
-likely to invent a dependency than a frontier one — one more input to the
-local-vs-frontier decision, and a reason to read `pip install` lines.
-
----
-
 <!-- _class: part -->
 
-# Part 8
-## Where to go after today
-
----
-
-<!-- _class: tight -->
-
-## Four worth reading — *reading*, not installing
+# Where to go after today
 
 | Repository | What it is | Why look |
 |---|---|---|
