@@ -35,6 +35,11 @@ server-start commands.
 
 **For the supplied DTU models, no JSON editing, manual merging, API key or
 Custom provider setup is needed.**
+
+Exercise 3 additionally needs [`uv`](https://docs.astral.sh/uv/) installed
+(`curl -LsSf https://astral.sh/uv/install.sh | sh`, inside WSL2 on Windows).
+Exercises 1 and 2 do not.
+
 Leave your existing global `opencode.jsonc`, `package.json` and
 `node_modules` alone. OpenCode combines the project configuration with your
 global settings automatically.
@@ -141,9 +146,10 @@ chosen available provider/model ID.
 </details>
 
 ## Exercises overview
-We will introduce skills and agents as cornerstones of agentic processing through exercises.
+We will introduce skills, agents and MCP as cornerstones of agentic processing through exercises.
 * **Skills**: Reusable capabilities you or an AI agent can use to perform a task. For example, a “search web” skill, “read PDF” skill, or “send email” skill. Skills are like the **tools/actions** available to you/the agent.
 * **Agents**: AI components that use skills to achieve a goal. An agent can **reason, plan, choose skills, execute actions, and adapt** based on the results.
+* **MCP**: A standard way to connect the agent to a capability that lives outside OpenCode, such as a database. The server is a separate program that OpenCode starts on your laptop.
 
 **Simple example:**
 A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
@@ -163,7 +169,8 @@ workshop/
    exercises/
       01-skills/
       02-agents/
-   mcp/                         Reserved for MCP-related materials
+      03-mcp/                   Exercise 3, with its own data/ and scripts/
+   mcp/                         Notes on the MCP servers this project configures
 ```
 OpenCode reads `.opencode/` folder for project agents and skills, while `opencode.json` in the workshop root
 contains the model connections, limits and permissions.
@@ -182,7 +189,9 @@ still read it. Do not rename it, move it out of the project, or put
 `opencode.json` inside it. Open the repository root, not `.opencode` itself.
 
 The `exercises/` and `mcp/` folders organize workshop materials. Creating
-an `mcp/` folder does not activate an MCP server.
+an `mcp/` folder does not activate an MCP server: `mcp/` holds documentation
+only. An MCP server is a program, configured under `mcp` in `opencode.json`
+and downloaded on demand; Exercise 3 sets one up.
 
 See the OpenCode documentation for [agents](https://opencode.ai/docs/agents/)
 and [skills](https://opencode.ai/docs/skills/).
@@ -190,7 +199,7 @@ and [skills](https://opencode.ai/docs/skills/).
 ### Exercises
 - **Exercise 1** — [Skills](exercises/01-skills/README.md).
 - **Exercise 2** — [Agents](exercises/02-agents/README.md).
-- **Exercise 3** — [Data processing](exercises/02-agents/README.md).
+- **Exercise 3** — [MCP and data queries](exercises/03-mcp/README.md).
 
 ## Manual connection reference — optional
 
