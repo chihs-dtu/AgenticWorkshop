@@ -405,7 +405,9 @@ Nothing you have done so far was specific to the PDB database. The MCP server ta
 database path, so give it a different one.
 
 Build a database from a CSV you care about — one of your own files, or an
-output from Exercise 1:
+output from exercise 1.<br>
+Here are some data sets (already in the github repo) if you don't have one at hand:<br>
+[Palmers Penguins](https://allisonhorst.github.io/palmerpenguins/).<br>
 
 ```bash
 uv run --with duckdb python -c "
