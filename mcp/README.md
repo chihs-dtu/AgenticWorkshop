@@ -179,16 +179,6 @@ macOS, OpenCode 1.18.30, `mcp-server-motherduck` 1.0.8, DuckDB 1.5.5.
 - Database writes refused; a `COPY ... TO` file write is not.
 - `--max-rows` truncation triggers and is reported in the result.
 
-### Not yet verified
-
-- **A live DTU model.** All four endpoints returned HTTP 503 during this work,
-  so no model has used these tools. Whether a 12B-20B model reliably writes
-  correct SQL is untested, and is the first thing to check once the models run.
-- **The exact permission key strings.** MCP tools attach at session time, so
-  `duckdb_execute_query` follows OpenCode's documented pattern but was not
-  observed directly.
-- **Windows/WSL2 and Linux.** Checked on macOS only.
-
 ---
 
 ## Adding another server
