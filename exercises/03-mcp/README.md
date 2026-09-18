@@ -406,8 +406,8 @@ database path, so give it a different one.
 
 Build a database from a CSV you care about — one of your own files, or an
 output from exercise 1.<br>
-Here are some data sets (already in the github repo) if you don't have one at hand:<br>
-[Palmers Penguins](https://allisonhorst.github.io/palmerpenguins/).<br>
+Here are some data sets (already downloaded) if you don't have one at hand:<br>
+[Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/) for data exploration and visualization.<br>
 
 ```bash
 uv run --with duckdb python -c "
