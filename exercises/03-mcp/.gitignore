@@ -1,5 +1,4 @@
 # Build products: rebuilt locally, never committed or shipped.
-data/pdb.duckdb
-data/byo.duckdb
+data/*.duckdb
 scripts/raw/
 .DS_Store

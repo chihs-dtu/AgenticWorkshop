@@ -447,9 +447,8 @@ DuckDB reads the compressed files directly, so `.csv.gz` needs no unzipping.
 Full sources, licences and quirks are in
 [`data/byo/PROVENANCE.md`](data/byo/PROVENANCE.md).
 
-**Load all three first.** Task P1 below has the one command that builds a
-database containing all of them, including the one flag the penguin file
-needs. Start there even if you only care about the genomes or the proteins.
+Each dataset gets its own database, so you can work on one without touching
+the others. The command to build it sits with its tasks.
 
 <details>
 <summary><b>penguins.csv</b> — 344 rows, 15 KB, small enough to check by hand</summary>
@@ -486,21 +485,18 @@ string means "missing":
 ```bash
 uv run --with duckdb python -c "
 import duckdb
-con = duckdb.connect('exercises/03-mcp/data/byo.duckdb')
-d = 'exercises/03-mcp/data/byo'
-con.execute(f\"CREATE TABLE penguins AS SELECT * FROM read_csv('{d}/penguins.csv', nullstr='NA')\")
-con.execute(f\"CREATE TABLE genomes  AS SELECT * FROM read_csv('{d}/ncbi_reference_genomes.csv.gz')\")
-con.execute(f\"CREATE TABLE proteins AS SELECT * FROM read_csv('{d}/uniprot_human_proteins.csv.gz')\")
+con = duckdb.connect('exercises/03-mcp/data/penguins.duckdb')
+con.execute(\"CREATE TABLE penguins AS SELECT * FROM read_csv('exercises/03-mcp/data/byo/penguins.csv', nullstr='NA')\")
 con.close()"
 ```
 
 `nullstr='NA'` is the whole fix. The measurement columns now load as `DOUBLE`
-and `BIGINT`, the `NA`s become real SQL `NULL`s, and every task below works
-without casting. The other two files need no special handling, and DuckDB
-reads the `.csv.gz` directly.
+and `BIGINT`, the `NA`s become real SQL `NULL`s, and every penguin task below
+works without casting.
 
-Point `--db-path` at `exercises/03-mcp/data/byo.duckdb`, restart OpenCode,
-toggle `duckdb` on, and ask again. You should now get **43.9 mm** over **342** rows.
+Point `--db-path` at `exercises/03-mcp/data/penguins.duckdb`, restart
+OpenCode, toggle `duckdb` on, and ask again. You should now get **43.9 mm**
+over **342** rows.
 
 Then ask why it is 342 and not 344. Two penguins have none of the four
 measurements; eleven more have no recorded `sex`.
@@ -563,6 +559,19 @@ retrieved 18 September 2026.
 keeps the 25,965 marked `reference genome`, which are better assembled and
 more studied than RefSeq as a whole. Do not quote proportions from it as if
 they described all sequenced organisms.
+
+### Load it
+
+```bash
+uv run --with duckdb python -c "
+import duckdb
+con = duckdb.connect('exercises/03-mcp/data/genomes.duckdb')
+con.execute(\"CREATE TABLE genomes AS SELECT * FROM read_csv('exercises/03-mcp/data/byo/ncbi_reference_genomes.csv.gz')\")
+con.close()"
+```
+
+DuckDB reads the `.csv.gz` directly, so there is nothing to unzip. Point
+`--db-path` at `exercises/03-mcp/data/genomes.duckdb` and restart OpenCode.
 
 ### N1 — Plot something that needs a log axis
 
@@ -629,6 +638,19 @@ species.
 
 **Columns:** `accession`, `entry_name`, `protein_name`, `gene`,
 `length` (amino acids), `mass` (Da), `protein_existence`, `annotation_score`
+
+### Load it
+
+```bash
+uv run --with duckdb python -c "
+import duckdb
+con = duckdb.connect('exercises/03-mcp/data/proteins.duckdb')
+con.execute(\"CREATE TABLE proteins AS SELECT * FROM read_csv('exercises/03-mcp/data/byo/uniprot_human_proteins.csv.gz')\")
+con.close()"
+```
+
+Point `--db-path` at `exercises/03-mcp/data/proteins.duckdb` and restart
+OpenCode.
 
 ### U1 — Plot a distribution with a long tail
 
