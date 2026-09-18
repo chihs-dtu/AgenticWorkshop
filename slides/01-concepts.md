@@ -7,9 +7,9 @@ paginate: true
 <!-- _class: lead -->
 <!-- _paginate: false -->
 
-# Skills, agents and MCP
+# Building and employing agents for data analysis
 
-## Building and employing agents for data analysis — DTU Bioinformatics
+## Skills, agents and MCP
 
 Dimitrios S. Kanakoglou and Peter Wad Sackett
 
