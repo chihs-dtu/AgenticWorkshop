@@ -435,11 +435,9 @@ to, and keep its data somewhere it can be replaced.
 
 To go back, set `--db-path` to `exercises/03-mcp/data/pdb.duckdb` again.
 
-## If you don't have your own data, use one of these
+## If you don't have your own data, use one of these:
 
-Three datasets are supplied in [`data/byo/`](data/byo/). None is the PDB and
-none is about structures — the point is to repeat the exercise 3c checks on something
-unfamiliar, where you have no intuition to fall back on.
+Three datasets are supplied in [`data/byo/`](data/byo/).
 
 Each hides the same mistake you found in the PDB data: **an average taken
 across categories that should never have been pooled.** Three tasks come with
@@ -508,7 +506,7 @@ Then ask why it is 342 and not 344. Two penguins have none of the four
 measurements; eleven more have no recorded `sex`.
 
 **What to notice:** the data had to be repaired before it could be wrong in an
-interesting way, and the repair was a decision — you told DuckDB what counts
+interesting way, and the repair was a decision; you told DuckDB what counts
 as missing. Had you instead cast column by column inside each query, you would
 have made that decision again every time, differently. Ask the agent whether
 it reported the two dropped rows or just let `avg()` skip them.
@@ -715,7 +713,7 @@ Full descriptions of what each exposes are in
 **`rcsb` is the interesting one to try first**, because you already know its
 data. Exercise 3 gave you a frozen PDB snapshot from 18 September 2026; this
 is the same archive, live. Ask both the same question and see where they
-disagree, and why.
+disagree, and why. Also, try anything you couldn't do with the frozen snapshot.
 
 **`opentargets` is the odd one out.** It does not wrap each question in its
 own tool — it hands the agent a **GraphQL schema** and expects it to compose
@@ -724,7 +722,7 @@ fails the same way: read the query before you approve it.
 
 `biomcp` is the widest and the least precise. With 83 tools to choose from, a
 small model picks the wrong one more often than it does with four. Its
-`tool_inventory` tool is a good first request — let it tell you what it has
+`tool_inventory` tool is a good first request; let it tell you what it has
 rather than guess.
 
 ## Go nuts
@@ -742,12 +740,12 @@ required:
 **Keep the habits from 3c.** These servers answer over the network, from
 databases you did not build, and a confident paragraph is not evidence. Ask
 which tool was called and what it returned. Ask how many records matched, not
-just what the top one says. When an answer matters, check it at the source —
-every one of these has a website showing the same record.
+just what the top one says. When an answer matters, check it at the source.
+Every one of these has a website showing the same record.
 
 Two things change when the data is remote rather than local. Your queries
 leave your machine, so they are visible to whoever runs the service. And the
-answer can differ tomorrow, because someone else is updating it — which is
+answer can differ tomorrow, because someone else is updating it, which is
 exactly the property Exercise 3's frozen snapshot does not have, and why both
 kinds exist.
 
