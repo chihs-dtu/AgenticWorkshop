@@ -37,15 +37,12 @@ You need python installation tool `uv` (or pip) installed. Check with `uv --vers
 
 You can install it with:
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
 ---
 
 # Exercise 3a — Connect the server, and verify that you did
-
-The `mcp/` folder has been in the workshop since Exercise 1, and it has not
-been connecting anything. A folder is not a server. Neither is a permission
-rule, and neither is a configuration file on its own.
 
 In your terminal, from the workshop root, build the database from the shipped
 Parquet files — about 5 MB of data becoming a 17 MB database:
@@ -71,15 +68,10 @@ Now start OpenCode and turn the server on, in the chat:
 Four servers are listed, all disabled. Select **`duckdb`** — only that one —
 press **space** to toggle it, then **esc**.
 
-It connects at once. There is nothing to restart and nothing to edit: the
-toggle does not touch `opencode.json`, and it lasts for this OpenCode run
-only. That is why the servers ship disabled — Exercises 1 and 2 never meet a
-server they have not set up, and Exercise 3 costs one keystroke and leaves
-your configuration exactly as you found it.
-
 Leave the other three off. Each server's tool definitions are sent with
-**every** request, so switching on servers you are not using shrinks the room
-the model has to work in, for no benefit. The other three are described in
+**every** request, which means the MCP is using context. That context is then not available to you
+as every LLM model has some limit on context size. Thus you should only turn on the MCP's you really need.
+The other three are described in
 [mcp/README.md](../../mcp/README.md); `rcsb` is the live PDB, which is worth
 comparing against this frozen snapshot once you have finished the exercise.
 
@@ -103,9 +95,9 @@ opencode mcp list
 
 You want `✓ duckdb connected`.
 
-## What "connected" does not mean
+## The meaning of the MCP being "connected"
 
-Now break it on purpose. Quit OpenCode and rename the database:
+Now break the MCP connection on purpose. Quit OpenCode and rename the database:
 
 ```bash
 mv exercises/03-mcp/data/pdb.duckdb exercises/03-mcp/data/pdb.duckdb.hidden
@@ -136,7 +128,7 @@ inventing an answer.
 
 ---
 
-# Exercise 3b — Ask something you cannot check by eye
+# Exercise 3b — Ask something you cannot visually verify
 
 Let the agent discover the data rather than telling it the schema:
 
@@ -150,7 +142,7 @@ You should find two tables:
 | `entries` | 259,693 | ID, classification, deposition date, title, organism, resolution, experiment type |
 | `entry_types` | 259,693 | ID, molecule type, method class |
 
-259,693 rows is the point of the exercise. You cannot scroll it, you cannot
+259,693 rows is the point of the exercise. You cannot scroll through the rows, you cannot
 eyeball it, and you cannot tell whether an answer about it is right by
 looking at the data.
 
@@ -198,13 +190,16 @@ Find out which ones:
 
 They are not a random 6% of the PDB. **Solution NMR structures have no
 resolution at all** — the concept does not apply to the method. Of 14,668
-`SOLUTION NMR` entries, exactly 0 carry a resolution.
+`SOLUTION NMR` entries, none carry a resolution.
 
 ## Check it yourself, without trusting the agent
 
 This is what `exercises/03-mcp/data/pdb_sample.csv` is for: 512 entries, small
-enough to open and count. In your terminal:
+enough to open and count. In the terminal, ask to create a small python script 
+to check the count of the blanks.
 
+<details>
+<summary>For reference, this python script will do the job.</summary>
 ```bash
 python3 -c "
 import csv
@@ -219,9 +214,9 @@ print(set(r['experiment_type'] for r in blank))
 rows: 512  blank resolution: 26
 {'SOLUTION NMR'}
 ```
-
+</details>
 All 26 blanks, and only NMR. You have now confirmed the pattern with your own
-tool, on a file you can read, without the agent involved.
+tool, on a file you can read.
 
 The sample is deliberately chosen (every entry where `hash(pdb_id) % 520 = 0`),
 so it is reproducible — but it is a sample for checking *method*, not a
