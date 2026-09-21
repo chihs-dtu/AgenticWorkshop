@@ -116,7 +116,7 @@ See [OpenCode project configuration](https://opencode.ai/docs/config/#per-projec
 <details>
 <summary>Model list</summary>
    
-**Checked 15 September 2026.** The table includes all non-deprecated, zero-priced
+**Checked 21 September 2026.** The table includes all non-deprecated, zero-priced
 models present in both OpenCode's live model list and its model catalogue at the
 time of checking. Free offers can change or disappear; listing is not a
 guarantee that a request will succeed.<br>
@@ -125,6 +125,7 @@ Be aware that the business model for free LLM models is to train on your data an
 | Model | OpenCode model ID | Listing |
 |---|---|---|
 | Big Pickle | `opencode/big-pickle` | Free in Zen pricing |
+| DeepSeek V4 Flash Free | `opencode/deepseek-v4-flash-free` | Live list + zero-priced catalogue entry |
 | MiMo-V2.5 Free | `opencode/mimo-v2.5-free` | Free in Zen pricing |
 | Ling 3.0 Flash Fin Free | `opencode/ling-3.0-flash-fin-free` | Free in Zen pricing |
 | Nemotron 3 Ultra Free | `opencode/nemotron-3-ultra-free` | Free in Zen pricing |
@@ -137,6 +138,8 @@ Sources: [OpenCode Zen pricing](https://opencode.ai/docs/zen/#pricing),
 [model catalogue](https://models.dev/api.json). Muse Spark 1.2 is not in the
 current Zen pricing table; check its displayed price and terms before use.
 Deprecated offers are excluded even if an old endpoint still lists them.
+`jev-1.13-free` appears in the live list but not in the model catalogue, so it
+is not listed here.
 
 Use public exercise data with external models. Free offers can allow data
 collection or model improvement; Contributor models can include training
@@ -247,8 +250,7 @@ and [skills](https://opencode.ai/docs/skills/).
 
 ### Exercises
 - **Exercise 1** — [Skills](exercises/01-skills/README.md).
-- **Exercise 2** — [Agents](exercises/02-agents/README.md): compare agents, build your own,
-  then [coordinate a team in 2c](exercises/02-agents/README.md#exercise-2c--a-team-of-specialists).
+- **Exercise 2** — [Agents](exercises/02-agents/README.md).
 - **Exercise 3** — [MCP and data analysis](exercises/03-mcp/README.md).
 - **Exercise 4** — [Share what you built](exercises/04-share/README.md).
 
