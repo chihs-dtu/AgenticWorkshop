@@ -11,8 +11,10 @@ questions in plain English, an agent will write SQL, and you will find out
 whether the answers are true.
 
 The server runs **on your laptop**, as a child process of OpenCode. It binds
-no network port and needs no hosting, and the data never leaves your machine.
-Only the language model runs on the DTU cluster.
+no network port and needs no hosting. The database file stays on your laptop,
+but schemas and query results included in model requests leave it: they go to
+DTU or to whichever external model provider you selected. Use public exercise
+data, not confidential data, when connecting to external models.
 
 The running theme of this exercise: **a query that succeeds is not the same as a correct answer.**
 Exercise 1 made the same point about downloads — a
@@ -68,9 +70,10 @@ Now start OpenCode and turn the server on, in the chat:
 Four servers are listed, all disabled. Select **`duckdb`** — only that one —
 press **space** to toggle it, then **esc**.
 
-Leave the other three off. Each server's tool definitions are sent with
-**every** request, which means the MCP is using context. That context is then not available to you
-as every LLM model has some limit on context size. Thus you should only turn on the MCP's you really need.
+Leave the other three off. Tool definitions included in model requests use
+context, as do returned results. The relevant budget is the one selected in
+your project, which can be smaller than the server's maximum. Turn on only
+the MCP servers you need; a larger window does not make unnecessary tools free.
 The other three are described in
 [mcp/README.md](../../mcp/README.md); `rcsb` is the live PDB, which is worth
 comparing against this frozen snapshot once you have finished the exercise.
@@ -378,19 +381,21 @@ Compare:
 - Which would still work on a laptop without `uv`?
 - Which would you rather hand to someone else?
 
-There is a real cost to a server. Every tool it exposes is described in
-**every request**:
+There is a real cost to a server when its tool definitions are included in
+requests. These approximate measurements are from the workshop's earlier
+configuration; exact counts depend on versions, tokenizer and exposed tools.
 
-| Server | Tools | Tool definitions | Share of a 16,384-token DTU context |
-|---|---:|---:|---:|
-| `duckdb` | 4 | ~780 tokens | 5% |
-| BioMCP 0.7.0 | 83 | ~17,377 tokens | **106%** |
+| Server | Tools | Tool definitions | 16384 budget | 131072 budget | 262144 budget |
+|---|---:|---:|---:|---:|---:|
+| `duckdb` | 4 | ~780 tokens | 4.8% | 0.6% | 0.3% |
+| BioMCP 0.7.0 | 83 | ~17,377 tokens | 106.1% | 13.3% | 6.6% |
 
-BioMCP covers 43 biomedical databases — PubMed, BLAST, UniProt, Ensembl,
-KEGG — and is actively maintained. Its tool list alone does not fit in a DTU
-model's context window, before anyone asks anything. On a small model the
-limiting factor of an MCP server is how many tools it has, not how much it
-can do.
+The two larger columns illustrate the server targets, not currently verified
+availability. See the [context guide](../../README.md#changing-your-context-setting).
+At the supplied 16384 budget, the full BioMCP tool list alone is too large.
+It could fit a larger verified budget, but it would still consume space before
+your question, tool results and answer. Tool descriptions also add processing
+and selection overhead. More context does not guarantee better tool choice.
 
 **What to notice:** MCP is not automatically the better option. It is worthwhile
 when a capability is reusable, hard to reproduce with a shell command, and
@@ -719,9 +724,9 @@ configured and switched off. There are no set tasks for these: turn one on,
 find out what it can do, and go as far as you like.
 
 Toggle them the same way — `/mcps`, space, esc. **Turn on one at a time.**
-Every tool a server exposes is described in *every* request you send, and
-these are much larger than `duckdb`'s four tools, so an idle server is a
-standing cost for nothing.
+When their tool definitions are included in requests, these servers have a
+much larger context footprint than `duckdb`'s four tools. An unused server
+can therefore add overhead without helping the task.
 
 | Server | What it is | Tools |
 |---|---|---:|

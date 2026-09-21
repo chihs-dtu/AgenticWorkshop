@@ -58,12 +58,23 @@ For more options, run `bash bin/llm --help`.
 
 ## Model settings
 
-| Model ID | Node | GPUs | Default context | Server output cap |
-|---|---|---|---:|---:|
-| `qwen36` | compute04 | 0, 1 | 16384 | 4096 |
-| `qwen38` | compute05 | 0, 1 | 32768 | 8192 |
-| `mistral` | compute04 | 2 | 16384 | 4096 |
-| `gptoss` | compute04 | 3 | 16384 | 8192 |
+| Model ID | Node | GPUs | Configured context | Configured ceiling | Native target | Server output cap |
+|---|---|---|---:|---:|---:|---:|
+| `qwen36` | compute04 | 0, 1 | 16384 | 65536 | 262144 | 4096 |
+| `qwen38` | compute05 | 0, 1 | 32768 | 65536 | 262144 | 8192 |
+| `mistral` | compute04 | 2 | 16384 | 32768 | 131072 | 4096 |
+| `gptoss` | compute04 | 3 | 16384 | 32768 | 131072 | 8192 |
+
+**Deployment check, 21 September 2026:** no server settings were changed.
+compute04 reports `Failed to initialize NVML: Driver/library version mismatch`
+(NVML library 580.178). All four public `/models` routes returned HTTP 503.
+compute05's GPU query works, but its public route is also unavailable.
+Do not restart compute04 models until Peter resolves the driver issue. This
+does not imply that the mismatch explains every endpoint failure.
+
+The native targets come from the installed checkpoint configuration, not a
+capacity test. Historical vLLM memory logs show that the current allocations
+cannot simply be assumed to fit every target. Higher limits remain **pending**.
 
 **Context** is the total space for the conversation and answer, measured in
 tokens. It includes previous messages, instructions and tool results.
@@ -78,8 +89,10 @@ bash bin/llm start mistral --context 32768
 
 - This changes one launch only. To save a default, edit that model's
   `context` in `config/models.json` on its node, then stop/start it.
-- Update the matching `limit.context` in the student JSON before sharing it.
-  Students must restart OpenCode after replacing their configuration.
+- Keep student `limit.context` defaults at 16384, or 32768 for Qwen 3.8,
+  even after larger server capacities are verified. Keep all student output
+  limits at 4096. Students may use a smaller budget than the server ceiling;
+  they must restart OpenCode after a configuration change.
 - Larger contexts need more GPU memory and must be tested. The launcher
   permits up to 65536 for the Qwen models and 32768 for Mistral/GPT-OSS;
   those are allowed settings, not guaranteed working capacities.
@@ -90,6 +103,41 @@ bash bin/llm start mistral --context 32768
 
 The output caps are set in compute04's `app/gateway.py`, separately from
 server context. Changing that code requires tests and a gateway restart.
+
+### Complete the maximum-context rollout when the servers are healthy
+
+1. Have Peter resolve compute04's driver mismatch, then confirm GPU visibility
+   and the approved workshop reservation. Preserve the GPU assignments and
+   occupied-GPU checks. Do not repair drivers from this repository.
+2. Test one model at a time with a temporary validation profile targeting the
+   native value above. Preserve the current configuration and working model
+   state for recovery. Do not bypass vLLM's model-length/memory validation,
+   change quantization or add context extension to force a result.
+3. Verify the running `max_model_len`, a normal response, long-input responses,
+   streaming and tool-call round trips. Test concurrent requests, cancellation
+   and busy responses; a startup health ping alone is insufficient. Report
+   observed latency and failures rather than claiming a fixed user capacity.
+4. Both the gateway and model endpoint currently cap request bodies at 2 MiB.
+   Test representative long requests. If that blocks otherwise valid input,
+   raise the workshop application caps to 8 MiB and have Peter check matching
+   HTTPS-proxy limits; retain finite limits. Keep answer caps unchanged.
+5. Only after a target passes, persist its `context` and `max_context` in the
+   node's `config/models.json`. Synchronize Qwen 3.8's profile on compute04 as
+   well as compute05. Verify the public endpoint after the controlled restart.
+   If it fails, restore the previous working profile and report the lower
+   verified capacity; do not advertise the native target as available.
+6. Update this status and the student/MCP notes with the actual deployed maxima.
+   Keep the small student defaults. Require organiser approval for student
+   budgets above 32768 and explicitly discourage 262144 for ordinary tasks.
+
+Students edit only the context budget for their selected model in their own
+project. That budget affects all agents using the same provider/model entry.
+Do not confuse a high ceiling with every request using that many tokens: it
+is actual long contexts and concurrent work that consume shared capacity.
+
+The genome reference in Exercise 2c can be checked offline now. Its full
+five-model rehearsal and the larger-context rollout remain separate pending
+checks. Do not substitute saved reference outputs for evidence of a live run.
 
 ## Check connections and investigate errors
 

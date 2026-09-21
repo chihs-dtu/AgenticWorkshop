@@ -209,9 +209,10 @@ References: [permissions](https://opencode.ai/docs/permissions/),
 | Shared project rules | An `AGENTS.md` file or configured instruction files; these can affect several agents |
 | MCP server connection | Root `mcp` configuration, with any required server software and credentials |
 
-Leave the supplied DTU limits unchanged unless an organiser tells you the
-server settings have changed. Do not add a made-up `context` field to agent
-frontmatter or assume a raw API `max_tokens` field works there.
+Start with the supplied DTU limits. Follow the [context instructions](../../README.md#changing-your-context-setting)
+before increasing them, and require organiser approval above 32768. A larger
+value must fit the model's currently verified server limit. Do not add a made-up
+`context` field to agent frontmatter or assume a raw API `max_tokens` field works there.
 
 ## Test your agent
 
@@ -230,6 +231,129 @@ history. A successfully parsed configuration is only a loading test.
 For PDB viewers, inspect the browser output yourself unless the agent has
 actually used a browser inspection tool. Keep "code generated", "viewer
 opened", "controls checked", and "scientific content verified" distinct.
+
+---
+
+# Exercise 2c — A team of specialists
+
+One agent can do a task. A coordinated team splits a larger question into
+bounded jobs with explicit handoffs. This is our introduction to the **agent
+swarm idea**: a coordinator and specialist subagents, not agents magically
+sharing memory or doing everything in parallel.
+
+## First: the genome-size demonstration
+
+Use the [complete genome example](genome-demo/README.md):
+
+> How do genome size and gene density differ across organism groups, and how
+> does restricting the analysis to complete assemblies change the conclusions?
+
+It supplies a coordinator plus auditor, analyst, visualizer and reviewer,
+each configured with a different model. Inspect the saved reference results,
+then run the team when the models are available. The guide distinguishes the
+checked Python results from the separately required live agent rehearsal.
+This part needs Python 3.10+, but no packages or MCP; Exercise 3 introduces MCP.
+
+## Then: choose your team's target
+
+Do not simply repeat the genome demonstration. Choose one of these, or your
+own question with a dataset you are allowed to use:
+
+| Target | A concrete starting question |
+|---|---|
+| [Penguins](../03-mcp/data/byo/PROVENANCE.md#penguinscsv) | Why do pooled and within-species bill-measurement correlations disagree? Show the missing-data handling, correlations, plot and interpretation. |
+| [Human proteins](../03-mcp/data/byo/PROVENANCE.md#uniprot_human_proteinscsvgz) | How does the number of human proteins change with the evidence criterion? Show counts, exclusions, a plot and a defensible conclusion. |
+| Your own dataset | Define one answerable question, the input, an observable result and a check that could prove the answer wrong. Use public or synthetic data with external models. |
+
+Create **four or more specialists plus a coordinator**. You can adapt the
+reference definitions or write your own. Assign every role a different model:
+local, currently free from OpenCode, or a personally connected provider. Check
+access and any cost before choosing; different display names for the same
+provider/model are not different models.
+
+Agree each specialist's input, narrow responsibility, output and success check.
+An auditor, analyst, visualizer and independent reviewer are a starting point,
+not compulsory names. An extra specialist needs a separate job—for example,
+sensitivity analysis—not just another copy of the analyst.
+
+Edit each agent's `model:` field, description, Markdown instructions, permissions
+and tool commands to fit your target. **The genome scripts validate a genome
+schema**; build suitable tools for penguins/proteins instead of pointing those
+scripts at a different CSV and expecting them to work. Keep original data intact.
+
+Test specialists individually with `@team-1-auditor` (substitute your team's
+number and actual name). Give them explicit input/output paths. Only then run
+the coordinator. Use `mode: subagent` and `task: deny` for specialists; use
+`mode: primary` for the coordinator with an explicit list of allowed helpers:
+
+```yaml
+permission:
+  task:
+    "*": deny
+    "team-1-auditor": allow
+    "team-1-analyst": allow
+    "team-1-visualizer": allow
+    "team-1-reviewer": allow
+```
+
+This block only illustrates delegation; preserve the rest of your permission
+settings. Change **every helper name** when copying it to another team.
+Do not assume renaming a file updates its coordinator's instructions or rules.
+Give each worker separate output files. Review permission requests and keep
+publishing separate from the analytical run.
+
+## Team folders and handoff
+
+Your team has two folders, using `team-1` through `team-10`:
+
+```text
+exercises/02-agents/team-1/                 Working definitions and team goal
+exercises/04-share/submissions/team-1/      Reviewed copies to share
+```
+
+Use filenames such as `team-1-coordinator.md` and `team-1-auditor.md` to
+avoid collisions with the demonstration and other teams. Keep the working
+folder as the source; the sharing folder is a reviewed snapshot. Do not put
+data, credentials, caches or generated results in either folder.
+
+1. Choose a human team coordinator to maintain a **team fork** and agreed
+   branch. Members contribute only their team's working files, through PRs
+   from their forks or branches where they have access. No workshop main-branch
+   write access is assumed or granted.
+2. Agree a branch/commit to use. The coordinator downloads that exact revision
+   from the team fork. Unmerged work is not in the workshop main ZIP; use the
+   contributor's branch/commit link if it has not been merged.
+3. Read the downloaded definitions and required scripts/skills. Copy the
+   agreed agent Markdown files into the project-root `.opencode/agents/`.
+   Copy complete supporting skill folders into `.opencode/skills/` and keep
+   referenced project files at the paths the instructions expect. Review any
+   existing installed file before replacing it.
+4. Confirm the model IDs are available to the coordinator, reopen OpenCode,
+   and inspect `opencode agent list`. Select the team coordinator agent and
+   run in a fresh output folder. Team members' provider credentials are not
+   included in the download; use your own connections.
+5. Copy reviewed definitions into your team's sharing folder. Follow the
+   existing Exercise 4 procedure with `team-1` (or your team number) as the
+   submission name. The existing submit-agent only publishes under submissions;
+   it is not the tool for collaborating on the working folder in step 1.
+
+OpenCode **does not auto-load** the agents from either team folder. Folder
+names do not provide access control. Work only on your team's files and
+check what is included in every PR.
+
+A downloaded ZIP has **no Git history** and cannot simply `git push`. Clone
+your fork for Git collaboration, or use GitHub's file upload/PR interface.
+The final coordinator can still download a ZIP to run the team locally.
+Keep generated runs under `outputs/`, which is ignored by this repository.
+
+## What to inspect at the end
+
+Did each specialist actually run on the intended model? Were the handoffs
+clear? Can the reviewer reproduce the result without trusting the analyst's
+summary? Does the coordinator expose a failed task instead of filling the gap
+with a guess? Inspect the artifacts, try a missing input or denied action, and
+repeat a run. Record any manual fixes beside that run. More agents and larger
+contexts are not guarantees of better answers.
 
 ---
 

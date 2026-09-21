@@ -16,6 +16,14 @@ folder. Do not edit anyone else's, and do not change files elsewhere in the
 repository as part of submitting — that is what turns a one-file pull request
 into a merge conflict for everyone.
 
+For Exercise 2c team work, use the prepared `team-1` through `team-10` folders
+instead of a person's name. Share reviewed copies with team-prefixed filenames
+and a short explanation of the goal, models and entry-point coordinator.
+Working definitions stay in `exercises/02-agents/team-<number>/`; the folder here
+is the reviewed snapshot. The submit-agent's allowed publishing location does
+not change. See [Exercise 2c](../../02-agents/README.md#team-folders-and-handoff)
+for downloading and activating a team's agents.
+
 ## Do not name your folder any of these
 
 The repository's `.gitignore` excludes these names anywhere in the tree, so a
