@@ -3,8 +3,11 @@
 The maintained model URLs, proxy upstreams, and connection notes are now in
 [admin.md — Model endpoints](admin.md#model-endpoints).
 
+## Reading list
 
-https://github.com/awesome-opencode/awesome-opencode#plugins
-https://github.com/amrahman90/python-expert-agent
-https://github.com/darrenhinde/OpenAgentsControl/tree/main
-https://www.nature.com/articles/s41586-026-11044-y
+Unsorted references, not workshop material and not checked:
+
+- <https://github.com/awesome-opencode/awesome-opencode#plugins>
+- <https://github.com/amrahman90/python-expert-agent>
+- <https://github.com/darrenhinde/OpenAgentsControl/tree/main>
+- <https://www.nature.com/articles/s41586-026-11044-y>

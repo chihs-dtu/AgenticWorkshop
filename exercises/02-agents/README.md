@@ -276,6 +276,10 @@ the agent selector, and paste the same quoted prompt into a new chat.
 Python 3.10+ and access to all five configured models are required. Leave MCP
 off; no extra Python packages are required. Confirm the DTU services are
 running with the organisers and that Big Pickle is available in `/models`.
+Big Pickle is a free offer and can disappear without notice; if it is gone,
+set the coordinator's `model:` to another model you can reach, and say in your
+write-up which one you used. The coordinator is the one agent whose absence
+stops the whole run.
 If the agent is missing, check that you opened the folder containing
 `.opencode/agents/` and reopen OpenCode. Do not silently switch models.
 
