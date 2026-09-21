@@ -138,13 +138,44 @@ Sources: [OpenCode Zen pricing](https://opencode.ai/docs/zen/#pricing),
 [model catalogue](https://models.dev/api.json). Muse Spark 1.2 is not in the
 current Zen pricing table; check its displayed price and terms before use.
 Deprecated offers are excluded even if an old endpoint still lists them.
-`jev-1.13-free` appears in the live list but not in the model catalogue, so it
-is not listed here.
 
 Use public exercise data with external models. Free offers can allow data
 collection or model improvement; Contributor models can include training
 on submitted content. Do not send confidential or personal data.
 See [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#privacy).
+</details>
+
+### Jev, and why it is not in that table
+<details>
+<summary>A free model you will not find in the model selector</summary>
+
+`jev-1.13-free` appears in OpenCode's live model list, so it is reasonable to
+go looking for it. It will not be in your model selector, and `opencode models`
+does not list it. That is not a bug.
+
+**Jev is not a language model.** It is what TypeSafe AI call a *System One*
+model, released 15 September 2026. It does not generate text. You give it a
+state and a set of typed questions, and it returns values with probabilities:
+yes/no, multiple choice, or a rubric score. The output is meant to be consumed
+by your code as data, not read as prose.
+
+It also uses a different endpoint, `https://opencode.ai/zen/v1/systemone`,
+rather than the chat completions endpoint every model in the table above uses.
+That is why OpenCode cannot offer it as a chat model, and why none of the
+workshop exercises can run on it.
+
+`jev-1.13` is priced at $0.042 per million input tokens with free output;
+`jev-1.13-free` is free during a limited-time beta. TypeSafe AI claim up to
+200x faster inference and 400x lower cost than comparable LLMs on
+classification tasks. That is a vendor claim and we have not tested it.
+
+Worth knowing about, because the shape of it is the interesting part: a
+classifier with a typed interface is often the right tool for a decision you
+are currently asking a chat model to make in prose and then parsing back out.
+Not something you can select for these exercises.
+
+Sources: [OpenCode Zen](https://opencode.ai/docs/zen/),
+[live model list](https://opencode.ai/zen/v1/models).
 </details>
 
 ### Show free models if they are hidden
