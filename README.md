@@ -42,6 +42,10 @@ Exercise 3 additionally needs [`uv`](https://docs.astral.sh/uv/) installed
 Exercise 4 needs a GitHub account and [`gh`](https://cli.github.com/) signed in.
 Exercises 1 and 2 need neither.
 
+Exercise **2c** also needs Python **3.10 or later** (`python3 --version`),
+with no additional Python packages. Team sharing needs GitHub access; a
+coordinator can download the reviewed files as a ZIP to run them locally.
+
 Leave your existing global `opencode.jsonc`, `package.json` and
 `node_modules` alone. OpenCode combines the project configuration with your
 global settings automatically.
@@ -207,7 +211,8 @@ and [skills](https://opencode.ai/docs/skills/).
 
 ### Exercises
 - **Exercise 1** — [Skills](exercises/01-skills/README.md).
-- **Exercise 2** — [Agents](exercises/02-agents/README.md).
+- **Exercise 2** — [Agents](exercises/02-agents/README.md): compare agents, build your own,
+  then [coordinate a team in 2c](exercises/02-agents/README.md#exercise-2c--a-team-of-specialists).
 - **Exercise 3** — [MCP and data analysis](exercises/03-mcp/README.md).
 - **Exercise 4** — [Share what you built](exercises/04-share/README.md).
 
@@ -292,27 +297,74 @@ See [OpenCode custom providers](https://opencode.ai/docs/providers/#custom-provi
 
 ## Changing your context setting
 <details>
+<summary>Choose a task budget without consuming the whole shared service</summary>
 
 Context is the space available for instructions, conversation, tool results
 and the answer. Output is the maximum answer length, including reasoning.
 Both are measured in tokens.
 
-Only change context when an organiser tells you the server setting has changed.
+There are three different settings: the **server's verified maximum**, your
+**selected context budget**, and your **answer limit**. Raising a number in
+your JSON does not increase the server's capacity.
+
+| Model | Student starting context | Server context target, pending validation | Student output |
+|---|---:|---:|---:|
+| Qwen 3.6 | 16384 | 262144 | 4096 |
+| Qwen 3.8 | 32768 | 262144 | 4096 |
+| Mistral Nemo | 16384 | 131072 | 4096 |
+| GPT-OSS | 16384 | 131072 | 4096 |
+
+**The larger targets are not yet advertised as working.** On 21 September
+2026, the public model routes returned 503 and compute04 had a driver/library
+mismatch. Keep the supplied defaults until the organisers confirm a working
+server limit. Current deployment status is in [admin.md](admin.md#model-settings).
+
+Start with the supplied values. If your task genuinely needs more, confirm
+the available server limit with an organiser and then increase the budget.
+**Above 32768 requires organiser approval while teams share the servers.**
+**Do not select 262144 for ordinary workshop tasks.** Long requests consume
+shared memory and processing time, leaving less capacity for other teams.
+Setting a ceiling alone does not immediately allocate that entire amount.
+
+These are useful sizes to recognise, not a requirement to use powers of two:
+
+| Context value | When to consider it |
+|---:|---|
+| `4096` | Unsuitable with our `4096` answer allowance: input and instructions also need space |
+| `8192` | Short tasks with enough room left for tools and input |
+| `16384` | Default for GPT-OSS, Mistral and Qwen 3.6 |
+| `32768` | Default for Qwen 3.8; confirm server support before increasing another model |
+| `65536` | Only with organiser approval and a verified server capacity |
+| `131072` | Target ceiling for Mistral/GPT-OSS; not a normal workshop budget |
+| `262144` | Target ceiling for Qwen only; do not use without explicit approval |
+
+### Change the budget in your own project
+
 In `opencode.json`, find the model under `provider → dtu → models → model ID`.
-For Mistral, the limits look like this:
+Edit **only `limit.context`**, leaving `limit.output` at `4096`. For example,
+after an organiser confirms Mistral can serve 32768:
 
 ```json
 {
   "name": "Mistral Nemo 12B",
   "limit": {
-    "context": 16384,
+    "context": 32768,
     "output": 4096
   }
 }
 ```
 
 This is one model entry, not a complete OpenCode configuration. Save the file and
-restart OpenCode. Increasing this number does not increase the server's capacity.
+restart OpenCode. Use plain integer digits: **`262144`, not `262.144` or
+`262,144`**. Never exceed the model's verified server limit. The total includes
+the answer; a 32768 context does not allow 32768 input tokens plus a 4096 answer.
+
+This model entry applies to every agent using that provider/model ID in the
+project. It is not an agent-level setting. Do not put `context` in an agent's
+Markdown header or copy your personal configuration/keys into a team submission.
+For a new experiment, use a fresh chat; compact or shorten an existing long
+conversation before lowering its budget. Return to the supplied defaults
+after your task.
 </details>
 
 ## If something does not work

@@ -1,0 +1,140 @@
+{
+  "status": "pass",
+  "input_sha256": "77c8e536f597288a7277871fb4e2ebcc8c76a0608ff350d2c1ae2312cbe4128c",
+  "method": "Independent CSV parsing, Decimal arithmetic, explicit sorted median; does not import analyzer",
+  "checks": [
+    {
+      "check": "Exactly one summary per group/cohort",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/archaea",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/bacteria",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/fungi",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/invertebrate",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/plant",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/protozoa",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/vertebrate_mammalian",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: all/vertebrate_other",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/archaea",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/bacteria",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/fungi",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/invertebrate",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/plant",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/protozoa",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/vertebrate_mammalian",
+      "passed": true
+    },
+    {
+      "check": "Recomputed counts and medians: complete/vertebrate_other",
+      "passed": true
+    },
+    {
+      "check": "Exactly one comparison per group",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: archaea",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: bacteria",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: fungi",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: invertebrate",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: plant",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: protozoa",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: vertebrate_mammalian",
+      "passed": true
+    },
+    {
+      "check": "Recomputed complete-only comparison: vertebrate_other",
+      "passed": true
+    },
+    {
+      "check": "Audit fingerprint matches source",
+      "passed": true
+    },
+    {
+      "check": "Row and unique assembly counts",
+      "passed": true
+    },
+    {
+      "check": "Audit group counts",
+      "passed": true
+    },
+    {
+      "check": "Audit assembly-level counts",
+      "passed": true
+    },
+    {
+      "check": "Invalid/missing size count",
+      "passed": true
+    },
+    {
+      "check": "Invalid/missing density count",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "Numerical consistency is not evidence for causal biology.",
+    "This checker does not inspect browser appearance or record model execution."
+  ]
+}

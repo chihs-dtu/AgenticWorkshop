@@ -1,0 +1,37 @@
+{
+  "input_sha256": "77c8e536f597288a7277871fb4e2ebcc8c76a0608ff350d2c1ae2312cbe4128c",
+  "rows": 25965,
+  "unique_accessions": 25965,
+  "assembly_levels": {
+    "Chromosome": 1723,
+    "Complete Genome": 7268,
+    "Contig": 9746,
+    "Scaffold": 7228
+  },
+  "groups": {
+    "archaea": 832,
+    "bacteria": 22736,
+    "fungi": 668,
+    "invertebrate": 512,
+    "plant": 211,
+    "protozoa": 115,
+    "vertebrate_mammalian": 269,
+    "vertebrate_other": 622
+  },
+  "invalid_or_missing_size": 0,
+  "invalid_or_missing_density": 0,
+  "units": {
+    "genome_size": "base pairs",
+    "reported_size": "megabases (1,000,000 bp)",
+    "total_gene_count": "annotated genes",
+    "density": "genes per megabase"
+  },
+  "rules": [
+    "Size must be finite and positive; gene count finite and non-negative.",
+    "Report separate denominators for size and gene density.",
+    "Median density is the median of assembly-level genes/Mb, not a ratio of medians.",
+    "Complete cohort means assembly_level exactly equals Complete Genome.",
+    "Reference assemblies are selected, not a random sample of organisms.",
+    "NCBI group labels mix taxonomic ranks; associations do not establish causation."
+  ]
+}

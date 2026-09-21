@@ -17,9 +17,10 @@ space to toggle, esc to close. It connects at once, needs no restart, and
 that OpenCode run only. Set `"enabled": true` by hand if you want one on by
 default; that is the setting `/mcps` does not change.
 
-Turn on only what you are using. Every tool a server exposes is described in
-**every** request you send, so an idle server is a permanent tax on the
-conversation.
+Turn on only what you are using. Tool definitions included in a request use
+context even if the agent does not call those tools. An idle server can add
+overhead to the conversation; exact behaviour depends on the OpenCode version
+and which tools are exposed to that agent.
 
 ---
 
@@ -210,19 +211,23 @@ Register it under `mcp` in `opencode.json` with `"enabled": false`, and add a
 section here. Give it a folder of its own only when it needs files of its own;
 documentation alone belongs in this file.
 
-Check its tool count before adopting it. For scale, on a 16,384-token model:
+Check tool count and definition size before adopting a server. For scale,
+using the earlier workshop measurements (approximate and version/tokenizer-dependent):
 
-| Server | Tools | Tool definitions | Share of context |
-|---|---:|---:|---:|
-| `duckdb` | 4 | ~780 tokens | 5% |
-| `opentargets` | 5 | ~4,400 tokens | 27% |
-| `rcsb` | 38 | ~21,200 tokens | 129% |
-| `biomcp` | 83 | ~17,400 tokens | 106% |
+| Server | Tools | Tool definitions | 16384 budget | 131072 budget | 262144 budget |
+|---|---:|---:|---:|---:|---:|
+| `duckdb` | 4 | ~780 tokens | 4.8% | 0.6% | 0.3% |
+| `opentargets` | 5 | ~4,400 tokens | 26.9% | 3.4% | 1.7% |
+| `rcsb` | 38 | ~21,200 tokens | 129.4% | 16.2% | 8.1% |
+| `biomcp` | 83 | ~17,400 tokens | 106.2% | 13.3% | 6.6% |
 
-`rcsb` and `biomcp` do not fit a 16k DTU model's context at all, and
-`opentargets` takes a quarter of it. Use the larger-context models for those,
-and keep servers you are not using switched off. Tool count, not features, is
-what limits how many servers you can have on at once.
+The full RCSB/BioMCP tool lists exceed a 16384 budget, but not necessarily a
+larger one. The larger columns are **target-capacity comparisons, not deployment
+claims**. Follow the [context guide](../README.md#changing-your-context-setting)
+and confirm server support before changing your budget; approval is required
+above 32768. Inputs, results and answers need space too. Keep unnecessary
+servers off even when they fit: context capacity and reliable tool selection
+are different concerns.
 
 ## Verified on 18 September 2026
 

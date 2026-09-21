@@ -214,5 +214,8 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# Local exercise runs; the curated reference under genome-demo is tracked.
+/outputs/
+
 # Streamlit
 .streamlit/secrets.toml

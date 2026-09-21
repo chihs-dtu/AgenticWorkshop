@@ -34,7 +34,7 @@ Then compare the answer against this previously considered check list:
 
 | | What it would give you | Verdict for this job |
 |---|---|---|
-| **MCP server** | `mcp-server-git` is maintained and exposes 12 tools: `git_status`, `git_diff`, `git_commit`, `git_add`, `git_log`, `git_checkout`, … | **No.** It costs 1,588 tokens — 10% of a DTU model's context — in every request, and it has **no push, no remote and no pull-request tools**. For an exercise about publishing, it cannot do the one thing required. You would still fall back to `bash`. |
+| **MCP server** | `mcp-server-git` is maintained and exposes 12 tools: `git_status`, `git_diff`, `git_commit`, `git_add`, `git_log`, `git_checkout`, … | **No.** The earlier workshop measurement was approximately 1,588 tokens of tool definitions: 9.7% of a 16384 budget, 1.2% of 131072 or 0.6% of 262144 (larger budgets require verified server support). Exact cost depends on tokenizer/version and which definitions are sent. It has **no push, no remote and no pull-request tools** in this setup. You would still fall back to `bash`. |
 | **Skill** | Guidance: what to check before publishing, what never to commit, which commands in which order | **Yes.** `git` and `gh` already work through `bash`. What is missing is not capability, it is knowing what to check. |
 | **Agent** | Permissions: which commands run freely, which need approval, which are refused outright | **Useful.** Inspecting is free; publishing asks; history rewriting is blocked. |
 
