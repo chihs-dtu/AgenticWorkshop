@@ -1,8 +1,0 @@
-{
-  "input_sha256": "77c8e536f597288a7277871fb4e2ebcc8c76a0608ff350d2c1ae2312cbe4128c",
-  "complete_filter": "assembly_level == 'Complete Genome'",
-  "size_statistic": "median of positive finite genome_size / 1e6",
-  "density_statistic": "median of finite nonnegative total_gene_count / (positive finite genome_size / 1e6)",
-  "percent_change": "100 * (complete median / all median - 1); undefined if baseline is zero",
-  "empty_cohorts": "count 0, blank median; never replace missing with zero"
-}

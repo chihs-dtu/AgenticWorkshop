@@ -243,16 +243,47 @@ sharing memory or doing everything in parallel.
 
 ## First: the genome-size demonstration
 
-Use the [complete genome example](genome-demo/README.md):
+The five agents are already in [`.opencode/agents/`](../../.opencode/agents/),
+the folder OpenCode reads. Their common goal is:
 
 > How do genome size and gene density differ across organism groups, and how
 > does restricting the analysis to complete assemblies change the conclusions?
 
-It supplies a coordinator plus auditor, analyst, visualizer and reviewer,
-each configured with a different model. Inspect the saved reference results,
-then run the team when the models are available. The guide distinguishes the
-checked Python results from the separately required live agent rehearsal.
-This part needs Python 3.10+, but no packages or MCP; Exercise 3 introduces MCP.
+| Agent file | Job | Model |
+|---|---|---|
+| [genome-coordinator.md](../../.opencode/agents/genome-coordinator.md) | Delegate the work and assemble the report | OpenCode Big Pickle |
+| [genome-auditor.md](../../.opencode/agents/genome-auditor.md) | Check data, units and missing values | DTU Mistral |
+| [genome-analyst.md](../../.opencode/agents/genome-analyst.md) | Write and run the analysis | DTU Qwen 3.6 |
+| [genome-visualizer.md](../../.opencode/agents/genome-visualizer.md) | Create browser-readable plots | DTU Qwen 3.8 |
+| [genome-reviewer.md](../../.opencode/agents/genome-reviewer.md) | Independently check results and plots | DTU GPT-OSS |
+
+From a terminal **inside the downloaded workshop root** (beside
+`opencode.json`), run:
+
+```bash
+opencode --agent genome-coordinator --prompt "Run the genome-size team task with all four specialist subagents. Save the actual outputs in a new folder under outputs/genome-team/. Report failed or untested steps."
+```
+
+This opens the interactive terminal so you can approve edits and commands.
+Do not add `--auto`. You start **one coordinator**, which delegates to the
+other four agents. They work toward one goal in dependency order:
+audit → analysis → visualization → review → final report. They do not need
+five terminals or simultaneous execution.
+
+**Desktop:** open the workshop as a project, select `genome-coordinator` in
+the agent selector, and paste the same quoted prompt into a new chat.
+
+Python 3.10+ and access to all five configured models are required. Leave MCP
+off; no extra Python packages are required. Confirm the DTU services are
+running with the organisers and that Big Pickle is available in `/models`.
+If the agent is missing, check that you opened the folder containing
+`.opencode/agents/` and reopen OpenCode. Do not silently switch models.
+
+When the run finishes, inspect `report.md`, `plots.html`, `review.md` and
+`agent-run.md` inside the new output folder. These must be the team's actual
+outputs, including failures and corrections—not supplied example answers.
+The agent definitions are prepared, but a successful live five-model run
+is **still pending validation**. We will add its example output after that run.
 
 ## Then: choose your team's target
 
@@ -276,12 +307,15 @@ An auditor, analyst, visualizer and independent reviewer are a starting point,
 not compulsory names. An extra specialist needs a separate job—for example,
 sensitivity analysis—not just another copy of the analyst.
 
-Edit each agent's `model:` field, description, Markdown instructions, permissions
-and tool commands to fit your target. **The genome scripts validate a genome
-schema**; build suitable tools for penguins/proteins instead of pointing those
-scripts at a different CSV and expecting them to work. Keep original data intact.
+Copy the five example Markdown files into your team's working folder and
+rename them with your team prefix. Edit each agent's `model:` field,
+description, task instructions, permissions and expected outputs. Change the
+coordinator's question, dataset path and helper names, and each specialist's
+methods to suit penguins, proteins or your own target. The agents write their
+own analysis tools during the run; there is no precomputed pipeline to call.
+Keep original data intact.
 
-Test specialists individually with `@team-1-auditor` (substitute your team's
+Test specialists individually with `@team-01-auditor` (substitute your team's
 number and actual name). Give them explicit input/output paths. Only then run
 the coordinator. Use `mode: subagent` and `task: deny` for specialists; use
 `mode: primary` for the coordinator with an explicit list of allowed helpers:
@@ -290,10 +324,10 @@ the coordinator. Use `mode: subagent` and `task: deny` for specialists; use
 permission:
   task:
     "*": deny
-    "team-1-auditor": allow
-    "team-1-analyst": allow
-    "team-1-visualizer": allow
-    "team-1-reviewer": allow
+    "team-01-auditor": allow
+    "team-01-analyst": allow
+    "team-01-visualizer": allow
+    "team-01-reviewer": allow
 ```
 
 This block only illustrates delegation; preserve the rest of your permission
@@ -304,14 +338,14 @@ publishing separate from the analytical run.
 
 ## Team folders and handoff
 
-Your team has two folders, using `team-1` through `team-10`:
+Your team has two folders, using `team-01` through `team-10`:
 
 ```text
-exercises/02-agents/team-1/                 Working definitions and team goal
-exercises/04-share/submissions/team-1/      Reviewed copies to share
+exercises/02-agents/team-01/                 Working definitions and team goal
+exercises/04-share/submissions/team-01/      Reviewed copies to share
 ```
 
-Use filenames such as `team-1-coordinator.md` and `team-1-auditor.md` to
+Use filenames such as `team-01-coordinator.md` and `team-01-auditor.md` to
 avoid collisions with the demonstration and other teams. Keep the working
 folder as the source; the sharing folder is a reviewed snapshot. Do not put
 data, credentials, caches or generated results in either folder.
@@ -333,7 +367,7 @@ data, credentials, caches or generated results in either folder.
    run in a fresh output folder. Team members' provider credentials are not
    included in the download; use your own connections.
 5. Copy reviewed definitions into your team's sharing folder. Follow the
-   existing Exercise 4 procedure with `team-1` (or your team number) as the
+   existing Exercise 4 procedure with `team-01` (or your team number) as the
    submission name. The existing submit-agent only publishes under submissions;
    it is not the tool for collaborating on the working folder in step 1.
 
@@ -345,6 +379,44 @@ A downloaded ZIP has **no Git history** and cannot simply `git push`. Clone
 your fork for Git collaboration, or use GitHub's file upload/PR interface.
 The final coordinator can still download a ZIP to run the team locally.
 Keep generated runs under `outputs/`, which is ignored by this repository.
+
+### Contribute with ordinary Git
+
+Fork the repository using GitHub's **Fork** button. Replace `YOUR-USER` below
+with the owner of your fork, and replace `team-01` with your team number:
+
+```bash
+git clone https://github.com/YOUR-USER/AgenticWorkshop.git
+cd AgenticWorkshop
+git switch -c team-01-agents
+```
+
+Put your working files into `exercises/02-agents/team-01/`, then:
+
+```bash
+git add exercises/02-agents/team-01/
+git diff --cached
+git commit -m "Add Team 1 agents"
+git push -u origin team-01-agents
+```
+
+In GitHub, open a pull request **to the agreed team fork and branch**. Review
+and merge the agreed files there. Do not assume you can push to the workshop
+repository. GitHub CLI (`gh`) is optional, not required. The submission agent
+remains limited to Exercise 4 submissions; use ordinary Git for this working folder.
+
+### Run your own team
+
+The human coordinator downloads the agreed revision and copies the reviewed
+agent files into `.opencode/agents/` as described above. From that project root:
+
+```bash
+opencode --agent team-01-coordinator --prompt "Run our agreed team task with your specialist subagents. Save this run in a new outputs/team-01/ folder. Report results, corrections and anything untested."
+```
+
+Use your actual coordinator filename without `.md`. In Desktop, select that
+coordinator and paste the prompt. Only the coordinator needs all the provider
+connections for the assembled team; credentials are never shared in the files.
 
 ## What to inspect at the end
 

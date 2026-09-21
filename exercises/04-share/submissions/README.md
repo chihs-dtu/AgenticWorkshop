@@ -16,7 +16,7 @@ folder. Do not edit anyone else's, and do not change files elsewhere in the
 repository as part of submitting — that is what turns a one-file pull request
 into a merge conflict for everyone.
 
-For Exercise 2c team work, use the prepared `team-1` through `team-10` folders
+For Exercise 2c team work, use the prepared `team-01` through `team-10` folders
 instead of a person's name. Share reviewed copies with team-prefixed filenames
 and a short explanation of the goal, models and entry-point coordinator.
 Working definitions stay in `exercises/02-agents/team-<number>/`; the folder here

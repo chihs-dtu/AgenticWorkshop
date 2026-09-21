@@ -135,9 +135,10 @@ project. That budget affects all agents using the same provider/model entry.
 Do not confuse a high ceiling with every request using that many tokens: it
 is actual long contexts and concurrent work that consume shared capacity.
 
-The genome reference in Exercise 2c can be checked offline now. Its full
-five-model rehearsal and the larger-context rollout remain separate pending
-checks. Do not substitute saved reference outputs for evidence of a live run.
+Exercise 2c supplies five agent definitions and one coordinator launch command,
+not a precomputed analysis pipeline. Its full five-model rehearsal and the
+larger-context rollout remain separate pending checks. Save actual delegations,
+results, corrections and failures before presenting a run as the example output.
 
 ## Check connections and investigate errors
 

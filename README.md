@@ -39,8 +39,9 @@ Custom provider setup is needed.**
 
 Exercise 3 additionally needs [`uv`](https://docs.astral.sh/uv/) installed
 (`curl -LsSf https://astral.sh/uv/install.sh | sh`, inside WSL2 on Windows).
-Exercise 4 needs a GitHub account and [`gh`](https://cli.github.com/) signed in.
-Exercises 1 and 2 need neither.
+Sharing in Exercises 2c and 4 needs a GitHub account and Git, or GitHub's
+browser upload interface. [`gh`](https://cli.github.com/) is optional.
+Ask an organiser if you prefer to hand over your files without an account.
 
 Exercise **2c** also needs Python **3.10 or later** (`python3 --version`),
 with no additional Python packages. Team sharing needs GitHub access; a

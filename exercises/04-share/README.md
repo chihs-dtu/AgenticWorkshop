@@ -7,14 +7,10 @@ The point is not git. The point is that **publishing is the first thing you
 have done in this workshop that other people can see, and that you cannot
 quietly undo.** Everything before this was a file on your laptop.
 
-You need a GitHub account, and `gh` installed and signed in:
-
-```bash
-gh auth status
-```
-
-If that fails, run `gh auth login` first, or pair with someone who is signed
-in. Ask an organizer if you would rather not create an account — you can hand
+You need a GitHub account. Use ordinary Git plus the GitHub website, or use
+the optional `gh` CLI if installed and signed in. A downloaded ZIP cannot
+push changes: clone your fork first, or upload reviewed files through GitHub.
+Ask an organizer if you would rather not create an account — you can hand
 your folder over directly instead.
 
 ---
@@ -94,15 +90,48 @@ and "a query that succeeds is not the same as a correct answer" in exercise 3. C
 
 # Exercise 4c — Publish it
 
-Switch to **Build** and let it proceed. You will be asked to approve three
-things, because each one is public and hard to reverse: the fork, the push,
-and the pull request.
+Switch to **Build** and let it proceed. The fork, push and pull request each
+need your approval. With ordinary Git, you create the fork and pull request
+on the GitHub website; the agent can prepare the reviewed commit and push.
+With optional `gh`, those website steps can be performed through the CLI.
+
+### Ordinary Git + GitHub website
+
+Click **Fork** on the workshop repository. Replace `YOUR-USER` with your fork
+owner and `team-01` with your submission folder (or your own name):
+
+```bash
+git clone https://github.com/YOUR-USER/AgenticWorkshop.git
+cd AgenticWorkshop
+git switch -c submit-team-01
+```
+
+Copy your reviewed files into `exercises/04-share/submissions/team-01/` in
+this clone, then review and publish only that folder:
+
+```bash
+git add exercises/04-share/submissions/team-01/
+git diff --cached
+git commit -m "Share Team 1 agents"
+git push -u origin submit-team-01
+```
+
+On GitHub, open **Compare & pull request** from your fork's branch to
+`peterwadsackett/AgenticWorkshop`, base `main`. Git manages files and commits;
+the website creates the pull request. Authenticate Git using your configured
+HTTPS credential manager/token or SSH—not a token committed in a file.
+
+Already working in a clone? Check `git remote -v` and your branch instead of
+cloning again. A ZIP has no Git history. Never push another person's staged changes.
+
+**Optional shortcut:** `gh auth login`, `gh repo fork` and `gh pr create`
+can handle the website steps. They are conveniences, not prerequisites.
 
 Read each request before approving. The agent refuses force pushes, hard
 resets and rebases outright — those are the ones that damage other people's
 copies, not just your own.
 
-When it finishes you get a pull request URL. Open it and check the **Files
+After creating the pull request, open its URL and check the **Files
 changed** tab yourself. That tab is the truth; the agent's summary is just a
 claim.
 

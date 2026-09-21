@@ -21,7 +21,8 @@ into `exercises/04-share/submissions/<name>/` — do not move them, so the
 user's working setup keeps running.
 
 Choose `<name>` with the user. Use their name or GitHub handle, lowercase
-with hyphens. Never write into another person's submission folder, and never
+with hyphens, or their assigned `team-01` through `team-10` folder.
+Never write into another person's submission folder, and never
 modify files elsewhere in the repository.
 
 ## Check before publishing, and show the user
@@ -60,10 +61,45 @@ and that you could not run.
 ## Publish
 
 Students do not have write access to the workshop repository, so the work
-goes through a fork:
+goes through a fork. Offer ordinary Git and the GitHub website first; `gh`
+is optional. Check whether this is a clone or ZIP, the current branch,
+`git remote -v`, and staged changes. Do not include unrelated staged work.
+
+### Ordinary Git + website
+
+Ask the user to create a fork with GitHub's Fork button. In a fresh location,
+clone that fork and enter it (substitute the actual fork owner):
+
+```bash
+git clone https://github.com/YOUR-USER/AgenticWorkshop.git
+cd AgenticWorkshop
+git switch -c submit-<name>
+```
+
+If already in an appropriate clone, do not clone again. If starting from a
+ZIP, copy only the agreed submission files into the fork clone's submissions
+folder. Keep all content edits limited to that folder. Run the checks above,
+then, with approval:
+
+```bash
+git add exercises/04-share/submissions/<name>/
+git diff --cached
+git commit -m "Add <name> submission: <what it is>"
+git push -u origin submit-<name>
+```
+
+Ask the user to open Compare & pull request on GitHub: their fork's branch
+into peterwadsackett/AgenticWorkshop, base main. Until they create it, report
+that the branch was pushed but the PR is pending; never invent a PR URL.
+
+### Optional GitHub CLI
+
+If the user prefers `gh` and it is authenticated, it can create the fork and
+pull request instead. Verify the working directory and remote after cloning:
 
 ```bash
 gh repo fork <workshop-repo> --clone --remote      # once
+cd AgenticWorkshop                              # enter the new clone
 git checkout -b submit-<name>
 git add exercises/04-share/submissions/<name>
 git commit -m "Add <name> submission: <what it is>"
@@ -72,8 +108,9 @@ gh pr create --title "..." --body "..."
 ```
 
 Ask before the push and before creating the pull request: those two steps are
-the ones that publish. If `gh` is missing or not authenticated, say so and
-stop rather than inventing another route.
+the ones that publish. If `gh` is missing or not authenticated, use the
+ordinary Git + website route above. Never install tools or change credentials
+without the user's approval.
 
 Commit only the submission folder. Never use `git push --force`,
 `git reset --hard`, or any command that rewrites shared history. If the push
