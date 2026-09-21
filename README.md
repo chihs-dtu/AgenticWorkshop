@@ -15,6 +15,41 @@ Use **OpenCode on your laptop** to work on the exercises. The DTU models run
 on our server cluster; you do not need a cluster account, SSH, model downloads or
 server-start commands.
 
+## Before the exercises: two lessons
+
+### Lesson one — you are in charge of your data
+
+Every prompt you send goes somewhere. Where depends on the model you picked
+in the selector, and the difference matters before you paste anything real
+into a chat.
+
+| What you choose | Where your data goes |
+|---|---|
+| **DTU models** | Stays on our server, inside the DTU network |
+| **Free models** | Leaves our network to a third party. Free offers are commonly paid for with your data and your interaction with the model |
+| **Your own subscription** (Codex, Claude, others) | Depends on that provider, and on whether you have opted out of having your data used for training |
+
+User discretion is advised at all times. You are in charge of your data, you
+are in charge of the permissions you give your models, and you are in charge
+of which data you put in front of them. Nothing in this workshop removes that
+responsibility from you, and no default setting decides it for you.
+
+Use public data with external models. Keep anything confidential or personal
+on the DTU models, or off the machine entirely.
+
+### Lesson two — `/compact` is your friend
+
+A conversation has a fixed budget. Everything counts against it: your
+messages, the model's replies, file contents it has read, and every tool
+result it has seen. When the budget runs out mid-task, the run stops being
+useful.
+
+`/compact` summarises the conversation so far and continues with the summary
+in place of the raw history. You keep the thread, you get the room back.
+
+Get to know it early, on a conversation you do not mind losing, rather than
+discovering it when you are deep in an exercise. The sooner the better.
+
 ## Quick start — download, extract and open
 
 1. Install [OpenCode](https://opencode.ai/docs/#install) before the workshop.
