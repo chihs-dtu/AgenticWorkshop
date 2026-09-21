@@ -234,23 +234,35 @@ A travel-planning agent might have skills such as *search flights*, *find hotels
 The downloaded and extracted workshop has this structure.
 ```text
 workshop/
-   opencode.json                Model connections, limits and permissions
-   .opencode/
+   opencode.json                Model connections, limits, permissions, MCP servers
+   admin.md                     Server notes for the organisers
+   .opencode/                   What OpenCode loads: agents and skills
       agents/
-         bad-agent.md           Basic PDB agent example
-         good-agent.md          More explicit PDB agent example
-         submit-agent.md        Git-scoped agent, used in Exercise 4
+         bad-agent.md           Basic PDB agent example, Exercise 2a
+         good-agent.md          More explicit PDB agent example, Exercise 2a
+         genome-coordinator.md  Delegates to the four specialists below, Exercise 2c
+         genome-auditor.md      Checks data, units and missing values
+         genome-analyst.md      Writes and runs the analysis
+         genome-visualizer.md   Makes the plots
+         genome-reviewer.md     Independently rechecks the results
+         submit-agent.md        Git-scoped agent, Exercise 4
       skills/
          skill-builder/         A subfolder INSIDE skills
             SKILL.md            The skill-builder instructions
-         submit-work/           A second skill, used in Exercise 4
+         submit-work/           A second skill, Exercise 4
             SKILL.md            The submit-work instructions
    exercises/
       01-skills/
       02-agents/
-      03-mcp/                   Exercise 3, with its own data/ and scripts/
-      04-share/                 Exercise 4, with submissions/ for your work
+         team-01/ ... team-10/  Your team's working folder for Exercise 2c
+      03-mcp/
+         data/                  The PDB snapshot, and byo/ for three other datasets
+         scripts/               Rebuild the datasets and the DuckDB databases
+      04-share/
+         submissions/
+            team-01/ ... team-10/   Where a team publishes its reviewed agents
    mcp/                         Notes on the four MCP servers this project configures
+   slides/                      The concepts deck, published from Markdown
 ```
 OpenCode reads `.opencode/` folder for project agents and skills, while `opencode.json` in the workshop root
 contains the model connections, limits and permissions.
@@ -264,6 +276,11 @@ name. With two skills present it no longer collapses `skills` itself.
 Each additional skill gets its own subfolder and `SKILL.md`. Agent definitions
 are Markdown files directly inside `.opencode/agents/`. A `.gitkeep` file in
 an otherwise empty folder is only a Git/ZIP placeholder, not an agent or skill.
+
+The `team-NN/` folders under `exercises/02-agents/` are working areas, not
+loaded by OpenCode. Agents only take effect once you copy them into
+`.opencode/agents/`. The matching folders under `exercises/04-share/submissions/`
+are for publishing a reviewed copy, which is a separate step.
 
 The leading dot may hide `.opencode` in your file browser, but OpenCode can
 still read it. Do not rename it, move it out of the project, or put
