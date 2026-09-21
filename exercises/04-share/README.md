@@ -163,7 +163,7 @@ unchecked software from the wild internet. It can be a modern trojan horse.
 # Epilogue
 
 You built a skill in Exercise 1, an agent in Exercise 2, and connected an MCP
-server in Exercise 3. In this one you decided which of the three a job
+server in Exercise 3. In this one you decided which of the three your job
 actually needed.
 
 Previous: [Exercise 3 — MCP and data analysis](../03-mcp/README.md).
