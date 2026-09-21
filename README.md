@@ -15,7 +15,7 @@ Use **OpenCode on your laptop** to work on the exercises. The DTU models run
 on our server cluster; you do not need a cluster account, SSH, model downloads or
 server-start commands.
 
-## Before the exercises: two lessons
+## Before the exercises: two pieces of advice in a lesson format
 
 ### Lesson one — you are in charge of your data
 
