@@ -1,224 +1,188 @@
 # Workshop administration
 
-Notes for Peter and Dimitrios. For participant setup, see the [student README](README.md).
+Operating notes for Peter and Dimitrios. For participant setup see the
+[student README](README.md).
 
-These commands refer to `/home/local/workshop` on the compute nodes, not the downloaded repository on a student's laptop.
+All paths below are `/home/local/workshop` on the compute nodes, not the
+repository on a laptop.
 
-## Connect to the server
+## Connect
 
 ```bash
 ssh -J dimkan@login.healthtech.dtu.dk dimkan@compute04
 cd /home/local/workshop
 ```
 
-You can connect to compute05 instead. Run the commands below on a compute
-node, not the login node. The folder belongs to `dimkan`; Peter needs access
-through that account or administrator-arranged permissions.
+compute05 works the same way. Run everything on a compute node, not the login
+node. The folder belongs to `dimkan`; Peter needs access through that account.
 
-## Start, stop and check the models
+## Start, stop and check
 
-These commands work from either compute node:
+Either node can drive both.
 
-| Scope | Start | Stop | Check status |
+| Scope | Start | Stop | Status |
 |---|---|---|---|
 | compute04 models | `bash bin/llm start compute04` | `bash bin/llm kill compute04` | `bash bin/llm status compute04` |
 | compute05 model | `bash bin/llm start compute05` | `bash bin/llm kill compute05` | `bash bin/llm status compute05` |
 | Everything | `bash bin/llm start all` | `bash bin/llm kill all` | `bash bin/llm status all` |
 
-**Before the workshop, run `bash bin/llm start all` and check the readiness summary for both nodes.**
+**Before the workshop: `bash bin/llm start all`, then check the readiness
+summary for both nodes.**
 
-Start commands also start any missing connection services. Already-running
-models are kept. If a start fails, read the error before trying again.
-`kill` and `stop` mean the same thing: stop our workshop processes safely.
-To restart, stop first, wait for success, then start.
+A start also brings up any missing connection services and leaves
+already-running models alone. `kill` and `stop` are the same command. To
+restart, stop, wait for success, then start.
 
-> The shared connection service, called the **gateway**, runs on compute04.
-> Stopping compute04 disconnects every model, including Qwen 3.8.
-> Starting compute05 automatically starts that gateway if needed, but does
-> not start compute04's other models.
+> The **gateway** is the shared connection service and runs on compute04.
+> Stopping compute04 disconnects every model, Qwen 3.8 included. Starting
+> compute05 brings the gateway up if needed, but does not start compute04's
+> other models.
 
-No tmux is needed, and closing SSH leaves the models running. After a server
-reboot, start them again. Only use this setup during the approved workshop
-reservation; do not bypass the checks for occupied GPUs.
+No tmux needed; closing SSH leaves the models running. Start them again after
+a reboot. Use the setup only during the approved reservation, and do not
+bypass the occupied-GPU checks.
 
-For just one model, run its command on the node listed below:
+Single models run on their own node:
 
 ```bash
-# Example on compute04
-bash bin/llm start mistral
-bash bin/llm stop mistral
-
-# Example on compute05
-bash bin/llm start qwen38
-bash bin/llm stop qwen38
+bash bin/llm start mistral      # compute04
+bash bin/llm stop  mistral
+bash bin/llm start qwen38       # compute05
+bash bin/llm stop  qwen38
 ```
 
-To preview a command without doing anything, add `--dry-run`.
-For more options, run `bash bin/llm --help`.
+Add `--dry-run` to preview. `bash bin/llm --help` for the rest.
 
 ## Model settings
 
-| Model ID | Node | GPUs | Configured context | Configured ceiling | Native target | Server output cap |
+| Model ID | Node | GPUs | Configured context | Launcher ceiling | Checkpoint maximum | Output cap |
 |---|---|---|---:|---:|---:|---:|
 | `qwen36` | compute04 | 0, 1 | 16384 | 65536 | 262144 | 4096 |
 | `qwen38` | compute05 | 0, 1 | 32768 | 65536 | 262144 | 8192 |
 | `mistral` | compute04 | 2 | 16384 | 32768 | 131072 | 4096 |
 | `gptoss` | compute04 | 3 | 16384 | 32768 | 131072 | 8192 |
 
-The native targets come from the installed checkpoint configuration, not a
-capacity test. Current allocations cannot be assumed to fit every target.
+The checkpoint maximum is what the model supports, not what the current GPU
+allocation fits. The launcher ceiling is what it will accept without testing.
 
-**Context** is the total space for the conversation and answer, measured in
-tokens. It includes previous messages, instructions and tool results.
-**Output** is the maximum length of the model's answer, including reasoning.
+**Context** is the whole conversation plus the answer, in tokens, including
+instructions and tool results. **Output** is the answer alone.
 
-To change a model's context, stop it first. For example, on compute04:
+Change a model's context by stopping it first:
 
 ```bash
 bash bin/llm stop mistral
 bash bin/llm start mistral --context 32768
 ```
 
-- This changes one launch only. To save a default, edit that model's
-  `context` in `config/models.json` on its node, then stop/start it.
-- Keep student `limit.context` defaults at 16384, or 32768 for Qwen 3.8,
-  even after larger server capacities are verified. Keep all student output
-  limits at 4096. Students may use a smaller budget than the server ceiling;
-  they must restart OpenCode after a configuration change.
-- Larger contexts need more GPU memory and must be tested. The launcher
-  permits up to 65536 for the Qwen models and 32768 for Mistral/GPT-OSS;
-  those are allowed settings, not guaranteed working capacities.
-- To return Mistral to its default, stop it and start it with
-  `--context 16384`. An already-running model ignores a new start request.
-- Keep student output at 4096. The server may reduce it further to fit the
-  conversation. If the conversation is too long, compact it or start a new chat.
-
-The output caps are set in compute04's `app/gateway.py`, separately from
-server context. Changing that code requires tests and a gateway restart.
+- That changes one launch. For a persistent default, edit `context` in the
+  node's `config/models.json`, then stop and start.
+- A running model ignores a new start request. Revert with
+  `bash bin/llm stop mistral` then `bash bin/llm start mistral --context 16384`.
+- Student `limit.context` defaults stay at 16384, 32768 for Qwen 3.8, with
+  output 4096. Students restart OpenCode after a config change.
+- Output caps live in compute04's `app/gateway.py`, separate from server
+  context. Changing them needs tests and a gateway restart.
 
 ### Raising the context limits
 
-1. Confirm GPU visibility and the approved workshop reservation. Preserve the
-   GPU assignments and occupied-GPU checks.
-2. Test one model at a time with a temporary validation profile targeting the
-   native value above. Preserve the current configuration and working model
-   state for recovery. Do not bypass vLLM's model-length/memory validation,
-   change quantization or add context extension to force a result.
-3. Verify the running `max_model_len`, a normal response, long-input responses,
-   streaming and tool-call round trips. Test concurrent requests, cancellation
-   and busy responses; a startup health ping alone is insufficient. Report
-   observed latency and failures rather than claiming a fixed user capacity.
-4. Both the gateway and model endpoint currently cap request bodies at 2 MiB.
-   Test representative long requests. If that blocks otherwise valid input,
-   raise the workshop application caps to 8 MiB and have Peter check matching
-   HTTPS-proxy limits; retain finite limits. Keep answer caps unchanged.
-5. Only after a target passes, persist its `context` and `max_context` in the
-   node's `config/models.json`. Synchronize Qwen 3.8's profile on compute04 as
-   well as compute05. Verify the public endpoint after the controlled restart.
-   If it fails, restore the previous working profile and report the lower
-   verified capacity; do not advertise the native target as available.
-6. Update this status and the student/MCP notes with the actual deployed maxima.
-   Keep the small student defaults. Require organiser approval for student
-   budgets above 32768 and explicitly discourage 262144 for ordinary tasks.
+1. Confirm GPU visibility and the reservation. Keep the GPU assignments and
+   occupied-GPU checks.
+2. Test one model at a time against its checkpoint maximum, using a temporary
+   profile and keeping the working configuration for recovery. Do not bypass
+   vLLM's length and memory validation, change quantization, or add context
+   extension.
+3. Check the running `max_model_len`, a normal response, a long input,
+   streaming, and a tool-call round trip. Then concurrent requests,
+   cancellation and busy responses.
+4. The gateway and model endpoints cap request bodies at 2 MiB. If that blocks
+   valid input, raise the application caps to 8 MiB and have Peter match the
+   HTTPS-proxy limit. Keep answer caps as they are.
+5. Once a target passes, persist `context` and `max_context` in that node's
+   `config/models.json`, synchronise Qwen 3.8's profile on both nodes, and
+   check the public endpoint after the restart. If it fails, restore the
+   previous profile.
+6. Update the student defaults only if you intend students to use more.
+   Budgets above 32768 need organiser approval.
 
-Students edit only the context budget for their selected model in their own
-project. That budget affects all agents using the same provider/model entry.
-Do not confuse a high ceiling with every request using that many tokens: it
-is actual long contexts and concurrent work that consume shared capacity.
+## Checks and troubleshooting
 
-Exercise 2c supplies five agent definitions and one coordinator launch command,
-not a precomputed analysis pipeline. Save actual delegations, results,
-corrections and failures before presenting a run as the example output.
+The launcher waits up to five minutes per node, checks gateway and model
+health, then sends a test message through each public URL. A model is
+**READY** only once it returns text. Models are checked independently, and the
+summary lists each as READY or NOT READY with a reason. Check both nodes.
 
-## Check connections and investigate errors
+Re-running the start command repeats the checks without reloading running
+models.
 
-The launcher waits up to five minutes per node. It checks the gateway and
-model health, then sends a tiny test message through each model's public URL.
-Each model is marked **READY** only after it returns answer text. Models are
-checked independently, so a slow or failed model does not hide the others.
-
-The final summary lists every requested model as **READY** or **NOT READY**,
-with a reason for any failure. A failure or timeout makes the command report
-an incomplete startup; it does not stop the models that are running. Check
-both nodes: compute04 being ready does not mean compute05 also started.
-
-To repeat the checks, run the same start command again. Already-running
-models are not reloaded. This tests basic replies, not every possible
-OpenCode tool call or a student's network connection.
-
-From a computer with access to the teaching URL:
+From anywhere with access to the teaching URL:
 
 ```bash
 curl --fail --max-time 15 https://teaching.healthtech.dtu.dk/workshop/mistral/health
 curl --fail --max-time 15 https://teaching.healthtech.dtu.dk/workshop/mistral/models
 ```
 
-Replace `mistral` with another model ID. Look for `available: true`;
+Swap `mistral` for another model ID. `available: true` is the one to look for;
 `max_model_len` shows the running context size.
 
-On the model's node:
+On the node:
 
 ```bash
 bash bin/llm status all
 tail -n 60 logs/direct-mistral.log
 ```
 
-Use `direct-qwen36.log`, `direct-qwen38.log` or `direct-gptoss.log` for
-the other models. Connection-service errors are in compute04's
-`logs/direct-gateway.log`. Re-running the model's start command restores
-missing required services without reloading an already-running model.
+Also `direct-qwen36.log`, `direct-qwen38.log`, `direct-gptoss.log`, and
+`logs/direct-gateway.log` on compute04 for connection-service errors.
 
-To restart only the gateway, on compute04:
+Gateway only, on compute04:
 
 ```bash
 bash bin/llm stop gateway
 bash bin/llm start gateway
 ```
 
-This briefly interrupts all connections but leaves the models loaded.
+That interrupts connections briefly and leaves the models loaded.
 
-## Files and ports we maintain
+## Files and ports
 
-| Location on the cluster | What it is for |
+| Location | Purpose |
 |---|---|
-| `bin/llm.py` | Starting, stopping and checking services |
+| `bin/llm.py` | Start, stop and status |
 | `app/` | Connection handling and model requests |
 | `config/models.json` | Model settings and server addresses |
 | `config/model-endpoints.json`, `config/reverse-proxy.json` | Public-connection settings |
 | `config/access-policy.json` | Whether students need an API key |
-| `models/`, `envs/`, `runtime/` | Models and installed software; leave these in place |
-| `logs/`, `run/`, `cache/`, `tmp/` | Logs and working files; do not clear while running |
+| `models/`, `envs/`, `runtime/` | Models and installed software. Leave in place |
+| `logs/`, `run/`, `cache/`, `tmp/` | Logs and working files. Do not clear while running |
 
-We use **vLLM 0.19.0** to run the models. Peter's HTTPS server forwards
-each model URL to the corresponding HTTP address.
+vLLM 0.19.0 runs the models. Peter's HTTPS server forwards each public model
+URL to its HTTP address.
 
-## Model endpoints
+## Endpoints
 
-This is the maintained endpoint reference. These are the configured addresses,
-not a live service-status report. Use the readiness checks above before sharing.
-
-| Model ID | Public Base URL for OpenCode | HTTP upstream for Peter's proxy | Node |
+| Model ID | Public Base URL | HTTP upstream | Node |
 |---|---|---|---|
 | `qwen36` | `https://teaching.healthtech.dtu.dk/workshop/qwen36` | `http://10.57.11.104:28102` | compute04 |
 | `qwen38` | `https://teaching.healthtech.dtu.dk/workshop/qwen38` | `http://10.57.11.105:28101` | compute05 |
 | `mistral` | `https://teaching.healthtech.dtu.dk/workshop/mistral` | `http://10.57.11.104:28103` | compute04 |
 | `gptoss` | `https://teaching.healthtech.dtu.dk/workshop/gptoss` | `http://10.57.11.104:28104` | compute04 |
 
-Use the public Base URLs exactly as shown: **do not append `/v1`**.
-OpenCode appends request paths such as `/chat/completions`; health and model
-listing use `/health` and `/models`. Preserve that suffix when forwarding each
-public route to its model endpoint. TLS is handled by Peter's HTTPS proxy;
-these internal upstreams use HTTP. Students should not use the internal IPs.
+Use the public Base URLs exactly as shown and **do not append `/v1`**.
+OpenCode appends `/chat/completions`; health and listing use `/health` and
+`/models`. Preserve that suffix when forwarding. TLS is handled by the HTTPS
+proxy, so the upstreams are HTTP.
 
-The shared gateway is on compute04 port 28100. It must reach Qwen 3.8's
-private model service on compute05 port 28201. These are not student URLs.
+The gateway is on compute04 port 28100 and must reach Qwen 3.8's service on
+compute05 port 28201.
 
-Student API keys are currently disabled. Keep the teaching URLs restricted
-to the intended audience. Internal credentials are still required; do not
-publish server `config/`, keys or logs. The student `opencode.json`
-contains no credentials and is intended for sharing.
+Student API keys are disabled, so keep the teaching URLs to the intended
+audience. Do not publish server `config/`, keys or logs. The student
+`opencode.json` holds no credentials.
 
-To check code changes on compute04:
+## Tests
+
+On compute04:
 
 ```bash
 source bin/workshop-env.sh
