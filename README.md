@@ -87,6 +87,11 @@ Leave your existing global `opencode.jsonc`, `package.json` and
 global settings automatically.
 
 ## LLM Models you can use
+First be aware of the pricing - it can be creative.
+* Free models - your data and behavior is logged and used by the provider
+* Paid models - often subscription-based. Maybe as safe and confidential as the provider says
+* Local models - running on your own hardware. As confidential as your system
+* DTU models - free for the workshop. We do not store/use/abuse your data. Trust us......
 ### Our four DTU models
 <details>
 <summary>Model list</summary>
