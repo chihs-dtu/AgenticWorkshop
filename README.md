@@ -28,7 +28,7 @@ server-start commands.
 > `opencode web` is now `opencode serve`, and `opencode debug skill` is gone;
 > use `/skills` in the chat instead.
 
-## Before the exercises: two pieces of advice in a lesson format
+## Before the exercises: three pieces of advice in a lesson format
 
 ### Lesson one — you are in charge of your data
 
@@ -62,6 +62,11 @@ in place of the raw history. You keep the thread, you get the room back.
 
 Get to know it early, on a conversation you do not mind losing, rather than
 discovering it when you are deep in an exercise. The sooner the better.
+
+### Lesson three — use `/theme` before anything else to be cool and personalise your experience
+
+Opencode (v1 and v2) harnesses comes with their own preinstalled themes. Pick one 
+that inspires you to finish this workshop (hint: maybe `matrix` will do the trick).
 
 ## Quick start — download, extract and open
 
