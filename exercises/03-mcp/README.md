@@ -792,4 +792,4 @@ To put the workshop back as you found it: nothing to undo in the
 configuration, because `/mcps` never changed it. Delete
 `exercises/03-mcp/data/pdb.duckdb` if you want the 17 MB back.
 
-Previous: [Exercise 2 — Agents](../02-agents/README.md) · Next: [Exercise 4 — Share what you built](../04-share/README.md).
+Previous: [Exercise 2 — Agents](../02-agents/README.md) · Next: [Exercise 4 — Share what you built](../04-share/README.md) · Optional: [Bonus exercises](../05-bonus/README.md).
