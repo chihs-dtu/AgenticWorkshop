@@ -301,6 +301,7 @@ and [skills](https://opencode.ai/docs/skills/).
 - **Exercise 2** — [Agents](exercises/02-agents/README.md).
 - **Exercise 3** — [MCP and data analysis](exercises/03-mcp/README.md).
 - **Exercise 4** — [Share what you built](exercises/04-share/README.md).
+- **Bonus** — [Plugins, and finding bugs](exercises/05-bonus/README.md). Optional, any time.
 
 ## Manual connection reference — optional
 
