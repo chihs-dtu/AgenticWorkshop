@@ -60,8 +60,7 @@ task you can evaluate. Give it a specific job and a definition of success.
 ## Create the agent
 
 Ask OpenCode to help create `.opencode/agents/my-agent.md`, or run
-`opencode agent create` in your terminal and select the project location.
-You can also write the Markdown file yourself. The filename becomes the
+write the Markdown file yourself. The filename becomes the
 agent name. Keep your own agent separate from `bad-agent` and `good-agent`.
 
 Start with a small definition like this:
@@ -217,7 +216,7 @@ value must fit the model's currently verified server limit. Do not add a made-up
 ## Test your agent
 
 1. Check that OpenCode discovers it. Outside the chat, run
-   `opencode agent list`, or reopen the project and inspect the agent selector.
+   `opencode debug agents`, or reopen the project and inspect the agent selector.
 2. Try one normal task. Inspect the files and check the claimed results.
 3. Try incomplete or invalid input. Does it explain the problem or invent an answer?
 4. Try another input without rewriting the agent. Does it still work?
@@ -251,11 +250,16 @@ the folder OpenCode reads. Their common goal is:
 
 | Agent file | Job | Model |
 |---|---|---|
-| [genome-coordinator.md](../../.opencode/agents/genome-coordinator.md) | Delegate the work and assemble the report | OpenCode Big Pickle |
-| [genome-auditor.md](../../.opencode/agents/genome-auditor.md) | Check data, units and missing values | DTU Mistral |
-| [genome-analyst.md](../../.opencode/agents/genome-analyst.md) | Write and run the analysis | DTU Qwen 3.6 |
-| [genome-visualizer.md](../../.opencode/agents/genome-visualizer.md) | Create browser-readable plots | DTU Qwen 3.8 |
-| [genome-reviewer.md](../../.opencode/agents/genome-reviewer.md) | Independently check results and plots | DTU GPT-OSS |
+| [genome-coordinator.md](../../.opencode/agents/genome-coordinator.md) | Delegate the work and assemble the report | `opencode/big-pickle` |
+| [genome-auditor.md](../../.opencode/agents/genome-auditor.md) | Check data, units and missing values | `opencode/nemotron-3-ultra-free` |
+| [genome-analyst.md](../../.opencode/agents/genome-analyst.md) | Write and run the analysis | `opencode/ling-3.0-flash-fin-free` |
+| [genome-visualizer.md](../../.opencode/agents/genome-visualizer.md) | Create browser-readable plots | `opencode/mimo-v2.6-flash-free` |
+| [genome-reviewer.md](../../.opencode/agents/genome-reviewer.md) | Independently check results and plots | `opencode/nemotron-3.5-lightning-free` |
+
+All five are free models from OpenCode, so the demonstration does not depend
+on the DTU servers. It does send your prompts to a third party: use the
+supplied public data, and read the free-model warning in the
+[main README](../../README.md).
 
 From a terminal **inside the downloaded workshop root** (beside
 `opencode.json`), run:
@@ -273,13 +277,14 @@ five terminals or simultaneous execution.
 **Desktop:** open the workshop as a project, select `genome-coordinator` in
 the agent selector, and paste the same quoted prompt into a new chat.
 
-Python 3.10+ and access to all five configured models are required. Leave MCP
-off; no extra Python packages are required. Confirm the DTU services are
-running with the organisers and that Big Pickle is available in `/models`.
-Big Pickle is a free offer and can disappear without notice; if it is gone,
-set the coordinator's `model:` to another model you can reach, and say in your
-write-up which one you used. The coordinator is the one agent whose absence
-stops the whole run.
+Python 3.10+ and access to all five models are required. Leave MCP off; no
+extra Python packages are required. Check the five are listed by
+`opencode models` before you start.
+
+Free offers change without notice. If one of the five has gone, set that
+agent's `model:` to another model you can reach and say in your write-up which
+one you used. The coordinator is the one agent whose absence stops the whole
+run.
 If the agent is missing, check that you opened the folder containing
 `.opencode/agents/` and reopen OpenCode. Do not silently switch models.
 
@@ -367,7 +372,7 @@ data, credentials, caches or generated results in either folder.
    referenced project files at the paths the instructions expect. Review any
    existing installed file before replacing it.
 4. Confirm the model IDs are available to the coordinator, reopen OpenCode,
-   and inspect `opencode agent list`. Select the team coordinator agent and
+   and inspect `opencode debug agents`. Select the team coordinator agent and
    run in a fresh output folder. Team members' provider credentials are not
    included in the download; use your own connections.
 5. Copy reviewed definitions into your team's sharing folder. Follow the

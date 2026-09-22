@@ -126,8 +126,8 @@ Access outside the current project may require approval. Do not share embedded
 credentials or private example data with a copied skill.
 
 To request a skill unambiguously, say **"Use the pdb-download skill to…"**.
-For a loading check, run `opencode debug skill --pure` from your terminal,
-outside the chat. It lists discovered skills, but does not prove they work.
+For a loading check, type `/skills` in the chat. It lists discovered skills,
+but does not prove they work.
 
 # Exercise 1d — Render a structure from coordinates
 

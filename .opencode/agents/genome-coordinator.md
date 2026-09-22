@@ -3,28 +3,64 @@ description: Coordinates four differently modelled specialists to produce a chec
 mode: primary
 model: opencode/big-pickle
 steps: 30
-permission:
-  edit: ask
-  bash:
-    "*": ask
-    "git push*": deny
-    "gh *": deny
-    "curl *": deny
-    "wget *": deny
-  task:
-    "*": deny
-    "genome-auditor": allow
-    "genome-analyst": allow
-    "genome-visualizer": allow
-    "genome-reviewer": allow
-  external_directory: deny
-  webfetch: deny
-  websearch: deny
-  skill: deny
-  duckdb_*: deny
-  rcsb_*: deny
-  biomcp_*: deny
-  opentargets_*: deny
+permissions:
+- action: edit
+  resource: '*'
+  effect: ask
+- action: shell
+  resource: '*'
+  effect: ask
+- action: shell
+  resource: git push*
+  effect: deny
+- action: shell
+  resource: gh *
+  effect: deny
+- action: shell
+  resource: curl *
+  effect: deny
+- action: shell
+  resource: wget *
+  effect: deny
+- action: subagent
+  resource: '*'
+  effect: deny
+- action: subagent
+  resource: genome-auditor
+  effect: allow
+- action: subagent
+  resource: genome-analyst
+  effect: allow
+- action: subagent
+  resource: genome-visualizer
+  effect: allow
+- action: subagent
+  resource: genome-reviewer
+  effect: allow
+- action: external_directory
+  resource: '*'
+  effect: deny
+- action: webfetch
+  resource: '*'
+  effect: deny
+- action: websearch
+  resource: '*'
+  effect: deny
+- action: skill
+  resource: '*'
+  effect: deny
+- action: duckdb_*
+  resource: '*'
+  effect: deny
+- action: rcsb_*
+  resource: '*'
+  effect: deny
+- action: biomcp_*
+  resource: '*'
+  effect: deny
+- action: opentargets_*
+  resource: '*'
+  effect: deny
 ---
 
 # Common goal
