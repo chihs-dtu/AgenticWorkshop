@@ -1,25 +1,54 @@
 ---
 description: Independently recomputes genome statistics and checks limitations of the interpretation.
 mode: subagent
-model: dtu/gptoss
+model: opencode/nemotron-3.5-lightning-free
 steps: 12
-permission:
-  edit: ask
-  bash:
-    "*": ask
-    "git push*": deny
-    "gh *": deny
-    "curl *": deny
-    "wget *": deny
-  task: deny
-  external_directory: deny
-  webfetch: deny
-  websearch: deny
-  skill: deny
-  duckdb_*: deny
-  rcsb_*: deny
-  biomcp_*: deny
-  opentargets_*: deny
+permissions:
+- action: edit
+  resource: '*'
+  effect: ask
+- action: shell
+  resource: '*'
+  effect: ask
+- action: shell
+  resource: git push*
+  effect: deny
+- action: shell
+  resource: gh *
+  effect: deny
+- action: shell
+  resource: curl *
+  effect: deny
+- action: shell
+  resource: wget *
+  effect: deny
+- action: subagent
+  resource: '*'
+  effect: deny
+- action: external_directory
+  resource: '*'
+  effect: deny
+- action: webfetch
+  resource: '*'
+  effect: deny
+- action: websearch
+  resource: '*'
+  effect: deny
+- action: skill
+  resource: '*'
+  effect: deny
+- action: duckdb_*
+  resource: '*'
+  effect: deny
+- action: rcsb_*
+  resource: '*'
+  effect: deny
+- action: biomcp_*
+  resource: '*'
+  effect: deny
+- action: opentargets_*
+  resource: '*'
+  effect: deny
 ---
 
 # Your task

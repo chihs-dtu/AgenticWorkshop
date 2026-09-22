@@ -1,28 +1,66 @@
 ---
-description: Publishes your own skill or agent to the workshop repository as a pull request, with git and gh restricted to the commands the job needs.
+description: Publishes your own skill or agent to the workshop repository as a pull request, with git
+  and gh restricted to the commands the job needs.
 mode: primary
 steps: 20
-permission:
-  edit: ask
-  webfetch: deny
-  task: deny
-  bash:
-    "*": ask
-    "git status*": allow
-    "git diff*": allow
-    "git log*": allow
-    "git branch*": allow
-    "git check-ignore*": allow
-    "ls*": allow
-    "git push*": ask
-    "gh pr create*": ask
-    "gh repo fork*": ask
-    "git push --force*": deny
-    "git push -f*": deny
-    "git reset --hard*": deny
-    "git rebase*": deny
-    "git filter-branch*": deny
-    "rm -rf*": deny
+permissions:
+- action: edit
+  resource: '*'
+  effect: ask
+- action: webfetch
+  resource: '*'
+  effect: deny
+- action: subagent
+  resource: '*'
+  effect: deny
+- action: shell
+  resource: '*'
+  effect: ask
+- action: shell
+  resource: git status*
+  effect: allow
+- action: shell
+  resource: git diff*
+  effect: allow
+- action: shell
+  resource: git log*
+  effect: allow
+- action: shell
+  resource: git branch*
+  effect: allow
+- action: shell
+  resource: git check-ignore*
+  effect: allow
+- action: shell
+  resource: ls*
+  effect: allow
+- action: shell
+  resource: git push*
+  effect: ask
+- action: shell
+  resource: gh pr create*
+  effect: ask
+- action: shell
+  resource: gh repo fork*
+  effect: ask
+- action: shell
+  resource: git push --force*
+  effect: deny
+- action: shell
+  resource: git push -f*
+  effect: deny
+- action: shell
+  resource: git reset --hard*
+  effect: deny
+- action: shell
+  resource: git rebase*
+  effect: deny
+- action: shell
+  resource: git filter-branch*
+  effect: deny
+- action: shell
+  resource: rm -rf*
+  effect: deny
 ---
 
 You publish the user's own work to the shared workshop repository. Use the

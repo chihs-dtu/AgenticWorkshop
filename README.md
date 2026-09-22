@@ -15,6 +15,19 @@ Use **OpenCode on your laptop** to work on the exercises. The DTU models run
 on our server cluster; you do not need a cluster account, SSH, model downloads or
 server-start commands.
 
+> **This workshop has moved to OpenCode v2.** v2 ships as a different package,
+> `@opencode/cli`, so the old `curl -fsSL https://opencode.ai/install | bash`
+> installs v1 and will not match these materials. Install with
+> `npm install -g @opencode/cli` and check `opencode --version` reports 2.x.
+>
+> If you already have v1, remove it first. On Homebrew that is
+> `brew uninstall opencode`. Avoid `opencode uninstall`: it removes all related
+> files, including your global configuration and saved credentials.
+>
+> Some commands changed. `opencode agent list` is now `opencode debug agents`,
+> `opencode web` is now `opencode serve`, and `opencode debug skill` is gone;
+> use `/skills` in the chat instead.
+
 ## Before the exercises: two pieces of advice in a lesson format
 
 ### Lesson one — you are in charge of your data
@@ -57,7 +70,7 @@ discovering it when you are deep in an exercise. The sooner the better.
    The terminal version (CLI) is preferred; OpenCode Desktop is also supported, however the CLI can function as
    a desktop version in a browser at no extra cost.
 2. For Linux and WSL2 Ubunbu (Linux) it is this command for install OpenCode CLI (terminal)<br>
-   `curl -fsSL https://opencode.ai/install | bash` 
+   `npm install -g @opencode/cli` 
 3. Open [the workshop repository](https://github.com/peterwadsackett/AgenticWorkshop)
    and choose **Code → Download ZIP**.
 4. Extract the ZIP and move/rename the extracted folder to the place you want to work.
@@ -65,7 +78,8 @@ discovering it when you are deep in an exercise. The sooner the better.
    in your home, and we will refer to that name in the text.
 5. In **OpenCode Desktop**, open that extracted folder as your project—the
    folder containing both `README.md` and `opencode.json`, not its parent.
-   For the terminal version, run `opencode` from inside that folder or `opencode web` for the browser version.
+   For the terminal version, run `opencode` from inside that folder, or
+   `opencode serve` for the browser version.
 6. Start a new chat. Open the model selector and choose a model under **DTU**.
    In the terminal version, type `/models`.
 

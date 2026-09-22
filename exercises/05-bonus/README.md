@@ -31,6 +31,23 @@ npm plugins are installed automatically by Bun at startup. The documentation
 describes hooks for shell execution, file events and permissions, and no
 sandbox.
 
+**Two things to know before you try any of this on v2.**
+
+Most plugins you will find were written for v1, and **v1 plugin implementations
+do not run in v2**. The plugin API changed. A plugin can install cleanly, appear
+in the list and simply never do anything. Treat "it installed" as no evidence at
+all, and check that it actually did something.
+
+**Plugin state goes stale.** v2 keeps a background service that caches
+configuration, so what `opencode plugin list` or `opencode mcp list` reports can
+be the previous state rather than the current one. After adding, removing or
+editing a plugin, run `opencode reload`, or `opencode service restart` if that is
+not enough. This caught us while preparing the workshop: a server that was
+already enabled kept reporting as disabled.
+
+v2 also adds a plugin command: `opencode plugin list`, `add`, `check`, `update`,
+`remove`.
+
 A skill is instructions your agent may follow. An MCP server is a tool your
 agent must ask to use. A plugin is code that already ran.
 
@@ -79,6 +96,10 @@ curl -fsSL -o .opencode/plugins/notify.js \
 
 macOS uses `osascript` and Linux uses `dbus-send` with a notification daemon.
 Inside WSL2 it will probably do nothing, which is itself worth seeing.
+
+This plugin was written for v1, so on v2 it may do nothing at all. That is the
+exercise, not a failure: read it, install it, and find out whether it actually
+ran. Run `opencode reload` before deciding it did not.
 
 Remove it by deleting the file (or keep it).
 

@@ -1,11 +1,18 @@
 ---
-description: Creates an informative, reusable PDB visualization with explicit scientific and usability checks.
+description: Creates an informative, reusable PDB visualization with explicit scientific and usability
+  checks.
 mode: primary
 steps: 20
-permission:
-  edit: ask
-  bash: ask
-  task: deny
+permissions:
+- action: edit
+  resource: '*'
+  effect: ask
+- action: shell
+  resource: '*'
+  effect: ask
+- action: subagent
+  resource: '*'
+  effect: deny
 ---
 
 Create an interactive structure report that helps a researcher understand
