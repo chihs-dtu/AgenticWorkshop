@@ -80,9 +80,10 @@ that inspires you to finish this workshop (hint: maybe `matrix` will do the tric
    `npm install -g @opencode/cli` 
 3. Open [the workshop repository](https://github.com/peterwadsackett/AgenticWorkshop)
    and choose **Code → Download ZIP**.
-4. Extract the ZIP and move/rename the extracted folder to the place you want to work.
-   Its default name is `AgenticWorkshop-main` and we suggest renaming it to `workshop`
-   in your home, and we will refer to that name in the text.
+4. Extract the ZIP and move the extracted folder wherever you want to work.
+   Its default name is `AgenticWorkshop-main`. You can rename it if you prefer;
+   nothing here depends on the name. The text calls it the workshop root, and
+   every path you will type is relative to it.
 5. In **OpenCode Desktop**, open that extracted folder as your project—the
    folder containing both `README.md` and `opencode.json`, not its parent.
    For the terminal version, run `opencode` from inside that folder, or
@@ -256,10 +257,12 @@ We will introduce skills, agents and MCP as cornerstones of agentic processing t
 **Simple example:**
 A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
 
-### Project folder (workshop) design
-The downloaded and extracted workshop has this structure.
+### Project folder design
+This is the structure of the extracted folder. Everything you will be asked to
+run or open is a path relative to this root, so the folder's own name does not
+matter.
 ```text
-workshop/
+AgenticWorkshop-main/
    opencode.json                Model connections, limits, permissions, MCP servers
    admin.md                     Server notes for the organisers
    .opencode/                   What OpenCode loads: agents and skills
