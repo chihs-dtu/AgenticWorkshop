@@ -15,6 +15,8 @@ Use **OpenCode on your laptop** to work on the exercises. The DTU models run
 on our server cluster; you do not need a cluster account, SSH, model downloads or
 server-start commands.
 
+Install from your terminal: `npm install -g @opencode/cli`
+
 > **This workshop has moved to OpenCode v2.** v2 ships as a different package,
 > `@opencode/cli`, so the old `curl -fsSL https://opencode.ai/install | bash`
 > installs v1 and will not match these materials. Install with
