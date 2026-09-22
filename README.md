@@ -142,34 +142,39 @@ See [OpenCode project configuration](https://opencode.ai/docs/config/#per-projec
 ### Free models from OpenCode
 <details>
 <summary>Model list</summary>
-   
-**Checked 21 September 2026.** The table includes all non-deprecated, zero-priced
-models present in both OpenCode's live model list and its model catalogue at the
-time of checking. Free offers can change or disappear; listing is not a
-guarantee that a request will succeed.<br>
-Be aware that the business model for free LLM models is to train on your data and your interaction with the model.
 
-| Model | OpenCode model ID | Listing |
-|---|---|---|
-| Big Pickle | `opencode/big-pickle` | Free in Zen pricing |
-| DeepSeek V4 Flash Free | `opencode/deepseek-v4-flash-free` | Live list + zero-priced catalogue entry |
-| MiMo-V2.5 Free | `opencode/mimo-v2.5-free` | Free in Zen pricing |
-| Ling 3.0 Flash Fin Free | `opencode/ling-3.0-flash-fin-free` | Free in Zen pricing |
-| Nemotron 3 Ultra Free | `opencode/nemotron-3-ultra-free` | Free in Zen pricing |
-| Nemotron 3.5 Lightning Free | `opencode/nemotron-3.5-lightning-free` | Free in Zen pricing |
-| Muse Spark 1.3 Contributor Free | `opencode/muse-spark-1.3-contributor-free` | Free in Zen pricing |
-| Muse Spark 1.2 Contributor Free | `opencode/muse-spark-1.2-contributor-free` | Live list + zero-priced catalogue entry |
+**Checked 22 September 2026, on OpenCode v2.** Every zero-priced model
+OpenCode offers, as `opencode models` lists them. Free offers change without
+notice: in one week DeepSeek V4 Flash Free dropped off the live list and MiMo
+went from v2.5 to v2.6. Run `opencode models` if a name here does not match.
 
-Sources: [OpenCode Zen pricing](https://opencode.ai/docs/zen/#pricing),
-[live model list](https://opencode.ai/zen/v1/models), and
-[model catalogue](https://models.dev/api.json). Muse Spark 1.2 is not in the
-current Zen pricing table; check its displayed price and terms before use.
-Deprecated offers are excluded even if an old endpoint still lists them.
+| Model, as the selector shows it | Model ID | Context |
+|---|---|---:|
+| Big Pickle | `opencode/big-pickle` | 200,000 |
+| Ling 3.0 Flash Fin Free | `opencode/ling-3.0-flash-fin-free` | 262,144 |
+| MiMo-V2.6-Flash Free | `opencode/mimo-v2.6-flash-free` | 200,000 |
+| Nemotron 3 Ultra Free | `opencode/nemotron-3-ultra-free` | 1,000,000 |
+| Nemotron 3.5 Lightning Free | `opencode/nemotron-3.5-lightning-free` | 262,144 |
+| Muse Spark 1.2 Free ⚠️ | `opencode/muse-spark-1.2-contributor-free` | 1,048,576 |
+| Muse Spark 1.3 Free ⚠️ | `opencode/muse-spark-1.3-contributor-free` | 1,048,576 |
 
-Use public exercise data with external models. Free offers can allow data
-collection or model improvement; Contributor models can include training
-on submitted content. Do not send confidential or personal data.
-See [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#privacy).
+All seven are priced at zero for input and output in the model catalogue.
+
+**The two Muse Spark entries are contributor models.** A contributor model can
+train on what you submit to it. The word `contributor` is in the model ID but
+**not** in the name the selector shows you, which reads only "Muse Spark 1.2
+Free". If you want to avoid them, check the ID rather than the name.
+
+The five agents in exercise 2c run on the other five models for that reason.
+
+Free does not mean private. The business model for a free LLM is your data and
+your interaction with it. Use public exercise data with external models, and
+send nothing confidential or personal. See
+[OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#privacy).
+
+Sources: [live model list](https://opencode.ai/zen/v1/models),
+[model catalogue](https://models.dev/api.json),
+[Zen pricing](https://opencode.ai/docs/zen/#pricing).
 </details>
 
 ### Jev, and why it is not in that table
