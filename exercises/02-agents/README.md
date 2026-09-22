@@ -301,8 +301,8 @@ own question with a dataset you are allowed to use:
 | Your own dataset | Define one answerable question, the input, an observable result and a check that could prove the answer wrong. Use public or synthetic data with external models. |
 
 Create **four or more specialists plus a coordinator**. You can adapt the
-reference definitions or write your own. Assign every role a different model:
-local, currently free from OpenCode, or a personally connected provider. Check
+reference definitions or write your own. Assign every role to a different model:
+a local model, a free model from OpenCode, or a personally connected provider. Check
 access and any cost before choosing; different display names for the same
 provider/model are not different models.
 
@@ -316,7 +316,7 @@ rename them with your team prefix. Edit each agent's `model:` field,
 description, task instructions, permissions and expected outputs. Change the
 coordinator's question, dataset path and helper names, and each specialist's
 methods to suit penguins, proteins or your own target. The agents write their
-own analysis tools during the run; there is no precomputed pipeline to call.
+own analysis tools during the run; there is no pre-computed pipeline to call.
 Keep original data intact.
 
 Test specialists individually with `@team-01-auditor` (substitute your team's
@@ -340,7 +340,7 @@ Do not assume renaming a file updates its coordinator's instructions or rules.
 Give each worker separate output files. Review permission requests and keep
 publishing separate from the analytical run.
 
-## Team folders and handoff
+## Team folders and hand-off
 
 Your team has two folders, using `team-01` through `team-10`:
 
@@ -424,7 +424,7 @@ connections for the assembled team; credentials are never shared in the files.
 
 ## What to inspect at the end
 
-Did each specialist actually run on the intended model? Were the handoffs
+Did each specialist actually run on the intended model? Were the hand-offs
 clear? Can the reviewer reproduce the result without trusting the analyst's
 summary? Does the coordinator expose a failed task instead of filling the gap
 with a guess? Inspect the artifacts, try a missing input or denied action, and
