@@ -291,8 +291,6 @@ If the agent is missing, check that you opened the folder containing
 When the run finishes, inspect `report.md`, `plots.html`, `review.md` and
 `agent-run.md` inside the new output folder. These must be the team's actual
 outputs, including failures and corrections—not supplied example answers.
-The agent definitions are prepared, but a successful live five-model run
-is **still pending validation**. We will add its example output after that run.
 
 ## Then: choose your team's target
 

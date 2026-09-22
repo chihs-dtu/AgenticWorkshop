@@ -65,16 +65,8 @@ For more options, run `bash bin/llm --help`.
 | `mistral` | compute04 | 2 | 16384 | 32768 | 131072 | 4096 |
 | `gptoss` | compute04 | 3 | 16384 | 32768 | 131072 | 8192 |
 
-**Deployment check, 21 September 2026:** no server settings were changed.
-compute04 reports `Failed to initialize NVML: Driver/library version mismatch`
-(NVML library 580.178). All four public `/models` routes returned HTTP 503.
-compute05's GPU query works, but its public route is also unavailable.
-Do not restart compute04 models until Peter resolves the driver issue. This
-does not imply that the mismatch explains every endpoint failure.
-
 The native targets come from the installed checkpoint configuration, not a
-capacity test. Historical vLLM memory logs show that the current allocations
-cannot simply be assumed to fit every target. Higher limits remain **pending**.
+capacity test. Current allocations cannot be assumed to fit every target.
 
 **Context** is the total space for the conversation and answer, measured in
 tokens. It includes previous messages, instructions and tool results.
@@ -104,11 +96,10 @@ bash bin/llm start mistral --context 32768
 The output caps are set in compute04's `app/gateway.py`, separately from
 server context. Changing that code requires tests and a gateway restart.
 
-### Complete the maximum-context rollout when the servers are healthy
+### Raising the context limits
 
-1. Have Peter resolve compute04's driver mismatch, then confirm GPU visibility
-   and the approved workshop reservation. Preserve the GPU assignments and
-   occupied-GPU checks. Do not repair drivers from this repository.
+1. Confirm GPU visibility and the approved workshop reservation. Preserve the
+   GPU assignments and occupied-GPU checks.
 2. Test one model at a time with a temporary validation profile targeting the
    native value above. Preserve the current configuration and working model
    state for recovery. Do not bypass vLLM's model-length/memory validation,
@@ -136,9 +127,8 @@ Do not confuse a high ceiling with every request using that many tokens: it
 is actual long contexts and concurrent work that consume shared capacity.
 
 Exercise 2c supplies five agent definitions and one coordinator launch command,
-not a precomputed analysis pipeline. Its full five-model rehearsal and the
-larger-context rollout remain separate pending checks. Save actual delegations,
-results, corrections and failures before presenting a run as the example output.
+not a precomputed analysis pipeline. Save actual delegations, results,
+corrections and failures before presenting a run as the example output.
 
 ## Check connections and investigate errors
 
