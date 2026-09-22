@@ -16,7 +16,7 @@ on our server cluster; you do not need a cluster account, SSH, model downloads o
 server-start commands.
 
 Install from your terminal: `npm install -g @opencode/cli`
-<details>
+
 > **This workshop has moved to OpenCode v2.** v2 ships as a different package,
 > `@opencode/cli`, so the old `curl -fsSL https://opencode.ai/install | bash`
 > installs v1 and will not match these materials. Install with
@@ -29,7 +29,7 @@ Install from your terminal: `npm install -g @opencode/cli`
 > Some commands changed. `opencode agent list` is now `opencode debug agents`,
 > `opencode web` is now `opencode serve`, and `opencode debug skill` is gone;
 > use `/skills` in the chat instead.
-<details>
+
 ## Before the exercises: three pieces of advice in a lesson format
 
 ### Lesson one — you are in charge of your data
