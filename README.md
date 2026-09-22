@@ -63,7 +63,7 @@ in place of the raw history. You keep the thread, you get the room back.
 Get to know it early, on a conversation you do not mind losing, rather than
 discovering it when you are deep in an exercise. The sooner the better.
 
-### Lesson three — use `/theme` before anything else to be cool and personalise your experience
+### Lesson three — use `/theme` before anything else to look cool (in front of your PI) and personalise your experience
 
 Opencode (v1 and v2) harnesses comes with their own preinstalled themes. Pick one 
 that inspires you to finish this workshop (hint: maybe `matrix` will do the trick).
