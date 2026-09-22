@@ -8,11 +8,12 @@ drift apart.
 
 | File | Deck | Published |
 |---|---|---|
-| [`unoriginalSlop.md`](unoriginalSlop.md) | Building and employing agents for data analysis | Yes |
+| [`unoriginalSlop.md`](unoriginalSlop.md) | Welcome, the five components, and a brief before each exercise | Yes |
+| [`semioriginalSlop.md`](semioriginalSlop.md) | Building and employing agents for data analysis. An earlier deck, kept for reference | No |
 | [`originalSlop.md`](originalSlop.md) | Skills, agents and MCP. An earlier draft, kept for reference | No |
 | [`themes/dtu.css`](themes/dtu.css) | The workshop theme. Not a deck | — |
 
-Only `unoriginalSlop.md` is published. Drafts are listed in `SKIP` in
+Only `unoriginalSlop.md` is published, as HTML. Drafts are listed in `SKIP` in
 [the workflow](../.github/workflows/slides.yml); add a name there to keep a
 deck in the repository but off the site.
 
@@ -45,12 +46,11 @@ In the HTML deck: arrow keys to move, <kbd>F</kbd> for fullscreen,
 ## Publishing it
 
 [`.github/workflows/slides.yml`](../.github/workflows/slides.yml) builds each
-published deck in this folder to HTML and PDF on every push to `main` and
-publishes them to GitHub Pages.
+published deck in this folder to HTML on every push to `main` and publishes it
+to GitHub Pages. No PDF is produced; export one locally if you need it.
 
-It needs one setting on the repository, once: **Settings → Pages → Build and
-deployment → Source: GitHub Actions.** Until that is set, the workflow's
-deploy step fails.
+Pages is set to **Settings → Pages → Build and deployment → Source: GitHub
+Actions.** If that is ever switched back to a branch, the deploy step fails.
 
 ## Writing a new deck
 
