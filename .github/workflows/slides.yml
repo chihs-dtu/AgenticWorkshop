@@ -46,7 +46,7 @@ jobs:
       # Add a name here (without .md) to keep a draft out of the site.
       - name: Build each deck to HTML and PDF
         env:
-          SKIP: 'README originalSlop'
+          SKIP: 'README originalSlop semioriginalSlop'
         run: |
           set -euo pipefail
           mkdir -p _site
@@ -58,9 +58,6 @@ jobs:
             npx --yes "@marp-team/marp-cli@${MARP_VERSION}" "$f" \
               --theme-set slides/themes --html \
               --output "_site/$name.html"
-            npx --yes "@marp-team/marp-cli@${MARP_VERSION}" "$f" \
-              --theme-set slides/themes --html --pdf --pdf-outlines \
-              --output "_site/$name.pdf"
             echo "::endgroup::"
           done
           test -n "$(ls -A _site)" || { echo "No decks were built"; exit 1; }
@@ -83,8 +80,7 @@ jobs:
               # Link text is the deck's first heading, falling back to the filename.
               title=$(sed -n 's/^# //p' "slides/$name.md" | head -1)
               [ -n "$title" ] || title="$name"
-              printf '<li><a href="%s.html">%s</a> · <a href="%s.pdf">PDF</a></li>\n' \
-                "$name" "$title" "$name"
+              printf '<li><a href="%s.html">%s</a></li>\n' "$name" "$title"
             done
             echo '</ul>'
             echo '<p><a href="https://github.com/${{ github.repository }}">Source repository</a></p>'
