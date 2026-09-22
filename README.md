@@ -423,17 +423,12 @@ There are three different settings: the **server's verified maximum**, your
 **selected context budget**, and your **answer limit**. Raising a number in
 your JSON does not increase the server's capacity.
 
-| Model | Student starting context | Server context target, pending validation | Student output |
-|---|---:|---:|---:|
-| Qwen 3.6 | 16384 | 262144 | 4096 |
-| Qwen 3.8 | 32768 | 262144 | 4096 |
-| Mistral Nemo | 16384 | 131072 | 4096 |
-| GPT-OSS | 16384 | 131072 | 4096 |
-
-**The larger targets are not yet advertised as working.** On 21 September
-2026, the public model routes returned 503 and compute04 had a driver/library
-mismatch. Keep the supplied defaults until the organisers confirm a working
-server limit. Current deployment status is in [admin.md](admin.md#model-settings).
+| Model | Student starting context | Student output |
+|---|---:|---:|
+| Qwen 3.6 | 16384 | 4096 |
+| Qwen 3.8 | 32768 | 4096 |
+| Mistral Nemo | 16384 | 4096 |
+| GPT-OSS | 16384 | 4096 |
 
 Start with the supplied values. If your task genuinely needs more, confirm
 the available server limit with an organiser and then increase the budget.

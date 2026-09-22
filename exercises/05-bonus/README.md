@@ -42,8 +42,7 @@ all, and check that it actually did something.
 configuration, so what `opencode plugin list` or `opencode mcp list` reports can
 be the previous state rather than the current one. After adding, removing or
 editing a plugin, run `opencode reload`, or `opencode service restart` if that is
-not enough. This caught us while preparing the workshop: a server that was
-already enabled kept reporting as disabled.
+not enough. An enabled server can otherwise keep reporting as disabled.
 
 v2 also adds a plugin command: `opencode plugin list`, `add`, `check`, `update`,
 `remove`.
