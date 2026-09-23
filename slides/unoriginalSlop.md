@@ -62,11 +62,13 @@ jobs to other agents and combine their results.
 
 # MCP servers and plugins
 
-An **MCP server** exposes tools to the agent. In Exercise 3, a local
-server lets the agent send SQL queries to DuckDB.
+An **MCP server** exposes tools to the agent. 
 
-A **plugin** extends OpenCode itself. It can react to events or add
-behaviour, such as a notification when work finishes.
+For example, a local server lets the agent send SQL queries to DuckDB.
+
+A **plugin** extends OpenCode itself.
+
+It can react to events or add behaviour, such as a notification when work finishes.
 
 Enable only the MCP servers you need. Inspect plugins before installing
 them: they execute code, and their API must match your OpenCode version.
@@ -83,8 +85,11 @@ them: they execute code, and their API must match your OpenCode version.
 | **Paid models** | Connect a supported subscription or API account. Check what it includes and how usage is billed. |
 | **Four DTU models** | Workshop-hosted GPT-OSS, Mistral and two Qwens. Shared GPU capacity and context limits apply. |
 
-Choose a model with `/models`. A chat subscription does not necessarily
-include API access. We use public datasets throughout this workshop.
+Choose a model with `/models`. 
+
+A chat subscription does not necessarily include API access. 
+
+We use public datasets throughout this workshop.
 
 <!-- Sources: workshop README and opencode.json; https://opencode.ai/v2/docs/providers/ -->
 
@@ -123,89 +128,44 @@ It can help with context settings, with your approval. It should leave
 the exercise answers to you.
 
 HALp initially uses a **free external model**. Share only public information
-and redacted errors. Afterwards, select your exercise agent and model again.
+and redacted errors. Afterwards, select your trusted agent and try again.
+
+If HALp can't help you with your exercises, I don't think we can :D
 
 ---
 
 # Exercise 1: skills
 
-1. Open `exercises/01-skills/README.md` and follow **1a–1f**.
-2. Discuss a PDB download skill in **Plan**, then create it in **Build**.
-3. Retrieve an existing image, copy a skill and render coordinates.
-4. Use `skill-builder` to improve a skill, then make one of your own.
+The first exercises introduces skills. Agent skills are portable, 
+modular packages of instructions, scripts, and/or resources 
+that provide AI agents with specialized capabilities and domain expertise.
 
-**Tips**
-
-- Specify the input, output folder and what should happen on failure.
-- Test another valid input and an invalid one. Inspect the saved files.
+Open `exercises/01-skills/README.md` and follow 
+up to the point you feel you can do better.
 
 ---
 
 # Exercise 2a–2b: agents
 
-1. Open `exercises/02-agents/README.md`.
-2. Give `bad-agent` and `good-agent` the same PDB 4HHB request in
-   separate chats, using the same model.
-3. Open both outputs and compare them.
-4. Create and test your own agent in `.opencode/agents/`.
+An AI agent is a software system that uses a large language model (LLM) 
+as its central brain to autonomously perceive its environment, make decisions, 
+and execute multi-step actions to achieve a specific goal.
 
-**Tips**
+It can use skills, mcps and tools.
 
-- Give your agent one clear job, expected outputs and permission rules.
-- Check that the viewer loads and its controls work before adding features.
+Have fun with the swarm!
 
 ---
 
-# Exercise 2c: a team of agents
+# Exercise 3: MCPs and data analysis
 
-1. Select `genome-coordinator` and use the invocation prompt in **2c**.
-2. Follow the auditor, analyst, visualizer and reviewer as they work.
-3. Open the report, plots and review. Check the reported model IDs.
-4. Choose a different question and build your own coordinator and specialists.
-
-**Tips**
-
-- Give each specialist explicit input paths and a specific output to produce.
-- Check child-agent approval requests. A waiting approval can pause the team.
-
----
-
-# Exercise 3: MCP and data analysis
-
-1. Open `exercises/03-mcp/README.md` and build the supplied DuckDB database.
-2. Use `/mcps` to enable **duckdb**. Leave the other servers off initially.
-3. Follow the questions and checks in **3a–3g**.
-4. For **3h**, choose a supplied alternative dataset or your own public data.
-
-**Tips**
-
-- Ask for the SQL, row counts and missing-value handling with each answer.
-- Check a small result independently before trusting the full analysis.
+MCP stands for Model Context Protocol. 
+Originally open-sourced by Anthropic, it has quickly been adopted 
+across the industry (by OpenAI, Google DeepMind, and others) as an 
+open standard. Think of MCP as the USB-C port for AI applications.
 
 ---
 
 # Exercise 4: sharing
-
-1. Open `exercises/04-share/README.md`.
-2. Put reviewed files in your team's submission folder.
-3. Ask `submit-agent` to inspect them with `submit-work` before publishing.
-4. Submit through your fork and a pull request, then try another team's work.
-
-**Tips**
-
-- Include supporting scripts and skills. Remove credentials and private data.
-- A ZIP cannot push changes. Use a Git clone or the GitHub upload interface.
-
----
-
+and 
 # Bonus: plugins and debugging
-
-1. Open `exercises/05-bonus/README.md`.
-2. Inspect the example plugin and test its compatibility with your version.
-3. Review the supplied BED analysis, then build checks with known answers.
-4. Keep the original script and compare it with your corrected copy.
-
-**Tips**
-
-- Read plugin code before installing it. Check the log if it does not load.
-- `/fork` branches the conversation. Preserve files separately before edits.
