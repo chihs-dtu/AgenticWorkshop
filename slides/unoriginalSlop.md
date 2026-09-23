@@ -7,11 +7,11 @@ paginate: true
 <!-- _class: lead -->
 <!-- _paginate: false -->
 
-# Building and employing agents
+# UAAA - Agentic Workshop
 
-## For data analysis and visualization
+## For data analysis
 
-Dimitrios S. Kanakoglou and Peter Wad Sackett
+Dimitrios S. Kanakoglou, Peter Wad Sackett, HALp
 25 September 2026, DTU Health Tech
 
 ---
@@ -21,10 +21,12 @@ Dimitrios S. Kanakoglou and Peter Wad Sackett
 The **model** generates text and proposes tool calls.
 The **harness** runs the conversation and connects those calls to tools.
 
-We use **OpenCode**. It reads your project, runs approved commands and
+Today we are using **OpenCode**, a harness is incredibly modular. 
+
+It reads your project, runs approved commands and
 returns their results to the model so it can continue the task.
 
-You can change the model while keeping the same harness and project.
+You can change the model while keeping the same harness and the same project.
 The model server may be at DTU, but project commands run on your laptop.
 
 <!-- Sources: https://opencode.ai/v2/docs/ and https://opencode.ai/v2/docs/providers/ -->
@@ -54,7 +56,7 @@ jobs to other agents and combine their results.
 
 [OpenCode MCP server documentation](https://opencode.ai/v2/docs/mcp-servers/)
 
-<!-- Diagram supplied by Dimitrios. Examples illustrate the architecture, not a verified compatibility list. Configuration: https://opencode.ai/v2/docs/mcp-servers/ -->
+<!-- Diagram supplied by https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro. Examples illustrate the architecture, not a verified compatibility list. Configuration: https://opencode.ai/v2/docs/mcp-servers/ -->
 
 ---
 
