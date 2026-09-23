@@ -14,7 +14,7 @@ cd /home/local/workshop
 ```
 
 compute05 works the same way. Run everything on a compute node, not the login
-node. The folder belongs to `dimkan`; Peter needs access through that account.
+node.
 
 ## Start, stop and check
 
@@ -183,9 +183,7 @@ proxy, so the upstreams are HTTP.
 The gateway is on compute04 port 28100 and must reach Qwen 3.8's service on
 compute05 port 28201.
 
-Student API keys are disabled, so keep the teaching URLs to the intended
-audience. Do not publish server `config/`, keys or logs. The student
-`opencode.json` holds no credentials.
+Student API keys are disabled.
 
 ## Tests
 
