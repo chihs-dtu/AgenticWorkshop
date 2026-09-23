@@ -153,8 +153,8 @@ it and test the controls.
 or scientifically faithful image. Improve the skill based on the problems
 you can observe, then try another structure.
 
-OpenCode reference: [skill locations and file format](https://opencode.ai/docs/skills/),
-and [Plan and Build agents](https://opencode.ai/docs/agents/).
+OpenCode reference: [skill locations and file format](https://opencode.ai/v2/docs/skills/),
+and [Plan and Build agents](https://opencode.ai/v2/docs/agents/).
 
 # Exercise 1e — A skill that helps make skills
 

@@ -1,7 +1,7 @@
 ---
 description: Creates readable genome-size and gene-density plots from the analyst's summary.
 mode: subagent
-model: opencode/mimo-v2.6-flash-free
+model: opencode/muse-spark-1.3-contributor-free
 steps: 12
 permissions:
 - action: edit

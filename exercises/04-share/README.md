@@ -47,8 +47,9 @@ The workshop supplies both of the useful ones:
 
 # Exercise 4b — Look at what you are about to make public
 
-Copy what you are sharing into `submissions/<your-name>/`, then, **in Plan
-mode**, with `submit-agent` selected:
+Copy what you are sharing into `submissions/<your-name>/`, then select
+**submit-agent** and ask for inspection only. Plan and submit-agent are
+different agents; do not try to select both:
 
 > Use the submit-work skill. I want to share the skill I built in exercise 1 (don't write exercise 1, write the name of your skill).
 > Show me exactly what would be published and what your checks found. Do not
@@ -90,7 +91,9 @@ and "a query that succeeds is not the same as a correct answer" in exercise 3. C
 
 # Exercise 4c — Publish it
 
-Switch to **Build** and let it proceed. The fork, push and pull request each
+Keep **submit-agent** selected and explicitly ask it to proceed with the
+reviewed submission. Switching to Build would change the permission policy.
+The fork, push and pull request each
 need your approval. With ordinary Git, you create the fork and pull request
 on the GitHub website; the agent can prepare the reviewed commit and push.
 With optional `gh`, those website steps can be performed through the CLI.

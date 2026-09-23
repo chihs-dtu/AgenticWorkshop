@@ -67,7 +67,7 @@ permissions:
 
 How do genome size and gene density differ across organism groups, and how does restricting the analysis to complete assemblies change the conclusions?
 
-Use exercises/03-mcp/data/byo/ncbi_reference_genomes.csv.gz. Read its adjacent PROVENANCE.md. Establish a new outputs/genome-team/<run-name>/ directory without overwriting an existing run. Do not ask the user to launch each specialist: delegate using the task tool. You are the fifth agent, not a fifth specialist.
+Use exercises/03-mcp/data/byo/ncbi_reference_genomes.csv.gz. Read its adjacent PROVENANCE.md. Establish a new outputs/genome-team/<run-name>/ directory without overwriting an existing run. Do not ask the user to launch each specialist: delegate using OpenCode v2's subagent tool. You are the fifth agent, not a fifth specialist. A paused child may need the student's approval; report that explicitly rather than calling it a model failure.
 
 1. Delegate to genome-auditor: inspect the source, units, missingness and assembly categories; return audit.json and a short findings summary.
 2. Delegate to genome-analyst with the same input/output paths and audit findings: write and execute analysis code, returning summary.csv, comparison.csv and methods.md.

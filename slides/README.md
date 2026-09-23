@@ -8,7 +8,7 @@ drift apart.
 
 | File | Deck | Published |
 |---|---|---|
-| [`unoriginalSlop.md`](unoriginalSlop.md) | Welcome, the five components, and a brief before each exercise | Yes |
+| [`unoriginalSlop.md`](unoriginalSlop.md) | Harnesses, skills, agents, MCP, plugins, model choices, the three README lessons and HALp, followed by exercise instructions and tips | Yes |
 | [`semioriginalSlop.md`](semioriginalSlop.md) | Building and employing agents for data analysis. An earlier deck, kept for reference | No |
 | [`originalSlop.md`](originalSlop.md) | Skills, agents and MCP. An earlier draft, kept for reference | No |
 | [`themes/dtu.css`](themes/dtu.css) | The workshop theme. Not a deck | — |
@@ -16,6 +16,13 @@ drift apart.
 Only `unoriginalSlop.md` is published, as HTML. Drafts are listed in `SKIP` in
 [the workflow](../.github/workflows/slides.yml); add a name there to keep a
 deck in the repository but off the site.
+
+The revised deck is **14 slides**, intended for a brief opening and short
+pauses before the exercises—not a lecture replacing their READMEs. Speaker
+notes contain source references. The supplied MCP diagram lives in
+`assets/mcp-overview.png`; the publishing workflow copies assets alongside
+the HTML. Keep the filename unchanged
+so the existing published link stays valid when the revision is approved.
 
 ## Reading it
 

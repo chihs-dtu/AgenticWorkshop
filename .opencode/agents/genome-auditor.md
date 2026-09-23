@@ -1,7 +1,7 @@
 ---
 description: Audits the genome demonstration input, units, missingness and assembly categories.
 mode: subagent
-model: opencode/nemotron-3-ultra-free
+model: opencode/mimo-v2.6-flash-free
 steps: 12
 permissions:
 - action: edit

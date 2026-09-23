@@ -115,6 +115,13 @@ summary lists each as READY or NOT READY with a reason. Check both nodes.
 Re-running the start command repeats the checks without reloading running
 models.
 
+**Isolation warning (checked 23 September 2026):** the shared gateway's
+`/health` and `/models` handlers probe every configured backend, including
+compute05. A compute04-only start's normal readiness checks can therefore
+contact compute05. Do not use those checks when compute05 must be completely
+untouched. Test a selected compute04 model with a direct chat request instead;
+do not stop the shared gateway while compute05 is in use.
+
 From anywhere with access to the teaching URL:
 
 ```bash

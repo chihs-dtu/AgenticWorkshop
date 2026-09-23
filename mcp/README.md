@@ -11,11 +11,12 @@ from it.
 | [`biomcp`](#biomcp--43-biomedical-databases) | local (`uv`) | ~1 MB more | 83 | exercises planned |
 | [`opentargets`](#opentargets--remote-no-install) | **remote** (no auth) | **nothing** | 5 | exercise planned |
 
-All four ship `"enabled": false`. Turn one on in the chat with **`/mcps`**,
-space to toggle, esc to close. It connects at once, needs no restart, and
-**writes nothing** — `opencode.json` is untouched and the toggle lasts for
-that OpenCode run only. Set `"enabled": true` by hand if you want one on by
-default; that is the setting `/mcps` does not change.
+All four ship with **`"disabled": true` under `mcp.servers`** (OpenCode v2).
+Use **`/mcps`** to connect only the server you need. This overrides the disabled
+setting for the running service; it does not rewrite `opencode.json`.
+Closing a client window is not necessarily restarting v2's background service.
+For persistent enablement, set that server's `"disabled": false` and reload
+the project. The old v1 `enabled` field is not the v2 setting.
 
 Turn on only what you are using. Tool definitions included in a request use
 context even if the agent does not call those tools. An idle server can add
@@ -79,7 +80,8 @@ Someone else runs the server. OpenCode connects to a URL over HTTPS.
 
 Neither kind is better. Local costs a download and gives you independence;
 remote costs a dependency on someone else's uptime and gives you zero setup.
-Exercise 3 uses a local one so nothing can fail on the day.
+Exercise 3 uses a local one to reduce dependence on an external data service.
+Installation, permissions, paths and model availability can still fail.
 
 ---
 
@@ -207,7 +209,7 @@ obvious fallback for anyone whose `uv` install fails on the day.
 
 ## Adding another server
 
-Register it under `mcp` in `opencode.json` with `"enabled": false`, and add a
+Register it under `mcp.servers` in `opencode.json` with `"disabled": true`, and add a
 section here. Give it a folder of its own only when it needs files of its own;
 documentation alone belongs in this file.
 
@@ -221,18 +223,33 @@ using the earlier workshop measurements (approximate and version/tokenizer-depen
 | `rcsb` | 38 | ~21,200 tokens | 129.4% | 16.2% | 8.1% |
 | `biomcp` | 83 | ~17,400 tokens | 106.2% | 13.3% | 6.6% |
 
-The full RCSB/BioMCP tool lists exceed a 16384 budget, but not necessarily a
-larger one. The larger columns are **target-capacity comparisons, not deployment
+These are **v1 full-catalog measurements**, not the current v2 prompt cost.
+V2 defaults to Code Mode, which groups MCP tools and changes their exposure;
+do not assume every full tool schema is sent in every request. Returned data
+still uses context. The larger columns are **target-capacity comparisons, not deployment
 claims**. Follow the [context guide](../README.md#changing-your-context-setting)
 and confirm server support before changing your budget; approval is required
 above 32768. Inputs, results and answers need space too. Keep unnecessary
 servers off even when they fit: context capacity and reliable tool selection
 are different concerns.
 
-## Verified on 18 September 2026
+## Rechecked — 23 September 2026
 
-macOS 26.6, OpenCode 1.18.30. Every claim above was produced by running the
-servers, not read from their documentation.
+With OpenCode 2.0.14, DuckDB was connected in a disposable workshop project
+and used by an agent for the PDB queries. Independent calculations confirmed
+the counts and method/year summaries. A separate MCP client also verified
+that a missing database can pass the handshake but fail a query, `DELETE`
+is refused, and `COPY ... TO` can still create a file outside the database.
+
+Direct MCP checks found 38 RCSB tools, 83 BioMCP tools and 5 Open Targets
+tools. RCSB returned 4HHB metadata, BioMCP answered `tool_inventory`, and
+Open Targets returned BRCA1 search results. These are connection and sample
+call tests, not validation of every tool or of their OpenCode UI integration.
+
+## Earlier verification — 18 September 2026, v1
+
+macOS 26.6, OpenCode 1.18.30. The measurements below belong to that run;
+they are not a claim that v2 has identical state or permission behaviour.
 
 - All four connect: `opencode mcp list` reports `duckdb`, `rcsb`, `biomcp`
   and `opentargets` as connected when enabled, including the remote one.

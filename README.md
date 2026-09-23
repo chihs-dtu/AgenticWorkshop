@@ -40,8 +40,8 @@ into a chat.
 
 | What you choose | Where your data goes |
 |---|---|
-| **DTU models** | Stays on our server, inside the DTU network |
-| **Free models** | Leaves our network to a third party. Free offers are commonly paid for with your data and your interaction with the model |
+| **DTU models** | Model requests go to our DTU service; external tools can still send data elsewhere |
+| **Free models** | Model requests go to a third party; retention and training terms depend on the specific offer |
 | **Your own subscription** (Codex, Claude, others) | Depends on that provider, and on whether you have opted out of having your data used for training |
 
 User discretion is advised at all times. You are in charge of your data, you
@@ -69,6 +69,25 @@ discovering it when you are deep in an exercise. The sooner the better.
 
 Opencode (v1 and v2) harnesses comes with their own preinstalled themes. Pick one 
 that inspires you to finish this workshop (hint: maybe `matrix` will do the trick).
+
+## Meet HALp before you start
+
+Open a **fresh chat** and type `/halp` followed by your question:
+
+```text
+/halp I am on Exercise 1c. Where should I copy my skill?
+/halp Why can I not see the workshop agents?
+```
+
+HALp reads the current workshop instructions and gives hints and setup help,
+not finished exercise answers. It can help adjust context settings after
+you approve the change. It initially uses **Big Pickle, a free external model**:
+share public information and redacted errors only. Do not invoke it inside
+a private research conversation, because the existing history can reach
+that provider too.
+
+When you return to an exercise, select your exercise agent and model again.
+See [HALp's permissions and context help](#ask-halp-for-a-hint) for details.
 
 ## Quick start — download, extract and open
 
@@ -110,10 +129,10 @@ global settings automatically.
 
 ## LLM Models you can use
 First be aware of the pricing - it can be creative.
-* Free models - your data and behavior is logged and used by the provider
+* Free models - check the provider's retention and training terms; no price does not mean private
 * Paid models - often subscription-based. Maybe as safe and confidential as the provider says
 * Local models - running on your own hardware. As confidential as your system
-* DTU models - free for the workshop. We do not store/use/abuse your data. Trust us......
+* DTU models - hosted by the workshop organisers. Use the supplied public data and follow DTU's data-handling rules
 ### Our four DTU models
 <details>
 <summary>Model list</summary>
@@ -122,10 +141,10 @@ The workshop project shows one **DTU** group containing:
 
 | Model | Context | Maximum output | Description |
 |---|---:|---:|---:|
-| GPT-OSS 20B | 16384 | 4096 | Default model, handles small background tasks
-| Mistral Nemo 12B | 16384 | 4096 | French model
-| Qwen 3.6 35B-A3B | 16384 | 4096 | Quantized older Qwen
-| Qwen 3.8 27B FP8 | 32768 | 4096 | Biggest, best model.
+| GPT-OSS 20B | 16384 | 4096 | Default DTU selection |
+| Mistral Nemo 12B | 16384 | 4096 | Smaller checkpoint; check tool behaviour on your task |
+| Qwen 3.6 35B-A3B | 16384 | 4096 | Alternative for analysis and tool use |
+| Qwen 3.8 27B FP8 | 32768 | 4096 | Larger starting context; availability depends on compute05 |
 
 The DTU group is added alongside OpenCode's available free models
 and your other configured providers. This file does not restrict the provider
@@ -136,7 +155,7 @@ own sign-in or API key.
 Peter and Dimitrios have already started. If a model is unavailable, ask an
 organiser.
 
-See [OpenCode project configuration](https://opencode.ai/docs/config/#per-project).
+See [OpenCode project configuration](https://opencode.ai/v2/docs/config/#per-project).
 </details>
 
 ### Free models from OpenCode
@@ -153,7 +172,7 @@ went from v2.5 to v2.6. Run `opencode models` if a name here does not match.
 | Big Pickle | `opencode/big-pickle` | 200,000 |
 | Ling 3.0 Flash Fin Free | `opencode/ling-3.0-flash-fin-free` | 262,144 |
 | MiMo-V2.6-Flash Free | `opencode/mimo-v2.6-flash-free` | 200,000 |
-| Nemotron 3 Ultra Free | `opencode/nemotron-3-ultra-free` | 1,000,000 |
+| Nemotron 3 Ultra Free — returned 404 in the 23 September retry; choose another model if unavailable | `opencode/nemotron-3-ultra-free` | 1,000,000 |
 | Nemotron 3.5 Lightning Free | `opencode/nemotron-3.5-lightning-free` | 262,144 |
 | Muse Spark 1.2 Free ⚠️ | `opencode/muse-spark-1.2-contributor-free` | 1,048,576 |
 | Muse Spark 1.3 Free ⚠️ | `opencode/muse-spark-1.3-contributor-free` | 1,048,576 |
@@ -167,8 +186,8 @@ Free". If you want to avoid them, check the ID rather than the name.
 
 The five agents in exercise 2c run on the other five models for that reason.
 
-Free does not mean private. The business model for a free LLM is your data and
-your interaction with it. Use public exercise data with external models, and
+Free does not mean private, and terms differ between offers. Use public
+exercise data with external models, and
 send nothing confidential or personal. See
 [OpenCode's model-specific privacy terms](https://opencode.ai/docs/zen/#privacy).
 
@@ -221,10 +240,10 @@ Sources: [OpenCode Zen](https://opencode.ai/docs/zen/),
   It does not have to be a favourite to appear in search. If your version
   shows a Favourite action, you can use it for easier access next time.
 - If the entire OpenCode provider is missing, check your other project/global
-  configuration: remove only `"opencode"` from `disabled_providers`. If you
-  intentionally use `enabled_providers`, include `"opencode"` alongside
-  `"dtu"` and your other providers. The supplied workshop JSON sets neither
-  restriction. Preserve unrelated settings; ask an organiser if unsure.
+  configuration for v2 `providers` entries and a model's `disabled: true`
+  setting. Ask an organiser to inspect stale v1 settings rather than adding
+  `enabled_providers` or `disabled_providers` to this v2 project. The supplied
+  workshop configuration does not hide the free models. Preserve unrelated settings.
 - Restart OpenCode after configuration changes. If a listed model is still
   absent, check your OpenCode version and the current live list; a setting
   cannot restore a retired offer. Do not add a paid model as a substitute
@@ -232,7 +251,7 @@ Sources: [OpenCode Zen](https://opencode.ai/docs/zen/),
 
 The Desktop visibility switches and configuration restrictions are different
 things. We do not change your saved visibility choices or global settings.
-See [provider filtering](https://opencode.ai/docs/config/#disabled-providers).
+See [provider filtering](https://opencode.ai/v2/docs/config/#disabled-providers).
 </details>
 
 ### Your own subscriptions or API accounts
@@ -244,18 +263,19 @@ your provider, and complete its supported sign-in. Then select its model.
 For example, OpenCode documents using a GitHub Copilot subscription.
 Not every chat subscription includes third-party or API access; separate
 API usage may be billed. Keep personal keys out of this repository.
-See [supported providers and sign-in methods](https://opencode.ai/docs/providers/).
+See [supported providers and sign-in methods](https://opencode.ai/v2/docs/providers/).
 
-Changing the selected model changes the chat model. The supplied
-`small_model: "dtu/gptoss"` still uses DTU GPT-OSS for background tasks;
-there is no automatic fallback when DTU is offline. For an entirely external
-setup, also change `small_model` in your own copy of `opencode.json` to your
-chosen available provider/model ID.
+Changing the selected model changes the chat model. The supplied v2 settings
+`agents.title.model` and `agents.summary.model` still use DTU GPT-OSS for
+background tasks. For an entirely external setup, change both entries in
+your own copy to an available model, for example
+`"model": "opencode/big-pickle"`. The old v1 `small_model` setting is not used.
+This can send conversation content to that external provider too.
 </details>
 
 ## Exercises overview
 We will introduce skills, agents and MCP as cornerstones of agentic processing through exercises.
-* **Skills**: Reusable capabilities you or an AI agent can use to perform a task. For example, a “search web” skill, “read PDF” skill, or “send email” skill. Skills are like the **tools/actions** available to you/the agent.
+* **Skills**: Reusable instructions an agent loads for a task, optionally with supporting scripts. A skill explains a workflow; it is not itself a tool call.
 * **Agents**: AI components that use skills to achieve a goal. An agent can **reason, plan, choose skills, execute actions, and adapt** based on the results.
 * **MCP**: A standard way to connect the agent to a capability that lives outside OpenCode, such as a database or a public biological data service. The server is either a program OpenCode starts on your laptop, or a remote service it connects to over the network.
 
@@ -272,6 +292,7 @@ AgenticWorkshop-main/
    admin.md                     Server notes for the organisers
    .opencode/                   What OpenCode loads: agents and skills
       agents/
+         HALp.md                Hidden hint helper, invoked with /halp
          bad-agent.md           Basic PDB agent example, Exercise 2a
          good-agent.md          More explicit PDB agent example, Exercise 2a
          genome-coordinator.md  Delegates to the four specialists below, Exercise 2c
@@ -280,6 +301,10 @@ AgenticWorkshop-main/
          genome-visualizer.md   Makes the plots
          genome-reviewer.md     Independently rechecks the results
          submit-agent.md        Git-scoped agent, Exercise 4
+      commands/
+         halp.md                The /halp command
+      scripts/
+         halp-context.py        Show safe limits or adjust one context with approval
       skills/
          skill-builder/         A subfolder INSIDE skills
             SKILL.md            The skill-builder instructions
@@ -327,8 +352,8 @@ either a program downloaded on demand or a remote service you connect to.
 Four are configured and all ship switched off; Exercise 3 turns one on.
 See [mcp/README.md](mcp/README.md) for what each provides.
 
-See the OpenCode documentation for [agents](https://opencode.ai/docs/agents/)
-and [skills](https://opencode.ai/docs/skills/).
+See the OpenCode documentation for [agents](https://opencode.ai/v2/docs/agents/)
+and [skills](https://opencode.ai/v2/docs/skills/).
 
 ### Exercises
 - **Exercise 1** — [Skills](exercises/01-skills/README.md).
@@ -356,7 +381,7 @@ After entering the provider and model fields, select **Submit**.
 The connection form may not offer context/output fields. If it does not,
 set those limits in JSON using the instructions after the tables.
 The supplied JSON already contains them.
-See [OpenCode custom providers](https://opencode.ai/docs/providers/#custom-provider).
+See [OpenCode custom providers](https://opencode.ai/v2/docs/providers/#custom-provider).
 
 ### Qwen 3.6 35B-A3B
 
@@ -417,6 +442,12 @@ See [OpenCode custom providers](https://opencode.ai/docs/providers/#custom-provi
 </details>
 
 ## Changing your context setting
+
+The project sets OpenCode v2's compaction buffer to `2048` and retains about
+`4096` recent tokens. Its default `20000` buffer is larger than our smaller
+DTU context budgets and caused repeated compaction during testing. Leave
+these supplied settings in place. This client setting does not allocate GPU
+memory or increase a model server's context capacity.
 <details>
 <summary>Choose a task budget without consuming the whole shared service</summary>
 
@@ -456,7 +487,7 @@ These are useful sizes to recognise, not a requirement to use powers of two:
 
 ### Change the budget in your own project
 
-In `opencode.json`, find the model under `provider → dtu → models → model ID`.
+In `opencode.json`, find the model under `providers → dtu → models → model ID`.
 Edit **only `limit.context`**, leaving `limit.output` at `4096`. For example,
 after an organiser confirms Mistral can serve 32768:
 
@@ -483,6 +514,32 @@ conversation before lowering its budget. Return to the supplied defaults
 after your task.
 </details>
 
+## Ask HALp for a hint
+
+Start a **fresh chat**, then type `/halp` followed by your question:
+
+```text
+/halp I am on Exercise 1c. Where should I copy the skill folder?
+/halp What should I check before increasing Mistral's context?
+```
+
+HALp reads the current exercise instructions, offers one next step and helps
+with setup. Its instructions prohibit exercise solutions; check its advice
+as you would any model output. It uses **Big Pickle,
+a free external model**: only send public workshop information and redacted
+errors. The command switches the current chat, so its existing history can
+also reach that provider—do not invoke it inside a private research chat.
+
+HALp can show this project's DTU context budgets and propose a change to `limit.context`, but
+you approve the command and confirm the organiser's running server limit
+first. The supplied helper script cannot raise a budget above 32768 or
+change answer limits, URLs or keys. HALp is not allowed to operate the
+cluster or publish your work. Read every approval request.
+
+To resume an exercise, select **Build** or your exercise agent **and model**
+again. HALp is hidden from the usual agent selector; `/halp` is the intended
+entry point. This is a UI convention, not an access-control boundary.
+
 ## If something does not work
 <details>
 <summary>So many errors - so little time</summary>
@@ -493,9 +550,10 @@ after your task.
 | Connection failed / 503 | Ask an organiser to check the model's start command. |
 | Invalid API key / 401 | The workshop does not currently require a key; check for old provider settings. |
 | Not found / 404 | Use a fresh workshop download; ask an organiser to check the URL if it persists. |
-| Free models or other providers are missing | Check for `enabled_providers` or `disabled_providers` restrictions in your other project/global settings. The supplied workshop JSON does not hide them. |
+| Free models or other providers are missing | Check model visibility and v2 `disabled` settings; ask an organiser about stale v1 configuration. The supplied workshop JSON does not hide them. |
 | Too many requests / 429 | Wait briefly and try again; the servers are shared. |
 | Context too long | Compact the conversation or start a new chat. |
+| Repeated compaction or the same reads without progress | Keep the supplied `compaction` settings: OpenCode 2.0.14's default buffer can exceed a small local context budget. Restart with the current workshop configuration and a fresh chat; send persistent failures to an organiser. |
 
 Send Peter or Dimitrios the **model name and exact error message** if you need
 help. Do not disable certificate checks or change server settings yourself.

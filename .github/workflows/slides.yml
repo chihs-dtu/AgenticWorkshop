@@ -1,7 +1,7 @@
 name: Build and publish slides
 
 # Every deck in slides/ is plain Markdown. This turns each one into an HTML
-# deck and a PDF, and publishes them to GitHub Pages.
+# deck, and publishes it to GitHub Pages.
 #
 # One-time setup in the repository: Settings → Pages → Build and deployment
 # → Source: "GitHub Actions". Without that, this workflow's deploy step fails.
@@ -44,12 +44,13 @@ jobs:
       #
       # SKIP lists decks that stay in the repository but are not published.
       # Add a name here (without .md) to keep a draft out of the site.
-      - name: Build each deck to HTML and PDF
+      - name: Build each deck to HTML
         env:
           SKIP: 'README originalSlop semioriginalSlop'
         run: |
           set -euo pipefail
           mkdir -p _site
+          if [ -d slides/assets ]; then cp -R slides/assets _site/assets; fi
           shopt -s nullglob
           for f in slides/*.md; do
             name=$(basename "$f" .md)

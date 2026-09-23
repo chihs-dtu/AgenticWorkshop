@@ -77,6 +77,11 @@ One row per NCBI RefSeq **reference genome** assembly.
 **Columns:** `assembly_accession`, `organism_name`, `taxid`, `assembly_level`,
 `genome_size`, `gc_percent`, `seq_rel_date`, `group`, `total_gene_count`
 
+`genome_size` is stored in **base pairs**; divide by `1000000` for Mb.
+`total_gene_count` is a count of annotated genes. Gene density is the
+per-assembly gene count divided by that assembly's size in Mb, not a ratio
+of group medians.
+
 ### This is a subset, not a sample
 
 The full file holds **552,279 assemblies**; this keeps the **25,965** marked

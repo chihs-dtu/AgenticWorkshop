@@ -78,35 +78,29 @@ The other three are described in
 [mcp/README.md](../../mcp/README.md); `rcsb` is the live PDB, which is worth
 comparing against this frozen snapshot once you have finished the exercise.
 
-Check the saved configuration separately, in your terminal:
+Check the current service connection in your terminal, in the same project:
 
 ```bash
 opencode mcp list
 ```
 
-It reports `disabled`, because that is the setting on disk. Both statements
-are true at once, and they are about different things: what is running now,
-and what is configured. Keep them apart.
-
-**Now quit and reopen OpenCode.** The server list is read at startup.
-
-Then, in your terminal and **outside** the chat:
-
-```bash
-opencode mcp list
-```
-
-You want `✓ duckdb connected`.
+You want `duckdb` to report **connected**. In v2 this reports runtime state,
+not simply the value on disk. The saved entry still has `"disabled": true`.
+If the CLI and chat disagree, check that they use the same project and server.
+Closing a client window does not necessarily stop v2's background service.
+Use `/mcps` again after a service restart; do not assume the toggle is permanent.
 
 ## The meaning of the MCP being "connected"
 
-Now break the MCP connection on purpose. Quit OpenCode and rename the database:
+Now break the MCP connection on purpose. Disconnect `duckdb` with `/mcps`
+first, then rename the database. Just closing a v2 client can leave the
+server's existing database connection alive:
 
 ```bash
 mv exercises/03-mcp/data/pdb.duckdb exercises/03-mcp/data/pdb.duckdb.hidden
 ```
 
-Start OpenCode, toggle `duckdb` on with `/mcps` again, and it reports
+Toggle `duckdb` on with `/mcps` again, and it reports
 **connected** — because the server process starts perfectly well. The
 database is only opened when a query arrives. Ask the agent a question now
 and you will get:
@@ -116,7 +110,7 @@ IO Error: Cannot open database ".../pdb.duckdb" in read-only mode:
 database does not exist
 ```
 
-Put the file back:
+Disconnect `duckdb`, put the file back, then reconnect:
 
 ```bash
 mv exercises/03-mcp/data/pdb.duckdb.hidden exercises/03-mcp/data/pdb.duckdb
@@ -236,11 +230,18 @@ second table:
 > For each method_class, how many entries are there and what is the median
 > resolution? Join entries to entry_types.
 
-| method_class | entries | median resolution |
-|---|---:|---:|
-| diffraction | 207,603 | 2.00 Å |
-| EM | 36,687 | 3.29 Å |
-| NMR | 14,921 | — |
+| method_class | entries | With resolution | SQL median |
+|---|---:|---:|---:|
+| diffraction | 207,603 | 207,450 | 2.00 Å |
+| EM | 36,687 | 36,677 | 3.29 Å |
+| NMR | 14,921 | 15 | 4.10 Å — hybrid-method entries only |
+| other | 482 | 447 | 2.095 Å |
+
+**Rechecked on the supplied snapshot, 23 September 2026:** the NMR group
+includes hybrid-method depositions. Its 15 non-null values are not an NMR
+resolution measure; pure `SOLUTION NMR` still has no resolution values.
+Do not label that aggregate “NMR resolution”. The distinction between an
+experiment string and the broader `method_class` matters here.
 
 **What to notice:** the SQL in exercise 3b was valid, the agent did nothing wrong, and
 the number was real. The asked *question* was unanswerable, and nothing in
@@ -301,8 +302,10 @@ In **Plan** mode, with `skill-builder` from Exercise 1e:
 > Use skill-builder to design a skill for answering questions about the PDB
 > DuckDB database. It should state which tables and columns it used, report
 > the SQL and the row count with every answer, and require that any question
-> about resolution says which experiment types are included, because NMR
-> entries have no resolution. It must report a zero-row result as zero rows.
+> about resolution says which experiment types are included. Pure NMR has
+> no resolution; hybrid entries may carry one from another method. It must
+> distinguish zero matching records from an empty result set: a COUNT query
+> can return one row whose value is zero. Report both clearly.
 > Propose it before implementing.
 
 Build it, then re-ask an exercise 3b style question and see whether the answer arrives
@@ -344,16 +347,16 @@ Delete the file:
 rm exercises/03-mcp/data/PROOF.parquet
 ```
 
-This is the same lesson as Exercise 2's permission section: `edit: deny` does
-not make an agent read-only when `bash` can still modify files. A safety
+This is the same lesson as Exercise 2's permission section: denying `edit` does
+not make an agent read-only when `shell` can still modify files. A safety
 property is only as broad as the mechanism enforcing it. If you want the
 agent restricted, restrict the tool:
 
 ```yaml
-permission:
-  duckdb_execute_query: ask
-  duckdb_list_tables: allow
-  duckdb_list_columns: allow
+permissions:
+  - { action: 'duckdb_execute_query', resource: '*', effect: ask }
+  - { action: 'duckdb_list_tables', resource: '*', effect: allow }
+  - { action: 'duckdb_list_columns', resource: '*', effect: allow }
 ```
 
 Add a block like that to an agent of your own from Exercise 2b and confirm it
@@ -371,7 +374,7 @@ Think about it like making a deal with the devil.
 # Exercise 3g — When is an MCP server worth it?
 
 Do one of your earlier questions a different way. With the server off
-(`/mcps`, space to toggle it off), ask an agent with `bash` permission to
+(`/mcps`, space to toggle it off), ask an agent with `shell` permission to
 answer the same question using the `duckdb` command-line tool or Python.
 
 Compare:
@@ -392,10 +395,10 @@ configuration; exact counts depend on versions, tokenizer and exposed tools.
 
 The two larger columns illustrate the server targets, not currently verified
 availability. See the [context guide](../../README.md#changing-your-context-setting).
-At the supplied 16384 budget, the full BioMCP tool list alone is too large.
-It could fit a larger verified budget, but it would still consume space before
-your question, tool results and answer. Tool descriptions also add processing
-and selection overhead. More context does not guarantee better tool choice.
+These are full-catalog **v1** measurements. V2 normally uses Code Mode,
+so the table is not a measurement of the current prompt overhead. Inspect
+what your run actually exposes and returns before changing limits. More
+context does not guarantee better tool choice.
 
 **What to notice:** MCP is not automatically the better option. It is worthwhile
 when a capability is reusable, hard to reproduce with a shell command, and

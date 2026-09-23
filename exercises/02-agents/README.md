@@ -16,6 +16,18 @@ Both are primary agents with the same permissions and 20-step limit. Neither
 hardcodes a model or temperature. They are first-iteration teaching examples,
 not a tested guarantee of better results or the completed reference visualizer.
 
+In the 23 September rehearsal, both needed more than their first turn: the
+basic viewer used nonexistent rendering-library methods, while the explicit
+agent spent its initial budget on parsing and had not produced a viewer.
+Better instructions are a hypothesis to test, not a result to assume. Check
+the deliverable before adding features or increasing the step budget.
+
+A later Big Pickle comparison produced actual viewers. The detailed version
+needed follow-ups to finish and to fix chain visibility and stale metadata
+when loading another structure. Those cases are now explicit in its
+instructions. The lesson is to test and improve the agent, not to trust the
+word “good” in its filename.
+
 ## Try the same request
 
 Open the repository in OpenCode and start a fresh chat. In the terminal,
@@ -59,7 +71,7 @@ task you can evaluate. Give it a specific job and a definition of success.
 
 ## Create the agent
 
-Ask OpenCode to help create `.opencode/agents/my-agent.md`, or run
+Ask OpenCode to help create `.opencode/agents/my-agent.md`, or
 write the Markdown file yourself. The filename becomes the
 agent name. Keep your own agent separate from `bad-agent` and `good-agent`.
 
@@ -70,10 +82,10 @@ Start with a small definition like this:
 description: Checks a supplied analysis and reports evidence-backed findings
 mode: primary
 steps: 20
-permission:
-  edit: ask
-  bash: ask
-  task: deny
+permissions:
+  - { action: edit, resource: '*', effect: ask }
+  - { action: shell, resource: '*', effect: ask }
+  - { action: subagent, resource: '*', effect: deny }
 ---
 
 Inspect the supplied files and identify the question the analysis addresses.
@@ -88,7 +100,7 @@ the instructions. An agent is not a newly trained model: the same model can
 run several agents with different instructions and permissions.
 
 ## Agent settings reference
-This covers the named fields in OpenCode's published agent schema, checked 15 September 2026.<br>
+This reference is for **OpenCode v2**, checked with 2.0.14 on 23 September 2026.<br>
 Start with the first few fields; the remaining options
 are available when you need them. Provider-specific options are open-ended,
 so there is no universal list that every model accepts.
@@ -96,28 +108,28 @@ so there is no universal list that every model accepts.
 |---|---|---|
 | `description` | Explains the agent's job and when to choose it | A concrete task description, not just "helpful expert" |
 | `mode` | Where the agent runs | `primary` for the main conversation, `subagent` for a helper, `all` for both |
-| Markdown body / `prompt` | Instructions, decisions, expected outputs, and checks | Use the Markdown body in an agent file. In JSON, use `prompt` or `"prompt": "{file:./prompts/reviewer.txt}"` |
+| Markdown body / `system` | Instructions, decisions, expected outputs, and checks | Use the Markdown body in an agent file; `system` in a JSON agent definition |
 <details>
 <summary>Full reference list</summary>
 
 | Setting | What it changes | Example or caution |
 |---|---|---|
 | `model` | Pins the agent to a provider/model | `dtu/gptoss`; leave unset to use the selected/default model or the calling agent's model |
-| `variant` | Selects a configured model variant | Applies to the agent's configured model. Use a variant that actually exists |
+| Model variant | Selects a configured variant | Use `provider/model#variant`; the variant must exist |
 | `steps` | Limits agentic iterations before a text-only response | Positive integer, such as `20`. It is not a token limit or an exact count of shell commands |
-| `temperature` | Adjusts sampling randomness where supported | For example `0.2`; the valid range and effect depend on the model. Zero does not guarantee identical runs |
-| `top_p` | Adjusts nucleus sampling where supported | For example `0.9`; usually vary this or temperature first, rather than both together |
-| `permission` | Controls which tool actions run, ask, or stop | See the permission reference below |
-| `disable` | Disables this agent | `true` or `false` |
+| `permissions` | Ordered rules controlling which tool actions run, ask, or stop | The last matching rule wins |
+| `disabled` | Disables this agent | `true` or `false` |
 | `hidden` | Hides a subagent from the `@` suggestion menu | For subagents only. This is not access control or a way to hide a solution file |
-| `color` | Changes the agent's UI colour | A quoted hex colour such as `"#246B60"`, or a theme colour such as `accent` |
-| `options` | Carries provider-specific model options | Verify the provider/adapter accepts each option. Do not assume DTU models accept another provider's settings |
-| Extra provider fields | OpenCode can forward additional agent fields as model options | A misspelled field may be ignored or rejected downstream rather than caught as an agent error |
-| `tools` | Legacy Boolean tool switches | Deprecated; use `permission` for new agents |
-| `maxSteps` | Legacy iteration limit | Deprecated; use `steps` |
+| `color` | Changes the agent's UI colour | A quoted hex colour such as `"#246B60"` |
+| `request` | Model-request overlay | The v2 agent docs currently say agent overlays are stored but not applied by the runner. Do not rely on this for sampling controls |
+
+Do not copy v1 fields such as `permission`, `bash`, `task`, `prompt`,
+`temperature`, `top_p`, `options`, `tools` or `maxSteps` into a v2 agent.
+Sampling controls belong in supported provider/model request settings;
+verify the adapter accepts them. Temperature zero does not guarantee repeatability.
 
 Schema: [OpenCode configuration](https://opencode.ai/config.json).
-Usage: [agent configuration](https://opencode.ai/docs/agents/).
+Usage: [agent configuration](https://opencode.ai/v2/docs/agents/).
 </details>
 
 ### Permissions and modular tools
@@ -134,9 +146,9 @@ Available tools also depend on your installation and connected services.
 | `read` | Read file contents |
 | `edit` | Modify files through the editing tools, including writes and patches |
 | `glob`, `grep`, `list` | Find files, search content, and list directories when those tools are available |
-| `bash` | Execute shell commands on your computer |
+| `shell` | Execute shell commands on your computer |
 | `skill` | Load reusable skill instructions by skill name |
-| `task` | Delegate to subagents by agent name/type |
+| `subagent` | Delegate to subagents by agent ID |
 | `webfetch`, `websearch` | Retrieve web content or search, when available |
 | `lsp` | Query language-server information, when configured |
 | `question` | Ask questions through the question tool, when available |
@@ -154,17 +166,15 @@ supports the same input-pattern semantics in every OpenCode version.
 Example permission block, to replace the block in your own agent:
 
 ```yaml
-permission:
-  edit: ask
-  bash:
-    "*": ask
-    "git status*": allow
-    "git push*": deny
-  skill:
-    "*": deny
-    "pdb-download": allow
-  task: deny
-  external_directory: ask
+permissions:
+  - { action: edit, resource: '*', effect: ask }
+  - { action: shell, resource: '*', effect: ask }
+  - { action: shell, resource: 'git status*', effect: allow }
+  - { action: shell, resource: 'git push*', effect: deny }
+  - { action: skill, resource: '*', effect: deny }
+  - { action: skill, resource: pdb-download, effect: allow }
+  - { action: subagent, resource: '*', effect: deny }
+  - { action: external_directory, resource: '*', effect: ask }
 ```
 
 Replace `pdb-download` with the actual name of your installed skill. An allow
@@ -173,40 +183,39 @@ when to load it in the Markdown body. A skill is guidance; scripts and other
 tools perform the executable work.
 
 To experiment with delegation, create a separate agent with `mode: subagent`
-and replace `task: deny` in the main agent with a rule for that helper:
+and replace the main agent's subagent deny rule with these ordered rules:
 
 ```yaml
-task:
-  "*": deny
-  "structure-reviewer": ask
+permissions:
+  - { action: subagent, resource: '*', effect: deny }
+  - { action: subagent, resource: structure-reviewer, effect: ask }
 ```
 
 The helper needs its own definition and permissions. Delegation adds model
 calls and can add latency. Begin with one agent before introducing helpers.
 
-MCP tools require a server registered under `mcp` in `opencode.json`.
+MCP tools require a server registered under `mcp.servers` in `opencode.json`.
 A permission rule or the `mcp/` folder alone does not connect a server.
 
 Permissions are tool controls, not an operating-system sandbox. For example,
-`edit: deny` does not make an agent read-only if `bash` can modify files.
+denying `edit` does not make an agent read-only if `shell` can modify files.
 Keep approval prompts enabled and review the requested action. Do not use
 auto-approve mode when testing whether an `ask` rule behaves as intended.
 
-References: [permissions](https://opencode.ai/docs/permissions/),
-[skills](https://opencode.ai/docs/skills/), and
-[MCP configuration](https://opencode.ai/docs/mcp-servers/).
+References: [permissions](https://opencode.ai/v2/docs/permissions/),
+[skills](https://opencode.ai/v2/docs/skills/), and
+[MCP configuration](https://opencode.ai/v2/docs/mcp-servers/).
 
 ### Settings that belong elsewhere
 
 | Setting | Where it belongs |
 |---|---|
-| Context/output limits | `provider.dtu.models.<model-id>.limit.context` and `.limit.output` in `opencode.json` |
+| Context/output limits | `providers.dtu.models.<model-id>.limit.context` and `.limit.output` in `opencode.json` |
 | Server context capacity | The administrator's model launch settings; a student JSON edit does not enlarge GPU capacity |
 | Model URL and authentication | Provider configuration, not the agent instructions |
-| Default chat and background models | Root `model` and `small_model` in `opencode.json` |
-| Default agent | Root `default_agent` in `opencode.json` |
+| Default chat and background models | Root `model`, plus `agents.title.model` and `agents.summary.model` in `opencode.json` |
 | Shared project rules | An `AGENTS.md` file or configured instruction files; these can affect several agents |
-| MCP server connection | Root `mcp` configuration, with any required server software and credentials |
+| MCP server connection | `mcp.servers`, with any required server software and credentials |
 
 Start with the supplied DTU limits. Follow the [context instructions](../../README.md#changing-your-context-setting)
 before increasing them, and require organiser approval above 32768. A larger
@@ -251,31 +260,41 @@ the folder OpenCode reads. Their common goal is:
 | Agent file | Job | Model |
 |---|---|---|
 | [genome-coordinator.md](../../.opencode/agents/genome-coordinator.md) | Delegate the work and assemble the report | `opencode/big-pickle` |
-| [genome-auditor.md](../../.opencode/agents/genome-auditor.md) | Check data, units and missing values | `opencode/nemotron-3-ultra-free` |
+| [genome-auditor.md](../../.opencode/agents/genome-auditor.md) | Check data, units and missing values | `opencode/mimo-v2.6-flash-free` |
 | [genome-analyst.md](../../.opencode/agents/genome-analyst.md) | Write and run the analysis | `opencode/ling-3.0-flash-fin-free` |
-| [genome-visualizer.md](../../.opencode/agents/genome-visualizer.md) | Create browser-readable plots | `opencode/mimo-v2.6-flash-free` |
+| [genome-visualizer.md](../../.opencode/agents/genome-visualizer.md) | Create browser-readable plots | `opencode/muse-spark-1.3-contributor-free` |
 | [genome-reviewer.md](../../.opencode/agents/genome-reviewer.md) | Independently check results and plots | `opencode/nemotron-3.5-lightning-free` |
 
-All five are free models from OpenCode, so the demonstration does not depend
-on the DTU servers. It does send your prompts to a third party: use the
-supplied public data, and read the free-model warning in the
+All five roles use external free models from OpenCode, so this example does
+not require the DTU servers. Prompts, data and specialist results go to
+third-party providers. **Use only the supplied public data**, especially
+with the Muse contributor model; read the free-model warning in the
 [main README](../../README.md).
+
+Inspect outputs and ask for corrections when needed. Record the models and
+any interventions in your write-up; a successful response alone does not
+establish that an analysis is correct.
 
 From a terminal **inside the downloaded workshop root** (beside
 `opencode.json`), run:
 
 ```bash
-opencode --agent genome-coordinator --prompt "Run the genome-size team task with all four specialist subagents. Save the actual outputs in a new folder under outputs/genome-team/. Report failed or untested steps."
+opencode mini --agent genome-coordinator --model opencode/big-pickle --prompt "Run the genome-size team task with all four specialist subagents. Save the actual outputs in a new folder under outputs/genome-team/. Report failed or untested steps."
 ```
 
 This opens the interactive terminal so you can approve edits and commands.
 Do not add `--auto`. You start **one coordinator**, which delegates to the
 other four agents. They work toward one goal in dependency order:
 audit → analysis → visualization → review → final report. They do not need
-five terminals or simultaneous execution.
+five terminals or simultaneous execution. If progress pauses, check the
+specialist's child session for an approval request. In our 2.0.14 rehearsal,
+`opencode run --auto` approved the parent but did not remove child approvals;
+it is not a substitute for the interactive workflow.
 
 **Desktop:** open the workshop as a project, select `genome-coordinator` in
-the agent selector, and paste the same quoted prompt into a new chat.
+the agent selector, explicitly choose **Big Pickle**, and paste the same
+quoted prompt into a new chat. Selecting a primary agent does not necessarily
+replace a chat's already selected model.
 
 Python 3.10+ and access to all five models are required. Leave MCP off; no
 extra Python packages are required. Check the five are listed by
@@ -324,17 +343,16 @@ Keep original data intact.
 
 Test specialists individually with `@team-01-auditor` (substitute your team's
 number and actual name). Give them explicit input/output paths. Only then run
-the coordinator. Use `mode: subagent` and `task: deny` for specialists; use
+the coordinator. Use `mode: subagent` and a deny-all `subagent` rule for specialists; use
 `mode: primary` for the coordinator with an explicit list of allowed helpers:
 
 ```yaml
-permission:
-  task:
-    "*": deny
-    "team-01-auditor": allow
-    "team-01-analyst": allow
-    "team-01-visualizer": allow
-    "team-01-reviewer": allow
+permissions:
+  - { action: subagent, resource: '*', effect: deny }
+  - { action: subagent, resource: team-01-auditor, effect: allow }
+  - { action: subagent, resource: team-01-analyst, effect: allow }
+  - { action: subagent, resource: team-01-visualizer, effect: allow }
+  - { action: subagent, resource: team-01-reviewer, effect: allow }
 ```
 
 This block only illustrates delegation; preserve the rest of your permission
@@ -418,11 +436,12 @@ The human coordinator downloads the agreed revision and copies the reviewed
 agent files into `.opencode/agents/` as described above. From that project root:
 
 ```bash
-opencode --agent team-01-coordinator --prompt "Run our agreed team task with your specialist subagents. Save this run in a new outputs/team-01/ folder. Report results, corrections and anything untested."
+opencode mini --agent team-01-coordinator --model opencode/big-pickle --prompt "Run our agreed team task with your specialist subagents. Save this run in a new outputs/team-01/ folder. Report results, corrections and anything untested."
 ```
 
-Use your actual coordinator filename without `.md`. In Desktop, select that
-coordinator and paste the prompt. Only the coordinator needs all the provider
+Use your actual coordinator filename without `.md` and its chosen model ID.
+In Desktop, select that coordinator **and model**, then paste the prompt.
+Only the coordinator needs all the provider
 connections for the assembled team; credentials are never shared in the files.
 
 ## What to inspect at the end

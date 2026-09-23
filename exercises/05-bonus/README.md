@@ -96,9 +96,11 @@ curl -fsSL -o .opencode/plugins/notify.js \
 macOS uses `osascript` and Linux uses `dbus-send` with a notification daemon.
 Inside WSL2 it will probably do nothing, which is itself worth seeing.
 
-This plugin was written for v1, so on v2 it may do nothing at all. That is the
-exercise, not a failure: read it, install it, and find out whether it actually
-ran. Run `opencode reload` before deciding it did not.
+**Rehearsed on v2.0.14, 23 September 2026:** this exact plugin failed to load:
+`Plugin must export a default definition with an id and an effect or setup function`.
+Treat it as an intentional compatibility-check example, not a working
+notification solution. Reloading cannot repair a v1 plugin API mismatch.
+Inspect the diagnostic, then remove the test file.
 
 Remove it by deleting the file (or keep it).
 
@@ -155,12 +157,16 @@ Before installing anything, these are built in:
 | `/compact` | Summarise the session to reclaim context |
 | `/export` | Export the transcript as JSON |
 
-**Fork before you let an agent try a fix.** A wrong attempt then costs you
-nothing, and you can compare two attempts instead of talking one out of its
-first idea.
+**Fork before you let an agent try a fix.** This branches the conversation,
+not the filesystem. Preserve the original script or use a separate copy;
+both chats can otherwise edit the same files. Compare the two attempts.
 
-Try `/review` on the script before asking anything else. Note what it finds
-and what it misses.
+In a Git checkout, `/review` reviews changes (uncommitted, commit, branch or
+PR), not automatically every file in the project. A fresh ZIP has no Git
+history, and the supplied script may have no diff. In that case ask in Plan:
+“Review `exercises/05-bonus/buggy/summarise.py` and its BED input. Do not edit
+anything.” Note what it finds and what it misses. Use `/review` after a fix
+when there is an actual diff to inspect.
 
 ## Step 2 — A skill
 
@@ -185,27 +191,22 @@ Give your skill these steps, then use it on the script:
 
 A skill advises. An agent decides what is allowed.
 
-Build a reviewer with `edit: deny`. A reviewer that can edit will fix what it
-finds, and then you never learn whether it found the right thing. Denying the
-edit makes the separation structural instead of a matter of the model being
-well behaved.
+Build a reviewer that denies edits **and shell commands**. Denying only edits
+does not prevent a shell command from rewriting files. Review first; use a
+separate, approved Build task to execute tests or implement a fix.
 
 ```yaml
 ---
 description: Reviews code and reports defects with evidence. Cannot edit or publish.
 mode: all
-model: dtu/qwen38
+model: dtu/gptoss
 steps: 15
-permission:
-  edit: deny
-  bash:
-    "*": ask
-    "git diff*": allow
-    "git log*": allow
-    "git push*": deny
-  task: deny
-  webfetch: deny
-  websearch: deny
+permissions:
+  - { action: '*', resource: '*', effect: deny }
+  - { action: read, resource: '*', effect: allow }
+  - { action: glob, resource: '*', effect: allow }
+  - { action: grep, resource: '*', effect: allow }
+  - { action: external_directory, resource: '*', effect: deny }
 ---
 ```
 
