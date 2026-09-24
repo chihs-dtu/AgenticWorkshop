@@ -88,6 +88,13 @@ that inspires you to finish this workshop (hint: maybe `matrix` will do the tric
 
 ## Meet HALp before you start
 
+HALp offers hints and setup help, not finished exercise answers. In a **fresh
+chat**, try `/halp Where should I start?` It uses a **free external model**:
+public information and redacted errors only; do not use a private research chat.
+
+<details>
+<summary>Using HALp and returning to your exercise</summary>
+
 Open a **fresh chat** and type `/halp` followed by your question:
 
 ```text
@@ -104,6 +111,8 @@ that provider too.
 
 When you return to an exercise, select your exercise agent and model again.
 See [HALp's permissions and context help](#ask-halp-for-a-hint) for details.
+
+</details>
 
 ## Quick start — download, extract and open
 
@@ -299,6 +308,13 @@ We will introduce skills, agents and MCP as cornerstones of agentic processing t
 A travel-planning agent might have skills such as *search flights*, *find hotels*, and *create itinerary*. The **agent** decides which skills to use and in what order to plan the trip.
 
 ### Project folder design
+
+Open the workshop root folder. OpenCode reads agents and skills from
+`.opencode/`; the exercise folders hold the teaching materials.
+
+<details>
+<summary>Folder map and where to put agents and skills</summary>
+
 This is the structure of the extracted folder. Everything you will be asked to
 run or open is a path relative to this root, so the folder's own name does not
 matter.
@@ -370,6 +386,8 @@ See [mcp/README.md](mcp/README.md) for what each provides.
 
 See the OpenCode documentation for [agents](https://opencode.ai/v2/docs/agents/)
 and [skills](https://opencode.ai/v2/docs/skills/).
+
+</details>
 
 ### Exercises
 - **Exercise 1** — [Skills](exercises/01-skills/README.md).
@@ -532,6 +550,9 @@ after your task.
 
 ## Ask HALp for a hint
 
+<details>
+<summary>HALp's permissions, privacy and context adjustments</summary>
+
 Start a **fresh chat**, then type `/halp` followed by your question:
 
 ```text
@@ -556,13 +577,16 @@ To resume an exercise, select **Build** or your exercise agent **and model**
 again. HALp is hidden from the usual agent selector; `/halp` is the intended
 entry point. This is a UI convention, not an access-control boundary.
 
+</details>
+
 ## If something does not work
 <details>
 <summary>So many errors - so little time</summary>
 
 | What you see | What to do |
 |---|---|
-| DTU models are missing | Check that OpenCode opened the folder containing `opencode.json`, then restart it. |
+| `/halp`, agents or updated settings are missing | Follow [the first troubleshooting step](#something-not-working-try-this-first): exit, run `opencode reload` in the workshop folder, then reopen. |
+| DTU models are missing | Check that OpenCode opened the folder containing `opencode.json`, then follow the reload step above. |
 | Connection failed / 503 | Ask an organiser to check the model's start command. |
 | Invalid API key / 401 | The workshop does not currently require a key; check for old provider settings. |
 | Not found / 404 | Use a fresh workshop download; ask an organiser to check the URL if it persists. |
@@ -580,5 +604,7 @@ When comparing models, start a fresh chat: switching models within a chat
 can keep the earlier conversation and tool results.
 </details>
 ---
+
+After the workshop: [additional tools, projects and research](additional.md).
 
 For WorkShop organisers: [server administration and model settings](admin.md).

@@ -15,6 +15,131 @@ Further reading and projects to explore after the workshop. These are resources 
 Read installation scripts and check compatibility before running them.
 Popularity is not a security review.
 
+## What is vLLM, and where does it fit?
+
+**vLLM is an inference and serving engine.** It loads supported model weights
+and performs the computation that generates responses. It can serve an
+OpenAI-compatible API, so clients can request generations without loading the
+model themselves. It is not a model, an agent definition or a chat interface.
+See the [vLLM documentation](https://docs.vllm.ai/en/latest/) and
+[repository](https://github.com/vllm-project/vllm).
+
+In a remotely hosted setup, the roles are:
+
+```text
+OpenCode on your laptop → HTTPS endpoint → serving engine → model weights
+         ↕
+approved tools and project files on your laptop
+```
+
+The model proposes a tool call; the harness handles execution and approval.
+Running the model remotely does not move your shell commands to that server.
+Tool results included in subsequent requests can, however, reach the model server.
+
+vLLM supports techniques such as continuous batching and efficient attention
+cache management to serve multiple requests. That does not mean unlimited
+concurrency: weights, active contexts and computation still share hardware.
+Long inputs and long answers can reduce capacity for other users.
+
+Our deployment commands and actual configured limits belong in
+[admin.md](admin.md), not in students' setup instructions. You do not need to
+install a serving engine to use the workshop endpoints.
+
+### Other ways to run models
+
+| Project | What it is | When to investigate |
+|---|---|---|
+| [vLLM](https://github.com/vllm-project/vllm) | Inference engine and API serving system | Shared model serving, batching and accelerator-based deployments |
+| [llama.cpp](https://github.com/ggml-org/llama.cpp) | C/C++ inference with CPU and GPU backends, quantized models and a server | Local inference, GGUF models and hardware configurations with limited memory |
+| [Ollama](https://github.com/ollama/ollama) | Model-running tools with a CLI and API | Getting started with model downloads and local model use; check whether the selected model is local or cloud-hosted |
+| [SGLang](https://github.com/sgl-project/sglang) | Serving framework for language and multimodal models | Another option to benchmark for shared inference workloads |
+| [Transformers](https://github.com/huggingface/transformers) | Python model library for inference and training across modalities | Research code that needs direct access to model loading and execution |
+
+These are not interchangeable for every model. Check the exact model
+architecture, quantization format, tool-call support, hardware and engine version.
+An API labelled "OpenAI-compatible" does not guarantee identical parameters or
+behaviour. Quantization reduces numerical precision to save resources; evaluate
+its effect on your task instead of assuming unchanged quality.
+
+## Scientific tools worth connecting to an agent
+
+These are optional tools to explore, **not extra workshop requirements or
+preinstalled OpenCode integrations**. A scientific library is not automatically
+an MCP server: use a reviewed script, an appropriate integration, or a narrowly
+scoped tool wrapper. Keep the computation inspectable.
+
+| Tool | Why explore it | A useful agent task |
+|---|---|---|
+| [Mol*](https://github.com/molstar/molstar) | Web-based macromolecular visualization | Build an interactive structure view with explicit chain, ligand and representation choices; check these against the source structure |
+| [napari](https://github.com/napari/napari) | Interactive multidimensional image viewing and annotation in Python | Prepare microscopy image layers and measurements for a human to inspect |
+| [DuckDB](https://github.com/duckdb/duckdb) | Analytical SQL within a local process | Produce reproducible queries over research tables, with row counts and missing-value checks |
+
+For visual tasks, request both the artifact and the code/settings that produced
+it. A model generating a viewer or figure has not necessarily inspected the
+rendered result. Image viewing and image understanding are different capabilities.
+
+## When you want more control over coordination
+
+[LangGraph](https://github.com/langchain-ai/langgraph) is a framework for
+stateful agent workflows. Explore it if you want to express the flow in code,
+with explicit state, persistence and human intervention, rather than relying
+only on a coordinator's Markdown instructions. It is a separate development
+choice, not an OpenCode plugin you need for Exercise 2.
+
+A small experiment: implement the same audit → analysis → review task with
+an OpenCode coordinator and with an explicit workflow. Compare recovery after
+a failed step, evidence retained and how much human supervision each needs.
+More agents are not automatically a better experiment.
+
+### More agent-building repositories
+
+| Project | What to look at | Keep in mind |
+|---|---|---|
+| [smolagents](https://github.com/huggingface/smolagents) | A compact Python library, including agents that generate code to perform actions | Generated code needs controlled execution; short implementations are not automatically safe |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) | Typed Python agents, tools and structured outputs | A validated output schema does not establish that the scientific content is correct |
+| [LangGraph](https://github.com/langchain-ai/langgraph) | Stateful workflows and explicit coordination | Start with a small workflow and add branches only when the task needs them |
+
+These are alternatives for writing your own applications, not additional
+dependencies for the workshop's Markdown agents. Compare one bounded task
+across frameworks before adopting an entire stack.
+
+## Evaluating your own agent
+
+[promptfoo](https://github.com/promptfoo/promptfoo) provides tooling for
+testing and comparing prompts and AI applications. It is worth inspecting
+when you want repeatable cases rather than a collection of impressive chats.
+Check where each configured provider and test sends data before running it.
+
+For a bioinformatics task, keep a small versioned set of public test cases:
+
+- A normal input with independently calculated reference results.
+- Missing values, inconsistent units and ambiguous identifiers.
+- A deliberately unavailable tool or malformed input.
+- A question the evidence cannot answer: does the agent admit that?
+
+Record model and tool versions, settings, costs or runtime, outputs and manual
+corrections. Repeat cases: a fixed temperature or seed is not a universal
+guarantee of identical end-to-end agent behaviour. Test scientific correctness
+separately from whether the code runs or the response has the right format.
+
+## Finding MCP servers and plugins
+
+Start with the [OpenCode MCP guide](https://opencode.ai/v2/docs/mcp-servers/)
+and [plugin guide](https://opencode.ai/v2/docs/plugins/), then use
+[awesome-opencode](https://github.com/awesome-opencode/awesome-opencode)
+as a discovery list, not a trust list. Our own [MCP notes](mcp/README.md)
+describe the workshop's configured servers.
+
+Before enabling something, check:
+
+- What it can read, write or execute, and whether it sends data off your machine.
+- Who maintains it, which version you are installing and whether it supports your OpenCode version.
+- Whether the same task needs only a small script rather than another server.
+- How you will verify its output and switch it off afterwards.
+
+Do not paste unreviewed installation commands into an agent with unrestricted
+shell access. An MCP connection standardises access; it does not certify a tool.
+
 ## Paper2Agent: papers as usable tools
 
 Paper2Agent turns a paper and its associated code into an **MCP server**,
