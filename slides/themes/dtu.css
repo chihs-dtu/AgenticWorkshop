@@ -190,3 +190,12 @@ section.refs h1          { font-size: 1.7em; }
 .small  { font-size: 0.8em; color: var(--muted); }
 .note   { color: var(--muted); font-size: 0.85em; font-style: italic; }
 .cols   { column-count: 2; column-gap: 2.2em; }
+
+/* This deck's cover and closing slide; other decks retain their layout. */
+section.workshop-cover { align-content: safe start; padding-top: 76px; }
+section.workshop-cover h1 { font-size: 54px; margin-bottom: 18px; }
+section.workshop-cover h2 { font-size: 30px; margin-bottom: 38px; }
+section.workshop-cover .presenters { font-size: 25px; line-height: 1.5; }
+section.workshop-cover .workshop-date { font-size: 21px; color: var(--muted); margin-top: 18px; }
+section.workshop-cover .acknowledgements { font-size: 21px; line-height: 1.5; color: var(--muted); margin-top: 40px; }
+section.workshop-thanks p { color: var(--ink); font-size: 26px; }

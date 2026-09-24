@@ -4,50 +4,85 @@ theme: dtu
 paginate: true
 ---
 
-<!-- _class: lead -->
+<!-- _class: lead workshop-cover -->
 <!-- _paginate: false -->
 
 # UAAA - Agentic Workshop
 
 ## For data analysis
 
+<div class="presenters">Dimitrios S. Kanakoglou &amp; Peter Wad Sackett<br>With HALp, our workshop helper</div>
 
-Dimitrios S. Kanakoglou, Peter Wad Sackett, HALp
-25 September 2026, DTU Health Tech
+<div class="workshop-date">25 September 2026 · DTU Health Tech</div>
+
+<div class="acknowledgements">Thank you to <strong>Anders Gorm Pedersen, Ole Lund<br>and Kristoffer Vitting-Seerup</strong><br>for facilitating the workshop and contributing ideas<br>during the initial brainstorming.</div>
 
 ---
 
 # Models and harnesses
 
-The **model** generates text and proposes tool calls.
-The **harness** runs the conversation and connects those calls to tools.
+The **model** generates responses and proposes actions from the information
+available in its context.
 
-Today we are using **OpenCode**, a harness is incredibly modular. 
+The **harness** manages that context, applies permissions, executes tool calls
+and returns their results to the model.
 
-It reads your project, runs approved commands and
-returns their results to the model so it can continue the task.
+Today, OpenCode is our harness. You can change the model while keeping
+the same project and tools.
 
-You can change the model while keeping the same harness and the same project.
-The model server may be at DTU, but project commands run on your laptop.
+Model inference may happen at DTU or another provider.
+Project commands run on your laptop unless you explicitly configure otherwise.
 
 <!-- Sources: https://opencode.ai/v2/docs/ and https://opencode.ai/v2/docs/providers/ -->
 
 ---
 
+# Why OpenCode?
+
+- Compare local, free and paid models within the same project.
+- Inspect and share skills and agent definitions as ordinary files.
+- Connect scientific tools through MCP.
+- Review proposed actions, set permissions and inspect tool results.
+
+The aim is to learn an architecture you can reuse across tools and research
+projects, without depending on one model provider.
+
+<!-- Sources: https://opencode.ai/v2/docs/agents/ https://opencode.ai/v2/docs/providers/ https://opencode.ai/v2/docs/permissions/ -->
+
+---
+
 # Skills and agents
 
-| | What you define | Example |
-|---|---|---|
-| **Skill** | Reusable instructions, with supporting scripts if needed | Download a PDB entry and check that it contains coordinates |
-| **Agent** | A role, model and permissions, with instructions for doing its job | Review an analysis without editing its files |
+An **agent** uses a model and tools to pursue a goal over multiple steps.
+In OpenCode, we configure its role, instructions, model and permissions.
+
+A **skill** packages reusable instructions, with optional scripts or resources,
+for a particular task. An agent can load it when needed.
+
+For example, a structure-analysis agent could use a PDB-download skill.
 
 OpenCode reads skills from `.opencode/skills/<name>/SKILL.md`
 and agents from `.opencode/agents/<name>.md`.
 
-An agent can load a relevant skill. A coordinator can delegate specific
-jobs to other agents and combine their results.
+A coordinator can delegate bounded jobs to specialist agents and combine
+their results. Permissions determine what each agent may do.
 
 <!-- Sources: https://opencode.ai/v2/docs/skills/ and https://opencode.ai/v2/docs/agents/ -->
+
+---
+
+# MCP servers and plugins
+
+**MCP** is a protocol for discovering and accessing tools, resources and
+prompts exposed by servers. Our DuckDB server exposes database tools.
+
+A **plugin** is code that extends OpenCode itself, for example by responding
+to events or adding a notification when work finishes.
+
+Enable only the MCP servers you need. Inspect plugins before installing
+them: they execute code, and their API must match your OpenCode version.
+
+<!-- Sources: https://opencode.ai/v2/docs/mcp-servers/ and https://opencode.ai/v2/docs/plugins/ -->
 
 ---
 
@@ -58,23 +93,6 @@ jobs to other agents and combine their results.
 [OpenCode MCP server documentation](https://opencode.ai/v2/docs/mcp-servers/)
 
 <!-- Diagram supplied by https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro. Examples illustrate the architecture, not a verified compatibility list. Configuration: https://opencode.ai/v2/docs/mcp-servers/ -->
-
----
-
-# MCP servers and plugins
-
-An **MCP server** exposes tools to the agent. 
-
-For example, a local server lets the agent send SQL queries to DuckDB.
-
-A **plugin** extends OpenCode itself.
-
-It can react to events or add behaviour, such as a notification when work finishes.
-
-Enable only the MCP servers you need. Inspect plugins before installing
-them: they execute code, and their API must match your OpenCode version.
-
-<!-- Sources: https://opencode.ai/v2/docs/mcp-servers/ and https://opencode.ai/v2/docs/plugins/ -->
 
 ---
 
@@ -125,48 +143,94 @@ Start a **fresh chat**, then type `/halp` and your question:
 ```
 
 HALp reads the exercise instructions and offers hints or setup help.
-It can help with context settings, with your approval. It should leave
-the exercise answers to you.
+It can help adjust context settings with your approval.
 
 HALp initially uses a **free external model**. Share only public information
-and redacted errors. Afterwards, select your trusted agent and try again.
+and redacted errors. Afterwards, select your exercise agent and model again.
 
-If HALp can't help you with your exercises, I don't think we can :D
+If HALp gets stuck too, call a human :D
 
 ---
 
 # Exercise 1: skills
 
-The first exercises introduces skills. Agent skills are portable, 
-modular packages of instructions, scripts, and/or resources 
-that provide AI agents with specialized capabilities and domain expertise.
+Turn a repeated task into a reusable, testable skill.
 
-Open `exercises/01-skills/README.md` and follow 
-up to the point you feel you can do better.
+1. Follow the PDB examples, then copy and improve a skill.
+2. Use `skill-builder` to help create your own.
+3. Test it on a new input and a deliberately invalid one.
+
+**Tip:** Specify expected outputs and failure behaviour, not just the happy path.
+
+`exercises/01-skills/README.md`
 
 ---
 
-# Exercise 2a–2b: agents
+# Exercise 2: agents and coordination
 
-An AI agent is a software system that uses a large language model (LLM) 
-as its central brain to autonomously perceive its environment, make decisions, 
-and execute multi-step actions to achieve a specific goal.
+Compare agent designs, then divide a larger task into specialist roles.
 
-It can use skills, mcps and tools.
+1. Give the basic and detailed agents the same request.
+2. Build and test an agent for a well-defined task.
+3. Try the coordinator and specialists, then adapt the team to your question.
 
-Have fun with the swarm!
+**Tip:** Give each specialist a clear input, expected output and permission boundary.
+
+`exercises/02-agents/README.md`
 
 ---
 
 # Exercise 3: MCPs and data analysis
 
-MCP stands for Model Context Protocol. 
-Originally open-sourced by Anthropic, it has quickly been adopted 
-across the industry (by OpenAI, Google DeepMind, and others) as an 
-open standard. Think of MCP as the USB-C port for AI applications.
+Give an agent access to structured data through DuckDB.
+
+1. Build the supplied database and enable the DuckDB MCP server.
+2. Work through the questions and verification steps.
+3. Extend the analysis to a supplied alternative dataset or your own public data.
+
+**Tip:** Ask for the SQL and independently check a small result.
+
+`exercises/03-mcp/README.md`
 
 ---
 
 # Exercise 4: sharing
-and 
+
+Make your work usable by someone outside your team.
+
+1. Choose a skill or agent to share and review everything it contains.
+2. Follow the submission instructions and document how to use it.
+3. Try another team's contribution in your own project.
+
+**Tip:** Remove private data and credentials. Test the shared copy, not only your original.
+
+`exercises/04-share/README.md`
+
+---
+
 # Bonus: plugins and debugging
+
+Explore how extensions and independent checks change an agent's workflow.
+
+1. Inspect a plugin and check its compatibility before installing it.
+2. Review the supplied buggy script with an agent.
+3. Compare its findings with deterministic checks and known-answer tests.
+
+**Tip:** A plausible explanation is a starting point. Reproduce the bug.
+
+`exercises/05-bonus/README.md`
+
+---
+
+<!-- _class: lead workshop-thanks -->
+
+# Thank you, everyone!
+
+Thank you for your curiosity, questions and contributions today.
+
+We hope you leave with something useful for your own research.
+
+Dimitrios, Peter & HALp
+
+[Workshop repository](https://github.com/peterwadsackett/AgenticWorkshop)<br>
+[Further reading and projects: additional.md](https://github.com/peterwadsackett/AgenticWorkshop/blob/main/additional.md)

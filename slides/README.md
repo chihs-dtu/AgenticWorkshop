@@ -17,9 +17,12 @@ Only `unoriginalSlop.md` is published, as HTML. Drafts are listed in `SKIP` in
 [the workflow](../.github/workflows/slides.yml); add a name there to keep a
 deck in the repository but off the site.
 
-The revised deck is **14 slides**, intended for a brief opening and short
-pauses before the exercises—not a lecture replacing their READMEs. Speaker
-notes contain source references. The supplied MCP diagram lives in
+The revised deck is **15 slides**: 14 introductory and exercise slides,
+followed by a thank-you slide. Further reading, project links and references
+live in [additional.md](../additional.md) as an ordinary Markdown document,
+outside this folder so the slide workflow does not turn it into a presentation.
+The exercise READMEs retain the detailed instructions. Speaker notes contain
+source references. The supplied MCP diagram lives in
 `assets/mcp-overview.png`; the publishing workflow copies assets alongside
 the HTML. Keep the filename unchanged
 so the existing published link stays valid when the revision is approved.
