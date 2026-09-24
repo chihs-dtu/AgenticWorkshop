@@ -30,6 +30,22 @@ Install from your terminal: `npm install -g @opencode/cli`
 > `opencode web` is now `opencode serve`, and `opencode debug skill` is gone;
 > use `/skills` in the chat instead.
 
+## Something not working? Try this first
+
+If `/halp`, workshop agents or updated settings are missing, OpenCode may still
+be using cached configuration. Exit OpenCode, then run these commands **in your
+terminal, inside the extracted workshop folder**:
+
+```bash
+opencode reload
+opencode .
+```
+
+Start a fresh chat and try `/halp hello`. Simply closing and reopening the
+interface may not refresh its background service. This reload does not edit
+your files or restart the DTU models. If the problem remains, show an organiser
+the error and your `opencode --version`; do not reinstall or delete your settings.
+
 ## Before the exercises: three pieces of advice in a lesson format
 
 ### Lesson one — you are in charge of your data
