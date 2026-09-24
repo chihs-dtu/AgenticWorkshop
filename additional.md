@@ -154,7 +154,7 @@ interrogate and reuse. Computational prioritisation still needs biological valid
 
 [Miao et al., Nature, 16 September 2026](https://www.nature.com/articles/s41586-026-11044-y)
 
-Thank you, Chiao-Yu, for pointing us to this! A preprint appeared in 2025.
+Thank you, Chiao-Yu, for pointing us to this!
 
 ## Multimodal agents: beyond text and tables
 
