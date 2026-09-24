@@ -100,7 +100,7 @@ them: they execute code, and their API must match your OpenCode version.
 
 | Choice | What you need to know |
 |---|---|
-| **OpenCode free models** | No model payment for the current free offers. Availability and limits can change. Requests leave DTU. |
+| **OpenCode free models** | No model payment for the current free offers. Availability and limits can change. Requests leave DTU(!) |
 | **Paid models** | Connect a supported subscription or API account. Check what it includes and how usage is billed. |
 | **Four DTU models** | Workshop-hosted GPT-OSS, Mistral and two Qwens. Shared GPU capacity and context limits apply. |
 
