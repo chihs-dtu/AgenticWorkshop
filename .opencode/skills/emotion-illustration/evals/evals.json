@@ -1,0 +1,83 @@
+{
+  "skill_name": "emotion-illustration",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Why is this SQL query failing? It says `column \"user\" does not exist`, and I need to fix it.",
+      "expected_output": "Begins with a tentative expression guess and a small matching face, then explains likely causes and fixes the SQL issue.",
+      "files": [],
+      "assertions": [
+        "Starts with a tentative expression read before answering the question",
+        "Includes a small face or character matching the guessed expression",
+        "Substantively addresses the SQL error after the expression check-in"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Could you review this function and tell me whether it handles empty lists safely?",
+      "expected_output": "Begins with a tentative expression guess and a small matching face, then reviews or explains the function's empty-list handling.",
+      "files": [],
+      "assertions": [
+        "Treats the question form as actionable rather than exempting it",
+        "Starts with a brief, explicitly tentative expression guess",
+        "Includes a visible face or character illustration",
+        "Attempts to answer the requested code review question"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Thanks! What's a good lightweight way to format Python consistently across a small project?",
+      "expected_output": "Begins with a tentative expression guess and a small matching face, then gives practical Python formatting advice.",
+      "files": [],
+      "assertions": [
+        "Includes the expression check-in despite the question form and lead-in",
+        "Does not treat the user as frustrated, angry, or diagnosed",
+        "Provides practical formatting-tool recommendations"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Please run the project tests and fix the first failure you find.",
+      "expected_output": "Shows the expression check-in as a visible message before the first tool call, then runs the tests and addresses the first failure.",
+      "files": [],
+      "assertions": [
+        "Makes the check-in visible before beginning tool work",
+        "Uses a tentative expression grounded in the request",
+        "Includes a small face matching the expression",
+        "Runs or clearly attempts to run the project tests and addresses the first failure"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Great, thanks!",
+      "expected_output": "Responds naturally without an expression check-in.",
+      "files": [],
+      "assertions": [
+        "Does not add an expression guess or face",
+        "Keeps the response brief and conversational"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "How's your day going?",
+      "expected_output": "Treats the message as social conversation and responds normally without an expression check-in.",
+      "files": [],
+      "assertions": [
+        "Does not misclassify social small talk as an actionable request",
+        "Does not add an expression guess or face"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "What mood does this message give off? Draw it: 'I'm stuck, but I'll keep trying.'",
+      "expected_output": "Begins with the normal tentative check-in, then gives a grounded, non-diagnostic read of the quoted message and a matching face.",
+      "files": [],
+      "assertions": [
+        "Includes the normal expression check-in because the user explicitly requests a mood read",
+        "Bases the quoted-message reading on the visible wording",
+        "Does not diagnose or claim access to the user's actual emotions",
+        "Includes a visible face that matches the reading"
+      ]
+    }
+  ]
+}
