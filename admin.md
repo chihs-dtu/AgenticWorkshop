@@ -113,6 +113,33 @@ bash bin/llm start mistral --context 32768
 6. Update the student defaults only if you intend students to use more.
    Budgets above 32768 need organiser approval.
 
+### Gateway request limits
+
+**Raised 25 September 2026, during the workshop,** after the room hit
+`Provider request failed with HTTP 429` retries. Every student reaches the
+gateway without a key, so the whole room counts as a single team,
+`workshop-shared`, and shares one set of limits.
+
+| Limit | Where | Before | Now |
+|---|---|---:|---:|
+| Shared team requests per minute | `app/gateway.py`, `authorize()`, `workshop-shared` | 60 | 600 |
+| Shared team concurrent requests | same line | 4 | 40 |
+| In-flight requests per model | `config/models.json`, `max_inflight`, all four models | 4 | 12 |
+
+Any of the three returns a 429 with `Retry-After`: "Team request-per-minute
+limit reached", "Team concurrent-request limit reached" or "Model busy; retry
+with backoff". These are raised before the audit row is written, so **429s do
+not appear in `logs/requests.jsonl`**. That file only shows requests that got
+through.
+
+The new values have not been load-tested. After the restart the health check
+reported all four models active and requests returned 200. If Qwen 3.6 or
+Qwen 3.8 slows down badly, lower that model's `max_inflight` to 8. The
+previous files are kept next to the originals on compute04 as
+`app/gateway.py.bak-<timestamp>` and `config/models.json.bak-<timestamp>`.
+Either change needs a gateway restart; see the warning under
+[Checks and troubleshooting](#checks-and-troubleshooting).
+
 ## Checks and troubleshooting
 
 The launcher waits up to five minutes per node, checks gateway and model
@@ -157,7 +184,16 @@ bash bin/llm stop gateway
 bash bin/llm start gateway
 ```
 
-That interrupts connections briefly and leaves the models loaded.
+That leaves the models loaded, but disconnects every model while the gateway
+is down. Warn the room first, and run the two commands separately rather than
+chained with `&&`.
+
+**Observed on 25 September 2026:** `stop` waits for open requests to finish.
+It waited on a 179-second Qwen 3.8 request, and the replacement gateway did not
+start after that stop. The room had no DTU models for about 1–2 minutes, until
+`bash bin/llm start gateway` was run on its own. After a stop, confirm with
+`bash bin/llm status all` that the gateway shows a new PID, and check
+`/health`.
 
 ### Model switching and effort compatibility (25 September 2026)
 
