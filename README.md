@@ -255,6 +255,12 @@ Sources: [OpenCode Zen](https://opencode.ai/docs/zen/),
 </details>
 
 ### Show free models if they are hidden
+The DTU Qwen 3.8 effort choices are **low** and **medium**, plus the model's
+default when no effort is selected. Mistral Nemo has **no reasoning-effort
+selector**. These are model-specific: do not copy an effort from another model.
+After updating the workshop files, run `opencode reload`, reopen OpenCode and
+select the model again if an old session still shows an unsupported effort.
+
 <details>
 <summary>Model management</summary>
 

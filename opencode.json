@@ -40,6 +40,10 @@
         },
         "qwen38": {
           "name": "Qwen 3.8 27B FP8",
+          "variants": [
+            { "id": "low", "settings": { "reasoningEffort": "low" } },
+            { "id": "medium", "settings": { "reasoningEffort": "medium" } }
+          ],
           "settings": {
             "baseURL": "https://teaching.healthtech.dtu.dk/workshop/qwen38"
           },
@@ -50,6 +54,7 @@
         },
         "mistral": {
           "name": "Mistral Nemo 12B",
+          "variants": [],
           "settings": {
             "baseURL": "https://teaching.healthtech.dtu.dk/workshop/mistral"
           },

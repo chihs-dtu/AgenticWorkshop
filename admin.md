@@ -159,6 +159,25 @@ bash bin/llm start gateway
 
 That interrupts connections briefly and leaves the models loaded.
 
+### Model switching and effort compatibility (25 September 2026)
+
+- Mistral Nemo rejects reasoning metadata from earlier GPT-OSS/Qwen turns
+  (`ThinkChunk`). On compute04, `app/request_compat.py` now removes assistant
+  `reasoning`, `reasoning_content` and `reasoning_text` fields for Mistral only.
+  Visible answers, tool calls and tool results are preserved. Regression tests
+  are in `tests/test_reasoning_history.py`; all 92 server tests passed.
+- Qwen 3.8's template rejects `high`. Although it advertises `xhigh` as its
+  default, the running API also rejects an explicit `reasoning_effort: xhigh`.
+  The student configuration therefore lists only tested explicit `low` and
+  `medium` variants. Leaving effort unset uses the server default.
+- Mistral uses an empty variants list, preventing OpenCode's generic
+  low/medium/high fallback. Updating the JSON requires `opencode reload` and
+  reselecting the model in existing sessions.
+- Only the shared gateway was restarted for this fix, not the GPU engines.
+  Switched-model Mistral history was tested through public HTTPS in both normal
+  and streaming modes. Successful requests do not guarantee answer quality:
+  Mistral remains less reliable at following complex workshop instructions.
+
 ## Files and ports
 
 | Location | Purpose |
