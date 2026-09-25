@@ -16,7 +16,7 @@ on our server cluster; you do not need a cluster account, SSH, model downloads o
 server-start commands.
 
 Install from your terminal: `npm install -g @opencode/cli`
-
+or for CLI: `curl -fsSL https://opencode.ai/v2/install | bash`
 > **This workshop has moved to OpenCode v2.** v2 ships as a different package,
 > `@opencode/cli`, so the old `curl -fsSL https://opencode.ai/install | bash`
 > installs v1 and will not match these materials. Install with
