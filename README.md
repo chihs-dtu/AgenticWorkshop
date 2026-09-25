@@ -493,16 +493,17 @@ There are three different settings: the **server's verified maximum**, your
 **selected context budget**, and your **answer limit**. Raising a number in
 your JSON does not increase the server's capacity.
 
-| Model | Student starting context | Student output |
-|---|---:|---:|
-| Qwen 3.6 | 16384 | 4096 |
-| Qwen 3.8 | 32768 | 4096 |
-| Mistral Nemo | 16384 | 4096 |
-| GPT-OSS | 16384 | 4096 |
+| Model | Starting context | Maximum running context | Starting output | Maximum output |
+|---|---:|---:|---:|---:|
+| Qwen 3.6 | 16384 | 32768 | 4096 | 4096 |
+| Qwen 3.8 | 32768 | 32768 | 4096 | 8192 |
+| Mistral Nemo | 16384 | 16384 | 4096 | 4096 |
+| GPT-OSS | 16384 | 16384 | 4096 | 8192 |
 
-Start with the supplied values. If your task genuinely needs more, confirm
-the available server limit with an organiser and then increase the budget.
-**Above 32768 requires organiser approval while teams share the servers.**
+**Students may choose up to the maxima above without asking an organiser.**
+These running limits were verified on 25 September 2026. Start with the supplied
+values and increase when useful. Changing JSON does not enlarge the server.
+Higher limits require a server change and validation by an organiser.
 **Do not select 262144 for ordinary workshop tasks.** Long requests consume
 shared memory and processing time, leaving less capacity for other teams.
 Setting a ceiling alone does not immediately allocate that entire amount.
@@ -522,21 +523,30 @@ These are useful sizes to recognise, not a requirement to use powers of two:
 ### Change the budget in your own project
 
 In `opencode.json`, find the model under `providers → dtu → models → model ID`.
-Edit **only `limit.context`**, leaving `limit.output` at `4096`. For example,
-after an organiser confirms Mistral can serve 32768:
+Edit `limit.context` and/or `limit.output`, within the table above. For example,
+Qwen 3.8 at its current maximum context and output:
 
 ```json
 {
-  "name": "Mistral Nemo 12B",
+  "name": "Qwen 3.8 27B FP8",
   "limit": {
     "context": 32768,
-    "output": 4096
+    "output": 8192
   }
 }
 ```
 
-This is one model entry, not a complete OpenCode configuration. Save the file and
-restart OpenCode. Use plain integer digits: **`262144`, not `262.144` or
+This is one model entry, not a complete OpenCode configuration. Preserve the
+other fields, save, then run `opencode reload` and reopen OpenCode.
+Alternatively, from the project root:
+
+```bash
+python3 .opencode/scripts/halp-context.py --model qwen38 --context 32768 --output 8192
+opencode reload
+```
+
+You can also ask `/halp` to make this change; approve the command when prompted.
+Use plain integer digits: **`262144`, not `262.144` or
 `262,144`**. Never exceed the model's verified server limit. The total includes
 the answer; a 32768 context does not allow 32768 input tokens plus a 4096 answer.
 
@@ -567,10 +577,10 @@ a free external model**: only send public workshop information and redacted
 errors. The command switches the current chat, so its existing history can
 also reach that provider—do not invoke it inside a private research chat.
 
-HALp can show this project's DTU context budgets and propose a change to `limit.context`, but
-you approve the command and confirm the organiser's running server limit
-first. The supplied helper script cannot raise a budget above 32768 or
-change answer limits, URLs or keys. HALp is not allowed to operate the
+HALp can show this project's DTU budgets and change `limit.context` and
+`limit.output` up to the published running maxima, with your command approval.
+Higher server limits need organiser verification. The supplied helper cannot
+change URLs or keys. HALp is not allowed to operate the
 cluster or publish your work. Read every approval request.
 
 To resume an exercise, select **Build** or your exercise agent **and model**

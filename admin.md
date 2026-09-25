@@ -65,6 +65,14 @@ Add `--dry-run` to preview. `bash bin/llm --help` for the rest.
 The checkpoint maximum is what the model supports, not what the current GPU
 allocation fits. The launcher ceiling is what it will accept without testing.
 
+**25 September live check:** Qwen 3.6 is currently running with 32768 context
+(its persistent default above remains 16384); Qwen 3.8 has 32768, Mistral and
+GPT-OSS have 16384. All four passed public chat, streaming and tool round trips.
+Students may set client context/output up to these running limits and the
+output caps above without separate approval. Defaults in the download remain
+unchanged. The helper `.opencode/scripts/halp-context.py` carries this dated
+snapshot: update its constants and the student table if server limits change.
+
 **Context** is the whole conversation plus the answer, in tokens, including
 instructions and tool results. **Output** is the answer alone.
 

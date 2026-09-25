@@ -53,7 +53,7 @@ class ContextHelperTests(unittest.TestCase):
     def test_reject_unsuitable_and_excessive_budgets(self):
         before = self.path.read_bytes()
         for context in ('4096', '65536', '131072', '262144', '262.144'):
-            self.assertNotEqual(self.run_helper('--model', 'mistral', '--context', context, '--server-max', '262144').returncode, 0)
+            self.assertNotEqual(self.run_helper('--model', 'mistral', '--context', context).returncode, 0)
             self.assertEqual(self.path.read_bytes(), before)
 
     def test_lower_and_noop(self):
@@ -69,6 +69,16 @@ class ContextHelperTests(unittest.TestCase):
         before = other.read_bytes()
         self.assertNotEqual(self.run_helper().returncode, 0)
         self.assertEqual(other.read_bytes(), before)
+
+    def test_published_maxima_and_output(self):
+        self.assertEqual(self.run_helper('--model', 'qwen38', '--context', '32768', '--output', '8192').returncode, 0)
+        expected = self.config
+        expected['providers']['dtu']['models']['qwen38']['limit'] = {'context': 32768, 'output': 8192}
+        self.assertEqual(json.loads(self.path.read_text()), expected)
+        before = self.path.read_bytes()
+        for args in [('--model', 'mistral', '--output', '8192'), ('--model', 'gptoss', '--context', '8192', '--output', '8192'), ('--model', 'gptoss', '--output', '0')]:
+            self.assertNotEqual(self.run_helper(*args).returncode, 0)
+            self.assertEqual(self.path.read_bytes(), before)
 
 
 if __name__ == '__main__':
