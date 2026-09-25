@@ -320,4 +320,9 @@ you. That is the difference between a fix and an answer.
 
 ---
 
+## Where to go next
+
+- [Additional resources](../../additional.md): model serving, agent frameworks, scientific tools and papers to explore after today.
+- [Dimitrios's Sidebar Plus](https://github.com/dskanakoglou/opencode-sidebar-plus): see your agent's context, tasks, activity and delegated subagents. Follow its [installation guide](https://github.com/dskanakoglou/opencode-sidebar-plus#install), or expand the Sidebar Plus section in Exercise 5a above.
+
 Previous: [Exercise 4 — Share what you built](../04-share/README.md).
