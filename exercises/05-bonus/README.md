@@ -106,6 +106,52 @@ Remove it by deleting the file (or keep it).
 
 ## Two things to notice
 
+<details>
+<summary>Try Dimitrios's Sidebar Plus — a working OpenCode v2 plugin</summary>
+
+[opencode-sidebar-plus](https://github.com/dskanakoglou/opencode-sidebar-plus)
+adds a context gauge, agent task list, live tool activity, shell timers, changed
+files, alerts and clickable subagent sessions. `/details` shows run history;
+`/sidebar` lets you switch individual features on and off. It requires
+**OpenCode 2.0.16 or later**, not v1 or the workshop's older 2.0.14 installation.
+Check `opencode --version` first.
+
+Read its `server.ts` and `tui.tsx` before installing. This is executable plugin
+code, not a skill. Clone it into a separate folder outside the workshop:
+
+```bash
+git clone https://github.com/dskanakoglou/opencode-sidebar-plus.git
+```
+
+Or download and extract its ZIP. In the workshop's `opencode.json`, add this
+top-level field, using the **absolute path** to your extracted plugin folder:
+
+```json
+"plugins": ["/absolute/path/to/opencode-sidebar-plus"]
+```
+
+Merge this entry with any existing `plugins` array; do not replace the whole
+configuration. On WSL, use the Linux path. This loads both the sidebar and its
+small `todo` tool. No build step is required. Exit OpenCode, run
+`opencode reload` from the workshop folder, and reopen it.
+
+Try `/sidebar`, then ask your agent to record a short task list for its next
+multi-step task. Use `/details` to inspect the run. For Exercise 2c, the
+Sub-agents section shows actual direct child sessions once delegation happens;
+click one to inspect it. It does not list all installed agent definitions or
+create a swarm for you. Agent/model selection remains in OpenCode's usual UI.
+
+The original one-line Context widget may remain visible too. The project's
+[installation guide](https://github.com/dskanakoglou/opencode-sidebar-plus#install)
+shows the optional `cli.json` setting to hide it and how to install the sidebar
+without the additional `todo` tool.
+
+To remove the plugin, remove only its entry from `plugins`, reload and reopen.
+If you hid OpenCode's original Context widget, restore that setting as well.
+Treat status indicators as aids, not evidence that the analysis is correct.
+
+</details>
+
 **Popularity and auditability are different axes.** `cc-safety-net` has over
 1500 stars, an MIT licence, zero runtime dependencies, and blocks destructive
 commands. It is also about 27 MB across hundreds of files with a minified

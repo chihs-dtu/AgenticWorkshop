@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Show safe DTU limits, or update one context value with explicit approval.
+"""Show safe DTU limits, or update context/output with explicit approval.
 
 No network, model calls, credential output, server changes or global edits.
 """
@@ -9,11 +9,16 @@ from pathlib import Path
 import tempfile
 import os
 
+# Public deployment snapshot verified 25 September 2026; not a live probe.
+SERVER_CONTEXT = {'gptoss': 16384, 'mistral': 16384, 'qwen36': 32768, 'qwen38': 32768}
+SERVER_OUTPUT = {'gptoss': 8192, 'mistral': 4096, 'qwen36': 4096, 'qwen38': 8192}
+CHECKPOINT_CONTEXT = {'gptoss': 131072, 'mistral': 131072, 'qwen36': 262144, 'qwen38': 262144}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model', choices=['gptoss', 'mistral', 'qwen36', 'qwen38'])
-    parser.add_argument('--context', type=int, choices=[8192, 16384, 32768])
+    parser.add_argument('--context', type=int, choices=[4096, 8192, 16384, 32768, 65536, 131072, 262144])
+    parser.add_argument('--output', type=int)
     parser.add_argument('--server-max', type=int, help='Organiser-confirmed running server limit, not checkpoint capacity')
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
@@ -30,25 +35,31 @@ def main():
             raise ValueError('Invalid limits')
     except (ValueError, KeyError, TypeError):
         parser.error('Expected workshop v2 JSON with numeric limits; no changes made. Ask an organiser.')
-    if args.context is None:
+    if args.context is None and args.output is None:
         print(json.dumps({'kind': 'project_client_budgets',
                           'server_capacity': 'NOT CHECKED: these are not live server limits',
-                          'models': safe}, indent=2))
+                          'models': safe,
+                          'verified_2026_09_25': {name: {'context': SERVER_CONTEXT[name], 'output': SERVER_OUTPUT[name]} for name in safe}}, indent=2))
         return
     if not args.model:
         parser.error('--model is required for a change')
-    old = safe[args.model]['context']
-    if args.context <= safe[args.model]['output']:
+    old = safe[args.model].copy()
+    context = args.context if args.context is not None else old['context']
+    output = args.output if args.output is not None else old['output']
+    ceiling = args.server_max if args.server_max is not None else SERVER_CONTEXT[args.model]
+    if ceiling <= 0 or ceiling > CHECKPOINT_CONTEXT[args.model] or context > ceiling:
+        parser.error('Context exceeds the verified server limit; changing client JSON cannot enlarge the server')
+    if output < 1 or output > SERVER_OUTPUT[args.model]:
+        parser.error('Output exceeds this model gateway cap or is not positive')
+    if context <= output:
         parser.error('Context must leave room for input as well as the output allowance')
-    if args.context > old and (args.server_max is None or args.context > args.server_max):
-        parser.error('An increase needs an organiser-confirmed --server-max at least as large as the requested budget')
-    if args.context == old:
+    if context == old['context'] and output == old['output']:
         print(f'{args.model}: unchanged at {old}')
         return
-    config['providers']['dtu']['models'][args.model]['limit']['context'] = args.context
+    config['providers']['dtu']['models'][args.model]['limit'].update(context=context, output=output)
     # Parse again to confirm that this is the sole semantic change.
     checked = json.loads(json.dumps(config))
-    checked['providers']['dtu']['models'][args.model]['limit']['context'] = old
+    checked['providers']['dtu']['models'][args.model]['limit'].update(old)
     if checked != json.loads(original):
         parser.error('Unexpected change; refusing to save')
     if path.read_bytes() != original:
@@ -62,7 +73,7 @@ def main():
     finally:
         if os.path.exists(temp_name):
             os.unlink(temp_name)
-    print(f'{args.model}: context {old} -> {args.context}; all other settings preserved. Reopen the project in OpenCode.')
+    print(f'{args.model}: {old} -> context {context}, output {output}; all other settings preserved. Run opencode reload, then reopen the project.')
 
 
 if __name__ == '__main__':
